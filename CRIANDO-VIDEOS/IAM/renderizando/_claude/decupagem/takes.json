@@ -1,0 +1,63 @@
+[
+  {
+    "take": "T01",
+    "arquivo": "Animated_character_counting_on_f…_7a877c9c_1080p.mp4",
+    "media_db": -18.5,
+    "pico_db": -0.1,
+    "silencios": []
+  },
+  {
+    "take": "T02",
+    "arquivo": "Animated_character_explaining_em…_fe2a8bf8_1080p.mp4",
+    "media_db": -21.4,
+    "pico_db": -3.7,
+    "silencios": []
+  },
+  {
+    "take": "T03",
+    "arquivo": "Animated_character_showing_urgen…_7d1d64a3_1080p.mp4",
+    "media_db": -18.8,
+    "pico_db": -0.0,
+    "silencios": []
+  },
+  {
+    "take": "T04",
+    "arquivo": "Character_demonstrating_radiatin…_db77949d_1080p.mp4",
+    "media_db": -19.6,
+    "pico_db": -6.0,
+    "silencios": []
+  },
+  {
+    "take": "T05",
+    "arquivo": "Character_gesturing_to_secondary…_7dfac800_1080p.mp4",
+    "media_db": -21.5,
+    "pico_db": -1.0,
+    "silencios": [
+      [
+        0.0,
+        0.4
+      ]
+    ]
+  },
+  {
+    "take": "T06",
+    "arquivo": "Character_presenting_heart_plaqu…_24a0da7b_1080p.mp4",
+    "media_db": -17.6,
+    "pico_db": -0.2,
+    "silencios": []
+  },
+  {
+    "take": "T07",
+    "arquivo": "Character_walking_and_heart_free…_f6d2e6a7_1080p.mp4",
+    "media_db": -20.6,
+    "pico_db": -2.9,
+    "silencios": []
+  },
+  {
+    "take": "T08",
+    "arquivo": "Woman_pointing_at_glowing_heart_0f5e3784_1080p.mp4",
+    "media_db": -21.7,
+    "pico_db": -3.5,
+    "silencios": []
+  }
+]

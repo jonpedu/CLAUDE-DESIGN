@@ -1,0 +1,18 @@
+{
+  "video": "previa_video.mp4",
+  "saida": "../../IAM previa 0-35s v2.mp4",
+  "dur": 35.6,
+  "narracao": { "arq": "../../../audios/audio completo.wav", "ini": 0, "db": 0 },
+  "trilha": { "arq": "../../../trilha sonora/Balanced Learning Loop (Remix) v2.mp3", "db": -21, "fade_in": 1.0, "fade_out": 0.8 },
+  "sfx": [
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav", "em": 0.05, "db": -10 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav", "em": 4.0, "db": -9 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav", "em": 8.5, "db": -8 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav", "em": 18.2, "db": -10 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav", "em": 22.46, "db": -8 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav", "em": 31.34, "db": -13 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav", "em": 32.46, "db": -13 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav", "em": 33.44, "db": -13 },
+    { "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav", "em": 34.36, "db": -13 }
+  ]
+}

@@ -1,0 +1,74 @@
+<!doctype html><html><head><meta charset="utf-8"><style>/* Estilo-base Telessaúde para quadros e animações (9:16). O marcador da linha abaixo é trocado pelo motor por @font-face com caminhos absolutos. */
+@font-face{font-family:'Poppins';font-weight:400;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Poppins/Poppins-Regular.ttf');}
+@font-face{font-family:'Poppins';font-weight:500;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Poppins/Poppins-Medium.ttf');}
+@font-face{font-family:'Poppins';font-weight:600;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Poppins/Poppins-SemiBold.ttf');}
+@font-face{font-family:'Poppins';font-weight:700;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Poppins/Poppins-Bold.ttf');}
+@font-face{font-family:'Poppins';font-weight:800;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Poppins/Poppins-ExtraBold.ttf');}
+@font-face{font-family:'Poppins';font-weight:900;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Poppins/Poppins-Black.ttf');}
+@font-face{font-family:'Inter';font-weight:400;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Inter/static/Inter_18pt-Regular.ttf');}
+@font-face{font-family:'Inter';font-weight:500;src:url('file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/fontes%20tipograficas/Inter/static/Inter_18pt-Medium.ttf');}
+:root {
+  --ts-primary: #365DCC; --ts-primary-hover: #3052B4; --ts-primary-pressed: #29479B;
+  --ts-primary-subtle: #E3E8F8; --ts-brand-strong: #1C306A;
+  --ts-secondary: #19756F; --ts-secondary-subtle: #ECF8F7;
+  --ts-text: #101828; --ts-text-2: #475467; --ts-text-inverse: #F8F9FC;
+  --ts-page: #F8F9FC; --ts-surface: #FFFFFF; --ts-border: #E2E6ED;
+  --ts-success: #027A48; --ts-warning: #C99B00; --ts-warning-subtle: #FFFAEB;
+  --ts-error: #B42318; --ts-error-subtle: #FEF3F2;
+  --safe-x0: 65px; --safe-x1: 888px; --safe-y0: 288px; --safe-y1: 1248px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #FFFFFF; }
+body { position: relative; font-family: 'Poppins', sans-serif; color: var(--ts-text); -webkit-font-smoothing: antialiased; }
+
+/* camadas */
+.clip { position: absolute; transform-origin: 0 0; }
+.regua { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); display: block; }
+.bloco { position: absolute; left: 80px; width: 800px; }
+
+/* tipografia: linha leve + palavra-chave pesada */
+.leve { font-weight: 400; font-size: 54px; line-height: 1.2; color: var(--ts-text-2); }
+.forte { font-weight: 700; font-size: 76px; line-height: 1.08; color: var(--ts-brand-strong); letter-spacing: -0.5px; }
+.titulo { font-weight: 800; font-size: 92px; line-height: 1.02; color: var(--ts-primary); letter-spacing: -1px; }
+.apoio { font-weight: 500; font-size: 56px; line-height: 1.25; color: var(--ts-text); }
+.fonte-dado { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 32px; color: var(--ts-text-2); }
+.azul { color: var(--ts-primary); }
+.vermelho { color: var(--ts-error); }
+
+/* marca-texto */
+.marca { background: linear-gradient(transparent 58%, rgba(54, 93, 204, .22) 58%, rgba(54, 93, 204, .22) 92%, transparent 92%); padding: 0 6px; }
+.marca-alerta { background: linear-gradient(transparent 58%, rgba(180, 35, 24, .18) 58%, rgba(180, 35, 24, .18) 92%, transparent 92%); padding: 0 6px; }
+
+/* pílulas */
+.pilula { display: inline-flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 999px;
+  background: var(--ts-primary-subtle); color: var(--ts-brand-strong); font-weight: 600; font-size: 48px; line-height: 1.1;
+  box-shadow: 0 8px 22px rgba(28, 48, 106, .14); }
+.pilula.alerta { background: var(--ts-error-subtle); color: var(--ts-error); border: 3px solid rgba(180, 35, 24, .35); }
+.pilula.solida { background: var(--ts-primary); color: #fff; }
+
+/* selo de atenção (cor + texto) */
+.selo { display: inline-flex; align-items: center; gap: 18px; padding: 14px 32px 14px 22px; border-radius: 22px;
+  background: var(--ts-warning-subtle); border: 4px solid var(--ts-warning); font-weight: 800; font-size: 58px; color: var(--ts-text); }
+.selo svg { width: 64px; height: 64px; flex: none; }
+
+/* lista com ícone */
+.lista { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.lista li { display: flex; align-items: center; gap: 20px; font-weight: 600; font-size: 50px; line-height: 1.15; color: var(--ts-text); }
+.lista li .ic { width: 54px; height: 54px; flex: none; }
+
+/* cartão */
+.cartao { background: #fff; border-radius: 36px; padding: 36px 40px; box-shadow: 0 16px 40px rgba(16, 24, 40, .10); border: 2px solid var(--ts-border); }
+
+</style></head>
+<body><img class="clip" src="file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/CRIANDO-VIDEOS/IAM/renderizando/_claude/quadros/frames/k4_T05.png" style="left:131px;top:420px;width:842.4px"><div class="bloco" style="top:300px">
+        <div class="leve" style="font-size:48px;white-space:nowrap">o infarto pode se manifestar com</div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:22px">
+          <span class="pilula" style="font-size:42px">dor entre as escápulas</span>
+          <span class="pilula" style="font-size:42px">desconforto em pescoço, mandíbula, braço</span>
+          <span class="pilula" style="font-size:42px">dispneia</span><span class="pilula" style="font-size:42px">confusão</span>
+          <span class="pilula" style="font-size:42px">síncope</span><span class="pilula" style="font-size:42px">fadiga</span></div></div><img class="regua" src="file:///C:/Users/Usu%C3%A1rio/Documents/CLAUDE-DESIGN/CRIANDO-VIDEOS/IAM/elementos/Ajustada%20TELE%20e%20PETSAUDE%20Digital.png" style="width:1080px"><div style="position:absolute;inset:0;pointer-events:none;z-index:999">
+  <div style="position:absolute;left:0;top:0;width:1080px;height:288px;background:rgba(255,0,60,.28)"></div>
+  <div style="position:absolute;left:0;top:1248px;width:1080px;height:672px;background:rgba(255,0,60,.28)"></div>
+  <div style="position:absolute;left:0;top:288px;width:65px;height:960px;background:rgba(255,0,60,.28)"></div>
+  <div style="position:absolute;left:888px;top:288px;width:192px;height:960px;background:rgba(255,0,60,.28)"></div>
+  <div style="position:absolute;left:65px;top:288px;width:823px;height:960px;outline:4px solid #ff003c"></div></div></body></html>

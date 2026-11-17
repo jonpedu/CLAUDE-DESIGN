@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Hipertensão parte 2 · reconstrução 16:9 do vertical (PET-Saúde) · v1 animada.
+     Áudio = áudio original do vertical (narração, trilha e efeitos), juntado depois do render.
+     Cada elemento entra no tempo da fala (data-in, em segundos; data-fx = efeito). Cenas nos tempos das telas do vertical.
+     Distribuição (devolutiva, 15/11/2026): blocos espalhados pela cena, sem conteúdo nas extremidades com o meio vazio.
+     Render: TELA=1920x1080 node ferramentas/animar.mjs <esta página> <saida.mp4>  ·  fotos: FOTOS="3.5,10.5" -->
+<style>
+  html, body { width: 1920px !important; height: 1080px !important; }
+  .cena { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: #fff; display: none; }
+  .abs { position: absolute; }
+  img.abs { display: block; }
+  .grad { background: linear-gradient(90deg, #E5262F 0%, #F2683A 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .t-pressao { font-weight: 800; letter-spacing: 1px; }
+  .borda-card { position: absolute; left: 0; border: 4px solid #E5262F; border-left: none; border-radius: 0 30px 30px 0;
+    display: flex; align-items: center; justify-content: center; padding-left: 80px; background: #fff; }
+  .marca-am { background-image: linear-gradient(transparent 12%, #FFF59A 12%, #FFF59A 92%, transparent 92%); background-repeat: no-repeat; background-size: 0% 100%; padding: 0 8px; }
+  .cartao2 { position: absolute; background: #fff; border: 3px solid #E2E6ED; border-radius: 32px; box-shadow: 0 14px 36px rgba(16,24,40,.08); overflow: hidden; }
+  .rot { position: absolute; left: 0; width: 100%; text-align: center; font-weight: 600; color: #344054; }
+  .faixa-sec { position: absolute; left: 0; display: flex; align-items: center; padding-left: 200px; color: #fff;
+    background: linear-gradient(90deg, #0B2A7A 0%, #1D4FB8 55%, #4FC3DC 100%); border-radius: 0 34px 34px 0; }
+  .rotv { top: 820px; width: 380px; text-align: center; color: #fff; font-style: italic; font-weight: 400; font-size: 36px; white-space: nowrap; }
+  .quadro { position: absolute; border-radius: 32px; overflow: hidden; border: 3px solid rgba(16,24,40,.06); box-shadow: 0 14px 36px rgba(16,24,40,.08); }
+  .selo-bom-ruim { position: absolute; width: 76px; height: 76px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    border: 5px solid #fff; box-shadow: 0 8px 20px rgba(16,24,40,.18); z-index: 5; }
+  .fundo-vivo { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; pointer-events: none; }
+  .fundo-vivo .mancha { position: absolute; border-radius: 50%; }
+  .fundo-vivo .pontos { position: absolute; inset: 0; background-image: radial-gradient(rgba(54,93,204,.13) 2.2px, transparent 2.8px); background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 48%, transparent 45%, #000 100%); }
+  .grupo { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  .bolha { position: absolute; width: 310px; height: 310px; border-radius: 50%; overflow: hidden;
+    background: radial-gradient(circle at 50% 35%, rgba(255,255,255,.30) 0%, rgba(255,255,255,.12) 60%, rgba(255,255,255,.06) 100%);
+    border: 3px solid rgba(255,255,255,.45); box-shadow: 0 18px 40px rgba(60,0,0,.25), inset 0 0 40px rgba(255,255,255,.12); }
+  .bolha img { position: absolute; display: block; }
+  .pilula-s { position: absolute; width: 360px; text-align: center; }
+  .pilula-s .ps { display: inline-block; padding: 8px 26px; border-radius: 999px; background: #fff; color: #A3212A;
+    font-weight: 600; font-style: italic; font-size: 32px; white-space: nowrap; box-shadow: 0 8px 20px rgba(60,0,0,.25); }
+  .icone-e { position: absolute; width: 150px; height: 150px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background: rgba(54,93,204,.08); border: 3px solid rgba(54,93,204,.18); }
+  .icone-e img { height: 96px; display: block; }
+  .chip-capa { display: inline-block; padding: 10px 26px; border-radius: 999px; background: #fff; border: 3px solid rgba(229,38,47,.35);
+    color: #B42318; font-weight: 600; font-size: 34px; box-shadow: 0 8px 20px rgba(180,35,24,.10); }
+  .cinza { background: radial-gradient(ellipse at 50% 45%, #FFFFFF 0%, #F4F4F4 45%, #E6E6E6 100%); }
+  /* régua em ilha: PNG do vídeo sem alteração, reduzido proporcionalmente */
+  .ilha { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 50; background: #fff;
+    border-radius: 30px 30px 0 0; padding: 0 34px; box-shadow: 0 -6px 26px rgba(16,24,40,.10); }
+  .ilha img { display: block; width: 760px; }
+</style></head>
+<body>
+
+<!-- A · 0,0–4,6 · "Mesmo depois de entender o que é a pressão alta, é importante saber." (tela 1) -->
+<!-- Gancho (devolutiva v4): o medidor ocupa a tela, a agulha sobe com tensão e bate no vermelho em "pressão" (2,4 s):
+     onda de choque, faíscas, tremor e clarão vermelho; "PRESSÃO ALTA" cai com impacto em "alta"; a agulha fica vibrando no limite.
+     Em "é importante saber" (3,4 s) o conjunto encolhe para a esquerda e a aferição entra. -->
+<div class="cena" id="cA" data-fundo="quente" data-a="0" data-b="4.6" data-treme="2.38:24;2.72:14">
+  <div class="abs" id="aClarao" style="left:0;top:0;width:1920px;height:1080px;background:radial-gradient(circle at 50% 60%, rgba(255,70,50,.55) 0%, rgba(255,70,50,.18) 40%, rgba(255,70,50,0) 75%);opacity:0"></div>
+  <div class="abs" data-in="2.38" data-fx="slam" data-k="0:420,-30,1.3;3.4:0,0,1" style="left:110px;width:860px;top:130px;text-align:center"><span class="grad t-pressao" style="font-size:96px;line-height:1.05;white-space:nowrap">PRESSÃO ALTA</span></div>
+  <div class="grupo" data-k="0:420,60,1.32;3.4:0,0,1" style="transform-origin:540px 510px">
+    <svg class="abs medidor" id="medA" data-in="0.05" data-fx="pop" viewBox="0 0 680 420" style="left:200px;top:300px;width:680px;height:420px"></svg>
+    <div class="abs" data-in="2.55" data-fx="pop" style="left:200px;width:680px;top:430px;text-align:center;font-weight:700;font-size:112px;color:#101828">14/9</div>
+    <div class="abs" data-in="2.9" style="left:200px;width:680px;top:730px;text-align:center;font-weight:500;font-style:italic;font-size:44px;color:#475467">140/90</div>
+  </div>
+  <!-- metade direita com os elementos separados (devolutiva v7): aferição, gota com músculos e dois raios piscando -->
+  <img class="abs" data-in="3.45" data-fx="dir" src="../camadas/a_afericao.png" style="left:945px;top:380px;width:405px">
+  <!-- raios grandes atrás da gota, saindo dos ombros e apontando para fora, como no vídeo-base (devolutiva final cn1) -->
+  <img class="abs" data-in="3.74" data-fx="pop" data-pisca="1" src="../camadas/a_raio2.png" style="left:1352px;top:452px;width:140px;transform-origin:70% 100%">
+  <img class="abs" data-in="3.82" data-fx="pop" data-pisca="1" src="../camadas/a_raio1.png" style="left:1590px;top:446px;width:135px;transform-origin:30% 100%">
+  <img class="abs" data-in="3.62" data-fx="pop" data-pulso="1" src="../camadas/a_gota.png" style="left:1425px;top:520px;width:235px">
+</div>
+
+<!-- B · 4,6–11,8 · "Na maioria das vezes, ela não causa sintomas, por isso é conhecida como uma doença silenciosa." (telas 2–3) -->
+<div class="cena" id="cB" data-fundo="quente" data-a="4.6" data-b="11.8">
+  <div class="borda-card" data-in="4.75" data-fx="esq" style="top:96px;width:760px;height:124px"><span class="grad t-pressao" style="font-size:64px">PRESSÃO ALTA</span></div>
+  <div class="abs" data-in="4.95" data-k="0:0,90,1;9.8:0,0,1" style="left:200px;top:290px;width:760px;font-weight:500;font-size:78px;line-height:1.2;color:#101828">
+    Na maioria das<br>vezes <span class="marca-am" data-in="6.5" data-fx="marca">não causa</span><br><span class="marca-am" data-in="7.05" data-fx="marca">sintomas</span></div>
+  <!-- medidor e coração separados: a agulha sobe e fica vibrando no limite; o coração bate no centro -->
+  <div class="grupo" data-k="0:-30,-50,1.04;7.8:0,0,1" style="transform-origin:1340px 560px">
+    <svg class="abs medidor" id="medB" data-in="5.3" data-fx="pop" viewBox="0 0 680 420" style="left:950px;top:300px;width:780px;height:482px"></svg>
+    <img class="abs" data-in="5.6" data-fx="pop" data-pulso="1" src="../camadas/a_coracao.png" style="left:1105px;top:515px;width:470px">
+  </div>
+  <img class="abs" data-in="7.9" data-fx="pop" src="../camadas/n_mudo.png" style="left:1560px;top:100px;width:170px">
+  <img class="abs" data-in="9.9" data-fx="pop" src="../camadas/a_silencio.png" style="left:205px;top:660px;width:195px">
+  <div class="abs" data-in="10.1" style="left:430px;top:688px;font-weight:700;font-size:68px;line-height:1.08;color:#101828">doença<br>silenciosa</div>
+</div>
+
+<!-- C1 · 11,8–16,5 · "Quando aparecem, estão relacionados a níveis muito elevados e podem incluir dor de cabeça," (tela 4)
+     Homem grande e cortado pela base; a escala muda aos poucos (mola) para dar movimento. -->
+<div class="cena verm" id="cC1" data-a="11.8" data-b="16.5" data-treme="14.56:9" style="background:radial-gradient(ellipse 70% 80% at 62% 42%, #F07272 0%, #B83A3A 38%, #6E1A1A 72%, #2A0505 100%)">
+  <div class="abs" data-in="11.9" data-k="0:0,170,1;12.95:0,0,1" style="left:200px;top:120px;color:#fff;font-size:96px;line-height:1.08">
+    <span style="font-weight:300">Quando os</span><br><span style="font-weight:700">sintomas</span><br><span style="font-weight:300">aparecem</span></div>
+  <svg class="abs" data-in="13.0" data-fx="traco" style="left:660px;top:300px" width="240" height="270" viewBox="0 0 260 300">
+    <path d="M 220 20 C 110 40 60 140 70 260" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 48 236 L 70 272 L 94 238" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="abs" data-in="13.5" style="left:200px;top:590px;color:#fff;font-size:46px;font-weight:300">Níveis muito <b style="font-weight:700">elevados</b></div>
+  <img class="abs" data-in="13.8" data-fx="pop" data-treme="14.56:14" src="../camadas/x4_medidor_v.png" style="left:220px;top:670px;width:430px">
+  <img class="abs" id="homem" src="../camadas/h_pose3.png" style="left:1060px;top:70px;width:530px;transform-origin:50% 25%">
+</div>
+
+<!-- C2 · 16,5–21,6 · "dor de cabeça, tontura, visão embaçada e sensação de cansaço." (tela 5) -->
+<div class="cena verm" id="cC2" data-a="16.5" data-b="21.6" style="background:radial-gradient(ellipse 80% 90% at 50% 45%, #C04747 0%, #9A3030 45%, #6B1E1E 100%)">
+  <div class="abs" style="left:200px;top:110px;color:#fff;font-size:64px;line-height:1.08">
+    <span style="font-weight:300">Quando os</span> <span style="font-weight:700">sintomas</span><br><span style="font-weight:300">aparecem</span></div>
+  <div class="abs" data-in="16.6" data-fx="dir" style="left:1160px;top:100px;width:560px;height:240px">
+    <div class="abs" style="left:0;top:0;width:560px;height:240px;border-radius:30px;background:rgba(40,10,10,.28)"></div>
+    <div class="abs" style="left:0;top:16px;width:560px;text-align:center;color:#fff;font-size:38px;font-weight:300">Níveis muito <b style="font-weight:700">elevados</b></div>
+    <img class="abs" src="../camadas/x4_medidor_v.png" style="left:150px;top:75px;width:260px"></div>
+  <!-- sintomas em bolhas (devolutiva v7): figura nova recortada dentro de um círculo translúcido + rótulo em pílula branca;
+       alturas alternadas para um ritmo mais orgânico -->
+  <div class="bolha" data-in="16.55" data-fx="pop" style="left:240px;top:405px"><img src="../camadas/s_cabeca.png" style="left:30px;top:40px;width:255px"></div>
+  <div class="pilula-s" data-in="16.75" style="left:215px;top:735px"><span class="ps">dor de cabeça</span></div>
+  <div class="bolha" data-in="17.45" data-fx="pop" style="left:620px;top:455px"><img src="../camadas/s_tontura.png" style="left:5px;top:62px;width:300px"></div>
+  <div class="pilula-s" data-in="17.65" style="left:595px;top:785px"><span class="ps">tontura</span></div>
+  <div class="bolha" data-in="18.28" data-fx="pop" style="left:1000px;top:405px"><img src="../camadas/s_visao.png" style="left:38px;top:26px;width:235px"></div>
+  <div class="pilula-s" data-in="18.48" style="left:975px;top:735px"><span class="ps">visão embaçada</span></div>
+  <div class="bolha" data-in="19.54" data-fx="pop" style="left:1380px;top:455px"><img src="../camadas/s_cansaco.png" style="left:55px;top:22px;width:205px"></div>
+  <div class="pilula-s" data-in="19.74" style="left:1355px;top:785px"><span class="ps">sensação de cansaço</span></div>
+</div>
+
+<!-- D · 21,6–33,3 · "Em alguns casos mais raros ... hipertensão secundária." (telas 6–8) -->
+<div class="cena" id="cD" data-fundo="misto" data-a="21.6" data-b="32.25">
+  <!-- escala dinâmica: coração separado do título, grande e batendo; os dois vão para o canto quando o texto entra -->
+  <!-- coração final maior e centrado na altura de "mais raros" (devolutiva v5) -->
+  <img class="abs" data-in="21.75" data-fx="pop" data-pulso="1" data-k="0:355,193,1.37;23.8:0,70,0.95;26.1:0,70,0.92;29.5:0,0,1" src="../camadas/a_coracao.png" style="left:170px;top:205px;width:250px">
+  <div class="grupo" data-k="0:450,190,1.35;23.8:30,70,1;29.5:30,0,1" style="transform-origin:480px 280px">
+  <div class="abs" data-in="21.8" style="left:412px;top:118px;font-weight:400;font-size:50px;color:#101828">Em casos</div>
+  <div class="abs" data-in="22.1" style="left:406px;top:168px;font-weight:800;font-size:144px;line-height:.92;color:#000;letter-spacing:-2px">mais<br>raros</div>
+  </div>
+  <div class="abs" data-in="24.0" data-k="0:0,-100,1.25;26.1:0,-120,1;29.5:0,0,1" style="transform-origin:0 50%;left:200px;top:720px;width:700px;white-space:nowrap;font-weight:400;font-size:40px;line-height:1.25;color:#344054">
+    A pressão alta <b>pode ser</b> causada<br>por outras doenças</div>
+  <div class="cartao2" data-in="26.3" data-fx="pop" data-k="0:195,0,1.08;27.5:0,0,1" style="left:960px;top:170px;width:370px;height:620px">
+    <img class="abs" src="../camadas/n_rins.png" style="left:35px;top:110px;width:300px">
+    <div class="rot" style="top:470px;font-size:36px;line-height:1.2">Problemas<br>nos rins</div></div>
+  <div class="cartao2" data-in="27.6" data-fx="pop" style="left:1350px;top:170px;width:370px;height:620px">
+    <img class="abs" src="../camadas/n_hormonal.png" style="left:50px;top:90px;width:270px">
+    <div class="rot" style="top:470px;font-size:36px;line-height:1.2">Alterações<br>hormonais</div></div>
+  <div class="faixa-sec" data-in="29.6" data-fx="esq" style="top:520px;width:880px;height:150px;font-weight:600;font-size:54px;letter-spacing:6px;line-height:1.05;flex-direction:column;align-items:flex-start;justify-content:center">
+    <span>HIPERTENSÃO</span><span style="font-weight:800">SECUNDÁRIA</span></div>
+</div>
+
+<!-- E · 33,3–47,3 · "Por isso, o acompanhamento ... não interromper o tratamento por conta própria." (telas 9–11) -->
+<div class="cena" id="cE" data-fundo="azul" data-a="32.25" data-b="47.3">
+  <!-- abertura (devolutiva v7): a frase completa da fala é digitada ("O acompanhamento / com profissionais de saúde"),
+       três profissionais entram embaixo; a frase se apaga como digitação ao contrário e a cena segue com "é ESSENCIAL" -->
+  <img class="abs" data-in="33.75" data-fx="pop" data-out="34.7" src="../camadas/e_medico.png" style="left:180px;top:585px;width:540px">
+  <img class="abs" data-in="34.0" data-fx="pop" data-out="34.75" src="../camadas/a_afericao.png" style="left:805px;top:540px;width:310px">
+  <img class="abs" data-in="34.25" data-fx="pop" data-out="34.8" src="../camadas/a_casal.png" style="left:1290px;top:535px;width:330px">
+  <!-- coluna esquerda centrada em x 550: título, ícones em círculos e cartão -->
+  <div class="grupo" data-k="0:410,200,1.4;35.55:410,80,1.25;36.6:0,0,1" style="transform-origin:550px 200px">
+  <!-- devolutiva final: "O acompanhamento com" (cinza) é digitado; "profissionais de saúde" (destaque) entra embaixo;
+       "profissionais de saúde" sai, o "com" é apagado como digitação e vira "é"; depois "ESSENCIAL" entra como antes -->
+  <div class="abs" data-troca="32.8,33.75,34.72,34.86,34.93" style="left:200px;width:700px;top:110px;text-align:center;font-weight:400;font-size:48px;color:#475467;white-space:nowrap"><span class="base">O acompanhamento </span><span class="velho">com</span><span class="novo">é</span></div>
+  <div class="abs" data-in="33.84" data-out="34.55" style="left:100px;width:900px;top:172px;text-align:center;font-weight:700;font-size:56px;color:#1C306A;white-space:nowrap">profissionais de saúde</div>
+  <div class="abs" data-in="35.2" data-fx="pop" style="left:200px;width:700px;top:158px;text-align:center;font-weight:800;font-size:120px;line-height:1;color:#4A4A4A">ESSENCIAL</div>
+  </div>
+  <div class="grupo" data-k="0:410,150,1.6;36.6:0,0,1" style="transform-origin:550px 390px">
+  <div class="icone-e" data-in="35.6" data-fx="pop" style="left:295px;top:315px"><img src="../camadas/e_ic1.png"></div>
+  <div class="icone-e" data-in="35.8" data-fx="pop" style="left:475px;top:315px"><img src="../camadas/e_ic2.png"></div>
+  <div class="icone-e" data-in="36.0" data-fx="pop" style="left:655px;top:315px"><img src="../camadas/e_ic3.png"></div>
+  </div>
+  <img class="abs" data-in="36.8" data-fx="esq" src="../camadas/n_cartao_med.png" style="left:200px;top:540px;width:700px">
+  <!-- metade direita: sirene, alerta em 3 linhas (sem invadir a esquerda) e prancheta, centrados em x 1360 -->
+  <img class="abs" data-in="37.6" data-fx="dir" data-k="0:0,-110,1;40.8:0,0,1" src="../camadas/e_prancheta.png" style="left:1020px;top:410px;width:680px">
+  <img class="abs" data-in="40.9" data-fx="pop" data-alerta="40.95" src="../camadas/e_sirene.png" style="left:1270px;top:96px;width:180px">
+  <div class="abs" data-in="41.2" style="left:1010px;width:700px;top:232px;text-align:center;font-weight:400;font-size:32px;line-height:1.3;color:#C8102E;white-space:nowrap">
+    É muito importante o<br><b>uso correto dos medicamentos</b><br>e a <b>não interrupção do tratamento</b></div>
+</div>
+</div>
+
+<!-- F · 47,3–61,8 · "As escolhas do dia a dia ... ajuda a proteger o coração." (telas 12–14) -->
+<div class="cena" id="cF" data-fundo="azul" data-a="47.3" data-b="61.8">
+  <!-- escala dinâmica: título grande no centro → topo; coluna do sal centralizada → esquerda quando a das frutas entra -->
+  <div class="grupo" data-k="0:0,250,1.45;50.5:0,0,1" style="transform-origin:960px 170px">
+  <div class="abs" data-in="47.45" style="left:0;width:1920px;top:96px;text-align:center;font-weight:400;font-size:46px;color:#101828">As escolhas do dia a dia</div>
+  <div class="abs" data-in="48.4" data-fx="pop" style="left:0;width:1920px;top:146px;text-align:center;font-weight:700;font-size:80px;line-height:1.05;color:#101828">fazem diferença</div>
+  </div>
+  <!-- contraste ruim × bom: o fundo inteiro fica avermelhado com o sal; depois o verde varre da direita
+       num corte diagonal e toma a metade direita quando entram as frutas. Selos ✕ e ✓ nos quadros. -->
+  <div class="abs" data-in="50.6" data-fx="fade" style="left:0;top:250px;width:1920px;height:830px;background:linear-gradient(180deg,#FDEDEB 0%,#F9DAD6 100%)"></div>
+  <div class="abs" data-in="55.6" data-fx="varre" style="left:880px;top:250px;width:1040px;height:830px">
+    <div class="abs" style="left:0;top:0;width:1040px;height:830px;background:#fff;clip-path:polygon(9.5% 0,100% 0,100% 100%,0 100%)"></div>
+    <div class="abs" style="left:14px;top:0;width:1026px;height:830px;background:linear-gradient(180deg,#EAF6E7 0%,#D6EED1 100%);clip-path:polygon(9.6% 0,100% 0,100% 100%,0 100%)"></div></div>
+  <!-- abertura: as "escolhas" aparecem em volta do título grande (verduras, exercício, sal) e saem quando a fala chega ao sal -->
+  <img class="abs" data-in="47.65" data-fx="pop" data-out="50.35" src="../camadas/f_verduras.png" style="left:230px;top:600px;width:480px">
+  <img class="abs" data-in="48.1" data-fx="pop" data-out="50.4" src="../camadas/f_exercicio.png" style="left:770px;top:585px;width:390px">
+  <img class="abs" data-in="48.55" data-fx="pop" data-out="50.45" src="../camadas/f_sal.png" style="left:1330px;top:600px;width:170px">
+  <!-- coluna do ruim (elementos novos, soltos): gôndola + sal com setas subindo + medidor que treme em "aumentar" -->
+  <div class="grupo" data-k="0:400,40,1.1;55.7:-25,0,1" style="transform-origin:560px 600px">
+  <div class="abs" data-in="50.8" style="left:200px;width:720px;top:270px;text-align:center;font-style:italic;font-size:34px;line-height:1.25;color:#101828">
+    O <b style="color:#C0182A">consumo excessivo</b><br>de sal e alimentos industrializados</div>
+  <img class="abs" data-in="51.2" data-fx="pop" src="../camadas/f_sal.png" style="left:590px;top:380px;width:165px">
+  <img class="abs" data-in="52.45" data-fx="pop" src="../camadas/f_gondola.png" style="left:240px;top:385px;width:300px">
+  <img class="abs" data-in="52.9" data-fx="sobe" data-sobe-loop="1" src="../camadas/f_seta_cima.png" style="left:770px;top:420px;width:58px">
+  <img class="abs" data-in="53.1" data-fx="sobe" data-sobe-loop="1" src="../camadas/f_seta_cima.png" style="left:520px;top:520px;width:50px">
+  <img class="abs" data-in="53.9" data-fx="pop" data-treme="54.3:14" src="../camadas/f_medidor.png" style="left:570px;top:672px;width:240px">
+  <div class="selo-bom-ruim" data-in="51.6" data-fx="pop" style="left:196px;top:360px;background:#D92D20">
+    <svg viewBox="0 0 40 40" width="44" height="44"><path d="M12 12 L28 28 M28 12 L12 28" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/></svg></div>
+  <div class="abs" data-in="54.3" style="left:490px;width:400px;top:840px;text-align:center;font-weight:800;font-size:32px;line-height:1.1;color:#C0182A;white-space:nowrap">Aumento da pressão</div>
+  </div>
+  <!-- coluna do bom: frutas e verduras soltas; coração anatômico com escudo bate em "proteger o coração" -->
+  <div class="abs" data-in="55.9" data-k="0:0,80,1;59.4:0,0,1" style="left:1000px;width:720px;top:270px;text-align:center;font-style:italic;font-size:34px;line-height:1.25;color:#101828">
+    Uma alimentação com frutas, verduras<br>e <b style="color:#1E7B34">alimentos naturais</b></div>
+  <img class="abs" data-in="56.95" data-fx="pop" data-k="0:0,80,1;59.4:0,0,1" src="../camadas/f_frutas.png" style="left:1040px;top:420px;width:300px">
+  <img class="abs" data-in="57.7" data-fx="pop" data-k="0:0,80,1;59.4:0,0,1" src="../camadas/f_verduras.png" style="left:1320px;top:385px;width:400px">
+  <div class="selo-bom-ruim" data-in="58.4" data-fx="pop" data-k="0:0,80,1;59.4:0,0,1" style="left:1010px;top:370px;background:#1E9E45">
+    <svg viewBox="0 0 40 40" width="46" height="46"><path d="M10 21 L17 28 L30 13" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <img class="abs" data-in="59.45" data-fx="pop" data-pulso="1" src="../camadas/f_coracao.png" style="left:1250px;top:630px;width:165px">
+  <img class="abs" data-in="60.25" data-fx="pop" src="../camadas/f_escudo.png" style="left:1150px;top:700px;width:95px">
+  <div class="abs" data-in="60.3" style="left:1440px;top:730px;font-weight:800;font-size:36px;line-height:1.1;color:#1E7B34">Protege o<br>coração</div>
+</div>
+
+<!-- G · 61,8–73,9 · "Com o acompanhamento regular, alimentação equilibrada e tratamento adequado, é possível controlar ..." (telas 15–19) -->
+<div class="cena cinza" id="cG" data-fundo="verde" data-a="61.8" data-b="73.9">
+  <div class="abs" data-in="66.6" style="left:0;width:1920px;top:100px;text-align:center;font-size:62px;line-height:1.15;color:#101828">
+    <span style="font-weight:400">É POSSÍVEL</span> <span style="font-weight:800">CONTROLAR</span> <span style="font-weight:400">A</span><br><span style="font-weight:400">PRESSÃO ALTA</span></div>
+  <!-- escala dinâmica: 1 cartão grande no centro → 2 centralizados → 3; sobem quando o título entra -->
+  <div class="cartao2" data-in="62.0" data-fx="pop" data-k="0:525,-40,1.15;63.8:262,-40,1.05;65.3:0,-40,1;66.4:0,40,1;70.3:0,0,1" style="left:200px;top:300px;width:470px;height:550px">
+    <img class="abs" src="../camadas/n_medico.png" style="left:-55px;top:170px;width:560px">
+    <div class="rot" style="top:34px;font-weight:700;font-size:36px;color:#1D4FB8">Acompanhamento<br>Regular</div></div>
+  <div class="cartao2" data-in="63.9" data-fx="pop" data-k="0:262,-40,1.05;65.3:0,-40,1;66.4:0,40,1;70.3:0,0,1" style="left:725px;top:300px;width:470px;height:550px">
+    <img class="abs" src="../camadas/n_chef.png" style="left:15px;top:150px;width:440px">
+    <div class="rot" style="top:34px;font-weight:700;font-size:36px;color:#1D4FB8">Alimentação<br>Equilibrada</div></div>
+  <div class="cartao2" data-in="65.4" data-fx="pop" data-k="0:0,-40,1;66.4:0,40,1;70.3:0,0,1" style="left:1250px;top:300px;width:470px;height:550px">
+    <img class="abs" src="../camadas/n_prancheta.png" style="left:15px;top:200px;width:440px">
+    <div class="rot" style="top:34px;font-weight:700;font-size:36px;color:#1D4FB8">Tratamento<br>Adequado</div></div>
+  <div class="abs" data-in="70.4" style="left:0;width:1920px;top:880px;text-align:center;font-size:40px;color:#0E7A3A">
+    Garantindo <b>mais saúde</b> e <b>qualidade de vida</b></div>
+</div>
+
+<!-- H · 73,9–78 · fechamento: logo animado do usuário (vertical 1080x1920, fundo branco) centralizado, sem alteração -->
+<div class="cena" id="cH" data-a="73.9" data-b="78.5">
+  <video id="intro" src="../../../Intro NTS e PETSAUDE - horizontal.mp4" muted preload="auto" style="position:absolute;left:0;top:0;width:1920px;height:1080px"></video>
+</div>
+
+<!-- CAPA · quadro 0 do vídeo (miniatura no WhatsApp/YouTube) e PNG: título forte à esquerda, medidor no limite com o coração à direita -->
+<div class="cena" id="cCapa" data-fundo="quente" data-a="-1" data-b="-1" style="z-index:30">
+  <div class="abs" style="left:880px;top:120px;width:960px;height:860px;background:radial-gradient(circle at 50% 55%, rgba(255,70,50,.22) 0%, rgba(255,70,50,.08) 40%, rgba(255,70,50,0) 70%)"></div>
+  <svg class="abs" viewBox="0 0 860 600" style="left:950px;top:170px;width:860px;height:600px">
+    <circle cx="430" cy="430" r="300" fill="none" stroke="#E5262F" stroke-width="5" opacity=".18"/>
+    <circle cx="430" cy="430" r="380" fill="none" stroke="#E5262F" stroke-width="3" opacity=".10"/></svg>
+  <svg class="abs" id="medCapa" viewBox="0 0 680 420" style="left:1000px;top:250px;width:760px;height:470px"></svg>
+  <img class="abs" src="../camadas/a_coracao.png" style="left:1150px;top:470px;width:460px">
+  <div class="abs" style="left:170px;top:250px;width:800px">
+    <div class="grad t-pressao" style="font-size:172px;line-height:.92;letter-spacing:-2px;font-weight:900;width:max-content;padding-top:40px;margin-top:-40px">PRESSÃO<br>ALTA</div>
+    <div style="margin-top:34px;font-size:60px;font-weight:500;line-height:1.15;color:#101828">É possível <span class="marca-am" style="background-size:100% 100%;font-weight:800">controlar</span></div>
+    <div style="margin-top:22px;display:flex;gap:14px;flex-wrap:wrap">
+      <span class="chip-capa">sintomas</span><span class="chip-capa">tratamento</span><span class="chip-capa">alimentação</span></div>
+  </div>
+</div>
+
+<!-- camada de efeitos pontuais (ondas de choque e faíscas), redesenhada a cada quadro -->
+<svg id="fx" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0;width:1920px;height:1080px;z-index:45;pointer-events:none"></svg>
+
+<div class="ilha"><img src="../../../Ajustada TELE e PETSAUDE Digital.png"></div>
+
+<script>
+  window.DURACAO = 78.3;
+  const cenas = [...document.querySelectorAll('.cena')];
+  const anim = [...document.querySelectorAll('[data-in], [data-k]')];
+  const digs = [...document.querySelectorAll('[data-dig]')];
+  // data-troca = "início, fim da digitação (base + velho), início, fim do apagamento do velho, entrada do novo"
+  const trocas = [...document.querySelectorAll('[data-troca]')].map((e) => {
+    const parte = (sel) => { const sp = e.querySelector(sel); const t = sp.textContent; sp.textContent = '';
+      return [...t].map((c) => { const x = document.createElement('span'); x.textContent = c; sp.appendChild(x); return x; }); };
+    return { e, base: parte('.base'), velho: parte('.velho'), novo: parte('.novo'), t: e.dataset.troca.split(',').map(Number) };
+  });
+  for (const e of digs) { const txt = e.textContent; e.textContent = '';
+    e._c = [...txt].map((c) => { const sp = document.createElement('span'); sp.textContent = c; e.appendChild(sp); return sp; }); }
+  for (const e of anim) if (e.dataset.k) e._k = e.dataset.k.split(';').map((s) => { const [t, v] = s.split(':'); return { t: +t, v: v.split(',').map(Number) }; });
+  const homem = document.getElementById('homem');
+  const intro = document.getElementById('intro');
+  const TR = 0.45; // transição: a cena nova entra por cima da anterior (fade + leve recuo de escala)
+  const rnd = (i) => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  // tremor de impacto: data-treme="t:amplitude;..." (decai rápido)
+  const treme = (el, t) => {
+    let x = 0, y = 0;
+    if (el.dataset.treme) for (const s of el.dataset.treme.split(';')) {
+      const [t0, amp] = s.split(':').map(Number);
+      if (t > t0) { const a = amp * Math.exp(-(t - t0) * 9); x += a * Math.sin(t * 71); y += a * Math.cos(t * 57); }
+    }
+    return [x, y];
+  };
+
+  // medidor em SVG (arcos verde/amarelo/vermelho + agulha separada, para animar e vibrar)
+  function montaMedidor(svg) {
+    const cx = 340, cy = 340, R = 262, W = 96, pt = (a) => [cx + R * Math.cos(a * Math.PI / 180), cy - R * Math.sin(a * Math.PI / 180)];
+    const arco = (a1, a2, cor) => { const [x1, y1] = pt(a1), [x2, y2] = pt(a2);
+      return `<path d="M${x1} ${y1} A${R} ${R} 0 0 1 ${x2} ${y2}" fill="none" stroke="${cor}" stroke-width="${W}"/>`; };
+    const [gx, gy] = pt(180), [rx, ry] = pt(0);
+    svg.innerHTML = arco(180, 126, '#359A1D') + arco(123, 57, '#FFC000') + arco(54, 0, '#FF1414') +
+      `<circle cx="${gx}" cy="${gy}" r="${W / 2}" fill="#359A1D"/><circle cx="${rx}" cy="${ry}" r="${W / 2}" fill="#FF1414"/>` +
+      `<g class="agulha"><path d="M${cx - 30} ${cy} L${cx + 232} ${cy}" stroke="#22354F" stroke-width="20" stroke-linecap="round"/>` +
+      `<circle cx="${cx}" cy="${cy}" r="44" fill="#22354F"/></g>`;
+    svg._ag = svg.querySelector('.agulha');
+  }
+  // fundo vivo (devolutiva v6): manchas de cor bem diluídas que se movem devagar como líquido + textura de pontos
+  // nas bordas que desliza; só nas cenas claras, por baixo de tudo. Cores do núcleo (azul) + a cor do tema da cena.
+  const PALETA = {
+    quente: [['255,90,78', .13], ['255,176,32', .10], ['54,93,204', .07]],
+    misto:  [['229,38,47', .09], ['54,93,204', .11], ['79,195,220', .09]],
+    azul:   [['54,93,204', .12], ['25,117,111', .09], ['79,195,220', .08]],
+    verde:  [['30,158,69', .11], ['54,93,204', .09], ['126,217,87', .08]],
+  };
+  const BASE = [[160, 120, 1000], [1250, 80, 1100], [700, 560, 1200]];
+  const fundos = [];
+  for (const c of document.querySelectorAll('.cena[data-fundo]')) {
+    const f = document.createElement('div');
+    f.className = 'fundo-vivo';
+    f.innerHTML = PALETA[c.dataset.fundo].map(([cor, a], i) =>
+      `<div class="mancha" style="left:${BASE[i][0] - BASE[i][2] / 2}px;top:${BASE[i][1] - BASE[i][2] / 2}px;width:${BASE[i][2]}px;height:${BASE[i][2]}px;` +
+      `background:radial-gradient(circle, rgba(${cor},${a}) 0%, rgba(${cor},${a * 0.45}) 35%, rgba(${cor},0) 68%)"></div>`).join('') +
+      '<div class="pontos"></div>';
+    c.prepend(f);
+    fundos.push(f);
+  }
+  const animaFundo = (t) => {
+    for (const f of fundos) {
+      f.querySelectorAll('.mancha').forEach((m, i) => {
+        const ph = i * 2.1;
+        m.style.transform = `translate(${140 * Math.sin(t * 0.21 + ph)}px, ${90 * Math.cos(t * 0.17 + ph * 1.3)}px) scale(${1 + 0.12 * Math.sin(t * 0.3 + ph)})`;
+      });
+      f.lastChild.style.backgroundPosition = `${(t * 9) % 46}px ${(t * 5) % 46}px`;
+    }
+  };
+  const medA = document.getElementById('medA'), medB = document.getElementById('medB'), medCapa = document.getElementById('medCapa');
+  montaMedidor(medA); montaMedidor(medB); montaMedidor(medCapa);
+  medCapa._ag.setAttribute('transform', 'rotate(-24 340 340)');
+  const capa = document.getElementById('cCapa');
+  const vibra = (t) => 1.8 * Math.sin(t * 61) + 1.2 * Math.sin(t * 43);
+  const anguloA = (t) => {   // sobe com tensão (acelerando) e bate no vermelho em "pressão"
+    if (t < 2.38) { const k = TS.p(t, 0.35, 2.03, 'in'); return 168 - 146 * k + 2.5 * Math.sin(t * 30) * k; }
+    return 22 - 7 * Math.exp(-(t - 2.38) * 9) * Math.cos((t - 2.38) * 40) + vibra(t);
+  };
+  const anguloB = (t) => { const k = TS.p(t, 5.45, 0.9, 'out'); return 165 - 143 * k + k * vibra(t); };
+
+  // efeitos pontuais: ondas de choque e faíscas, nos momentos de impacto da fala
+  const FX = [
+    { t: 2.38, x: 1230, y: 590, tipo: 'onda', cor: '#FF3B2F', r0: 40, dr: 560, dur: 0.75, w: 12 },
+    { t: 2.52, x: 1230, y: 590, tipo: 'onda', cor: '#FFB020', r0: 30, dr: 400, dur: 0.6, w: 7 },
+    { t: 2.38, x: 1230, y: 590, tipo: 'faiscas', n: 24, cores: ['#FF3B2F', '#FFB020', '#FF7A45', '#ffffff'], dist: 560, dur: 0.85, tam: 16 },
+    { t: 2.66, x: 960, y: 190, tipo: 'faiscas', n: 16, cores: ['#E5262F', '#F2683A'], dist: 520, dur: 0.6, tam: 10 },
+    { t: 14.56, x: 640, y: 860, tipo: 'onda', cor: '#ffffff', r0: 30, dr: 260, dur: 0.6, w: 6 },
+    { t: 14.56, x: 640, y: 860, tipo: 'faiscas', n: 16, cores: ['#FF4B3E', '#FFD23F', '#ffffff'], dist: 300, dur: 0.7, tam: 12 },
+    { t: 21.8, x: 650, y: 493, tipo: 'onda', cor: '#E5262F', r0: 80, dr: 420, dur: 0.8, w: 8 },
+    { t: 22.25, x: 650, y: 493, tipo: 'onda', cor: '#E5262F', r0: 80, dr: 420, dur: 0.8, w: 5 },
+    { t: 40.95, x: 1360, y: 157, tipo: 'onda', cor: '#E5262F', r0: 70, dr: 240, dur: 0.7, w: 6 },
+    { t: 41.4, x: 1360, y: 157, tipo: 'onda', cor: '#E5262F', r0: 70, dr: 240, dur: 0.7, w: 6 },
+    { t: 41.85, x: 1360, y: 157, tipo: 'onda', cor: '#E5262F', r0: 70, dr: 240, dur: 0.7, w: 5 },
+    { t: 54.3, x: 1103, y: 829, tipo: 'onda', cor: '#C0182A', r0: 30, dr: 220, dur: 0.6, w: 6 },
+    { t: 54.3, x: 1103, y: 829, tipo: 'faiscas', n: 14, cores: ['#E5262F', '#FF8A3D'], dist: 240, dur: 0.65, tam: 11 },
+    { t: 59.5, x: 1332, y: 740, tipo: 'onda', cor: '#1E9E45', r0: 70, dr: 260, dur: 0.8, w: 7 },
+    { t: 59.95, x: 1332, y: 740, tipo: 'onda', cor: '#1E9E45', r0: 70, dr: 260, dur: 0.8, w: 5 },
+    { t: 70.55, x: 960, y: 905, tipo: 'faiscas', n: 20, cores: ['#1E9E45', '#7ED957', '#FFD23F'], dist: 420, dur: 0.9, tam: 9 },
+  ];
+  const fxSvg = document.getElementById('fx');
+  const desenhaFX = (t) => {
+    let h = '';
+    FX.forEach((f, j) => {
+      const k = (t - f.t) / f.dur; if (k < 0 || k >= 1) return;
+      const e = 1 - Math.pow(1 - k, 3);
+      if (f.tipo === 'onda') h += `<circle cx="${f.x}" cy="${f.y}" r="${f.r0 + f.dr * e}" fill="none" stroke="${f.cor}" stroke-width="${f.w * (1 - k) + 1}" opacity="${0.85 * (1 - k)}"/>`;
+      else for (let i = 0; i < f.n; i++) {
+        const a = rnd(i + j * 31) * Math.PI * 2, d = f.dist * e * (0.45 + 0.55 * rnd(i + j * 31 + 7)), r = f.tam * (0.5 + rnd(i + j * 31 + 13)) * (1 - k);
+        h += `<circle cx="${f.x + Math.cos(a) * d}" cy="${f.y + Math.sin(a) * d + 120 * k * k}" r="${r}" fill="${f.cores[i % f.cores.length]}"/>`;
+      }
+    });
+    fxSvg.innerHTML = h;
+  };
+
+  window.render = async (t) => {
+    for (const c of cenas) {
+      const a = +c.dataset.a, b = +c.dataset.b;
+      const vis = t >= a && t < b + TR;
+      c.style.display = vis ? 'block' : 'none';
+      if (vis) {
+        const k = a === 0 ? 1 : TS.p(t, a, TR, 'out');
+        const [jx, jy] = treme(c, t);
+        c.style.opacity = k;
+        c.style.transform = `translate(${jx}px, ${jy}px) scale(${1.04 - 0.04 * k})`;
+      }
+    }
+    medA._ag.setAttribute('transform', `rotate(${-anguloA(t)} 340 340)`);
+    medB._ag.setAttribute('transform', `rotate(${-anguloB(t)} 340 340)`);
+    const cl = document.getElementById('aClarao');
+    cl.style.opacity = t < 2.38 ? 0 : Math.max(0.9 * Math.exp(-(t - 2.38) * 5), 0.14 + 0.06 * Math.sin(t * 12));
+    desenhaFX(t);
+    capa.style.display = t < 1 / 30 ? 'block' : 'none'; capa.style.opacity = 1; capa.style.transform = 'none';
+    for (const q of trocas) {
+      const [a, b, c, d, n0] = q.t, bv = [...q.base, ...q.velho];
+      const ndig = Math.round(bv.length * TS.clamp((t - a) / (b - a), 0, 1));
+      const napaga = Math.round(q.velho.length * TS.clamp((t - c) / (d - c), 0, 1));
+      // digitação com visibility (a linha não pula); o apagamento do 'com' tira as letras e o 'é' entra no lugar
+      bv.forEach((x, i) => { x.style.visibility = i < ndig ? 'visible' : 'hidden'; x.style.display = i < bv.length - napaga ? '' : 'none'; });
+      q.novo.forEach((x) => { x.style.display = t >= n0 ? '' : 'none'; });
+    }
+    for (const e of digs) {
+      const [a, b, c, d] = e.dataset.dig.split(',').map(Number), N = e._c.length;
+      const n = Math.round(N * TS.clamp((t - a) / (b - a), 0, 1)) - Math.round(N * TS.clamp((t - c) / (d - c), 0, 1));
+      e._c.forEach((sp, i) => { sp.style.visibility = i < n ? 'visible' : 'hidden'; });
+    }
+    animaFundo(t);
+    // entrada (data-in/data-fx) + escala dinâmica (data-k = "t:dx,dy,s;..."), compostas num só transform
+    for (const e of anim) {
+      let op = 1, tx = 0, ty = 0, sc = 1, blur = 0;
+      if (e.dataset.in !== undefined) {
+        const t0 = +e.dataset.in, fx = e.dataset.fx || 'sobe';
+        if (fx === 'sobe') { const k = TS.p(t, t0, 0.55, 'mola'); op = TS.clamp((t - t0) / 0.3, 0, 1); ty = (1 - k) * 40; blur = (1 - op) * 8; }
+        else if (fx === 'pop') { op = TS.clamp((t - t0) / 0.12, 0, 1); sc = Math.max(0, TS.p(t, t0, 0.5, 'back')); }
+        else if (fx === 'esq' || fx === 'dir') { op = TS.clamp((t - t0) / 0.2, 0, 1); tx = (1 - TS.p(t, t0, 0.7, 'mola')) * (fx === 'esq' ? -160 : 160); }
+        else if (fx === 'fade') { op = TS.p(t, t0, 0.5, 'inOut'); }
+        else if (fx === 'slam') { // cai do alto com impacto (escala 2,3 → 1) e quica de leve
+          op = TS.clamp((t - t0) / 0.06, 0, 1); const k = TS.p(t, t0, 0.28, 'in');
+          sc = 2.3 - 1.3 * k; blur = (1 - k) * 12;
+          if (t > t0 + 0.28) sc *= 1 + 0.07 * Math.exp(-(t - t0 - 0.28) * 9) * Math.sin((t - t0 - 0.28) * 32);
+        }
+        else if (fx === 'varre') { op = TS.clamp((t - t0) / 0.1, 0, 1); tx = (1 - TS.p(t, t0, 0.75, 'out')) * 1100; }
+        else if (fx === 'marca') { TS.marca(e, t, t0, 0.45); continue; }
+        else if (fx === 'traco') { e.style.opacity = t >= t0 ? 1 : 0; for (const p of e.querySelectorAll('path')) TS.traco(p, t, t0, 0.6); continue; }
+      }
+      if (e._k) {
+        let [dx, dy, s] = e._k[0].v;
+        for (const q of e._k.slice(1)) {
+          const w = TS.p(t, q.t, 0.8, 'mola');
+          dx += (q.v[0] - dx) * w; dy += (q.v[1] - dy) * w; s += (q.v[2] - s) * w;
+        }
+        tx += dx; ty += dy; sc *= s;
+      }
+      if (e.dataset.pisca && t > +e.dataset.in + 0.3) { op *= 0.55 + 0.45 * (Math.sin(t * 17) > -0.2 ? 1 : 0); sc *= 1 + 0.05 * Math.sin(t * 9); }
+      if (e.dataset.pulso) { // batimento: duas batidas curtas por ciclo (~66 bpm)
+        const f = (t * 1.1) % 1, g = (c, w) => Math.exp(-(((f - c) / w) ** 2));
+        sc *= 1 + 0.07 * (g(0.08, 0.05) + 0.6 * g(0.26, 0.05));
+      }
+      if (e.dataset.out) { const k = TS.p(t, +e.dataset.out, 0.4, 'in'); op *= 1 - k; sc *= 1 - 0.35 * k; }
+      if (e.dataset.sobeLoop && t > +e.dataset.in + 0.5) ty += -14 * Math.abs(Math.sin((t - +e.dataset.in) * 4.2));
+      const [jx, jy] = treme(e, t); tx += jx; ty += jy;
+      let rot = 0;
+      if (e.dataset.alerta) { const t0 = +e.dataset.alerta; if (t > t0) rot = 9 * Math.sin((t - t0) * 18) * Math.exp(-(t - t0) * 1.2); }
+      e.style.opacity = op;
+      e.style.transform = `translate(${tx}px, ${ty}px) scale(${sc}) rotate(${rot}deg)`;
+      e.style.filter = blur > 0.05 ? `blur(${blur}px)` : 'none';
+    }
+    // homem: entra subindo e vai mudando de escala com mola, em degraus, junto da fala
+    const s = 0.88 + 0.12 * TS.p(t, 11.95, 0.7, 'mola') + 0.06 * TS.p(t, 13.5, 0.8, 'mola') + 0.06 * TS.p(t, 15.0, 0.8, 'mola');
+    homem.style.opacity = TS.clamp((t - 11.95) / 0.25, 0, 1);
+    homem.style.transform = `translateY(${(1 - TS.p(t, 11.95, 0.7, 'mola')) * 120}px) scale(${s})`;
+    if (t >= 73.9) await TS.busca(intro, t - 73.6);
+  };
+</script>
+</body></html>

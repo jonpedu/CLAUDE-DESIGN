@@ -1,0 +1,397 @@
+{
+  "acao-em-taua-mirim-video-completo": {
+    "arquivo": "videos-referencia\\Ação em Tauá-Mirim\\video completo.mp4",
+    "duracao_s": 134.3,
+    "cortes": [
+      0.1,
+      2.0,
+      4.23,
+      6.6,
+      8.7,
+      10.03,
+      15.07,
+      27.73,
+      31.3,
+      32.4,
+      35.7,
+      35.83,
+      36.0,
+      37.33,
+      42.53,
+      46.97,
+      47.0,
+      50.4,
+      53.13,
+      54.13,
+      54.4,
+      56.83,
+      60.73,
+      72.07,
+      78.13,
+      82.6,
+      84.67,
+      86.73,
+      88.8,
+      98.33,
+      100.43,
+      102.47,
+      102.83,
+      109.33,
+      112.0,
+      112.3,
+      112.4,
+      112.5,
+      112.87,
+      113.1,
+      113.17,
+      116.43,
+      120.57,
+      123.3,
+      125.6
+    ],
+    "n_planos": 46,
+    "plano_medio_s": 2.92,
+    "plano_mediano_s": 2.17,
+    "folhas": [
+      "acao-em-taua-mirim-video-completo_1.jpg",
+      "acao-em-taua-mirim-video-completo_2.jpg",
+      "acao-em-taua-mirim-video-completo_3.jpg"
+    ]
+  },
+  "acao-em-taua-mirim-video-curto": {
+    "arquivo": "videos-referencia\\Ação em Tauá-Mirim\\video curto.mp4",
+    "duracao_s": 26.2,
+    "cortes": [
+      1.9,
+      3.97,
+      6.2,
+      12.27,
+      16.93,
+      18.13,
+      18.43,
+      18.57,
+      21.93,
+      22.0
+    ],
+    "n_planos": 11,
+    "plano_medio_s": 2.38,
+    "plano_mediano_s": 2.07,
+    "folhas": [
+      "acao-em-taua-mirim-video-curto_1.jpg"
+    ]
+  },
+  "dia-nacional-de-combate-ao-glaucoma-dia-nacional-de-combate-ao-glaucoma": {
+    "arquivo": "videos-referencia\\Dia Nacional de Combate ao Glaucoma\\Dia Nacional de Combate ao Glaucoma.mp4",
+    "duracao_s": 72.93,
+    "cortes": [
+      0.03
+    ],
+    "n_planos": 2,
+    "plano_medio_s": 36.47,
+    "plano_mediano_s": 36.47,
+    "folhas": [
+      "dia-nacional-de-combate-ao-glaucoma-dia-nacional-de-combate-ao-glaucoma_1.jpg",
+      "dia-nacional-de-combate-ao-glaucoma-dia-nacional-de-combate-ao-glaucoma_2.jpg"
+    ]
+  },
+  "kits-de-telessaude-novo-pac-kits-novo-pac": {
+    "arquivo": "videos-referencia\\Kits de Telessaúde - NOVO PAC\\KITS Novo PAC.mp4",
+    "duracao_s": 84.23,
+    "cortes": [
+      0.03,
+      17.2
+    ],
+    "n_planos": 3,
+    "plano_medio_s": 28.08,
+    "plano_mediano_s": 17.17,
+    "folhas": [
+      "kits-de-telessaude-novo-pac-kits-novo-pac_1.jpg",
+      "kits-de-telessaude-novo-pac-kits-novo-pac_2.jpg"
+    ]
+  },
+  "prevencao-do-cancer-de-penis-prevencao-do-cancer-de-penis": {
+    "arquivo": "videos-referencia\\Prevenção do Câncer de Pênis\\Prevenção do Câncer de Pênis.mp4",
+    "duracao_s": 39.55,
+    "cortes": [],
+    "n_planos": 1,
+    "plano_medio_s": 39.55,
+    "plano_mediano_s": 39.55,
+    "folhas": [
+      "prevencao-do-cancer-de-penis-prevencao-do-cancer-de-penis_1.jpg"
+    ]
+  },
+  "retrospectiva-2025-retrospectiva-2025-com-trilha-sonora": {
+    "arquivo": "videos-referencia\\Retrospectiva 2025\\retrospectiva 2025 - com trilha sonora.mp4",
+    "duracao_s": 135.78,
+    "cortes": [
+      0.02,
+      33.47,
+      44.47,
+      48.73
+    ],
+    "n_planos": 5,
+    "plano_medio_s": 27.16,
+    "plano_mediano_s": 11.0,
+    "folhas": [
+      "retrospectiva-2025-retrospectiva-2025-com-trilha-sonora_1.jpg",
+      "retrospectiva-2025-retrospectiva-2025-com-trilha-sonora_2.jpg",
+      "retrospectiva-2025-retrospectiva-2025-com-trilha-sonora_3.jpg"
+    ]
+  },
+  "teleorientacao-cancer-de-penis-parte-1-cancer-de-penis-pt-1": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Câncer de Pênis\\parte 1\\Câncer de Penis - pt 1.mp4",
+    "duracao_s": 76.43,
+    "cortes": [
+      0.03,
+      12.1
+    ],
+    "n_planos": 3,
+    "plano_medio_s": 25.48,
+    "plano_mediano_s": 12.07,
+    "folhas": [
+      "teleorientacao-cancer-de-penis-parte-1-cancer-de-penis-pt-1_1.jpg",
+      "teleorientacao-cancer-de-penis-parte-1-cancer-de-penis-pt-1_2.jpg"
+    ]
+  },
+  "teleorientacao-cancer-de-penis-parte-2-cancer-de-penis-pt-2": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Câncer de Pênis\\parte 2\\Cancer de Penis - pt 2.mp4",
+    "duracao_s": 73.23,
+    "cortes": [
+      0.03
+    ],
+    "n_planos": 2,
+    "plano_medio_s": 36.62,
+    "plano_mediano_s": 36.62,
+    "folhas": [
+      "teleorientacao-cancer-de-penis-parte-2-cancer-de-penis-pt-2_1.jpg",
+      "teleorientacao-cancer-de-penis-parte-2-cancer-de-penis-pt-2_2.jpg"
+    ]
+  },
+  "teleorientacao-hanseniase-parte-1-video-hanseniese-logo-ses": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Hanseníase\\Parte 1\\Vídeo Hanseniese logo SES.mp4",
+    "duracao_s": 65.47,
+    "cortes": [
+      0.03,
+      48.83,
+      54.83
+    ],
+    "n_planos": 4,
+    "plano_medio_s": 16.37,
+    "plano_mediano_s": 8.32,
+    "folhas": [
+      "teleorientacao-hanseniase-parte-1-video-hanseniese-logo-ses_1.jpg",
+      "teleorientacao-hanseniase-parte-1-video-hanseniese-logo-ses_2.jpg"
+    ]
+  },
+  "teleorientacao-hanseniase-parte-2-video-hanseniese-parte-2-logo-ses": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Hanseníase\\Parte 2\\Vídeo Hanseniese - Parte 2 logo SES.mp4",
+    "duracao_s": 80.57,
+    "cortes": [],
+    "n_planos": 1,
+    "plano_medio_s": 80.57,
+    "plano_mediano_s": 80.57,
+    "folhas": [
+      "teleorientacao-hanseniase-parte-2-video-hanseniese-parte-2-logo-ses_1.jpg",
+      "teleorientacao-hanseniase-parte-2-video-hanseniese-parte-2-logo-ses_2.jpg"
+    ]
+  },
+  "teleorientacao-hipertensao-hipertensao": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Hipertensão\\Hipertensão.mp4",
+    "duracao_s": 98.3,
+    "cortes": [
+      0.03
+    ],
+    "n_planos": 2,
+    "plano_medio_s": 49.15,
+    "plano_mediano_s": 49.15,
+    "folhas": [
+      "teleorientacao-hipertensao-hipertensao_1.jpg",
+      "teleorientacao-hipertensao-hipertensao_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-dengue-parte-1-dengue-parte-1": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DENGUE PARTE 1\\DENGUE parte 1.mp4",
+    "duracao_s": 72.73,
+    "cortes": [
+      0.03,
+      25.1,
+      28.93,
+      30.2,
+      32.73,
+      39.83,
+      53.57,
+      59.07,
+      60.63
+    ],
+    "n_planos": 10,
+    "plano_medio_s": 7.27,
+    "plano_mediano_s": 4.66,
+    "folhas": [
+      "teleorientacao-pet-saude-dengue-parte-1-dengue-parte-1_1.jpg",
+      "teleorientacao-pet-saude-dengue-parte-1-dengue-parte-1_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-dengue-parte-2-dengue-parte-2": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DENGUE PARTE 2\\DENGUE parte 2.mp4",
+    "duracao_s": 84.73,
+    "cortes": [
+      0.03,
+      10.07,
+      22.3,
+      64.6
+    ],
+    "n_planos": 5,
+    "plano_medio_s": 16.95,
+    "plano_mediano_s": 12.23,
+    "folhas": [
+      "teleorientacao-pet-saude-dengue-parte-2-dengue-parte-2_1.jpg",
+      "teleorientacao-pet-saude-dengue-parte-2-dengue-parte-2_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-diabetes-parte-1-diabetes-parte-1": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DIABETES PARTE 1\\Diabetes parte 1.mp4",
+    "duracao_s": 104.8,
+    "cortes": [
+      0.03,
+      1.87,
+      23.8,
+      31.17,
+      47.0
+    ],
+    "n_planos": 6,
+    "plano_medio_s": 17.47,
+    "plano_mediano_s": 11.6,
+    "folhas": [
+      "teleorientacao-pet-saude-diabetes-parte-1-diabetes-parte-1_1.jpg",
+      "teleorientacao-pet-saude-diabetes-parte-1-diabetes-parte-1_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-diabetes-parte-2-diabetes-parte-2": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DIABETES PARTE 2\\Diabetes parte 2.mp4",
+    "duracao_s": 110.33,
+    "cortes": [
+      0.03,
+      17.9,
+      45.03,
+      101.8
+    ],
+    "n_planos": 5,
+    "plano_medio_s": 22.07,
+    "plano_mediano_s": 17.87,
+    "folhas": [
+      "teleorientacao-pet-saude-diabetes-parte-2-diabetes-parte-2_1.jpg",
+      "teleorientacao-pet-saude-diabetes-parte-2-diabetes-parte-2_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-hanseniase-outubro-parte-1-hanseniase-outubro-parte-1": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HANSENÍASE OUTUBRO PARTE 1\\Hanseníase Outubro parte 1.mp4",
+    "duracao_s": 76.53,
+    "cortes": [
+      0.03
+    ],
+    "n_planos": 2,
+    "plano_medio_s": 38.27,
+    "plano_mediano_s": 38.27,
+    "folhas": [
+      "teleorientacao-pet-saude-hanseniase-outubro-parte-1-hanseniase-outubro-parte-1_1.jpg",
+      "teleorientacao-pet-saude-hanseniase-outubro-parte-1-hanseniase-outubro-parte-1_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-hanseniase-outubro-parte-2-hanseniase-outubro-parte-2": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HANSENÍASE OUTUBRO PARTE 2\\Hanseníase Outubro parte 2.mp4",
+    "duracao_s": 82.33,
+    "cortes": [
+      0.03,
+      9.53,
+      11.53,
+      31.2
+    ],
+    "n_planos": 5,
+    "plano_medio_s": 16.47,
+    "plano_mediano_s": 9.5,
+    "folhas": [
+      "teleorientacao-pet-saude-hanseniase-outubro-parte-2-hanseniase-outubro-parte-2_1.jpg",
+      "teleorientacao-pet-saude-hanseniase-outubro-parte-2-hanseniase-outubro-parte-2_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-hipertensao-01-defeso-hipertensao-pet-saude-parte-1": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HIPERTENSÃO 01\\defeso - Hipertensão PET SAUDE parte 1.mp4",
+    "duracao_s": 101.43,
+    "cortes": [
+      0.03
+    ],
+    "n_planos": 2,
+    "plano_medio_s": 50.72,
+    "plano_mediano_s": 50.72,
+    "folhas": [
+      "teleorientacao-pet-saude-hipertensao-01-defeso-hipertensao-pet-saude-parte-1_1.jpg",
+      "teleorientacao-pet-saude-hipertensao-01-defeso-hipertensao-pet-saude-parte-1_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-hipertensao-02-defeso-hipertensao-pet-saude-parte-2": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HIPERTENSÃO 02\\defeso - Hipertensão PET SAUDE parte 2.mp4",
+    "duracao_s": 78.0,
+    "cortes": [],
+    "n_planos": 1,
+    "plano_medio_s": 78.0,
+    "plano_mediano_s": 78.0,
+    "folhas": [
+      "teleorientacao-pet-saude-hipertensao-02-defeso-hipertensao-pet-saude-parte-2_1.jpg",
+      "teleorientacao-pet-saude-hipertensao-02-defeso-hipertensao-pet-saude-parte-2_2.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-obesidade-infantil-1-obesidade-infantil-parte-1": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\OBESIDADE INFANTIL 1\\Obesidade Infantil parte 1.mp4",
+    "duracao_s": 143.67,
+    "cortes": [
+      0.03,
+      2.27,
+      7.6,
+      97.83
+    ],
+    "n_planos": 5,
+    "plano_medio_s": 28.73,
+    "plano_mediano_s": 5.33,
+    "folhas": [
+      "teleorientacao-pet-saude-obesidade-infantil-1-obesidade-infantil-parte-1_1.jpg",
+      "teleorientacao-pet-saude-obesidade-infantil-1-obesidade-infantil-parte-1_2.jpg",
+      "teleorientacao-pet-saude-obesidade-infantil-1-obesidade-infantil-parte-1_3.jpg"
+    ]
+  },
+  "teleorientacao-pet-saude-obesidade-infantil-2-obesidade-infantil-parte-2": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\OBESIDADE INFANTIL 2\\Obesidade Infantil parte 2.mp4",
+    "duracao_s": 77.9,
+    "cortes": [
+      0.03,
+      26.9,
+      26.97,
+      39.57,
+      44.8
+    ],
+    "n_planos": 6,
+    "plano_medio_s": 12.98,
+    "plano_mediano_s": 8.91,
+    "folhas": [
+      "teleorientacao-pet-saude-obesidade-infantil-2-obesidade-infantil-parte-2_1.jpg",
+      "teleorientacao-pet-saude-obesidade-infantil-2-obesidade-infantil-parte-2_2.jpg"
+    ]
+  },
+  "teleorientacao-retinopatia-diabetica-retinopatia-diabetica": {
+    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Retinopatia diabética\\Retinopatia diabetica.mp4",
+    "duracao_s": 76.83,
+    "cortes": [
+      0.03,
+      8.27,
+      17.23,
+      30.63,
+      72.57
+    ],
+    "n_planos": 6,
+    "plano_medio_s": 12.81,
+    "plano_mediano_s": 8.6,
+    "folhas": [
+      "teleorientacao-retinopatia-diabetica-retinopatia-diabetica_1.jpg",
+      "teleorientacao-retinopatia-diabetica-retinopatia-diabetica_2.jpg"
+    ]
+  }
+}

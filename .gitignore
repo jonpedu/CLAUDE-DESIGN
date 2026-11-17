@@ -1,0 +1,34 @@
+# Repositório = o "cérebro" do fluxo (skills, normas, ferramentas, fontes, cores, efeitos sonoros,
+# estudos e fontes das animações). Mídia pesada e material de cada vídeo ficam no Drive.
+
+# dependências, caches e configurações locais
+node_modules/
+__pycache__/
+ferramentas/_cache_busca/
+.claude/settings.local.json
+
+# mídia pesada e material institucional (vai pelo Drive)
+videos-referencia/
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.psd
+*.pdf
+*.PDF
+*.rar
+*.zip
+*.7z
+
+# exceções: o que o pipeline usa direto
+!biblioteca-sfx/**
+!fontes tipograficas/**
+!cores hex/**

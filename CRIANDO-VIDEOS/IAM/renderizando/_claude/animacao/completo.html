@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<!-- IAM · vídeo completo v1 (0:00–1:28). Render: node ferramentas/animar.mjs <esta página> <saida.mp4>
+     Cenas 1–6 = prévia v2 aprovada. Cenas 7–16 seguem os mesmos critérios: efeito só quando reforça a fala;
+     clipes colados nas bordas que tocam (ferramentas/bordas.py); telas cheias centralizadas em x = 540. -->
+<script src="rastreio_T04.js"></script>
+<style>
+  .cena { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: #fff; }
+  .cam { position: absolute; inset: 0; }
+  .cam video { position: absolute; transform-origin: 0 0; mix-blend-mode: multiply; } /* quase-branco do clipe vira o branco exato da página */
+  .tc { background: radial-gradient(circle at 50% 46%, #3D66D6 0%, #29479B 45%, #1C306A 100%); }
+  .tc .branco { color: #fff; }
+  /* textura das telas azuis: grade de pontos sutil, mais visível nas bordas, com deriva lenta (var --dx/--dy por tempo) */
+  .tc::before { content: ''; position: absolute; inset: -80px; pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,.10) 2.2px, transparent 2.8px); background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 45%, transparent 18%, #000 75%); mask-image: radial-gradient(ellipse at 50% 45%, transparent 18%, #000 75%);
+    transform: translate(var(--dx, 0px), var(--dy, 0px)); }
+  .meio { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; transform-origin: 540px 50%; }
+  .interroga { position: absolute; font-family: 'Poppins'; font-weight: 800; color: rgba(255, 255, 255, .07); line-height: 1; }
+  .regua-topo { position: absolute; left: 0; bottom: 0; width: 1080px; z-index: 50; }
+  .rotulo { position: absolute; z-index: 20; font-size: 42px; padding: 12px 26px; }
+  .guia { position: absolute; inset: 0; z-index: 19; pointer-events: none; }
+  .marca, .marca-alerta { background-size: 0% 100%; background-repeat: no-repeat; }
+  .lista li { font-size: 46px; white-space: nowrap; transition: none; }
+  .lista li .txt { padding: 0 6px; }
+</style></head>
+<body>
+
+<!-- C16 · fechamento: vídeo da equipe, sem alteração (régua por cima). Entra por um círculo que abre do centro do painel azul -->
+<div class="cena" id="c16" style="z-index:3">
+  <video id="v16" muted preload="auto" src="../../../elementos/Intro NTS e PETSAUDE.mp4" style="position:absolute;left:0;top:0;width:1080px"></video>
+</div>
+
+<!-- C15 · T02 cronômetro: "Cada minuto conta!" -->
+<div class="cena" id="c15" style="z-index:2">
+  <div class="cam" id="cam15"><video id="v15" muted preload="auto" src="../../../elementos/Animated_character_explaining_em…_fe2a8bf8_1080p.mp4" style="left:80px;top:230px;width:918px"></video></div>
+  <div class="bloco" style="top:300px"><div class="titulo" id="c15-a" style="font-size:104px;color:var(--ts-brand-strong);transform-origin:0 50%">Cada minuto<br><span class="vermelho">conta!</span></div></div>
+  <!-- painel azul da marca que sobe e liga a última fala ao fechamento -->
+  <div class="tc" id="c15-painel" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
+    <div class="meio titulo branco" id="c15-b" style="top:760px;font-size:118px;line-height:1.05">Cada minuto<br>conta!</div></div>
+</div>
+
+<!-- C14 · T02 carro riscado: "Não dirija até o hospital sozinho" -->
+<div class="cena" id="c14" style="z-index:3">
+  <div class="cam" id="cam14"><video id="v14" muted preload="auto" src="../../../elementos/Animated_character_explaining_em…_fe2a8bf8_1080p.mp4" style="left:80px;top:230px;width:918px"></video></div>
+  <div class="bloco" style="top:300px"><div class="forte" id="c14-a" style="font-size:68px">Não dirija até<br>o hospital <span class="marca-alerta vermelho" id="c14-m">sozinho</span></div></div>
+</div>
+
+<!-- C13 · tela cheia: SAMU 192, dígitos no tempo da fala -->
+<div class="cena tc" id="c13" style="z-index:4">
+  <svg style="position:absolute;left:0;top:0" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <circle id="c13-o1" cx="540" cy="560" r="110" fill="none" stroke="#fff" stroke-width="5" opacity="0"/>
+    <circle id="c13-o2" cx="540" cy="560" r="110" fill="none" stroke="#fff" stroke-width="5" opacity="0"/>
+  </svg>
+  <svg id="c13-fone" style="position:absolute;left:450px;top:470px;width:180px;height:180px;transform-origin:90px 90px" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="31" fill="#B42318"/><path d="M22 16c2-1 4 0 5 2l3 6c1 2 0 4-1 5l-3 2c2 5 6 9 11 11l2-3c1-1 3-2 5-1l6 3c2 1 3 3 2 5l-1 4c-1 2-3 3-5 3C31 52 12 33 13 18c0-2 1-4 3-5Z" fill="#fff"/></svg>
+  <div class="meio" style="top:720px"><span class="pilula" id="c13-samu" style="display:inline-block;background:#fff;color:#B42318;font-size:64px;font-weight:800;padding:14px 46px">SAMU</span></div>
+  <div class="meio titulo branco" style="top:860px;font-size:330px;line-height:1;font-weight:900">
+    <span id="c13-d1" style="display:inline-block">1</span><span id="c13-d2" style="display:inline-block">9</span><span id="c13-d3" style="display:inline-block">2</span></div>
+</div>
+
+<!-- C12 · T02 celular e ambulância: "Suspeitou de infarto? Ligue imediatamente para o SAMU" -->
+<div class="cena" id="c12" style="z-index:5">
+  <div class="cam" id="cam12"><video id="v12" muted preload="auto" src="../../../elementos/Animated_character_explaining_em…_fe2a8bf8_1080p.mp4" style="left:80px;top:230px;width:918px"></video></div>
+  <div class="bloco" style="top:300px">
+    <div class="forte" id="c12-a" style="font-size:66px;white-space:nowrap">Suspeitou de infarto?</div>
+    <div class="apoio" id="c12-b" style="margin-top:10px;font-size:52px">Ligue imediatamente<br>para o <b style="color:var(--ts-error)">SAMU</b></div>
+  </div>
+</div>
+
+<!-- C11 · T03: "não espere". T03 toca esquerda+direita+base → largura cheia -->
+<div class="cena" id="c11" style="z-index:6">
+  <div class="cam" id="cam11"><video id="v11" muted preload="auto" src="../../../elementos/Animated_character_showing_urgen…_7d1d64a3_1080p.mp4" style="left:0;top:400px;width:1080px"></video></div>
+  <div class="bloco" style="top:300px">
+    <div class="apoio" id="c11-a" style="font-size:52px">principalmente junto com<br><b class="vermelho">dor no peito</b></div>
+    <div class="titulo vermelho" id="c11-b" style="font-size:104px;margin-top:6px;transform-origin:0 50%">não espere,</div>
+    <div class="forte" id="c11-c" style="font-size:58px">pode ser um infarto.</div>
+  </div>
+</div>
+
+<!-- C10 · T01: "Fique atento a:". Personagem maior, recortada antes da coluna de ícones do clipe (só fundo branco ali);
+     T01 toca esquerda+base → colada à esquerda. Cada ícone (recortado do clipe) entra grande ao lado dela quando o sinal
+     é dito e depois voa até virar o marcador do item na lista. -->
+<div class="cena" id="c10" style="z-index:7">
+  <!-- janela do recorte começa acima da cabeça (o coque não pode ser cortado); acima dela no clipe só há fundo branco -->
+  <div class="cam" id="cam10"><div style="position:absolute;left:0;top:650px;width:700px;height:1350px;overflow:hidden">
+    <video id="v10" muted preload="auto" src="../../../elementos/Animated_character_counting_on_f…_7a877c9c_1080p.mp4" style="position:absolute;left:0;top:0;width:1080px"></video></div></div>
+  <div id="c10-palco" style="position:absolute;left:650px;top:1070px;width:360px;height:360px;border-radius:50%;background:#FEF3F2"></div>
+  <img class="c10ic" id="I0" src="../camadas/novos/gotas.png"><img class="c10ic" id="I1" src="../camadas/novos/estomago.png">
+  <img class="c10ic" id="I2" src="../camadas/novos/pulmoes.png"><img class="c10ic" id="I3" src="../camadas/novos/tontura.png">
+  <img class="c10ic" id="I4" src="../camadas/novos/bateria_fraca.png"><img class="c10ic" id="I5" src="../camadas/novos/abdomen.png">
+  <style>.c10ic{position:absolute;left:0;top:0;transform-origin:50% 50%;z-index:5}</style>
+  <div class="bloco" id="c10-bloco" style="top:420px;width:808px">
+    <div class="selo" id="c10-selo" style="transform-origin:0 50%"><svg viewBox="0 0 64 64"><path d="M32 6 61 57H3Z" fill="#C99B00" stroke="#C99B00" stroke-width="6" stroke-linejoin="round"/><rect x="29" y="22" width="6" height="20" rx="3" fill="#fff"/><circle cx="32" cy="49" r="3.6" fill="#fff"/></svg>Fique atento a:</div>
+    <ul class="lista" id="c10-lista" style="margin-top:24px"></ul>
+  </div>
+</div>
+
+<!-- C8 · T05: mulheres, idosos, diabetes (vídeo) → em 45,0 s vira camadas recortadas (pessoas e ícones separados)
+     que se espalham pela tela e depois se reorganizam menores conforme os sinais aparecem. T05 toca direita → largura cheia -->
+<div class="cena" id="c8" style="z-index:8">
+  <div class="cam" id="cam8"><video id="v8" muted preload="auto" src="../../../elementos/Character_gesturing_to_secondary…_7dfac800_1080p.mp4" style="left:0;top:0;width:1080px"></video></div>
+  <div id="c8-camadas" style="position:absolute;inset:0">
+    <img class="cam8l" id="L-rosa" src="../camadas/novos/rosa.png"><img class="cam8l" id="L-mulher" src="../camadas/novos/mulher.png">
+    <img class="cam8l" id="L-idosa" src="../camadas/novos/idosa.png"><img class="cam8l" id="L-homem" src="../camadas/novos/homem.png">
+    <img class="cam8l" id="L-bateria" src="../camadas/novos/bateria.png"><img class="cam8l" id="L-pulmao" src="../camadas/novos/pulmao.png">
+    <img class="cam8l" id="L-corpo" src="../camadas/novos/corpo.png"></div>
+  <style>.cam8l{position:absolute;width:auto}</style>
+  <div class="bloco" style="top:300px">
+    <div class="forte" id="c8-a" style="font-size:62px">Em <span class="marca" id="c8-m1">mulheres</span>, <span class="marca" id="c8-m2">idosos</span><br>e pessoas com <span class="marca" id="c8-m3">diabetes</span>,</div>
+  </div>
+  <div class="bloco" id="c8-bwrap" style="top:480px">
+    <div class="leve" id="c8-b" style="font-size:50px;white-space:nowrap">o infarto pode se manifestar com</div>
+    <div id="c8-pilulas" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:26px">
+      <span class="pilula" id="p1">dor entre as escápulas</span>
+      <span class="pilula" id="p2">desconforto em pescoço, mandíbula, braço</span>
+      <span class="pilula alerta" id="p3">dispneia</span><span class="pilula alerta" id="p4">confusão</span>
+      <span class="pilula alerta" id="p5">síncope</span><span class="pilula alerta" id="p6">fadiga</span></div>
+  </div>
+</div>
+
+<!-- C7 · tela cheia: "Mas atenção" (virada da fala) -->
+<div class="cena tc" id="c7" style="z-index:9">
+  <svg style="position:absolute;left:0;top:0" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <circle id="c7-o1" cx="540" cy="640" r="150" fill="none" stroke="#FFE34D" stroke-width="5" opacity="0"/>
+    <circle id="c7-o2" cx="540" cy="640" r="150" fill="none" stroke="#FFE34D" stroke-width="5" opacity="0"/></svg>
+  <svg id="c7-tri" style="position:absolute;left:400px;top:510px;width:280px;height:250px;transform-origin:140px 140px" viewBox="0 0 64 58">
+    <path d="M32 3 61 55H3Z" fill="#FFE34D" stroke="#FFE34D" stroke-width="5" stroke-linejoin="round"/><rect x="29" y="19" width="6" height="21" rx="3" fill="#1C306A"/><circle cx="32" cy="47" r="3.8" fill="#1C306A"/></svg>
+  <div class="meio titulo branco" id="c7-a" style="top:830px;font-size:116px">Mas atenção:</div>
+  <div class="meio" style="top:1000px;font-weight:500;font-size:50px;color:#E3E8F8;line-height:1.3">
+    <div id="c7-b1">os sinais nem sempre são</div><div id="c7-b2" style="font-weight:700;color:#fff">iguais para todo mundo</div></div>
+</div>
+
+<!-- ===== Cenas 1–6 (prévia v2 aprovada) ===== -->
+<div class="cena" id="c6" style="z-index:10">
+  <div class="cam" id="cam6"><video id="v6" muted preload="auto" src="../../../elementos/Character_demonstrating_radiatin…_db77949d_1080p.mp4" style="left:0;top:380px;width:1080px"></video></div>
+  <div class="bloco" style="top:300px"><div class="forte" id="c6-h" style="font-size:72px">Dor ou aperto<br>no <span class="marca-alerta" id="c6-m">peito</span></div></div>
+  <svg class="guia" id="c6-guia" viewBox="0 0 1080 1920"></svg>
+  <span class="pilula rotulo" id="r-mandibula" style="left:70px;top:1040px">mandíbula</span>
+  <span class="pilula rotulo" id="r-pescoco" style="left:640px;top:1040px">pescoço</span>
+  <span class="pilula rotulo" id="r-costas" style="left:70px;top:1160px">costas</span>
+  <span class="pilula rotulo" id="r-braco" style="left:480px;top:1160px">braço esquerdo</span>
+</div>
+<div class="cena" id="c5" style="z-index:12">
+  <div class="cam" id="cam5"><video id="v5" muted preload="auto" src="../../../elementos/Character_presenting_heart_plaqu…_24a0da7b_1080p.mp4" style="left:0;top:500px;width:842px"></video></div>
+  <div class="bloco" style="top:300px">
+    <div class="apoio" id="c5-a">uma artéria que leva sangue ao coração fica</div>
+    <div class="titulo vermelho" id="c5-b" style="font-size:96px;margin-top:4px;transform-origin:0 50%">bloqueada</div>
+    <div class="leve" id="c5-c" style="font-size:46px;margin-top:6px">impedindo que o músculo cardíaco receba oxigênio</div>
+  </div>
+</div>
+<div class="cena tc" id="c4" style="z-index:11">
+  <div class="meio leve" id="c4-a" style="top:470px;color:#E3E8F8">Hoje vamos falar sobre o</div>
+  <div class="meio titulo branco" id="c4-b" style="top:560px;font-size:132px">Infarto</div>
+  <div class="meio titulo branco" id="c4-c" style="top:680px;font-size:132px">Agudo</div>
+  <div class="meio titulo branco" id="c4-d" style="top:868px;font-size:104px">do Miocárdio</div>
+  <svg id="c4-ecgbox" style="position:absolute;left:0;top:1010px" width="1080" height="200" viewBox="0 0 1080 200">
+    <path id="c4-ecg" d="M0 100 H360 L390 100 L410 70 L430 100 H470 L490 130 L520 10 L550 170 L575 100 H640 L670 80 L700 100 H1080" fill="none" stroke="#FF6B5E" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/></svg>
+  <svg id="c4-cor" style="position:absolute;left:460px;top:1255px;width:160px;height:150px;transform-origin:80px 75px" viewBox="0 0 100 94">
+    <path d="M50 88 C20 66 4 48 4 30 C4 16 15 6 28 6 C38 6 46 12 50 20 C54 12 62 6 72 6 C85 6 96 16 96 30 C96 48 80 66 50 88 Z" fill="#B42318"/></svg>
+</div>
+<div class="cena" id="c3" style="z-index:13">
+  <div class="cam" id="cam3"><video id="v3" muted preload="auto" src="../../../elementos/Woman_pointing_at_glowing_heart_0f5e3784_1080p.mp4" style="left:216px;top:470px;width:864px"></video></div>
+  <div class="bloco" style="top:300px">
+    <div class="forte" id="c3-a" style="font-size:70px">Muitas vidas poderiam<br>ser salvas</div>
+    <div class="apoio" id="c3-b" style="margin-top:10px;font-size:50px">se os sinais fossem reconhecidos <span class="marca" id="c3-m">a tempo</span></div>
+  </div>
+</div>
+<div class="cena" id="c2" style="z-index:14">
+  <div class="cam" id="cam2"><video id="v2" muted preload="auto" src="../../../elementos/Character_walking_and_heart_free…_f6d2e6a7_1080p.mp4" style="left:120px;top:526px;width:734px"></video></div>
+  <div class="bloco" style="top:300px">
+    <div class="leve" id="c2-a">no Brasil,</div>
+    <div class="apoio" id="c2-b" style="white-space:nowrap">uma pessoa sofre <b class="azul">um infarto</b></div>
+    <div class="forte" id="c2-c" style="font-size:64px;margin-top:2px;white-space:nowrap"><span class="marca-alerta vermelho" id="c2-m">a cada poucos minutos</span></div>
+  </div>
+</div>
+<div class="cena tc" id="c1" style="z-index:15">
+  <div class="interroga" id="q1" style="left:40px;top:220px;font-size:420px">?</div>
+  <div class="interroga" id="q2" style="left:770px;top:520px;font-size:330px">?</div>
+  <div class="interroga" id="q3" style="left:90px;top:1180px;font-size:280px">?</div>
+  <div class="interroga" id="q4" style="left:800px;top:1270px;font-size:360px">?</div>
+  <div class="meio titulo branco" id="c1-a" style="top:440px;font-size:116px">Você sabia?</div>
+  <svg style="position:absolute;left:0;top:0" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <circle id="c1-onda1" cx="540" cy="870" r="120" fill="none" stroke="#fff" stroke-width="5" opacity="0"/>
+    <circle id="c1-onda2" cx="540" cy="870" r="120" fill="none" stroke="#fff" stroke-width="5" opacity="0"/>
+    <path id="c1-ecg" d="M0 870 H330 L355 870 L375 840 L395 870 H700 L720 900 L745 790 L770 950 L792 870 H850 L875 852 L900 870 H1080" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>
+  <svg id="c1-cor" style="position:absolute;left:440px;top:776px;width:200px;height:188px;transform-origin:100px 94px" viewBox="0 0 100 94">
+    <path d="M50 88 C20 66 4 48 4 30 C4 16 15 6 28 6 C38 6 46 12 50 20 C54 12 62 6 72 6 C85 6 96 16 96 30 C96 48 80 66 50 88 Z" fill="#E5483B"/>
+    <path d="M24 22 C20 24 17 28 17 33" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".55"/></svg>
+  <div class="meio" style="top:1080px;font-weight:500;font-size:46px;color:#E3E8F8">
+    <div id="c1-f1">segundo a Sociedade</div><div id="c1-f2" style="font-weight:700;color:#fff">Brasileira de Cardiologia</div></div>
+</div>
+
+<img class="regua-topo" src="../../../elementos/Ajustada TELE e PETSAUDE Digital.png">
+
+<script>
+const $ = (id) => document.getElementById(id);
+window.DURACAO = 88.5;
+const INTRO = 83.9; // início do vídeo de fechamento
+// C9: posições das camadas (x, y, escala). Origem = posição no quadro do T05; A = espalhadas; B = após 2 sinais; C = fileira final
+const CAM = {};
+['rosa', 'mulher', 'idosa', 'homem', 'bateria', 'pulmao', 'corpo'].forEach((n) => { CAM[n] = null; });
+const LAY = {
+  //            origem do recorte             A (espalhado)        B                    C (fileira menor)
+  // valores [x, y, altura em px]; origem = onde cada figura estava no clipe T05 (para a troca vídeo → camadas)
+  rosa:    [[35, 663, 836],  [20, 600, 950],   [30, 700, 836],   [30, 1088, 670]],
+  mulher:  [[390, 813, 659], [295, 760, 740],  [300, 840, 640],  [300, 1225, 530]],
+  idosa:   [[598, 877, 657], [525, 800, 700],  [530, 880, 610],  [540, 1235, 520]],
+  homem:   [[787, 842, 660], [790, 760, 740],  [780, 840, 640],  [805, 1225, 530]],
+  bateria: [[470, 708, 75],  [340, 610, 110],  [340, 705, 85],   [305, 1120, 70]],
+  pulmao:  [[638, 728, 121], [600, 600, 150],  [585, 700, 120],  [580, 1105, 95]],
+  corpo:   [[856, 700, 112], [835, 590, 150],  [815, 690, 120],  [835, 1100, 95]],
+};
+const mix3 = (a, b, k) => a.map((v, i) => v + (b[i] - v) * k);
+const R = window.RASTREIO_T04;
+const ROT = { mandibula: 'r-mandibula', pescoco: 'r-pescoco', costas: 'r-costas', braco: 'r-braco' };
+const ROT_T = { mandibula: 34.36, pescoco: 32.46, costas: 33.44, braco: 31.34 };
+const batida = (t, hz, t0, nitidez) => Math.pow(Math.max(0, Math.sin(2 * Math.PI * hz * (t - t0))), nitidez);
+const onda = (el, t, t0, hz, r0, dr, op) => { const f = ((t - t0) * hz) % 1; const on = t > t0; el.setAttribute('r', r0 + f * dr); el.setAttribute('opacity', on ? op * (1 - f) : 0); };
+
+// lista do "Fique atento a:" — cada item entra quando é dito; o item falado fica em destaque
+const ITENS = [['suor frio', 55.84], ['náusea ou vontade de vomitar', 57.62], ['falta de ar', 59.98], ['tontura', 61.12], ['cansaço extremo e repentino', 62.04], ['dor na boca do estômago', 64.54]];
+const PONTO = `<svg class="ic" viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="#FEF3F2" stroke="#B42318" stroke-width="4"/><rect x="22.5" y="12" width="5" height="17" rx="2.5" fill="#B42318"/><circle cx="25" cy="36" r="3.2" fill="#B42318"/></svg>`;
+$('c10-lista').innerHTML = ITENS.map(([txt], i) => `<li id="li${i}">${PONTO}<span class="txt marca-alerta" id="lm${i}">${txt}</span></li>`).join('');
+
+window.render = async (t) => {
+  const vis = (id, a, b) => { const on = t >= a && t < b; TS.mostra($(id), on); return on; };
+  const busca = [];
+  // deriva lenta da textura das telas azuis (função do tempo: o render é determinístico)
+  document.documentElement.style.setProperty('--dx', `${(t * 9) % 46}px`);
+  document.documentElement.style.setProperty('--dy', `${(t * 5) % 46}px`);
+
+  // ---------- C1–C6: prévia v2 aprovada ----------
+  if (vis('c1', 0, 4.72)) {
+    $('c1').style.transform = `translateY(${-1920 * TS.p(t, 4.0, 0.7, 'inOut')}px)`;
+    TS.pop($('c1-a'), t, 0.05, { d: 0.55 });
+    $('c1-a').style.transform += ` scale(${TS.v(t, 0.6, 3.6, 1, 1.04, 'lin')})`;
+    ['q1', 'q2', 'q3', 'q4'].forEach((id, i) => {
+      const a = TS.p(t, 0.15 + i * 0.12, 0.6);
+      $(id).style.opacity = a;
+      $(id).style.transform = `translateY(${Math.sin(t * 0.9 + i * 1.7) * 14 + (1 - a) * 40}px) rotate(${(i % 2 ? -1 : 1) * (8 + Math.sin(t * 0.7 + i) * 3)}deg)`;
+    });
+    $('c1-cor').style.transform = `scale(${TS.p(t, 0.35, 0.5, 'back') * (1 + 0.12 * batida(t, 1.15, 0.9, 6))})`;
+    onda($('c1-onda1'), t, 0.9, 1.15, 120, 260, 0.4); onda($('c1-onda2'), t, 1.335, 1.15, 120, 260, 0.4);
+    TS.traco($('c1-ecg'), t, 0.3, 1.2);
+    TS.digita($('c1-f1'), t, 1.28, 30); TS.digita($('c1-f2'), t, 1.95, 30);
+  }
+  if (vis('c2', 4.0, 9.0)) {
+    busca.push(TS.busca($('v2'), 4.0 + (t - 4.2)));
+    const z = TS.v(t, 4.2, 4.2, 1, 1.07, 'inOut') * (1 + 6 * TS.p(t, 8.45, 0.55, 'in'));
+    TS.camera($('cam2'), { z, ox: 664, oy: 968, blur: 10 * TS.p(t, 8.7, 0.3, 'in') });
+    TS.entra($('c2-a'), t, 4.32, { t1: 8.4 }); TS.entra($('c2-b'), t, 5.02, { t1: 8.4 }); TS.entra($('c2-c'), t, 6.66, { t1: 8.4 });
+    TS.marca($('c2-m'), t, 6.84, 0.6);
+  }
+  if (vis('c3', 9.0, 13.92)) {
+    busca.push(TS.busca($('v3'), 4.1 + (t - 9.0)));
+    TS.camera($('cam3'), { z: 1.9 - 0.9 * TS.p(t, 9.0, 0.8, 'expo'), ox: 408, oy: 1078, blur: 8 * (1 - TS.p(t, 9.0, 0.4)) });
+    TS.entra($('c3-a'), t, 9.15); TS.entra($('c3-b'), t, 10.92); TS.marca($('c3-m'), t, 12.76, 0.4);
+  }
+  if (vis('c4', 13.92, 19.12)) {
+    TS.entra($('c4-a'), t, 14.08);
+    TS.pop($('c4-b'), t, 15.78); TS.pop($('c4-c'), t, 16.26); TS.pop($('c4-d'), t, 16.98);
+    const fl = TS.v(t, 14.0, 4.8, 1, 1.04, 'lin');
+    for (const id of ['c4-a', 'c4-b', 'c4-c', 'c4-d']) $(id).style.transform += ` scale(${fl})`;
+    // o batimento nasce logo abaixo da frase, desenha o pulso e desce com mola até o lugar; aí entram as palavras do título
+    TS.traco($('c4-ecg'), t, 14.0, 1.15);
+    $('c4-ecgbox').style.transform = `translateY(${-450 * (1 - TS.p(t, 15.12, 0.7, 'mola'))}px)`;
+    $('c4-ecg').style.opacity = t > 15.3 ? 0.55 + 0.45 * batida(t, 1.25, 14, 4) : 1;
+    $('c4-cor').style.transform = `scale(${(1 + 0.14 * batida(t, 1.25, 14, 10)) * TS.p(t, 15.55, 0.6, 'molaViva')})`;
+  }
+  if (vis('c5', 18.2, 27.0)) {
+    $('c5').style.clipPath = `circle(${TS.v(t, 18.2, 0.9, 0, 2300, 'inOut')}px at 540px 1330px)`;
+    $('c5').style.opacity = 1 - TS.p(t, 26.4, 0.6, 'inOut');
+    busca.push(TS.busca($('v5'), Math.min(8.85, 3.0 + (t - 18.3))));
+    const k5 = TS.p(t, 22.3, 4.0, 'inOut');
+    TS.camera($('cam5'), { z: 1 + 0.32 * k5, ox: 437, oy: 1233, ty: 170 * k5 });
+    TS.entra($('c5-a'), t, 19.86); TS.pop($('c5-b'), t, 22.46); TS.entra($('c5-c'), t, 23.48);
+  }
+  if (vis('c6', 26.4, 35.72)) {
+    const tc = Math.min(9.95, 1.5 + (t - 26.6));
+    busca.push(TS.busca($('v6'), Math.max(1.5, tc)));
+    const cam = { z: 1.3 - 0.3 * TS.p(t, 30.3, 1.1, 'inOut'), ox: 540, oy: 520 };
+    TS.camera($('cam6'), cam);
+    TS.entra($('c6-h'), t, 27.92); TS.marca($('c6-m'), t, 28.96, 0.4);
+    const i = Math.min(R.quadros - 1, Math.max(0, Math.round(tc * R.fps)));
+    let svg = '';
+    for (const [n, id] of Object.entries(ROT)) {
+      const el = $(id); TS.pop(el, t, ROT_T[n]);
+      const [px, py] = R.pontos[n][i];
+      const [sx, sy] = TS.naTela(px, 380 + py, cam);
+      const b = { x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight };
+      const ax = sx < b.x ? b.x : (sx > b.x + b.w ? b.x + b.w : sx);
+      const ay = sy < b.y ? b.y : (sy > b.y + b.h ? b.y + b.h : b.y + b.h / 2);
+      const k = TS.p(t, ROT_T[n] + 0.15, 0.35, 'out');
+      if (k > 0) {
+        svg += `<line x1="${ax}" y1="${ay}" x2="${ax + (sx - ax) * k}" y2="${ay + (sy - ay) * k}" stroke="#B42318" stroke-width="5" stroke-linecap="round"/>`;
+        if (k >= 1) svg += `<circle cx="${sx}" cy="${sy}" r="${12 + 4 * Math.sin(6 * t)}" fill="#B42318" opacity=".9"/><circle cx="${sx}" cy="${sy}" r="24" fill="none" stroke="#B42318" stroke-width="4" opacity=".45"/>`;
+      }
+    }
+    $('c6-guia').innerHTML = svg;
+  }
+
+  // ---------- C7 · "Mas atenção:" (corte seco na palavra "Mas"; sai empurrada para a esquerda, 0,6 s) ----------
+  if (vis('c7', 35.72, 40.62)) {
+    $('c7').style.transform = `translateX(${-1080 * TS.p(t, 40.0, 0.6, 'inOut')}px)`;
+    const pulso = 1 + 0.08 * batida(t, 1.1, 36.3, 6) * (1 - TS.p(t, 38.5, 0.5));
+    $('c7-tri').style.transform = `scale(${TS.p(t, 35.75, 0.5, 'back') * pulso})`;
+    onda($('c7-o1'), t, 36.3, 1.1, 150, 240, 0.45); onda($('c7-o2'), t, 36.75, 1.1, 150, 240, 0.45);
+    TS.entra($('c7-a'), t, 36.0, { dy: 30 });
+    $('c7-a').style.transform += ` scale(${TS.v(t, 36.3, 4, 1, 1.03, 'lin')})`;
+    TS.digita($('c7-b1'), t, 37.1, 28); TS.digita($('c7-b2'), t, 38.0, 28);
+  }
+  // ---------- C8 · mulheres, idosos, diabetes (cada pessoa destacada quando é nomeada) + sinais atípicos ----------
+  if (vis('c8', 40.0, 54.72)) {
+    // vídeo até 45,0 s (pessoas entram no tempo de "mulheres/idosos/diabetes"); chega ao quadro 9,6 s, o mesmo dos recortes
+    const tc = t < 42.72 ? 3.3 + 1.5 * (t - 40.2) : Math.min(9.6, 7.08 + 1.105 * (t - 42.72));
+    // troca vídeo → camadas com dissolução curta (as camadas novas são desenhos melhores das mesmas pessoas)
+    const kTroca = TS.p(t, 44.85, 0.35, 'inOut');
+    TS.mostra($('cam8'), kTroca < 1); TS.mostra($('c8-camadas'), kTroca > 0);
+    $('cam8').style.opacity = 1 - kTroca; $('c8-camadas').style.opacity = kTroca;
+    if (kTroca < 1) busca.push(TS.busca($('v8'), Math.max(3.3, tc)));
+    if (kTroca > 0) {
+      // camadas: origem → espalhadas (45,0) → abrem espaço para 2 sinais (47,3) → fileira menor antes dos demais (50,4)
+      const kA = TS.p(t, 45.0, 0.9, 'inOut'), kB = TS.p(t, 47.25, 0.6, 'inOut'), kC = TS.p(t, 50.35, 0.7, 'inOut');
+      Object.entries(LAY).forEach(([n, [o, A, B, C]], i) => {
+        let [x, y, h] = mix3(mix3(mix3(o, A, kA), B, kB), C, kC);
+        y += Math.sin(t * 1.4 + i * 1.1) * 6;                       // flutuação leve: nada congela
+        const el = $(`L-${n}`);
+        el.style.left = `${x}px`; el.style.top = `${y}px`; el.style.height = `${h}px`;
+      });
+    }
+    TS.entra($('c8-a'), t, 40.2, { t1: 44.9 });
+    TS.marca($('c8-m1'), t, 40.56, 0.35); TS.marca($('c8-m2'), t, 41.75, 0.35); TS.marca($('c8-m3'), t, 42.72, 0.35);
+    TS.entra($('c8-b'), t, 43.7);
+    $('c8-bwrap').style.top = `${480 - 180 * TS.p(t, 44.95, 0.6, 'inOut')}px`;
+    [['p1', 46.0], ['p2', 47.46], ['p3', 50.75], ['p4', 51.74], ['p5', 52.66], ['p6', 53.56]].forEach(([id, t0], i) => {
+      TS.pop($(id), t, t0); $(id).style.translate = `0 ${Math.sin(t * 1.3 + i * 0.9) * 4}px`;
+    });
+  }
+  // ---------- C10 · "Fique atento a:" (corte na palavra "Fique"); item falado em destaque ----------
+  if (vis('c10', 54.72, 66.45)) {
+    busca.push(TS.busca($('v10'), Math.min(9.6, t - 54.6)));
+    // a lista começa mais baixa e sobe com mola a cada item novo (tontura, cansaço, dor), até o limite da área segura;
+    // nos últimos itens a personagem desce um pouco para o texto nunca encostar nela
+    const m = (t0) => TS.p(t, t0 - 0.05, 0.75, 'mola');
+    $('c10-bloco').style.top = `${420 - 50 * m(61.12) - 40 * m(62.04) - 40 * m(64.54)}px`;
+    TS.camera($('cam10'), { z: TS.v(t, 54.72, 11.7, 1, 1.04, 'lin'), ox: 0, oy: 1920, ty: 35 * m(62.04) + 35 * m(64.54) });
+    TS.pop($('c10-selo'), t, 54.8);
+    // palco: círculo claro ao lado da personagem onde o ícone do sinal falado aparece grande
+    const palco = $('c10-palco');
+    palco.style.transform = `scale(${TS.p(t, 55.6, 0.5, 'back') * (1 + 0.02 * Math.sin(t * 2))})`;
+    palco.style.transformOrigin = '50% 50%';
+    const PC = [830, 1250];                     // centro do palco
+    ITENS.forEach(([, t0], i) => {
+      const li = $(`li${i}`);
+      TS.entra(li, t, t0, { dy: 24, blur: 6 });
+      const prox = i + 1 < ITENS.length ? ITENS[i + 1][1] : 99;
+      if (t >= prox) li.style.opacity = 0.6 + 0.4 * (1 - TS.p(t, prox, 0.3));
+      TS.marca($(`lm${i}`), t, t0 + 0.05, 0.35);
+      if (t >= prox) $(`lm${i}`).style.backgroundSize = `${100 * (1 - TS.p(t, prox, 0.3))}% 100%`;
+      // ícone: entra grande no palco no tempo da palavra; quando vem o próximo sinal, voa até o marcador do item
+      const ic = $(`I${i}`), w = ic.naturalWidth, h = ic.naturalHeight;
+      const slot = li.querySelector('.ic').getBoundingClientRect();
+      const grande = 250 / Math.max(w, h), pequeno = 56 / Math.max(w, h);
+      const kIn = TS.p(t, t0 - 0.05, 0.45, 'back'), kVoo = TS.p(t, prox - 0.05, 0.5, 'inOut');
+      const cx = PC[0] + (slot.left + slot.width / 2 - PC[0]) * kVoo, cy = PC[1] + (slot.top + slot.height / 2 - PC[1]) * kVoo;
+      const s = (grande + (pequeno - grande) * kVoo) * Math.max(0, kIn) * (1 + (kVoo === 0 ? 0.03 * Math.sin(t * 3) : 0));
+      ic.style.opacity = t < t0 - 0.05 ? 0 : 1;
+      ic.style.transform = `translate(${cx - w / 2}px, ${cy - h / 2}px) scale(${s})`;
+      li.querySelector('.ic').style.opacity = kVoo >= 1 ? 0 : 1 - kVoo;   // o ícone pousado substitui o ponto de alerta
+      li.querySelector('.ic').style.visibility = t < t0 ? 'hidden' : 'visible';
+    });
+  }
+  // ---------- C11 · "não espere" (corte em "Se"; câmera aproxima do rosto em "não espere") ----------
+  if (vis('c11', 66.45, 72.95)) {
+    busca.push(TS.busca($('v11'), Math.min(9.6, 3.5 + (t - 66.45))));
+    const ent = 1.12 - 0.12 * TS.p(t, 66.45, 0.6, 'expo');
+    TS.camera($('cam11'), { z: ent * (1 + 0.22 * TS.p(t, 70.2, 0.9, 'inOut')), ox: 510, oy: 700 });
+    TS.entra($('c11-a'), t, 68.02);
+    TS.pop($('c11-b'), t, 70.3);
+    $('c11-b').style.transform += ` scale(${1 + 0.05 * batida(t, 1.4, 70.8, 6) * (1 - TS.p(t, 72.3, 0.4))})`;
+    TS.entra($('c11-c'), t, 71.32);
+  }
+  // ---------- C12 · "Suspeitou de infarto? Ligue … para o SAMU" ----------
+  if (vis('c12', 72.95, 76.3)) {
+    busca.push(TS.busca($('v12'), 0.4 + (t - 72.95)));
+    TS.camera($('cam12'), { z: TS.v(t, 72.95, 3.4, 1, 1.05, 'lin'), ox: 760, oy: 700 });
+    TS.entra($('c12-a'), t, 73.28); TS.entra($('c12-b'), t, 75.06);
+  }
+  // ---------- C13 · tela cheia SAMU 192: cada dígito entra quando é falado ----------
+  if (vis('c13', 76.3, 78.5)) {
+    const sai = TS.p(t, 78.2, 0.3, 'in');
+    $('c13').style.transform = `scale(${1 + 0.15 * sai})`; $('c13').style.opacity = 1 - sai;
+    $('c13-fone').style.transform = `scale(${TS.p(t, 76.3, 0.4, 'back')}) rotate(${Math.sin(t * 40) * 6 * (t < 77.1 ? 1 : 0)}deg)`;
+    onda($('c13-o1'), t, 76.5, 1.6, 110, 200, 0.5); onda($('c13-o2'), t, 76.81, 1.6, 110, 200, 0.5);
+    TS.pop($('c13-samu'), t, 76.4);
+    TS.pop($('c13-d1'), t, 77.16); TS.pop($('c13-d2'), t, 77.36); TS.pop($('c13-d3'), t, 77.58);
+  }
+  // ---------- C14 · "Não dirija até o hospital sozinho" ----------
+  if (vis('c14', 78.45, 80.95)) {
+    busca.push(TS.busca($('v14'), 4.4 + (t - 78.5)));
+    TS.camera($('cam14'), { z: 1.08 - 0.08 * TS.p(t, 78.45, 0.6, 'expo'), ox: 740, oy: 820 });
+    TS.entra($('c14-a'), t, 78.58); TS.marca($('c14-m'), t, 80.0, 0.4);
+  }
+  // ---------- C15 · "Cada minuto conta!" — assenta e dissolve no fechamento ----------
+  if (vis('c15', 80.95, INTRO + 0.8)) {
+    busca.push(TS.busca($('v15'), Math.min(9.6, 7.2 + (t - 80.95))));
+    TS.camera($('cam15'), { z: TS.v(t, 80.95, 2.6, 1, 1.05, 'lin'), ox: 780, oy: 700 });
+    TS.pop($('c15-a'), t, 81.12, { d: 0.5 });
+    // painel azul sobe trazendo a mesma frase em branco, no centro (liga a última fala à marca)
+    const kp = TS.p(t, 82.85, 0.65, 'inOut');
+    $('c15-painel').style.transform = `translateY(${1920 * (1 - kp)}px)`;
+    $('c15-a').style.opacity = 1 - TS.p(t, 82.85, 0.35, 'in');               // a frase de cima sai quando o painel chega
+    const ks = TS.p(t, INTRO - 0.25, 0.35, 'in');                              // a frase do painel encolhe e some antes do círculo abrir
+    $('c15-b').style.transform = `scale(${(1 + 0.04 * TS.p(t, 83.3, 0.6, 'lin')) * (1 - 0.35 * ks)})`;
+    $('c15-b').style.opacity = 1 - ks;
+  }
+  // ---------- C16 · fechamento: círculo branco abre do centro do painel e revela o logo da equipe ----------
+  if (vis('c16', INTRO, DURACAO + 1)) {
+    $('c16').style.clipPath = `circle(${TS.v(t, INTRO, 0.75, 0, 1200, 'inOut')}px at 540px 900px)`;
+    busca.push(TS.busca($('v16'), Math.max(0, t - INTRO)));
+  }
+
+  await Promise.all(busca);
+};
+</script>
+</body></html>

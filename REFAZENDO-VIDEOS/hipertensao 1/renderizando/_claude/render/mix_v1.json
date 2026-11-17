@@ -1,0 +1,350 @@
+{
+ "video": "final_video.mp4",
+ "saida": "../../Hipertensão parte 1 - horizontal.mp4",
+ "dur": 101.7,
+ "narracao": {
+  "arq": "../../../video horizontal canva/Hipertensão PET SAUDE - horinzontal.mp4",
+  "ini": 0,
+  "db": 0,
+  "ate": 97.3
+ },
+ "sfx": [
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 0.45,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 2.45,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "em": 2.95,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/digitacao_longa.wav",
+   "em": 3.75,
+   "db": -18.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/digitacao_longa.wav",
+   "em": 4.65,
+   "db": -18.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/digitacao_curta.wav",
+   "em": 5.55,
+   "db": -18.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "em": 8.15,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca.wav",
+   "em": 9.0,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "em": 9.6,
+   "db": -12.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 11.6,
+   "db": -16.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca_1.wav",
+   "em": 12.6,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav",
+   "em": 13.5,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "em": 14.25,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 15.5,
+   "db": -17.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "em": 17.0,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "em": 18.9,
+   "db": -16.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 20.15,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 22.8,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "em": 23.25,
+   "db": -12.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "em": 24.25,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique.wav",
+   "em": 25.95,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_1.wav",
+   "em": 26.15,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/impacto.wav",
+   "em": 26.45,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 28.85,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_2.wav",
+   "em": 29.9,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 31.5,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "em": 33.2,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_2.wav",
+   "em": 35.1,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 38.15,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "em": 38.6,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca_2.wav",
+   "em": 40.3,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/impacto.wav",
+   "em": 44.1,
+   "db": -12.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav",
+   "em": 45.8,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "em": 46.5,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "em": 48.15,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 49.0,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 51.3,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "em": 51.75,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 53.1,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_2.wav",
+   "em": 54.8,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca_3.wav",
+   "em": 56.3,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 58.7,
+   "db": -16.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "em": 63.1,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "em": 64.95,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/impacto.wav",
+   "em": 66.5,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 68.0,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 70.7,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "em": 71.55,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav",
+   "em": 71.5,
+   "db": -16.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique.wav",
+   "em": 72.96,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_1.wav",
+   "em": 73.94,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_2.wav",
+   "em": 74.74,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_3.wav",
+   "em": 76.04,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "em": 78.2,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca.wav",
+   "em": 79.96,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 80.44,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "em": 83.56,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/tique.wav",
+   "em": 83.8,
+   "db": -16.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_2.wav",
+   "em": 84.6,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 87.4,
+   "db": -15.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 87.8,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "em": 90.0,
+   "db": -16.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "em": 90.4,
+   "db": -13.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_3.wav",
+   "em": 91.45,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "em": 92.0,
+   "db": -14.0
+  },
+  {
+   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca_1.wav",
+   "em": 93.5,
+   "db": -15.0
+  }
+ ],
+ "fim_audio": {
+  "arq": "../../../Intro NTS e PETSAUDE - horizontal.mp4",
+  "em": 97.1,
+  "db": 0,
+  "fade_in": 0.3
+ },
+ "audio_kbps": 320
+}

@@ -1,0 +1,234 @@
+{
+  "como_ler": "caixas em px do vídeo (x, y = canto superior esquerdo). mover_local_px é no sistema do elemento (antes do zoom dos pais); deslocamento_na_tela_px é o que se vê. Aplique o ajuste na página no momento em que o elemento assenta, salvo nota em contrário.",
+  "observacao": "",
+  "quadros": [
+    {
+      "t": 16.5,
+      "antes": "t016.50_antes.png",
+      "depois": "t016.50_depois.png",
+      "comparacao": "t016.50_comparacao.png"
+    },
+    {
+      "t": 22.21,
+      "antes": "t022.21_antes.png",
+      "depois": "t022.21_depois.png",
+      "comparacao": "t022.21_comparacao.png"
+    },
+    {
+      "t": 46.35,
+      "antes": "t046.35_antes.png",
+      "depois": "t046.35_depois.png",
+      "comparacao": "t046.35_comparacao.png"
+    },
+    {
+      "t": 46.55,
+      "antes": "t046.55_antes.png",
+      "depois": "t046.55_depois.png",
+      "comparacao": "t046.55_comparacao.png"
+    }
+  ],
+  "ajustes": [
+    {
+      "n": 1,
+      "elemento": "#K1",
+      "texto_do_elemento": "boca torta",
+      "t": 16.5,
+      "mover_local_px": {
+        "x": 0,
+        "y": 0
+      },
+      "tamanho": 1.041,
+      "ocultar": false,
+      "nota": "",
+      "caixa_antes": {
+        "x": 139,
+        "y": 438,
+        "w": 351,
+        "h": 380
+      },
+      "caixa_depois": {
+        "x": 111,
+        "y": 466,
+        "w": 365,
+        "h": 395
+      },
+      "deslocamento_na_tela_px": {
+        "x": -21,
+        "y": 36
+      },
+      "transform_extra": "translate(0.0px, 0.0px) scale(1.0407)"
+    },
+    {
+      "n": 2,
+      "elemento": "#K1 > div:nth-child(2)",
+      "texto_do_elemento": "boca torta",
+      "t": 22.21,
+      "mover_local_px": {
+        "x": -2,
+        "y": -2
+      },
+      "tamanho": 1.194,
+      "ocultar": false,
+      "nota": "",
+      "caixa_antes": {
+        "x": 153,
+        "y": 599,
+        "w": 275,
+        "h": 94
+      },
+      "caixa_depois": {
+        "x": 96,
+        "y": 625,
+        "w": 341,
+        "h": 116
+      },
+      "deslocamento_na_tela_px": {
+        "x": -23,
+        "y": 38
+      },
+      "transform_extra": "translate(-2.3px, -2.3px) scale(1.1937)"
+    },
+    {
+      "n": 4,
+      "elemento": "#c5",
+      "texto_do_elemento": "boca torta fraqueza em umlado do corpo p",
+      "t": 22.21,
+      "mover_local_px": {
+        "x": -21,
+        "y": 36
+      },
+      "tamanho": 1,
+      "ocultar": false,
+      "nota": "",
+      "caixa_antes": {
+        "x": 0,
+        "y": 0,
+        "w": 1080,
+        "h": 1920
+      },
+      "caixa_depois": {
+        "x": -21,
+        "y": 36,
+        "w": 1080,
+        "h": 1920
+      },
+      "deslocamento_na_tela_px": {
+        "x": -21,
+        "y": 36
+      },
+      "transform_extra": "translate(-21.4px, 35.7px) scale(1.0000)"
+    },
+    {
+      "n": 5,
+      "elemento": "#c8b-amb",
+      "texto_do_elemento": "",
+      "t": 46.55,
+      "mover_local_px": {
+        "x": 12,
+        "y": -38
+      },
+      "tamanho": 1.411,
+      "ocultar": false,
+      "nota": "",
+      "caixa_antes": {
+        "x": 320,
+        "y": 1169,
+        "w": 440,
+        "h": 250
+      },
+      "caixa_depois": {
+        "x": 373,
+        "y": 1118,
+        "w": 621,
+        "h": 353
+      },
+      "deslocamento_na_tela_px": {
+        "x": 143,
+        "y": 1
+      },
+      "transform_extra": "translate(11.9px, -38.1px) scale(1.4111)"
+    },
+    {
+      "n": 6,
+      "elemento": "#c8b-cel",
+      "texto_do_elemento": "SAMU 192 123456789*0#",
+      "t": 46.35,
+      "mover_local_px": {
+        "x": 60,
+        "y": 248
+      },
+      "tamanho": 1.416,
+      "ocultar": false,
+      "nota": "",
+      "caixa_antes": {
+        "x": -167,
+        "y": 375,
+        "w": 533,
+        "h": 808
+      },
+      "caixa_depois": {
+        "x": -281,
+        "y": 462,
+        "w": 754,
+        "h": 1144
+      },
+      "deslocamento_na_tela_px": {
+        "x": -3,
+        "y": 255
+      },
+      "transform_extra": "translate(59.5px, 247.6px) scale(1.4157)"
+    },
+    {
+      "n": 7,
+      "elemento": "#c8b",
+      "texto_do_elemento": "SUSPEITA DE AVC? SAMU 192 123456789*0# S",
+      "t": 46.35,
+      "mover_local_px": {
+        "x": 0,
+        "y": 0
+      },
+      "tamanho": 1,
+      "ocultar": false,
+      "nota": "",
+      "caixa_antes": {
+        "x": 0,
+        "y": 0,
+        "w": 1080,
+        "h": 1920
+      },
+      "caixa_depois": {
+        "x": 0,
+        "y": 0,
+        "w": 1080,
+        "h": 1920
+      },
+      "deslocamento_na_tela_px": {
+        "x": 0,
+        "y": 0
+      },
+      "transform_extra": "translate(0.0px, 0.0px) scale(1.0000)"
+    }
+  ],
+  "anotacoes": [
+    {
+      "n": 3,
+      "tipo": "circulo",
+      "t": 22.21,
+      "de": {
+        "x": 110,
+        "y": 536
+      },
+      "ate": {
+        "x": 583,
+        "y": 740
+      },
+      "texto": ""
+    }
+  ],
+  "pagina": "CRIANDO-VIDEOS/AVC/renderizando/_claude/animacao/completo_v4.html",
+  "salvo_em": "16/11/2026, 17:56:04",
+  "tela": {
+    "largura": 1080,
+    "altura": 1920
+  }
+}

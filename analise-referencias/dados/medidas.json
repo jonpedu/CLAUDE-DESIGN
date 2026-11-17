@@ -1,0 +1,340 @@
+{
+  "acao-em-taua-mirim-video-completo": {
+    "regua_no_fim": {
+      "topo_y": 1919,
+      "altura_px": 1,
+      "x0": null,
+      "x1": null
+    },
+    "audio": {
+      "lufs_0_3s": -14.5,
+      "lufs_meio": -12.7,
+      "lufs_6s_finais": -15.8,
+      "silencios_45db": []
+    }
+  },
+  "acao-em-taua-mirim-video-curto": {
+    "regua_no_fim": {
+      "topo_y": 1919,
+      "altura_px": 1,
+      "x0": null,
+      "x1": null
+    },
+    "audio": {
+      "lufs_0_3s": -9.6,
+      "lufs_meio": -10.7,
+      "lufs_6s_finais": -14.4,
+      "silencios_45db": []
+    }
+  },
+  "dia-nacional-de-combate-ao-glaucoma-dia-nacional-de-combate-ao-glaucoma": {
+    "regua_no_fim": {
+      "topo_y": 1919,
+      "altura_px": 1,
+      "x0": null,
+      "x1": null
+    },
+    "audio": {
+      "lufs_0_3s": -19.6,
+      "lufs_meio": -18.6,
+      "lufs_6s_finais": -15.8,
+      "silencios_45db": []
+    }
+  },
+  "kits-de-telessaude-novo-pac-kits-novo-pac": {
+    "regua_no_fim": {
+      "topo_y": 1785,
+      "altura_px": 135,
+      "x0": 74,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -22.3,
+      "lufs_meio": -24.2,
+      "lufs_6s_finais": -15.8,
+      "silencios_45db": []
+    }
+  },
+  "prevencao-do-cancer-de-penis-prevencao-do-cancer-de-penis": {
+    "regua_no_fim": {
+      "topo_y": 1828,
+      "altura_px": 92,
+      "x0": 80,
+      "x1": 1003
+    },
+    "audio": {
+      "lufs_0_3s": -16.9,
+      "lufs_meio": -15.9,
+      "lufs_6s_finais": -17.4,
+      "silencios_45db": []
+    }
+  },
+  "retrospectiva-2025-retrospectiva-2025-com-trilha-sonora": {
+    "regua_no_fim": {
+      "topo_y": 1833,
+      "altura_px": 87,
+      "x0": 49,
+      "x1": 1032
+    },
+    "audio": {
+      "lufs_0_3s": -17.3,
+      "lufs_meio": -18.2,
+      "lufs_6s_finais": -15.8,
+      "silencios_45db": [
+        [
+          135.0,
+          135.8
+        ]
+      ]
+    }
+  },
+  "teleorientacao-cancer-de-penis-parte-1-cancer-de-penis-pt-1": {
+    "regua_no_fim": {
+      "topo_y": 1833,
+      "altura_px": 87,
+      "x0": 49,
+      "x1": 1032
+    },
+    "audio": {
+      "lufs_0_3s": -19.1,
+      "lufs_meio": -21.5,
+      "lufs_6s_finais": -14.3,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-cancer-de-penis-parte-2-cancer-de-penis-pt-2": {
+    "regua_no_fim": {
+      "topo_y": 1785,
+      "altura_px": 135,
+      "x0": 74,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -15.4,
+      "lufs_meio": -17.3,
+      "lufs_6s_finais": -13.8,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-hanseniase-parte-1-video-hanseniese-logo-ses": {
+    "regua_no_fim": {
+      "topo_y": 1842,
+      "altura_px": 78,
+      "x0": 54,
+      "x1": 1029
+    },
+    "audio": {
+      "lufs_0_3s": -14.6,
+      "lufs_meio": -14.2,
+      "lufs_6s_finais": -15.7,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-hanseniase-parte-2-video-hanseniese-parte-2-logo-ses": {
+    "regua_no_fim": {
+      "topo_y": 1842,
+      "altura_px": 78,
+      "x0": 54,
+      "x1": 1029
+    },
+    "audio": {
+      "lufs_0_3s": -21.2,
+      "lufs_meio": -20.4,
+      "lufs_6s_finais": -13.2,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-hipertensao-hipertensao": {
+    "regua_no_fim": {
+      "topo_y": 1785,
+      "altura_px": 135,
+      "x0": 74,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -13.7,
+      "lufs_meio": -11.8,
+      "lufs_6s_finais": -13.3,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-pet-saude-dengue-parte-1-dengue-parte-1": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 46,
+      "x1": 1033
+    },
+    "audio": {
+      "lufs_0_3s": -19.0,
+      "lufs_meio": -18.5,
+      "lufs_6s_finais": -15.3,
+      "silencios_45db": [
+        [
+          71.7,
+          72.7
+        ]
+      ]
+    }
+  },
+  "teleorientacao-pet-saude-dengue-parte-2-dengue-parte-2": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 46,
+      "x1": 1033
+    },
+    "audio": {
+      "lufs_0_3s": -16.3,
+      "lufs_meio": -18.6,
+      "lufs_6s_finais": -23.8,
+      "silencios_45db": [
+        [
+          83.4,
+          84.7
+        ]
+      ]
+    }
+  },
+  "teleorientacao-pet-saude-diabetes-parte-1-diabetes-parte-1": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 72,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -14.8,
+      "lufs_meio": -16.4,
+      "lufs_6s_finais": -14.8,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-pet-saude-diabetes-parte-2-diabetes-parte-2": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 72,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -16.5,
+      "lufs_meio": -19.4,
+      "lufs_6s_finais": -16.5,
+      "silencios_45db": [
+        [
+          109.3,
+          110.3
+        ]
+      ]
+    }
+  },
+  "teleorientacao-pet-saude-hanseniase-outubro-parte-1-hanseniase-outubro-parte-1": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 72,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -14.6,
+      "lufs_meio": -17.0,
+      "lufs_6s_finais": -16.9,
+      "silencios_45db": [
+        [
+          75.7,
+          76.5
+        ]
+      ]
+    }
+  },
+  "teleorientacao-pet-saude-hanseniase-outubro-parte-2-hanseniase-outubro-parte-2": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 72,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -14.8,
+      "lufs_meio": -16.0,
+      "lufs_6s_finais": -18.3,
+      "silencios_45db": [
+        [
+          81.4,
+          82.3
+        ]
+      ]
+    }
+  },
+  "teleorientacao-pet-saude-hipertensao-01-defeso-hipertensao-pet-saude-parte-1": {
+    "regua_no_fim": {
+      "topo_y": 1778,
+      "altura_px": 142,
+      "x0": 102,
+      "x1": 978
+    },
+    "audio": {
+      "lufs_0_3s": -16.7,
+      "lufs_meio": -15.5,
+      "lufs_6s_finais": -19.9,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-pet-saude-hipertensao-02-defeso-hipertensao-pet-saude-parte-2": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 72,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -15.2,
+      "lufs_meio": -14.6,
+      "lufs_6s_finais": -15.4,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-pet-saude-obesidade-infantil-1-obesidade-infantil-parte-1": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 72,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -19.2,
+      "lufs_meio": -17.3,
+      "lufs_6s_finais": -15.7,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-pet-saude-obesidade-infantil-2-obesidade-infantil-parte-2": {
+    "regua_no_fim": {
+      "topo_y": 1789,
+      "altura_px": 131,
+      "x0": 72,
+      "x1": 1007
+    },
+    "audio": {
+      "lufs_0_3s": -10.0,
+      "lufs_meio": -9.9,
+      "lufs_6s_finais": -15.6,
+      "silencios_45db": []
+    }
+  },
+  "teleorientacao-retinopatia-diabetica-retinopatia-diabetica": {
+    "regua_no_fim": {
+      "topo_y": 1785,
+      "altura_px": 135,
+      "x0": 79,
+      "x1": 1006
+    },
+    "audio": {
+      "lufs_0_3s": -13.6,
+      "lufs_meio": -15.3,
+      "lufs_6s_finais": -15.0,
+      "silencios_45db": []
+    }
+  }
+}

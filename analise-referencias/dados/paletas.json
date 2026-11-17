@@ -1,0 +1,750 @@
+{
+  "acao-em-taua-mirim-video-completo": [
+    {
+      "hex": "#E4E7E5",
+      "pct": 20.7
+    },
+    {
+      "hex": "#5D5047",
+      "pct": 15.6
+    },
+    {
+      "hex": "#BDB1A8",
+      "pct": 15.2
+    },
+    {
+      "hex": "#231F23",
+      "pct": 14.5
+    },
+    {
+      "hex": "#79838C",
+      "pct": 11.0
+    },
+    {
+      "hex": "#76AFDB",
+      "pct": 10.2
+    },
+    {
+      "hex": "#AD7551",
+      "pct": 8.5
+    },
+    {
+      "hex": "#183E8C",
+      "pct": 4.3
+    }
+  ],
+  "acao-em-taua-mirim-video-curto": [
+    {
+      "hex": "#241F23",
+      "pct": 18.2
+    },
+    {
+      "hex": "#9A9A9D",
+      "pct": 15.6
+    },
+    {
+      "hex": "#FDFDFD",
+      "pct": 14.6
+    },
+    {
+      "hex": "#625553",
+      "pct": 13.4
+    },
+    {
+      "hex": "#BEC0C4",
+      "pct": 12.9
+    },
+    {
+      "hex": "#6090B8",
+      "pct": 10.3
+    },
+    {
+      "hex": "#B06E53",
+      "pct": 8.9
+    },
+    {
+      "hex": "#0D2881",
+      "pct": 6.2
+    }
+  ],
+  "dia-nacional-de-combate-ao-glaucoma-dia-nacional-de-combate-ao-glaucoma": [
+    {
+      "hex": "#F9F9F9",
+      "pct": 51.6
+    },
+    {
+      "hex": "#D0D0D4",
+      "pct": 12.1
+    },
+    {
+      "hex": "#808FB4",
+      "pct": 9.0
+    },
+    {
+      "hex": "#2C60D0",
+      "pct": 6.6
+    },
+    {
+      "hex": "#1644A5",
+      "pct": 6.6
+    },
+    {
+      "hex": "#C28367",
+      "pct": 6.5
+    },
+    {
+      "hex": "#E84639",
+      "pct": 3.9
+    },
+    {
+      "hex": "#424842",
+      "pct": 3.7
+    }
+  ],
+  "kits-de-telessaude-novo-pac-kits-novo-pac": [
+    {
+      "hex": "#FDFDFD",
+      "pct": 39.8
+    },
+    {
+      "hex": "#1A4FB7",
+      "pct": 23.7
+    },
+    {
+      "hex": "#3165D6",
+      "pct": 15.9
+    },
+    {
+      "hex": "#8CA6CF",
+      "pct": 6.3
+    },
+    {
+      "hex": "#D0D2DB",
+      "pct": 5.5
+    },
+    {
+      "hex": "#717B80",
+      "pct": 3.6
+    },
+    {
+      "hex": "#2F343D",
+      "pct": 3.0
+    },
+    {
+      "hex": "#C39756",
+      "pct": 2.1
+    }
+  ],
+  "prevencao-do-cancer-de-penis-prevencao-do-cancer-de-penis": [
+    {
+      "hex": "#FCFDFD",
+      "pct": 28.8
+    },
+    {
+      "hex": "#E1F7FB",
+      "pct": 18.3
+    },
+    {
+      "hex": "#E0DFD7",
+      "pct": 15.7
+    },
+    {
+      "hex": "#1C1B59",
+      "pct": 13.8
+    },
+    {
+      "hex": "#C3B5A8",
+      "pct": 11.5
+    },
+    {
+      "hex": "#5F5D76",
+      "pct": 4.6
+    },
+    {
+      "hex": "#7F98B2",
+      "pct": 3.9
+    },
+    {
+      "hex": "#C2815D",
+      "pct": 3.5
+    }
+  ],
+  "retrospectiva-2025-retrospectiva-2025-com-trilha-sonora": [
+    {
+      "hex": "#3C7FC5",
+      "pct": 21.9
+    },
+    {
+      "hex": "#1A5CAF",
+      "pct": 19.7
+    },
+    {
+      "hex": "#68A9DE",
+      "pct": 17.2
+    },
+    {
+      "hex": "#F4F9F9",
+      "pct": 13.4
+    },
+    {
+      "hex": "#BFCFD7",
+      "pct": 10.4
+    },
+    {
+      "hex": "#695B59",
+      "pct": 6.8
+    },
+    {
+      "hex": "#A4948C",
+      "pct": 6.0
+    },
+    {
+      "hex": "#282D30",
+      "pct": 4.7
+    }
+  ],
+  "teleorientacao-cancer-de-penis-parte-1-cancer-de-penis-pt-1": [
+    {
+      "hex": "#FEFDFD",
+      "pct": 52.5
+    },
+    {
+      "hex": "#AB35E6",
+      "pct": 12.9
+    },
+    {
+      "hex": "#C3D4DE",
+      "pct": 12.2
+    },
+    {
+      "hex": "#A2A5AC",
+      "pct": 7.1
+    },
+    {
+      "hex": "#8D452F",
+      "pct": 4.5
+    },
+    {
+      "hex": "#74797F",
+      "pct": 4.2
+    },
+    {
+      "hex": "#6B1D9B",
+      "pct": 3.5
+    },
+    {
+      "hex": "#302F35",
+      "pct": 3.0
+    }
+  ],
+  "teleorientacao-cancer-de-penis-parte-2-cancer-de-penis-pt-2": [
+    {
+      "hex": "#FCFCFC",
+      "pct": 51.5
+    },
+    {
+      "hex": "#C8CFD6",
+      "pct": 13.9
+    },
+    {
+      "hex": "#A92BEB",
+      "pct": 8.7
+    },
+    {
+      "hex": "#AF837F",
+      "pct": 6.5
+    },
+    {
+      "hex": "#82B5C0",
+      "pct": 6.0
+    },
+    {
+      "hex": "#9E3631",
+      "pct": 5.0
+    },
+    {
+      "hex": "#3A3748",
+      "pct": 4.2
+    },
+    {
+      "hex": "#9A67C0",
+      "pct": 4.2
+    }
+  ],
+  "teleorientacao-hanseniase-parte-1-video-hanseniese-logo-ses": [
+    {
+      "hex": "#FCFBFC",
+      "pct": 37.6
+    },
+    {
+      "hex": "#7A18AE",
+      "pct": 14.7
+    },
+    {
+      "hex": "#451655",
+      "pct": 13.8
+    },
+    {
+      "hex": "#E7DCD0",
+      "pct": 12.6
+    },
+    {
+      "hex": "#58809F",
+      "pct": 6.6
+    },
+    {
+      "hex": "#DBA481",
+      "pct": 5.7
+    },
+    {
+      "hex": "#AD7BB7",
+      "pct": 5.7
+    },
+    {
+      "hex": "#8A4D68",
+      "pct": 3.3
+    }
+  ],
+  "teleorientacao-hanseniase-parte-2-video-hanseniese-parte-2-logo-ses": [
+    {
+      "hex": "#FEFEFD",
+      "pct": 43.4
+    },
+    {
+      "hex": "#8621B7",
+      "pct": 14.2
+    },
+    {
+      "hex": "#670596",
+      "pct": 12.8
+    },
+    {
+      "hex": "#E4D8D4",
+      "pct": 10.9
+    },
+    {
+      "hex": "#A87DBD",
+      "pct": 7.0
+    },
+    {
+      "hex": "#D8AF87",
+      "pct": 4.8
+    },
+    {
+      "hex": "#4E3035",
+      "pct": 3.6
+    },
+    {
+      "hex": "#886872",
+      "pct": 3.3
+    }
+  ],
+  "teleorientacao-hipertensao-hipertensao": [
+    {
+      "hex": "#FDFDFD",
+      "pct": 62.4
+    },
+    {
+      "hex": "#CEC4C0",
+      "pct": 7.7
+    },
+    {
+      "hex": "#DE866E",
+      "pct": 7.5
+    },
+    {
+      "hex": "#78A5BC",
+      "pct": 5.4
+    },
+    {
+      "hex": "#8F8B88",
+      "pct": 5.0
+    },
+    {
+      "hex": "#211B53",
+      "pct": 4.6
+    },
+    {
+      "hex": "#415F99",
+      "pct": 4.4
+    },
+    {
+      "hex": "#733C43",
+      "pct": 3.0
+    }
+  ],
+  "teleorientacao-pet-saude-dengue-parte-1-dengue-parte-1": [
+    {
+      "hex": "#FCFDFA",
+      "pct": 27.3
+    },
+    {
+      "hex": "#96B064",
+      "pct": 16.4
+    },
+    {
+      "hex": "#C4E5DD",
+      "pct": 11.5
+    },
+    {
+      "hex": "#4F5349",
+      "pct": 10.8
+    },
+    {
+      "hex": "#F3D544",
+      "pct": 10.0
+    },
+    {
+      "hex": "#CB9E70",
+      "pct": 9.2
+    },
+    {
+      "hex": "#E1CDAA",
+      "pct": 8.7
+    },
+    {
+      "hex": "#5D8DA0",
+      "pct": 6.2
+    }
+  ],
+  "teleorientacao-pet-saude-dengue-parte-2-dengue-parte-2": [
+    {
+      "hex": "#F8DD55",
+      "pct": 30.0
+    },
+    {
+      "hex": "#E8EEE4",
+      "pct": 21.9
+    },
+    {
+      "hex": "#FDFDFD",
+      "pct": 18.1
+    },
+    {
+      "hex": "#A4A265",
+      "pct": 10.8
+    },
+    {
+      "hex": "#DAC09F",
+      "pct": 7.5
+    },
+    {
+      "hex": "#E5BB34",
+      "pct": 4.7
+    },
+    {
+      "hex": "#56523F",
+      "pct": 4.5
+    },
+    {
+      "hex": "#56809D",
+      "pct": 2.5
+    }
+  ],
+  "teleorientacao-pet-saude-diabetes-parte-1-diabetes-parte-1": [
+    {
+      "hex": "#FEFEFE",
+      "pct": 38.0
+    },
+    {
+      "hex": "#E8E9E8",
+      "pct": 23.9
+    },
+    {
+      "hex": "#CEC5BF",
+      "pct": 11.7
+    },
+    {
+      "hex": "#54341D",
+      "pct": 7.1
+    },
+    {
+      "hex": "#D37D91",
+      "pct": 6.6
+    },
+    {
+      "hex": "#817E7E",
+      "pct": 5.0
+    },
+    {
+      "hex": "#150E0C",
+      "pct": 4.1
+    },
+    {
+      "hex": "#AF262E",
+      "pct": 3.7
+    }
+  ],
+  "teleorientacao-pet-saude-diabetes-parte-2-diabetes-parte-2": [
+    {
+      "hex": "#FEFEFD",
+      "pct": 49.4
+    },
+    {
+      "hex": "#E9E6E0",
+      "pct": 17.6
+    },
+    {
+      "hex": "#C9CACB",
+      "pct": 10.5
+    },
+    {
+      "hex": "#93A7A9",
+      "pct": 7.8
+    },
+    {
+      "hex": "#D88C92",
+      "pct": 5.4
+    },
+    {
+      "hex": "#467D98",
+      "pct": 4.6
+    },
+    {
+      "hex": "#262B34",
+      "pct": 2.5
+    },
+    {
+      "hex": "#9F3F3E",
+      "pct": 2.2
+    }
+  ],
+  "teleorientacao-pet-saude-hanseniase-outubro-parte-1-hanseniase-outubro-parte-1": [
+    {
+      "hex": "#FDFDFD",
+      "pct": 53.7
+    },
+    {
+      "hex": "#E5DFD5",
+      "pct": 12.8
+    },
+    {
+      "hex": "#D49447",
+      "pct": 8.0
+    },
+    {
+      "hex": "#E8B496",
+      "pct": 5.8
+    },
+    {
+      "hex": "#2C232A",
+      "pct": 5.2
+    },
+    {
+      "hex": "#ACA0B6",
+      "pct": 5.2
+    },
+    {
+      "hex": "#275269",
+      "pct": 4.8
+    },
+    {
+      "hex": "#765F92",
+      "pct": 4.5
+    }
+  ],
+  "teleorientacao-pet-saude-hanseniase-outubro-parte-2-hanseniase-outubro-parte-2": [
+    {
+      "hex": "#FDFDFD",
+      "pct": 59.0
+    },
+    {
+      "hex": "#D5C3DE",
+      "pct": 12.1
+    },
+    {
+      "hex": "#E7E2D9",
+      "pct": 10.1
+    },
+    {
+      "hex": "#D89F56",
+      "pct": 5.2
+    },
+    {
+      "hex": "#E6BCA2",
+      "pct": 5.1
+    },
+    {
+      "hex": "#B1A8AF",
+      "pct": 4.3
+    },
+    {
+      "hex": "#7E5E89",
+      "pct": 2.3
+    },
+    {
+      "hex": "#56393A",
+      "pct": 1.9
+    }
+  ],
+  "teleorientacao-pet-saude-hipertensao-01-defeso-hipertensao-pet-saude-parte-1": [
+    {
+      "hex": "#FBFDFD",
+      "pct": 51.1
+    },
+    {
+      "hex": "#CECFCF",
+      "pct": 15.7
+    },
+    {
+      "hex": "#4D8D61",
+      "pct": 6.6
+    },
+    {
+      "hex": "#93A79C",
+      "pct": 6.5
+    },
+    {
+      "hex": "#1A4B95",
+      "pct": 6.2
+    },
+    {
+      "hex": "#AB121F",
+      "pct": 6.1
+    },
+    {
+      "hex": "#D37C67",
+      "pct": 4.2
+    },
+    {
+      "hex": "#252732",
+      "pct": 3.5
+    }
+  ],
+  "teleorientacao-pet-saude-hipertensao-02-defeso-hipertensao-pet-saude-parte-2": [
+    {
+      "hex": "#FEFEFE",
+      "pct": 55.7
+    },
+    {
+      "hex": "#E4E5E4",
+      "pct": 11.9
+    },
+    {
+      "hex": "#832830",
+      "pct": 9.1
+    },
+    {
+      "hex": "#BEB4AF",
+      "pct": 7.3
+    },
+    {
+      "hex": "#768663",
+      "pct": 4.5
+    },
+    {
+      "hex": "#D26E54",
+      "pct": 4.2
+    },
+    {
+      "hex": "#302634",
+      "pct": 3.9
+    },
+    {
+      "hex": "#5A8CBE",
+      "pct": 3.3
+    }
+  ],
+  "teleorientacao-pet-saude-obesidade-infantil-1-obesidade-infantil-parte-1": [
+    {
+      "hex": "#FEFEFD",
+      "pct": 45.4
+    },
+    {
+      "hex": "#E9E9E7",
+      "pct": 16.1
+    },
+    {
+      "hex": "#CCC8BD",
+      "pct": 13.4
+    },
+    {
+      "hex": "#91A29C",
+      "pct": 7.0
+    },
+    {
+      "hex": "#476E85",
+      "pct": 6.5
+    },
+    {
+      "hex": "#E2AB82",
+      "pct": 4.9
+    },
+    {
+      "hex": "#3A2F2F",
+      "pct": 3.8
+    },
+    {
+      "hex": "#BA5B48",
+      "pct": 3.0
+    }
+  ],
+  "teleorientacao-pet-saude-obesidade-infantil-2-obesidade-infantil-parte-2": [
+    {
+      "hex": "#FBFAF9",
+      "pct": 45.3
+    },
+    {
+      "hex": "#E0DCD0",
+      "pct": 13.6
+    },
+    {
+      "hex": "#989B96",
+      "pct": 10.2
+    },
+    {
+      "hex": "#CEB9AA",
+      "pct": 10.0
+    },
+    {
+      "hex": "#666F67",
+      "pct": 9.0
+    },
+    {
+      "hex": "#383631",
+      "pct": 4.9
+    },
+    {
+      "hex": "#CD6346",
+      "pct": 4.1
+    },
+    {
+      "hex": "#5698BF",
+      "pct": 3.0
+    }
+  ],
+  "teleorientacao-retinopatia-diabetica-retinopatia-diabetica": [
+    {
+      "hex": "#FDFDFD",
+      "pct": 69.7
+    },
+    {
+      "hex": "#8397BF",
+      "pct": 8.0
+    },
+    {
+      "hex": "#E0DFDD",
+      "pct": 5.6
+    },
+    {
+      "hex": "#B37462",
+      "pct": 5.4
+    },
+    {
+      "hex": "#DC9B7F",
+      "pct": 4.5
+    },
+    {
+      "hex": "#BFBEBB",
+      "pct": 3.6
+    },
+    {
+      "hex": "#69626B",
+      "pct": 1.7
+    },
+    {
+      "hex": "#2B2222",
+      "pct": 1.5
+    }
+  ]
+}
