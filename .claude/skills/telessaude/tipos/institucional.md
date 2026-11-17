@@ -7,7 +7,7 @@ Vídeo sobre o próprio Telessaúde: projetos, entregas, serviços, resultados (
 - **Fundo azul institucional** em degradê (#1A4FB7 → #3165D6, retrospectiva até #68A9DE), com o hexágono do logo grande e apagado como marca d'água.
 - **Números grandes** em fonte condensada branca (tipo Bebas Neue) com `contador`: "4004 Participações", "13.707 Exames", "30.000 km".
 - **Fotos reais tipo polaroide**, com borda branca e levemente inclinadas, entrando em colagem.
-- Lista de serviços em pílulas brancas/azuis nas referências antigas; **nos vídeos novos, etiquetas retangulares com cantos levemente arredondados** (gosto do usuário, 17/11/2026) (Teleconsultoria, Teleinterconsulta, Teleducação, Telediagnóstico) com `stagger-in`.
+- Lista de serviços em pílulas brancas/azuis nas referências antigas; **nos vídeos novos, o padrão é a etiqueta retangular com cantos levemente arredondados**, com pílula só pontualmente (gosto do usuário, 17/11/2026; ver `motion/principios.md`) (Teleconsultoria, Teleinterconsulta, Teleducação, Telediagnóstico) com `stagger-in`.
 - Logos de programas parceiros (Novo PAC, "Agora tem Especialistas") e produtos (notebook, TV, câmera) em ilustração.
 - Alerta para gestores com "ATENÇÃO!" em fonte de marcador amarela.
 - Fechamento: cartela azul com slogan ("Ciência, tecnologia e conexão a serviço da vida", "Tecnologia que aproxima o cuidado") → wipe circular branco → logo animado.

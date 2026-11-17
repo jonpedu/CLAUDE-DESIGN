@@ -32,7 +32,7 @@ Overshoot é tempero: use em pop, check e CTA, nunca em tudo.
 
 **Gosto do usuário: mola (spring) no estilo das interfaces da Apple.** Chega rápido, passa um pouco do alvo e assenta (massa, rigidez e amortecimento; em `ts-anim.js`, `mola` e `molaViva`). Prefira em entradas de cartões, etiquetas, ícones, títulos e painéis. Ao explicar uma técnica, nomeie "mola" e dê os parâmetros: o usuário quer aprender.
 
-**Gosto do usuário: nada de pílula (cápsula), use etiqueta retangular (17/11/2026).** Texto em forma de cápsula, com as pontas totalmente redondas, "tem cara de coisa feita por IA" e tira a personalidade. Palavras-chave, rótulos, listas de itens e botões vão em **etiquetas retangulares com cantos levemente arredondados**: raio de cerca de 15–20% da altura da etiqueta (ex.: etiqueta de 80 px de altura → raio de 12–16 px), nunca 50%. Vale para vídeo, quadros-chave e documentos (roteiros em HTML). Onde as skills e os roteiros dizem "pílula", leia "etiqueta retangular".
+**Gosto do usuário: etiqueta retangular como padrão, pílula só de vez em quando (17/11/2026).** O que deixa o vídeo genérico, "com cara de coisa feita por IA", é usar pílula (cápsula de pontas totalmente redondas) em tudo, uma atrás da outra. Por isso o **padrão** para palavras-chave, rótulos, listas e botões é a **etiqueta retangular com cantos levemente arredondados**: raio de cerca de 15–20% da altura (ex.: 80 px de altura → raio de 12–16 px). A pílula **não é proibida**: pode entrar pontualmente, quando fizer sentido naquele momento, mas não como solução repetida. Como toda regra de gosto, é tendência, não regra rígida. Vale para vídeo, quadros-chave e documentos (roteiros em HTML).
 
 ## Os 12 princípios, em regras práticas
 

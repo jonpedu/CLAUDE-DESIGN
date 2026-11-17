@@ -126,7 +126,7 @@ Recursos que se repetem e identificam a marca — escolha alguns por vídeo, nã
 - **Pesos de fonte:** quando ajudar a hierarquia, varie o peso da Poppins (ExtraLight/Light na linha de apoio, SemiBold, Bold, ExtraBold/Black na palavra-chave). Só quando fizer sentido.
 - **Transição de clipe para clipe:** desfoque com zoom costuma funcionar melhor que empurrão. **No bloco de avaliação, comentário sobre transição em `mtN` refere-se à saída daquele motion** (na dúvida, pergunte); não mexer na entrada que já foi aprovada.
 - **Objeto que vira o próximo:** quando a cena seguinte mostra o mesmo objeto (cérebro do clipe → cérebro do cartão; aparelho de pressão do clipe → ícone da lista), meça o objeto no quadro do clipe e leve-o com câmera ou camada até o lugar e o tamanho exatos do próximo, com dissolução no fim.
-- **Etiqueta retangular, não pílula (gosto do usuário, 17/11/2026):** palavras-chave e listas vão em etiquetas retangulares com cantos levemente arredondados (raio ~15–20% da altura), nunca em cápsula de pontas redondas, que "tem cara de IA". Detalhes em `motion/principios.md`.
+- **Etiqueta retangular como padrão (gosto do usuário, 17/11/2026):** palavras-chave e listas vão de preferência em etiquetas retangulares com cantos levemente arredondados (raio ~15–20% da altura). Pílula (cápsula) pode aparecer pontualmente; o que o usuário rejeita é o excesso, pílula em tudo, que deixa o vídeo genérico e "com cara de IA". Detalhes em `motion/principios.md`.
 - **Destaque de palavra:** etiqueta (retangular, levemente inclinada) ou marca-texto passando atrás são boas opções para palavras-chave curtas ("de repente").
 Ritmo: um elemento novo a cada ~2 s; layout muda a cada 4–8 s. Movimento calmo; nada de shake, glitch ou flash.
 

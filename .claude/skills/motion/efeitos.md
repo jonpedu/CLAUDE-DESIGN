@@ -11,7 +11,7 @@ Use estes nomes nas conversas ("usa um `card-rise` aqui", "troca o `pop-in` por 
 | `card-rise` | painel ou cartão de informação | 14–18 | sobe da base, com rotação de −3° → 0°; sombra cresce junto; cobre a cena anterior (oclusão) |
 | `stagger-in` | listas, linhas de painel, datas | 3–5 por item | cada item usa `pop-in` ou `type-rise`, com intervalo de 3–5 frames |
 | `stagger-out` | limpar a tela antes do próximo bloco | 2–3 por item | ordem inversa, escala 1 → 0,9 e opacidade 1 → 0 (easeInCubic) |
-| `pill-expand` | botão que vira barra ou título | 12–15 | etiqueta pequena (retangular, cantos levemente arredondados; nunca cápsula, ver `principios.md`) faz `pop-in` e depois estica na horizontal até a largura do texto; texto entra 3 frames depois |
+| `pill-expand` | botão que vira barra ou título | 12–15 | etiqueta pequena (de preferência retangular com cantos levemente arredondados; cápsula só pontualmente, ver `principios.md`) faz `pop-in` e depois estica na horizontal até a largura do texto; texto entra 3 frames depois |
 | `check-pop` | "faça isso", item concluído | 9 | círculo `pop-in` e traço do check desenhado em 6 frames; brilho curto opcional |
 | `notificacao` | alerta de celular, lembrete | 12 | desce do topo da área segura com overshoot leve e fica 2–3 s |
 
