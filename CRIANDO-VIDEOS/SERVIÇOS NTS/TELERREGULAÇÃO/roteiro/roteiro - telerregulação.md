@@ -21,7 +21,7 @@ Telerregulação: o acesso ao SUS mais organizado.
 
 **[cena: 01] Gancho** *(abertura igual em toda a série)*
 Narração: "Teleconsulta, telediagnóstico, telerregulação… Parece tudo igual, né? Hoje a gente explica a telerregulação."
-Tela: `[texto: Teleconsulta]` `[texto: Telediagnóstico]` `[texto: Telerregulação]` em pílulas que se embaralham. Fica "Telerregulação", que vira o título.
+Tela: `[texto: Teleconsulta]` `[texto: Telediagnóstico]` `[texto: Telerregulação]` em etiquetas que se embaralham. Fica "Telerregulação", que vira o título.
 
 **[cena: 02] O que é**
 Narração: "Telerregulação é organizar, com o apoio da tecnologia, o acesso aos atendimentos no SUS."
@@ -33,7 +33,7 @@ Tela: `[texto: controlar]` `[texto: gerenciar]` `[texto: priorizar]`. Um caminho
 
 **[cena: 04] Para quê**
 Narração: "E funciona junto com os outros serviços de telessaúde, para resolver mais casos e diminuir o tempo e as filas de espera."
-Tela: `[texto: junto com os outros serviços]` (pílulas pequenas dos outros serviços em volta), depois `[texto: resolver mais casos]` `[texto: menos tempo de espera]` `[texto: filas menores]`, com a fila da cena 02 encurtando.
+Tela: `[texto: junto com os outros serviços]` (etiquetas pequenas dos outros serviços em volta), depois `[texto: resolver mais casos]` `[texto: menos tempo de espera]` `[texto: filas menores]`, com a fila da cena 02 encurtando.
 
 **[cena: 05] Fecho**
 Narração: "Telerregulação: o acesso ao SUS mais organizado."

@@ -21,7 +21,7 @@ Teleconsulta: profissional de saúde e paciente, mesmo a distância.
 
 **[cena: 01] Gancho** *(abertura igual em toda a série)*
 Narração: "Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleconsulta."
-Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em pílulas que se embaralham. Fica "Teleconsulta", que vira o título.
+Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em etiquetas que se embaralham. Fica "Teleconsulta", que vira o título.
 
 **[cena: 02] O que é**
 Narração: "Teleconsulta é uma consulta a distância entre o profissional de saúde e o paciente, feita com o apoio da tecnologia."

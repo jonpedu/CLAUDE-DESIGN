@@ -20,7 +20,7 @@ Teleorientação: informação em saúde para você.
 
 **[cena: 01] Gancho** *(abertura igual em toda a série)*
 Narração: "Teleconsulta, teleconsultoria, teleorientação… Parece tudo igual, né? Hoje a gente explica a teleorientação."
-Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Teleorientação]` em pílulas que se embaralham. Fica "Teleorientação", que vira o título.
+Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Teleorientação]` em etiquetas que se embaralham. Fica "Teleorientação", que vira o título.
 
 **[cena: 02] O que é**
 Narração: "Teleorientação é uma ação de conscientização feita para o cidadão."

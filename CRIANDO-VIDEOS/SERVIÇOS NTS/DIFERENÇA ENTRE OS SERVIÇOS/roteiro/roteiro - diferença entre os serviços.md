@@ -31,13 +31,13 @@ Estilo das cenas: motion design + flat design, fundo claro e liso, sem texto den
 
 **[cena: 01] Gancho: três nomes parecidos** *(0–6 s)*
 Narração: "Teleconsulta, teleinterconsulta, teleconsultoria… Os nomes são parecidos, mas cada um é um serviço diferente. Bora ver a diferença?"
-Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]`, uma pílula por nome dito, entrando com mola e se empilhando.
-Animação: as três se sobrepõem quase iguais. No "cada um é um serviço diferente", elas se separam e o marca-texto amarelo passa só na parte que muda (**inter**, **-oria**). Em "Bora ver a diferença?", as pílulas sobem e encolhem para o topo, onde ficam como legenda e se acendem conforme o serviço da vez (transição `continuidade`).
+Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]`, uma etiqueta por nome dito, entrando com mola e se empilhando.
+Animação: as três se sobrepõem quase iguais. No "cada um é um serviço diferente", elas se separam e o marca-texto amarelo passa só na parte que muda (**inter**, **-oria**). Em "Bora ver a diferença?", as etiquetas sobem e encolhem para o topo, onde ficam como legenda e se acendem conforme o serviço da vez (transição `continuidade`).
 Visual: fundo claro com as manchas azuis sutis da marca.
 
 **[cena: 02] Teleinterconsulta** *(6–16 s)*
 Narração: "Na teleinterconsulta, profissionais de saúde trocam opiniões e informações a distância, com o paciente presente, para ajudar no diagnóstico ou no tratamento."
-Tela: a pílula `[texto: Teleinterconsulta]` acende no topo; `[texto: profissionais de saúde]` `[texto: + paciente presente]` `[texto: diagnóstico ou tratamento]`.
+Tela: a etiqueta `[texto: Teleinterconsulta]` acende no topo; `[texto: profissionais de saúde]` `[texto: + paciente presente]` `[texto: diagnóstico ou tratamento]`.
 Animação: os três personagens entram, cada um na sua deixa:
 - **Horizontal:** médico na tela à esquerda; enfermeira e paciente juntos à direita.
 - **Vertical:** médico na tela em cima; enfermeira e paciente embaixo.
@@ -45,18 +45,18 @@ Uma linha pontilhada liga a tela à dupla, com ícones de prancheta, exame e ima
 
 **[cena: 03] Sai a enfermeira: vira teleconsulta** *(16–27 s)*
 Narração: "Agora, se o profissional fala direto com o paciente, é uma teleconsulta: uma consulta a distância, que pode ter prescrição e atestado, seguindo as regras de cada conselho profissional."
-Tela: a pílula `[texto: Teleconsulta]` acende no topo; `[texto: profissional + paciente]` `[texto: prescrição]` `[texto: atestado]`, e menor `[texto: conforme cada conselho profissional]`.
+Tela: a etiqueta `[texto: Teleconsulta]` acende no topo; `[texto: profissional + paciente]` `[texto: prescrição]` `[texto: atestado]`, e menor `[texto: conforme cada conselho profissional]`.
 Animação: a enfermeira sai deslizando pela borda (`arrasto`). O paciente e a tela do médico se aproximam e crescem, ocupando o espaço livre (escala dinâmica). A linha de conexão encurta. Ícones de receita e atestado entram com mola ao lado do paciente.
 Cuidado visual: o médico continua dentro da tela, para ficar claro que é a distância.
 
 **[cena: 04] Sai o paciente: vira teleconsultoria** *(27–44 s)*
 Narração: "E quando ficam só os profissionais de saúde, para esclarecer dúvidas sobre procedimentos clínicos, ações de saúde e o processo de trabalho, é uma teleconsultoria. No Telessaúde Maranhão, ela é feita por troca de mensagens, com a resposta em outro momento."
-Tela: a pílula `[texto: Teleconsultoria]` acende no topo; `[texto: só profissionais de saúde]` e as pílulas `[texto: procedimentos clínicos]` `[texto: ações de saúde]` `[texto: processo de trabalho]`; depois `[texto: troca de mensagens]` `[texto: resposta em outro momento]`.
+Tela: a etiqueta `[texto: Teleconsultoria]` acende no topo; `[texto: só profissionais de saúde]` e as etiquetas `[texto: procedimentos clínicos]` `[texto: ações de saúde]` `[texto: processo de trabalho]`; depois `[texto: troca de mensagens]` `[texto: resposta em outro momento]`.
 Animação: a enfermeira volta deslizando pela mesma borda e o paciente sai suavemente. **A moldura de chamada de vídeo se transforma numa janela de mensagens** (`metamorfose`). Daí em diante, só mensagens:
 1. a enfermeira envia um balão de dúvida;
 2. um relógio pequeno gira entre os dois;
 3. o balão de resposta do médico chega.
-Sem rosto ao vivo, sem ícone de câmera, sem "ao vivo": no NTS a teleconsultoria é só assíncrona. As três pílulas dos assuntos mostram que a dúvida não é só sobre um paciente.
+Sem rosto ao vivo, sem ícone de câmera, sem "ao vivo": no NTS a teleconsultoria é só assíncrona. As três etiquetas dos assuntos mostram que a dúvida não é só sobre um paciente.
 
 **[cena: 05] Resumo lado a lado** *(44–54 s)*
 Narração: "Resumindo: teleconsulta é profissional e paciente; teleinterconsulta é entre profissionais, com o paciente presente; teleconsultoria é entre profissionais, para tirar dúvidas."
@@ -64,11 +64,11 @@ Tela: três cartões, um por serviço, cada um com ícones mínimos dos personag
 - `[texto: Teleconsulta]` → `[texto: profissional + paciente]` (tela + paciente)
 - `[texto: Teleinterconsulta]` → `[texto: profissionais + paciente presente]` (tela + enfermeira + paciente)
 - `[texto: Teleconsultoria]` → `[texto: entre profissionais, para tirar dúvidas]` (dois balões de mensagem)
-Animação: as pílulas do topo descem e viram os títulos dos cartões (`continuidade`). Os cartões entram um por fala, com escala dinâmica: o primeiro grande no centro e, a cada novo, todos se reorganizam. **Horizontal:** três colunas. **Vertical:** três cartões empilhados.
+Animação: as etiquetas do topo descem e viram os títulos dos cartões (`continuidade`). Os cartões entram um por fala, com escala dinâmica: o primeiro grande no centro e, a cada novo, todos se reorganizam. **Horizontal:** três colunas. **Vertical:** três cartões empilhados.
 
 **[cena: 06] Os outros serviços** *(54–60 s)*
 Narração: "E o Telessaúde Maranhão também oferece telediagnóstico, teleducação, telerregulação e teleorientação."
-Tela: `[texto: Telediagnóstico]` `[texto: Teleducação]` `[texto: Telerregulação]` `[texto: Teleorientação]` entram em `stagger-in` em volta dos três cartões, que encolhem para abrir espaço. As sete pílulas formam o conjunto de serviços do NTS.
+Tela: `[texto: Telediagnóstico]` `[texto: Teleducação]` `[texto: Telerregulação]` `[texto: Teleorientação]` entram em `stagger-in` em volta dos três cartões, que encolhem para abrir espaço. As sete etiquetas formam o conjunto de serviços do NTS.
 Transição para o fechamento: wipe circular branco.
 
 **[cena: 07] Fechamento** *(3–5 s)*

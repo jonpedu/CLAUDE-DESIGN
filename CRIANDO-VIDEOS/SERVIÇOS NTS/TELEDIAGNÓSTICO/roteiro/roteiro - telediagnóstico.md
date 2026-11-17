@@ -21,7 +21,7 @@ Telediagnóstico: o laudo chega, mesmo a distância.
 
 **[cena: 01] Gancho** *(abertura igual em toda a série)*
 Narração: "Teleconsulta, teleconsultoria, telediagnóstico… Parece tudo igual, né? Hoje a gente explica o telediagnóstico."
-Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Telediagnóstico]` em pílulas que se embaralham. Fica "Telediagnóstico", que vira o título.
+Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Telediagnóstico]` em etiquetas que se embaralham. Fica "Telediagnóstico", que vira o título.
 
 **[cena: 02] O que é**
 Narração: "Telediagnóstico é um serviço feito a distância, com o apoio da tecnologia."

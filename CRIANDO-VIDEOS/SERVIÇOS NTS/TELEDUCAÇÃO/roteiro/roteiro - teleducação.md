@@ -20,7 +20,7 @@ Teleducação: aprender e trocar conhecimento, mesmo a distância.
 
 **[cena: 01] Gancho** *(abertura igual em toda a série)*
 Narração: "Teleconsulta, teleconsultoria, teleducação… Parece tudo igual, né? Hoje a gente explica a teleducação."
-Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Teleducação]` em pílulas que se embaralham. Fica "Teleducação", que vira o título.
+Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Teleducação]` em etiquetas que se embaralham. Fica "Teleducação", que vira o título.
 
 **[cena: 02] O que é**
 Narração: "Teleducação são atividades de aprendizado e troca de conhecimento feitas com o apoio da tecnologia."
@@ -28,7 +28,7 @@ Tela: `[texto: aprendizado]` `[texto: troca de conhecimento]`. Uma tela de noteb
 
 **[cena: 03] Os formatos**
 Narração: "Como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento."
-Tela: seis pílulas, uma por fala, crescendo e se reorganizando a cada entrada: `[texto: aulas]` `[texto: cursos]` `[texto: palestras]` `[texto: seminários]` `[texto: fóruns de discussão]` `[texto: reuniões de matriciamento]`.
+Tela: seis etiquetas, uma por fala, crescendo e se reorganizando a cada entrada: `[texto: aulas]` `[texto: cursos]` `[texto: palestras]` `[texto: seminários]` `[texto: fóruns de discussão]` `[texto: reuniões de matriciamento]`.
 
 **[cena: 04] Fecho**
 Narração: "Teleducação: aprender e trocar conhecimento, mesmo a distância."

@@ -21,7 +21,7 @@ Teleconsultoria: profissional de saúde apoiando profissional de saúde.
 
 **[cena: 01] Gancho** *(abertura igual em toda a série)*
 Narração: "Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleconsultoria."
-Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em pílulas que entram e se embaralham. As duas primeiras saem e "Teleconsultoria" cresce e vira o título.
+Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em etiquetas que entram e se embaralham. As duas primeiras saem e "Teleconsultoria" cresce e vira o título.
 
 **[cena: 02] O que é**
 Narração: "Teleconsultoria é uma consultoria entre profissionais de saúde, feita com o apoio da tecnologia."
@@ -29,7 +29,7 @@ Tela: `[texto: entre profissionais de saúde]`. Dois profissionais de saúde (ex
 
 **[cena: 03] Para quê**
 Narração: "Ela serve para esclarecer dúvidas sobre procedimentos clínicos, ações de saúde e o processo de trabalho."
-Tela: `[texto: tirar dúvidas]` e, em sequência, as pílulas `[texto: procedimentos clínicos]` `[texto: ações de saúde]` `[texto: processo de trabalho]`.
+Tela: `[texto: tirar dúvidas]` e, em sequência, as etiquetas `[texto: procedimentos clínicos]` `[texto: ações de saúde]` `[texto: processo de trabalho]`.
 
 **[cena: 04] Como funciona no NTS**
 Narração: "No Telessaúde Maranhão, a teleconsultoria é assíncrona: a dúvida é enviada e a resposta vem depois, em outro momento, por troca de mensagens."

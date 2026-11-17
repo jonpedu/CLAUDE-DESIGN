@@ -21,7 +21,7 @@ Teleinterconsulta: profissionais de saúde juntos, com o paciente presente.
 
 **[cena: 01] Gancho** *(abertura igual em toda a série)*
 Narração: "Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleinterconsulta."
-Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em pílulas que se embaralham. Fica "Teleinterconsulta", que vira o título.
+Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em etiquetas que se embaralham. Fica "Teleinterconsulta", que vira o título.
 
 **[cena: 02] O que é**
 Narração: "Teleinterconsulta é quando profissionais de saúde conversam a distância, com o paciente presente."
