@@ -9,8 +9,8 @@
 
 ## Narração completa (para gravar no AI Studio)
 
-Teleconsulta, teleconsultoria, telediagnóstico… Parece tudo igual, né? Hoje a gente explica o telediagnóstico.
-Telediagnóstico é um serviço feito a distância, com o apoio da tecnologia.
+O exame foi feito aqui, mas quem vai dar o laudo está em outro lugar. Como resolver? Com o telediagnóstico.
+É um serviço feito a distância, com o apoio da tecnologia.
 Gráficos, imagens e dados são enviados a um profissional de saúde, que emite um laudo ou um parecer.
 E essa distância pode ser de lugar, quando quem analisa está em outro local, ou de tempo, quando a análise é feita em outro momento.
 Telediagnóstico: o laudo chega, mesmo a distância.
@@ -19,12 +19,12 @@ Telediagnóstico: o laudo chega, mesmo a distância.
 
 ## Cena a cena
 
-**[cena: 01] Gancho** *(abertura igual em toda a série)*
-Narração: "Teleconsulta, teleconsultoria, telediagnóstico… Parece tudo igual, né? Hoje a gente explica o telediagnóstico."
-Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Telediagnóstico]` em etiquetas que se embaralham. Fica "Telediagnóstico", que vira o título.
+**[cena: 01] Gancho**
+Narração: "O exame foi feito aqui, mas quem vai dar o laudo está em outro lugar. Como resolver? Com o telediagnóstico."
+Tela: `[texto: o exame aqui]` de um lado e `[texto: quem dá o laudo, lá]` do outro, com um alfinete de mapa em cada ponto. No "Como resolver?", uma linha liga os dois alfinetes e entra o título `[texto: Telediagnóstico]`.
 
 **[cena: 02] O que é**
-Narração: "Telediagnóstico é um serviço feito a distância, com o apoio da tecnologia."
+Narração: "É um serviço feito a distância, com o apoio da tecnologia."
 Tela: `[texto: a distância]`. Dois pontos ligados por uma linha que se estica.
 
 **[cena: 03] Como funciona**

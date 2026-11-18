@@ -9,8 +9,8 @@
 
 ## Narração completa (para gravar no AI Studio)
 
-Teleconsulta, telediagnóstico, telerregulação… Parece tudo igual, né? Hoje a gente explica a telerregulação.
-Telerregulação é organizar, com o apoio da tecnologia, o acesso aos atendimentos no SUS.
+Quem é atendido, quando e onde: organizar isso no SUS não é simples. A telerregulação ajuda nessa tarefa.
+Ela organiza, com o apoio da tecnologia, o acesso aos atendimentos no SUS.
 Ela controla, gerencia e prioriza o acesso e o caminho dos atendimentos na rede.
 E funciona junto com os outros serviços de telessaúde, para resolver mais casos e diminuir o tempo e as filas de espera.
 Telerregulação: o acesso ao SUS mais organizado.
@@ -19,12 +19,12 @@ Telerregulação: o acesso ao SUS mais organizado.
 
 ## Cena a cena
 
-**[cena: 01] Gancho** *(abertura igual em toda a série)*
-Narração: "Teleconsulta, telediagnóstico, telerregulação… Parece tudo igual, né? Hoje a gente explica a telerregulação."
-Tela: `[texto: Teleconsulta]` `[texto: Telediagnóstico]` `[texto: Telerregulação]` em etiquetas que se embaralham. Fica "Telerregulação", que vira o título.
+**[cena: 01] Gancho**
+Narração: "Quem é atendido, quando e onde: organizar isso no SUS não é simples. A telerregulação ajuda nessa tarefa."
+Tela: `[texto: quem?]` `[texto: quando?]` `[texto: onde?]` entram soltas e desalinhadas, uma por fala; em "A telerregulação ajuda", elas se alinham e dão lugar ao título `[texto: Telerregulação]`.
 
 **[cena: 02] O que é**
-Narração: "Telerregulação é organizar, com o apoio da tecnologia, o acesso aos atendimentos no SUS."
+Narração: "Ela organiza, com o apoio da tecnologia, o acesso aos atendimentos no SUS."
 Tela: `[texto: organizar o acesso]` `[texto: SUS]`. Ícones de pessoas desalinhados que entram em ordem.
 
 **[cena: 03] O que faz**
@@ -43,6 +43,7 @@ Tela: `[texto: Telerregulação]` → logo animado do Telessaúde.
 
 | O roteiro diz | A portaria diz |
 | --- | --- |
+| gancho: quem é atendido, quando e onde | "priorização do acesso e dos fluxos assistenciais" (simplificação; confirmar com a Amanda) |
 | organizar, com apoio da tecnologia, o acesso aos atendimentos no SUS | "organização … do acesso e dos fluxos assistenciais no SUS … por meio de TDIC" |
 | controla, gerencia e prioriza o acesso e o caminho dos atendimentos | "atividades de controle, gerenciamento, organização e priorização do acesso e dos fluxos assistenciais" |
 | funciona junto com os outros serviços de telessaúde | "com atuação articulada com os demais serviços de telessaúde" |

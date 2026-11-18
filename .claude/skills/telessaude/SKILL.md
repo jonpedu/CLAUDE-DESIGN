@@ -96,6 +96,7 @@ Se o pedido não se encaixar em nenhum, use só este arquivo e pergunte o tipo. 
 ### Linguagem
 - Próxima e maranhense quando o tipo permite ("Ei comadre", "Vish", "Éguas", "Rapaz…"). Texto na tela = palavra-chave da fala, exato.
 - O texto na tela só diz o que o roteiro aprovado diz.
+- **Série de vídeos: cada um com gancho próprio (devolutiva de 18/11/2026).** Uma abertura-fórmula repetida em todos os vídeos da série (ex.: "Teleconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica…") fica genérica e cansa. A mesma ideia pode servir num vídeo (onde ela é o assunto), não em todos. Cada gancho parte de uma situação ou pergunta ligada ao tema daquele vídeo.
 
 ### Movimento (gramática da marca)
 Recursos que se repetem e identificam a marca — escolha alguns por vídeo, não todos:

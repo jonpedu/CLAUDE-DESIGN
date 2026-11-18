@@ -9,8 +9,8 @@
 
 ## Narração completa (para gravar no AI Studio)
 
-Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleinterconsulta.
-Teleinterconsulta é quando profissionais de saúde conversam a distância, com o paciente presente.
+Às vezes, o cuidado de um paciente pede a opinião de mais de um profissional. E se eles estiverem longe um do outro? É aí que entra a teleinterconsulta.
+É quando profissionais de saúde conversam a distância, com o paciente presente.
 Eles trocam opiniões e informações clínicas, de exames e de imagens, para ajudar no diagnóstico ou no tratamento.
 E isso facilita o trabalho em conjunto entre profissionais.
 Teleinterconsulta: profissionais de saúde juntos, com o paciente presente.
@@ -19,12 +19,12 @@ Teleinterconsulta: profissionais de saúde juntos, com o paciente presente.
 
 ## Cena a cena
 
-**[cena: 01] Gancho** *(abertura igual em toda a série)*
-Narração: "Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleinterconsulta."
-Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em etiquetas que se embaralham. Fica "Teleinterconsulta", que vira o título.
+**[cena: 01] Gancho**
+Narração: "Às vezes, o cuidado de um paciente pede a opinião de mais de um profissional. E se eles estiverem longe um do outro? É aí que entra a teleinterconsulta."
+Tela: `[texto: mais de um profissional]`. O paciente com a enfermeira da UBS; a câmera se afasta e mostra, longe, um segundo profissional. Uma linha pontilhada liga os dois lugares e entra o título `[texto: Teleinterconsulta]`.
 
 **[cena: 02] O que é**
-Narração: "Teleinterconsulta é quando profissionais de saúde conversam a distância, com o paciente presente."
+Narração: "É quando profissionais de saúde conversam a distância, com o paciente presente."
 Tela: `[texto: entre profissionais de saúde]` `[texto: com o paciente presente]`. Um profissional a distância numa tela (ex.: médico especialista); do outro lado, o paciente junto do profissional que o atende (ex.: enfermeira da UBS). No vertical, tela em cima e dupla embaixo; no horizontal, lado a lado.
 
 **[cena: 03] Para quê**

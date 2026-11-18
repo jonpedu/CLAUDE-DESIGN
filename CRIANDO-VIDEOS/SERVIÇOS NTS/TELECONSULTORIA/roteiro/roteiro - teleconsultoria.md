@@ -9,8 +9,8 @@
 
 ## Narração completa (para gravar no AI Studio)
 
-Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleconsultoria.
-Teleconsultoria é uma consultoria entre profissionais de saúde, feita com o apoio da tecnologia.
+Bateu uma dúvida no trabalho e você queria perguntar a outro profissional de saúde, mesmo a distância? Isso tem nome: teleconsultoria.
+É uma consultoria entre profissionais de saúde, feita com o apoio da tecnologia.
 Ela serve para esclarecer dúvidas sobre procedimentos clínicos, ações de saúde e o processo de trabalho.
 No Telessaúde Maranhão, a teleconsultoria é assíncrona: a dúvida é enviada e a resposta vem depois, em outro momento, por troca de mensagens.
 Teleconsultoria: profissional de saúde apoiando profissional de saúde.
@@ -19,12 +19,12 @@ Teleconsultoria: profissional de saúde apoiando profissional de saúde.
 
 ## Cena a cena
 
-**[cena: 01] Gancho** *(abertura igual em toda a série)*
-Narração: "Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleconsultoria."
-Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em etiquetas que entram e se embaralham. As duas primeiras saem e "Teleconsultoria" cresce e vira o título.
+**[cena: 01] Gancho**
+Narração: "Bateu uma dúvida no trabalho e você queria perguntar a outro profissional de saúde, mesmo a distância? Isso tem nome: teleconsultoria."
+Tela: `[texto: Bateu uma dúvida?]`. Uma enfermeira na UBS, com um ponto de interrogação sobre a cabeça. O "?" vira um balão de mensagem e sai voando pela borda; no lugar dele entra o título `[texto: Teleconsultoria]`.
 
 **[cena: 02] O que é**
-Narração: "Teleconsultoria é uma consultoria entre profissionais de saúde, feita com o apoio da tecnologia."
+Narração: "É uma consultoria entre profissionais de saúde, feita com o apoio da tecnologia."
 Tela: `[texto: entre profissionais de saúde]`. Dois profissionais de saúde (ex.: enfermeira da UBS e médico) ligados por um balão de conversa.
 
 **[cena: 03] Para quê**

@@ -9,8 +9,8 @@
 
 ## Narração completa (para gravar no AI Studio)
 
-Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleconsulta.
-Teleconsulta é uma consulta a distância entre o profissional de saúde e o paciente, feita com o apoio da tecnologia.
+E se a consulta acontecesse sem o paciente e o profissional de saúde estarem na mesma sala? Essa é a teleconsulta.
+É uma consulta a distância entre o profissional de saúde e o paciente, feita com o apoio da tecnologia.
 Nela, eles trocam informações clínicas, resultados de exames e imagens.
 E a teleconsulta pode ter prescrição e emissão de atestado, seguindo as regras do conselho de cada profissão.
 Teleconsulta: profissional de saúde e paciente, mesmo a distância.
@@ -19,12 +19,12 @@ Teleconsulta: profissional de saúde e paciente, mesmo a distância.
 
 ## Cena a cena
 
-**[cena: 01] Gancho** *(abertura igual em toda a série)*
-Narração: "Teleconsulta, teleinterconsulta, teleconsultoria… Parece tudo igual, né? Hoje a gente explica a teleconsulta."
-Tela: `[texto: Teleconsulta]` `[texto: Teleinterconsulta]` `[texto: Teleconsultoria]` em etiquetas que se embaralham. Fica "Teleconsulta", que vira o título.
+**[cena: 01] Gancho**
+Narração: "E se a consulta acontecesse sem o paciente e o profissional de saúde estarem na mesma sala? Essa é a teleconsulta."
+Tela: `[texto: na mesma sala?]`. Paciente e profissional começam lado a lado; a sala se divide ao meio e cada metade é arrastada para um lado. Entre os dois surge uma tela que os liga, e entra o título `[texto: Teleconsulta]`.
 
 **[cena: 02] O que é**
-Narração: "Teleconsulta é uma consulta a distância entre o profissional de saúde e o paciente, feita com o apoio da tecnologia."
+Narração: "É uma consulta a distância entre o profissional de saúde e o paciente, feita com o apoio da tecnologia."
 Tela: `[texto: consulta a distância]` `[texto: profissional de saúde + paciente]`. De um lado, um profissional de saúde numa tela; do outro, o paciente. Entre os dois, uma linha de conexão.
 
 **[cena: 03] O que se troca**

@@ -5,32 +5,27 @@
 
 > **Pendências (a definir com a Amanda)**
 > 1. **Formato:** vertical (9:16), horizontal (16:9) ou os dois. O roteiro funciona nos dois.
-> 2. **Ritmo:** versão **rápida** (esta, cerca de 25 s) ou mais detalhada.
+> 2. **Ritmo:** versão **rápida** (esta, cerca de 20 s) ou mais detalhada.
 
 ## Narração completa (para gravar no AI Studio)
 
-Teleconsulta, teleconsultoria, teleducação… Parece tudo igual, né? Hoje a gente explica a teleducação.
-Teleducação são atividades de aprendizado e troca de conhecimento feitas com o apoio da tecnologia.
-Como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento.
+Aprender e trocar conhecimento pela tela do computador ou do celular? Isso tem nome: teleducação.
+São atividades feitas com o apoio da tecnologia, como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento.
 Teleducação: aprender e trocar conhecimento, mesmo a distância.
 
-*(cerca de 55 palavras, 22 a 25 s)*
+*(cerca de 45 palavras, 18 a 22 s)*
 
 ## Cena a cena
 
-**[cena: 01] Gancho** *(abertura igual em toda a série)*
-Narração: "Teleconsulta, teleconsultoria, teleducação… Parece tudo igual, né? Hoje a gente explica a teleducação."
-Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Teleducação]` em etiquetas que se embaralham. Fica "Teleducação", que vira o título.
+**[cena: 01] Gancho**
+Narração: "Aprender e trocar conhecimento pela tela do computador ou do celular? Isso tem nome: teleducação."
+Tela: `[texto: aprender pela tela?]`. Um celular e um notebook; na tela, pessoas diversas (idade, cor de pele, território) conectadas. A tela cresce até virar o fundo e entra o título `[texto: Teleducação]`.
 
-**[cena: 02] O que é**
-Narração: "Teleducação são atividades de aprendizado e troca de conhecimento feitas com o apoio da tecnologia."
-Tela: `[texto: aprendizado]` `[texto: troca de conhecimento]`. Uma tela de notebook ou celular com várias pessoas conectadas (diversidade de idade, cor de pele e território).
-
-**[cena: 03] Os formatos**
-Narração: "Como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento."
+**[cena: 02] Os formatos**
+Narração: "São atividades feitas com o apoio da tecnologia, como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento."
 Tela: seis etiquetas, uma por fala, crescendo e se reorganizando a cada entrada: `[texto: aulas]` `[texto: cursos]` `[texto: palestras]` `[texto: seminários]` `[texto: fóruns de discussão]` `[texto: reuniões de matriciamento]`.
 
-**[cena: 04] Fecho**
+**[cena: 03] Fecho**
 Narração: "Teleducação: aprender e trocar conhecimento, mesmo a distância."
 Tela: `[texto: Teleducação]` → logo animado do Telessaúde.
 
@@ -38,11 +33,11 @@ Tela: `[texto: Teleducação]` → logo animado do Telessaúde.
 
 | O roteiro diz | A portaria diz |
 | --- | --- |
-| atividades de aprendizado e troca de conhecimento, com apoio da tecnologia | "aulas, cursos, fóruns de discussão, palestras, reuniões de matriciamento e seminários realizados por meio de TDIC" (o roteiro resume a lista nesta frase) |
+| aprender e trocar conhecimento pela tela (gancho); atividades feitas com o apoio da tecnologia | "aulas, cursos, fóruns de discussão, palestras, reuniões de matriciamento e seminários realizados por meio de TDIC" (o gancho resume a lista) |
 | aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento | mesma lista da portaria, em outra ordem |
 
 ## Perguntas para a Amanda
 
-1. "Atividades de aprendizado e troca de conhecimento" resume bem a lista da portaria? Se preferir, a cena 02 pode sair e o vídeo vai direto à lista.
+1. O gancho "aprender e trocar conhecimento pela tela" resume bem a lista da portaria?
 2. Quer explicar o que é matriciamento? A portaria não define o termo; precisaríamos do texto da equipe.
 3. A teleducação do NTS é para quem (profissionais, estudantes, população)? E quer citar onde encontrar os cursos? O roteiro não diz.

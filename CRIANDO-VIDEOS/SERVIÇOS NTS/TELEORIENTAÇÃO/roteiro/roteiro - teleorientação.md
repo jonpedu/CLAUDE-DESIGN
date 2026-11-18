@@ -9,8 +9,8 @@
 
 ## Narração completa (para gravar no AI Studio)
 
-Teleconsulta, teleconsultoria, teleorientação… Parece tudo igual, né? Hoje a gente explica a teleorientação.
-Teleorientação é uma ação de conscientização feita para o cidadão.
+Recebeu uma dica de saúde pelo celular? Isso pode ser teleorientação.
+É uma ação de conscientização feita para o cidadão.
 Ela leva informações e orientações em saúde sobre bem-estar, cuidados em saúde e prevenção de doenças.
 Teleorientação: informação em saúde para você.
 
@@ -18,12 +18,12 @@ Teleorientação: informação em saúde para você.
 
 ## Cena a cena
 
-**[cena: 01] Gancho** *(abertura igual em toda a série)*
-Narração: "Teleconsulta, teleconsultoria, teleorientação… Parece tudo igual, né? Hoje a gente explica a teleorientação."
-Tela: `[texto: Teleconsulta]` `[texto: Teleconsultoria]` `[texto: Teleorientação]` em etiquetas que se embaralham. Fica "Teleorientação", que vira o título.
+**[cena: 01] Gancho**
+Narração: "Recebeu uma dica de saúde pelo celular? Isso pode ser teleorientação."
+Tela: `[texto: dica de saúde no celular?]`. Um celular recebe uma notificação com um ícone de coração; a notificação cresce e vira o título `[texto: Teleorientação]`.
 
 **[cena: 02] O que é**
-Narração: "Teleorientação é uma ação de conscientização feita para o cidadão."
+Narração: "É uma ação de conscientização feita para o cidadão."
 Tela: `[texto: conscientização]` `[texto: para o cidadão]`. Pessoas diversas (idade, cor de pele, território, incluindo o interior do Maranhão) olhando o celular.
 
 **[cena: 03] Sobre o quê**
