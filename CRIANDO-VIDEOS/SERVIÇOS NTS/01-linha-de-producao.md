@@ -13,7 +13,7 @@
 | Telediagnóstico | ~45 s | v2 | Amanda | ✅ **Aprovado** ("achei ótimo"; frase da espirometria aprovada em 20/11) |
 | Teleconsultoria | ~30 s | v2 | Amanda | ✅ **Aprovado** (ok da Amanda na v2, 20/11/2026) |
 | Teleducação | ~28 s | v2 | Amanda | ⏳ **Falta o ok da v2** (público e matriciamento foram reescritos com base no retorno dela) |
-| Teleinterconsulta | ~44 s | v2 | Gyovanna | ⏳ **Aguardando a Gyovanna** (fluxo do NTS: começa com uma teleconsultoria; Genésio Rego retirado a pedido da Amanda) |
+| Teleinterconsulta | ~58 s | v2 | Gyovanna | ⏳ **Aguardando a Gyovanna** (fluxo do NTS: começa com uma teleconsultoria; Genésio Rego retirado a pedido da Amanda) |
 | Telerregulação | ~33 s | v2 | Gyovanna | ⏳ **Aguardando a Gyovanna** (tipo de regulação que o NTS oferece) |
 | Diferença entre os Serviços | ~60 s | v2 | Gyovanna | ⏳ **Aguardando a Gyovanna** |
 

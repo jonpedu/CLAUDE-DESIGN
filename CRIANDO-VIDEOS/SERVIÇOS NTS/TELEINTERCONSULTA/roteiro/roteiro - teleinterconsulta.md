@@ -5,18 +5,18 @@
 
 > **Definido com a Amanda (20/11/2026)**
 > 1. **Formato:** vertical (9:16) primeiro, depois horizontal (16:9). O roteiro funciona nos dois.
-> 2. **Ritmo:** versão rápida (cerca de 44 s).
+> 2. **Ritmo:** versão rápida (cerca de 58 s).
 
 ## Narração completa (para gravar no AI Studio)
 
 Às vezes, o cuidado de um paciente pede a opinião de mais de um profissional. E se eles estiverem longe um do outro? É aí que entra a teleinterconsulta.
 É quando profissionais de saúde conversam a distância, com o paciente presente.
 Eles trocam opiniões e informações clínicas, de exames e de imagens, para ajudar no diagnóstico ou no tratamento.
-No Telessaúde Maranhão, a teleinterconsulta começa com uma teleconsultoria: o profissional da unidade básica envia uma dúvida sobre um paciente e, se o médico precisar ver esse paciente, marca uma teleinterconsulta. Atualmente, a especialidade ofertada é a dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase.
+No Telessaúde Maranhão, a teleinterconsulta começa com uma teleconsultoria. Primeiro, o profissional da Unidade Básica de Saúde envia uma dúvida sobre o paciente e recebe o apoio de um médico especialista. Se, durante essa troca de informações, o médico identificar a necessidade de uma avaliação conjunta, será realizada uma teleinterconsulta: um atendimento em tempo real, com a participação do médico, do profissional da UBS e a presença do paciente, permitindo uma avaliação mais completa e contribuindo para a definição do diagnóstico. Atualmente, essa modalidade é ofertada na especialidade de dermatologia, com foco na confirmação do grau 2 de incapacidade física em pacientes com hanseníase.
 E isso facilita o trabalho em conjunto entre profissionais.
 Teleinterconsulta: profissionais de saúde juntos, com o paciente presente.
 
-*(cerca de 115 palavras, 42 a 46 s)*
+*(cerca de 155 palavras, 56 a 60 s)*
 
 ## Cena a cena
 
@@ -33,8 +33,11 @@ Narração: "Eles trocam opiniões e informações clínicas, de exames e de ima
 Tela: `[texto: opiniões]` `[texto: exames]` `[texto: imagens]` passam pela conexão, e depois `[texto: diagnóstico]` `[texto: tratamento]`.
 
 **[cena: 04] No Telessaúde Maranhão**
-Narração: "No Telessaúde Maranhão, a teleinterconsulta começa com uma teleconsultoria: o profissional da unidade básica envia uma dúvida sobre um paciente e, se o médico precisar ver esse paciente, marca uma teleinterconsulta. Atualmente, a especialidade ofertada é a dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase."
-Tela: `[texto: começa com uma teleconsultoria]`. O profissional da UBS envia um balão de mensagem com a dúvida; o médico lê e marca a consulta (ícone de calendário). A janela de mensagens vira a chamada com o paciente presente (`metamorfose`). Depois entram `[texto: dermatologia]` `[texto: hanseníase]` `[texto: confirmação do grau 2 de incapacidade física]`. Ícone de pele com lupa, sem imagem de lesão, para não estigmatizar.
+Narração: "No Telessaúde Maranhão, a teleinterconsulta começa com uma teleconsultoria. Primeiro, o profissional da Unidade Básica de Saúde envia uma dúvida sobre o paciente e recebe o apoio de um médico especialista. Se, durante essa troca de informações, o médico identificar a necessidade de uma avaliação conjunta, será realizada uma teleinterconsulta: um atendimento em tempo real, com a participação do médico, do profissional da UBS e a presença do paciente, permitindo uma avaliação mais completa e contribuindo para a definição do diagnóstico. Atualmente, essa modalidade é ofertada na especialidade de dermatologia, com foco na confirmação do grau 2 de incapacidade física em pacientes com hanseníase."
+Tela, em três momentos que acompanham a fala:
+1. `[texto: começa com uma teleconsultoria]`. O profissional da UBS envia um balão de mensagem com a dúvida; chega o balão de resposta do `[texto: médico especialista]`.
+2. Em "avaliação conjunta", a janela de mensagens vira a chamada de vídeo (`metamorfose`): `[texto: em tempo real]` e os três juntos na tela, `[texto: médico + profissional da UBS + paciente]`. Na parte final da frase, `[texto: avaliação mais completa]` `[texto: diagnóstico]`.
+3. `[texto: dermatologia]` `[texto: hanseníase]` `[texto: confirmação do grau 2 de incapacidade física]`. Ícone de pele com lupa, sem imagem de lesão, para não estigmatizar.
 
 **[cena: 05] Trabalho em conjunto**
 Narração: "E isso facilita o trabalho em conjunto entre profissionais."
@@ -53,7 +56,7 @@ Tela: `[texto: Teleinterconsulta]` → logo animado do Telessaúde.
 | trocam opiniões e informações clínicas, de exames e de imagens | "troca de opiniões e informações clínicas, laboratoriais e de imagens" |
 | para ajudar no diagnóstico ou no tratamento | "para auxílio diagnóstico ou terapêutico" |
 | facilita o trabalho em conjunto entre profissionais | "facilitando a atuação interprofissional" |
-| no NTS: a teleinterconsulta começa com uma teleconsultoria, que evolui para teleinterconsulta quando o médico precisa ver o paciente; especialidade atual: dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase | informação da equipe (Amanda, 20/11/2026); não está na portaria |
+| no NTS: começa com uma teleconsultoria (dúvida da UBS respondida por médico especialista); se o médico identificar a necessidade de avaliação conjunta, faz-se a teleinterconsulta em tempo real com médico, profissional da UBS e paciente presente; especialidade atual: dermatologia, confirmação do grau 2 de incapacidade física na hanseníase | texto da cena 4 enviado pela equipe (20/11/2026); a portaria pede "presença do paciente" e fala em "auxílio diagnóstico" |
 
 ## Perguntas para a Gyovanna
 
