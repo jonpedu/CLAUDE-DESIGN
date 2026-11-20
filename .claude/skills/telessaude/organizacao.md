@@ -41,6 +41,7 @@ Antes, o vídeo-base era montado no Canva e finalizado no Premiere Pro. Agora o 
 - **Arquivos de trabalho** (quadros-chave para aprovação, cenas intermediárias, máscara de área segura, plano cronometrado, `.srt`) em `renderizando/_claude/`. Assim o usuário encontra o que é dele sem misturar.
 - **Estado do vídeo** em `renderizando/_claude/00-estado.md`: versão atual, final aprovado, próximo passo e decisões só deste vídeo. Atualize a cada entrega; o `CLAUDE.md` da raiz guarda só um índice curto. Vídeo novo: `py ferramentas/novo_video.py "<pasta>" <TEMA>` cria as pastas e esse arquivo.
 - Nada é gravado em `audios/`, `roteiro/`, `elementos/` ou `trilha sonora/`: são pastas de entrada.
+- **Só tocar no que mudou (regra do usuário, 20/11/2026).** O usuário escolhe o que enviar ou revisar pela **data de modificação**. Ao atualizar roteiros, HTML ou pastas de envio (ex.: `roteiros para enviar/`), regenere e copie **só os arquivos cujo conteúdo mudou**; nunca apague e recopie a pasta inteira, nem regenere tudo de uma vez. Não faça ajustes pequenos sem necessidade em documentos que ainda estão em validação: espere o retorno e junte as mudanças.
 
 ## Conferência do pacote (primeiro passo de todo vídeo)
 
