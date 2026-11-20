@@ -17,7 +17,7 @@ Acompanhamento online: documento "Vídeos novos a produzir", seção 1 (https://
 - [x] Definir o formato: vertical primeiro, depois horizontal
 - [x] Definir o ritmo: versão rápida (telediagnóstico ~40 s)
 - [x] Roteiros v2 (20/11/2026): teleconsultoria (cena 4), telediagnóstico (exames e parcerias), teleducação (público e matriciamento), formato em todos
-- [ ] Reenviar os v2 para a Amanda (pasta `roteiros para enviar/`)
+- [x] Reenviar os v2 para a Amanda (pasta `roteiros para enviar/`, 20/11/2026)
 - [ ] Respostas às perguntas que restam em cada roteiro
 - [ ] Roteiros aprovados
 - [ ] Definir se os vídeos novos substituem os recortes atuais do vídeo institucional do NTS
