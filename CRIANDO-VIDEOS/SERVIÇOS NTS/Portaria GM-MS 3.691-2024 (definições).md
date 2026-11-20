@@ -10,7 +10,7 @@ Definições conforme enviadas pela Amanda (equipe NTS). A narração e o texto 
 | Serviço | NTS oferece? | Observação |
 | --- | --- | --- |
 | Teleconsultoria | sim | **só assíncrona**; o NTS não faz teleconsultoria síncrona |
-| Teleconsulta | sim | |
+| Teleconsulta | **ainda não** | há uma proposta de implementação (20/11/2026). O roteiro existe como se o NTS oferecesse, para explicar a diferença entre os serviços; ele só explica a definição, sem afirmar que o NTS oferece |
 | Teleinterconsulta | sim | |
 | Telediagnóstico | sim | |
 | Teleducação | sim | |
@@ -59,7 +59,7 @@ Vieram da Amanda (e da Ariane, sobre a teleducação) em 20/11/2026. Miniaturas 
 - **Formato da série:** vertical (9:16) primeiro, depois horizontal (16:9). **Ritmo:** versão rápida.
 - **Telediagnóstico no NTS:** telerretinografia, em parceria com a Universidade Federal de Goiás (UFG); eletrocardiograma, com a Universidade Federal de Minas Gerais (UFMG); o núcleo avança na incorporação da tele-espirometria, também com a UFMG. Para o vídeo não envelhecer, não usar "em fase de treinamento"; a frase aprovada (20/11/2026) fala em "avança na incorporação".
 - **Teleducação:** público-alvo são os profissionais de saúde, principalmente da atenção primária à saúde, e estudantes. A população pode assistir, mas não é o foco. Linguagem pode ser mais técnica.
-- **Teleinterconsulta no NTS:** os casos chegam por dois caminhos: (1) pela agenda do Hospital Genésio Rego, que marca e repassa ao NTS (as confirmações do grau 2 de incapacidade física, GIF 2, correm em paralelo a essa agenda); (2) a partir de uma teleconsultoria: o profissional da UBS faz uma solicitação sobre um paciente específico e, se o médico que responde precisar ver o paciente, marca uma teleinterconsulta. Não é o profissional da UBS que pede direto para conversar com o médico. Especialidade atual: dermatologia, nos casos de hanseníase. O jeito de fazer é particular de cada núcleo. Nome do hospital conforme notícia do portal da UFMA (03/10/2025): https://portalpadrao.ufma.br/dted/noticias/telessaude-ufma-entrega-equipamento-ao-hospital-genesio-rego-para-teleinterconsultas-voltadas-ao-projeto-hanseniase-em-foco
+- **Teleinterconsulta no NTS:** no vídeo, só o caminho que vem da teleconsultoria: o profissional da UBS faz uma solicitação sobre um paciente específico e, se o médico que responde precisar ver o paciente, marca uma teleinterconsulta. Não é o profissional da UBS que pede direto para conversar com o médico. Especialidade atual: dermatologia, nos casos de hanseníase (confirmação do GIF 2). Os casos que vêm da agenda do Hospital Genésio Rego **não entram nos vídeos** enquanto o acordo de cooperação não for assinado (pedido da Amanda, 20/11/2026). O jeito de fazer é particular de cada núcleo.
 - **Gyovanna:** acompanha a teleinterconsulta e a telerregulação; a Amanda indicou que ela valide esses roteiros e o "Diferença entre os Serviços" (há muitos tipos de regulação, e a teleinterconsulta muda de núcleo para núcleo).
 - **Teleorientação:** voltada à população em geral, com linguagem acessível e menos técnica.
 - **Reunião de matriciamento:** encontro entre equipes da atenção primária à saúde (Saúde da Família) para discutir e planejar ações. Termo técnico pouco conhecido, embora a prática seja frequente: vale explicar.

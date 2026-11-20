@@ -5,18 +5,18 @@
 
 > **Definido com a Amanda (20/11/2026)**
 > 1. **Formato:** vertical (9:16) primeiro, depois horizontal (16:9). O roteiro funciona nos dois.
-> 2. **Ritmo:** versão rápida (cerca de 48 s).
+> 2. **Ritmo:** versão rápida (cerca de 44 s).
 
 ## Narração completa (para gravar no AI Studio)
 
 Às vezes, o cuidado de um paciente pede a opinião de mais de um profissional. E se eles estiverem longe um do outro? É aí que entra a teleinterconsulta.
 É quando profissionais de saúde conversam a distância, com o paciente presente.
 Eles trocam opiniões e informações clínicas, de exames e de imagens, para ajudar no diagnóstico ou no tratamento.
-No Telessaúde Maranhão, os casos chegam por dois caminhos: pela agenda do Hospital Genésio Rego, ou a partir de uma teleconsultoria, quando o profissional da unidade básica envia uma dúvida sobre um paciente e o médico, se precisar ver esse paciente, marca uma teleinterconsulta. Atualmente, a especialidade ofertada é a dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase.
+No Telessaúde Maranhão, a teleinterconsulta começa com uma teleconsultoria: o profissional da unidade básica envia uma dúvida sobre um paciente e, se o médico precisar ver esse paciente, marca uma teleinterconsulta. Atualmente, a especialidade ofertada é a dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase.
 E isso facilita o trabalho em conjunto entre profissionais.
 Teleinterconsulta: profissionais de saúde juntos, com o paciente presente.
 
-*(cerca de 125 palavras, 46 a 50 s)*
+*(cerca de 115 palavras, 42 a 46 s)*
 
 ## Cena a cena
 
@@ -33,8 +33,8 @@ Narração: "Eles trocam opiniões e informações clínicas, de exames e de ima
 Tela: `[texto: opiniões]` `[texto: exames]` `[texto: imagens]` passam pela conexão, e depois `[texto: diagnóstico]` `[texto: tratamento]`.
 
 **[cena: 04] No Telessaúde Maranhão**
-Narração: "No Telessaúde Maranhão, os casos chegam por dois caminhos: pela agenda do Hospital Genésio Rego, ou a partir de uma teleconsultoria, quando o profissional da unidade básica envia uma dúvida sobre um paciente e o médico, se precisar ver esse paciente, marca uma teleinterconsulta. Atualmente, a especialidade ofertada é a dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase."
-Tela: dois caminhos entram lado a lado (horizontal) ou um em cima do outro (vertical): `[texto: agenda do Hospital Genésio Rego]`, com um ícone de hospital e um calendário; e `[texto: a partir de uma teleconsultoria]`, em que o profissional da UBS envia um balão de mensagem e o médico lê e marca a consulta (ícone de calendário). Os dois caminhos se juntam e a janela vira a chamada com o paciente presente (`metamorfose`). Depois entram `[texto: dermatologia]` `[texto: hanseníase]` `[texto: confirmação do grau 2 de incapacidade física]`. Ícone de pele com lupa, sem imagem de lesão, para não estigmatizar.
+Narração: "No Telessaúde Maranhão, a teleinterconsulta começa com uma teleconsultoria: o profissional da unidade básica envia uma dúvida sobre um paciente e, se o médico precisar ver esse paciente, marca uma teleinterconsulta. Atualmente, a especialidade ofertada é a dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase."
+Tela: `[texto: começa com uma teleconsultoria]`. O profissional da UBS envia um balão de mensagem com a dúvida; o médico lê e marca a consulta (ícone de calendário). A janela de mensagens vira a chamada com o paciente presente (`metamorfose`). Depois entram `[texto: dermatologia]` `[texto: hanseníase]` `[texto: confirmação do grau 2 de incapacidade física]`. Ícone de pele com lupa, sem imagem de lesão, para não estigmatizar.
 
 **[cena: 05] Trabalho em conjunto**
 Narração: "E isso facilita o trabalho em conjunto entre profissionais."
@@ -53,10 +53,13 @@ Tela: `[texto: Teleinterconsulta]` → logo animado do Telessaúde.
 | trocam opiniões e informações clínicas, de exames e de imagens | "troca de opiniões e informações clínicas, laboratoriais e de imagens" |
 | para ajudar no diagnóstico ou no tratamento | "para auxílio diagnóstico ou terapêutico" |
 | facilita o trabalho em conjunto entre profissionais | "facilitando a atuação interprofissional" |
-| no NTS: os casos chegam pela agenda do Hospital Genésio Rego ou a partir de uma teleconsultoria que evolui para teleinterconsulta; especialidade atual: dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase | informação da equipe (Amanda, 20/11/2026); nome do hospital conforme notícia do portal da UFMA (03/10/2025); não está na portaria |
+| no NTS: a teleinterconsulta começa com uma teleconsultoria, que evolui para teleinterconsulta quando o médico precisa ver o paciente; especialidade atual: dermatologia, para confirmar o grau 2 de incapacidade física em pacientes com hanseníase | informação da equipe (Amanda, 20/11/2026); não está na portaria |
 
 ## Perguntas para a Gyovanna
 
-1. O fluxo da cena 4 está certo: os casos chegam pela agenda do Hospital Genésio Rego ou a partir de uma teleconsultoria, que evolui para teleinterconsulta quando o médico precisa ver o paciente?
-2. O nome da unidade está certo: "Hospital Genésio Rego"? É o nome usado na notícia do portal da UFMA de 03/10/2025.
-3. Só para confirmar: durante a teleinterconsulta, o paciente fica na UBS, com o profissional que o atende, falando com o médico a distância?
+1. O fluxo da cena 4 está certo: a teleinterconsulta começa com uma teleconsultoria e evolui para teleinterconsulta quando o médico precisa ver o paciente?
+2. Só para confirmar: durante a teleinterconsulta, o paciente fica na UBS, com o profissional que o atende, falando com o médico a distância?
+
+## Observações
+
+- **Hospital Genésio Rego fora do roteiro (pedido da Amanda, 20/11/2026):** a versão anterior citava a agenda do Hospital Genésio Rego como um segundo caminho para a teleinterconsulta. A menção foi retirada porque o hospital ainda não assinou o acordo de cooperação com o NTS. Ficou só o caminho que vem da teleconsultoria.
