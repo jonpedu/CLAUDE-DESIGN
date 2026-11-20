@@ -1,6 +1,6 @@
 # Diferença entre os Serviços
 
-**Série:** Serviços do Telessaúde Maranhão (NTS-UFMA) · **Tipo:** institucional · **Roteiro v2, 20/11/2026, para validação**
+**Série:** Serviços do Telessaúde Maranhão (NTS-UFMA) · **Tipo:** institucional · **Roteiro v2, 20/11/2026, para validação com a Gyovanna**
 **Base:** Portaria GM/MS nº 3.691, de 23 de maio de 2024, arts. I, III, IV, VI, VII, VIII e IX
 **Ênfase:** teleconsulta, teleinterconsulta e teleconsultoria, os nomes que mais confundem.
 
@@ -86,8 +86,8 @@ Logo animado do Telessaúde (arquivo da equipe), sem narração.
 | no NTS, por troca de mensagens, sem que os profissionais precisem estar conectados ao mesmo tempo | assíncrona: "comunicações não simultâneas, como correio eletrônico ou troca de mensagens por aplicativos"; no NTS, só assíncrona (informação da equipe) |
 | o NTS também oferece telediagnóstico, teleducação, telerregulação e teleorientação | lista de serviços do NTS enviada pela equipe (teletriagem e telemonitoramento ficam de fora) |
 
-## Perguntas para a Amanda
+## Perguntas para a Gyovanna
 
-1. Na teleinterconsulta do NTS, o paciente fica na UBS com o profissional que o atende? A cena 02 mostra assim.
+1. A cena 02 mostra a teleinterconsulta de forma geral, como na portaria: o médico a distância e o paciente na UBS, com o profissional que o atende. Está de acordo com o jeito como o NTS faz? (O fluxo detalhado do NTS fica no vídeo de teleinterconsulta.)
 2. Na teleconsulta do NTS, quem atende pode ser outro profissional além do médico? A cena 03 usa o médico da tela, mas a narração diz "profissional".
 3. Quer que o vídeo termine indicando os vídeos de cada serviço (ex.: "Confira os vídeos de cada um")? Só se forem publicados juntos.

@@ -19,7 +19,7 @@ Acompanhamento online: documento "Vídeos novos a produzir", seção 1 (https://
 - [x] Roteiros v2 (20/11/2026): teleconsultoria (cena 4), telediagnóstico (exames e parcerias), teleducação (público e matriciamento), formato em todos
 - [x] Reenviar os v2 para a Amanda (pasta `roteiros para enviar/`, 20/11/2026)
 - [x] Retorno da Amanda sobre teleinterconsulta, teleorientação e telerregulação (20/11/2026)
-- [ ] Validar o roteiro de telerregulação com a Gyovanna (enviado em 20/11/2026)
+- [ ] Validar com a Gyovanna os roteiros de teleinterconsulta, telerregulação e Diferença entre os Serviços
 - [ ] Respostas às perguntas que restam em cada roteiro
 - [ ] Roteiros aprovados
 - [ ] Definir se os vídeos novos substituem os recortes atuais do vídeo institucional do NTS
