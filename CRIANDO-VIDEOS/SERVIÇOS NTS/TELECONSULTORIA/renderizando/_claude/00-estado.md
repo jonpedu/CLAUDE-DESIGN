@@ -2,10 +2,10 @@
 
 Criado em 17/11/2026. Atualize a cada entrega; o histórico detalhado fica em `TELECONSULTORIA - estudo da edição.md`.
 
-- **Formato e tipo:** institucional; formato a definir com a Amanda (9:16, 16:9 ou os dois)
+- **Formato e tipo:** institucional; vertical (9:16) primeiro, depois horizontal (16:9)
 - **Versão atual:** nenhuma
 - **Final aprovado:** nenhum
-- **Próximo passo:** roteiro v1 (17/11/2026) em validação com a Amanda; checklist da série em `../../../00-checklist.md`
+- **Próximo passo:** roteiro v2 (20/11/2026) em validação com a Amanda; formato vertical primeiro, depois horizontal; checklist da série em `../../../00-checklist.md`
 
 ## Pacote (conferência)
 

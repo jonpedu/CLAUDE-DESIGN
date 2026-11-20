@@ -54,4 +54,6 @@ Antes de qualquer edição, liste o que existe e aponte o que falta. Os nomes da
 - [ ] Trilha escolhida (ou candidatas) e efeitos sonoros
 - [ ] Logo animado / som de logo do fechamento, se o vídeo-base não os tiver
 
+Antes da conferência, **peça ao usuário a lista completa de assets do vídeo**, cena a cena (regra de 20/11/2026 em `SKILL.md`); o que faltar, pesquise e sugira (com link e licença) para baixar em `elementos/` após o ok dele.
+
 Faltando um elemento de marca, **pergunte**: não crie um substituto. Mesmo com tudo presente, **mostre ao usuário o arquivo escolhido para cada item obrigatório e espere a confirmação** antes de montar (regra em `SKILL.md`).

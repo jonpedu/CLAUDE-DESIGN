@@ -1,11 +1,11 @@
 # Telerregulação
 
-**Série:** Serviços do Telessaúde Maranhão (NTS-UFMA) · **Tipo:** institucional · **Roteiro v1, 17/11/2026, para validação**
+**Série:** Serviços do Telessaúde Maranhão (NTS-UFMA) · **Tipo:** institucional · **Roteiro v2, 20/11/2026, para validação**
 **Base:** Portaria GM/MS nº 3.691, de 23 de maio de 2024, art. VIII (telerregulação)
 
-> **Pendências (a definir com a Amanda)**
-> 1. **Formato:** vertical (9:16), horizontal (16:9) ou os dois. O roteiro funciona nos dois.
-> 2. **Ritmo:** versão **rápida** (esta, cerca de 33 s) ou mais detalhada.
+> **Definido com a Amanda (20/11/2026)**
+> 1. **Formato:** vertical (9:16) primeiro, depois horizontal (16:9). O roteiro funciona nos dois.
+> 2. **Ritmo:** versão rápida (cerca de 33 s).
 
 ## Narração completa (para gravar no AI Studio)
 

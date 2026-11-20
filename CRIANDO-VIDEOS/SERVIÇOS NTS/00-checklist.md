@@ -13,15 +13,18 @@ Acompanhamento online: documento "Vídeos novos a produzir", seção 1 (https://
 
 ## Etapa 2: validação com a Amanda
 
-- [ ] Enviar os 8 roteiros (.html) para a Amanda
-- [ ] Definir o formato: vertical, horizontal ou os dois
-- [ ] Definir o ritmo: bem rápido (versão escrita) ou mais detalhado
-- [ ] Respostas às perguntas de cada roteiro (seção "Perguntas para a Amanda")
-- [ ] Roteiros ajustados (v2) e aprovados
+- [x] Enviar os 8 roteiros (.html) para a Amanda (v1, retorno em 20/11/2026)
+- [x] Definir o formato: vertical primeiro, depois horizontal
+- [x] Definir o ritmo: versão rápida (telediagnóstico ~40 s)
+- [x] Roteiros v2 (20/11/2026): teleconsultoria (cena 4), telediagnóstico (exames e parcerias), teleducação (público e matriciamento), formato em todos
+- [ ] Reenviar os v2 para a Amanda (pasta `roteiros para enviar/`)
+- [ ] Respostas às perguntas que restam em cada roteiro
+- [ ] Roteiros aprovados
 - [ ] Definir se os vídeos novos substituem os recortes atuais do vídeo institucional do NTS
 
 ## Etapa 3: pacote de cada vídeo
 
+- [ ] **Pedir ao usuário todos os assets de cada vídeo**, cena a cena; o que faltar, pesquisar e sugerir para baixar (regra de 20/11/2026)
 - [ ] Narração gravada no AI Studio (texto da seção "Narração completa" do roteiro aprovado)
 - [ ] Cenas/personagens do Flow (motion design + flat design)
 - [ ] Régua e fechamento (logo animado) confirmados com o usuário

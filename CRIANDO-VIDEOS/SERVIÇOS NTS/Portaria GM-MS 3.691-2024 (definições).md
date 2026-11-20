@@ -52,7 +52,13 @@ IX - **teleorientação:** ação de conscientização sobre bem-estar, cuidados
 | Teleorientação | `TELEORIENTAÇÃO/roteiro/roteiro - teleorientação.md` |
 | Diferença entre os Serviços | `DIFERENÇA ENTRE OS SERVIÇOS/roteiro/roteiro - diferença entre os serviços.md` |
 
-## Pendências da série (a definir com a Amanda)
+## Informações da equipe (não estão na portaria)
 
-1. **Formato:** vertical (9:16), horizontal (16:9) ou os dois.
-2. **Ritmo:** bem rápido (tendência do usuário; versão escrita) ou mais detalhado.
+Vieram da Amanda (e da Ariane, sobre a teleducação) em 20/11/2026. Podem entrar nos roteiros, marcadas na conferência como "informação da equipe".
+
+- **Formato da série:** vertical (9:16) primeiro, depois horizontal (16:9). **Ritmo:** versão rápida.
+- **Telediagnóstico no NTS:** retinografia, em parceria com a Universidade Federal de Goiás (UFG); eletrocardiograma, com a Universidade Federal de Minas Gerais (UFMG); espirometria, também com a UFMG, em fase de treinamento para implantação nos municípios do Maranhão. Retinografia e eletrocardiograma são os mais avançados.
+- **Teleducação:** público-alvo são os profissionais de saúde, principalmente da atenção primária à saúde, e estudantes. A população pode assistir, mas não é o foco. Linguagem pode ser mais técnica.
+- **Teleorientação:** voltada à população em geral, com linguagem acessível e menos técnica.
+- **Reunião de matriciamento:** encontro entre equipes da atenção primária à saúde (Saúde da Família) para discutir e planejar ações. Termo técnico pouco conhecido, embora a prática seja frequente: vale explicar.
+- **Teleconsultoria:** evitar frases que deem a entender que a resposta demora ("a resposta vem depois"); o assíncrono é apresentado como "sem que os profissionais precisem estar conectados ao mesmo tempo".
