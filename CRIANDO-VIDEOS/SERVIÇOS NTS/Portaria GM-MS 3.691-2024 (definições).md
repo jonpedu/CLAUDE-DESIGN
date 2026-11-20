@@ -54,11 +54,13 @@ IX - **teleorientação:** ação de conscientização sobre bem-estar, cuidados
 
 ## Informações da equipe (não estão na portaria)
 
-Vieram da Amanda (e da Ariane, sobre a teleducação) em 20/11/2026. Podem entrar nos roteiros, marcadas na conferência como "informação da equipe".
+Vieram da Amanda (e da Ariane, sobre a teleducação) em 20/11/2026. Miniaturas das teleorientações publicadas aprovadas para o vídeo de teleorientação. Podem entrar nos roteiros, marcadas na conferência como "informação da equipe".
 
 - **Formato da série:** vertical (9:16) primeiro, depois horizontal (16:9). **Ritmo:** versão rápida.
 - **Telediagnóstico no NTS:** retinografia, em parceria com a Universidade Federal de Goiás (UFG); eletrocardiograma, com a Universidade Federal de Minas Gerais (UFMG); espirometria, também com a UFMG, em fase de treinamento para implantação nos municípios do Maranhão. Retinografia e eletrocardiograma são os mais avançados.
 - **Teleducação:** público-alvo são os profissionais de saúde, principalmente da atenção primária à saúde, e estudantes. A população pode assistir, mas não é o foco. Linguagem pode ser mais técnica.
+- **Teleinterconsulta no NTS:** o paciente fica na UBS com o profissional da atenção básica (enfermeiro ou médico), que solicita a teleinterconsulta com um médico a distância. Especialidade atual: dermatologia, nos casos de hanseníase, para confirmar o grau 2 de incapacidade física (GIF 2).
+- **Telerregulação:** a Amanda indicou a Gyovanna para validar o roteiro (há muitos tipos de regulação).
 - **Teleorientação:** voltada à população em geral, com linguagem acessível e menos técnica.
 - **Reunião de matriciamento:** encontro entre equipes da atenção primária à saúde (Saúde da Família) para discutir e planejar ações. Termo técnico pouco conhecido, embora a prática seja frequente: vale explicar.
 - **Teleconsultoria:** evitar frases que deem a entender que a resposta demora ("a resposta vem depois"); o assíncrono é apresentado como "sem que os profissionais precisem estar conectados ao mesmo tempo".

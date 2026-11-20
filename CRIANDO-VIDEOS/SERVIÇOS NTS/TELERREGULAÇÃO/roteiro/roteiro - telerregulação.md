@@ -1,6 +1,6 @@
 # Telerregulação
 
-**Série:** Serviços do Telessaúde Maranhão (NTS-UFMA) · **Tipo:** institucional · **Roteiro v2, 20/11/2026, para validação**
+**Série:** Serviços do Telessaúde Maranhão (NTS-UFMA) · **Tipo:** institucional · **Roteiro v2, 20/11/2026, para validação com a Gyovanna** (indicada pela Amanda)
 **Base:** Portaria GM/MS nº 3.691, de 23 de maio de 2024, art. VIII (telerregulação)
 
 > **Definido com a Amanda (20/11/2026)**
@@ -51,9 +51,10 @@ Tela: `[texto: Telerregulação]` → logo animado do Telessaúde.
 | diminuir o tempo e as filas de espera | "redução dos tempos e filas de espera" |
 | (não citado, por ser versão rápida) | "em consonância com as diretrizes da Política Nacional de Regulação do SUS" |
 
-## Perguntas para a Amanda
+## Perguntas para a Gyovanna
 
-1. "O caminho dos atendimentos na rede" está bom para explicar "fluxos assistenciais"?
-2. "Resolver mais casos" está bom para "aumento da resolubilidade"?
-3. Quer citar a Política Nacional de Regulação do SUS? Na versão detalhada, cabe uma linha.
-4. Quer dizer a quais atendimentos ou especialidades a telerregulação do NTS se aplica? Precisaríamos do texto exato.
+1. Que tipo de regulação o Telessaúde Maranhão oferece, e em quais situações?
+2. "O caminho dos atendimentos na rede" está bom para explicar "fluxos assistenciais"?
+3. "Resolver mais casos" está bom para "aumento da resolubilidade"?
+4. Quer citar a Política Nacional de Regulação do SUS?
+5. Quer dizer a quais atendimentos ou especialidades a telerregulação do NTS se aplica?

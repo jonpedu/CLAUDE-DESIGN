@@ -29,7 +29,7 @@ Tela: `[texto: conscientização]` `[texto: para o cidadão]`. Pessoas diversas 
 **[cena: 03] Sobre o quê**
 Narração: "Ela leva informações e orientações em saúde sobre bem-estar, cuidados em saúde e prevenção de doenças."
 Tela: `[texto: informações e orientações]` e, em sequência, `[texto: bem-estar]` `[texto: cuidados em saúde]` `[texto: prevenção de doenças]`, cada uma com um ícone.
-Sugestão visual *(depende de aprovação)*: miniaturas dos vídeos de teleorientação já publicados pelo NTS (ex.: AVC, Infarto) passando no celular.
+Visual: miniaturas dos vídeos de teleorientação já publicados pelo NTS (ex.: AVC, Infarto) passando no celular *(aprovado pela Amanda)*.
 
 **[cena: 04] Fecho**
 Narração: "Teleorientação: informação em saúde para você."
@@ -42,8 +42,3 @@ Tela: `[texto: Teleorientação]` → logo animado do Telessaúde.
 | ação de conscientização feita para o cidadão | "ação de conscientização … direcionadas ao cidadão" |
 | leva informações e orientações em saúde | "por meio da disseminação de informações e orientações em saúde" |
 | sobre bem-estar, cuidados em saúde e prevenção de doenças | "sobre bem-estar, cuidados em saúde e prevenção de doenças" |
-
-## Perguntas para a Amanda
-
-1. Podemos mostrar as miniaturas dos vídeos de teleorientação do NTS (AVC, Infarto etc.) como exemplo?
-2. Quer uma chamada para seguir o @telessaude.ma e o canal do YouTube? A portaria não trata disso; é decisão da equipe.
