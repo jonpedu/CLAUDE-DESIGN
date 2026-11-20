@@ -11,11 +11,10 @@
 
 Você é profissional ou estudante da área da saúde? Dá para aprender e trocar conhecimento pela tela do computador ou do celular. Isso é teleducação.
 O foco são os profissionais de saúde, principalmente os que atuam na atenção primária.
-São atividades feitas com o apoio da tecnologia, como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento.
-E a reunião de matriciamento, que consiste em um encontro entre as equipes da atenção primária à saúde para discutir e planejar ações.
+São atividades feitas com o apoio da tecnologia, como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento, que são encontros entre as equipes da atenção primária à saúde para discutir e planejar ações.
 Teleducação: conhecimento para quem cuida da saúde.
 
-*(cerca de 80 palavras, 28 a 32 s)*
+*(cerca de 75 palavras, 27 a 30 s)*
 
 ## Cena a cena
 
@@ -28,11 +27,11 @@ Narração: "O foco são os profissionais de saúde, principalmente os que atuam
 Tela: `[texto: atenção primária à saúde]`, com uma UBS ilustrada; os profissionais do gancho se juntam em frente a ela.
 
 **[cena: 03] Os formatos**
-Narração: "São atividades feitas com o apoio da tecnologia, como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento."
+Narração: "São atividades feitas com o apoio da tecnologia, como aulas, cursos, palestras, seminários, fóruns de discussão e reuniões de matriciamento,"
 Tela: seis etiquetas, uma por fala, crescendo e se reorganizando a cada entrada: `[texto: aulas]` `[texto: cursos]` `[texto: palestras]` `[texto: seminários]` `[texto: fóruns de discussão]` `[texto: reuniões de matriciamento]`.
 
 **[cena: 04] O que é matriciamento**
-Narração: "E a reunião de matriciamento, que consiste em um encontro entre as equipes da atenção primária à saúde para discutir e planejar ações."
+Narração: "…que são encontros entre as equipes da atenção primária à saúde para discutir e planejar ações." *(continuação da frase da cena 03, sem pausa)*
 Tela: a etiqueta `[texto: reuniões de matriciamento]` cresce e vai para o centro (`continuidade`), as outras encolhem para os cantos, e embaixo entram `[texto: equipes da atenção primária]` `[texto: discutir e planejar ações]`. Duas equipes pequenas, em telas, conversando.
 
 **[cena: 05] Fecho**
