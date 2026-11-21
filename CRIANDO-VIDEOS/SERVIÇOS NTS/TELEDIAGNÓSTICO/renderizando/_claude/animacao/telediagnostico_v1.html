@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Telediagnóstico (Serviços do NTS) · v1 · 9:16 · mapa de cenas em ../01-mapa-de-cenas.md
+     Fio condutor: a LINHA entre dois alfinetes (aqui ↔ lá). C1 liga os dois → C2 estica (a distância) → C3 fica em pé: dados sobem,
+     laudo desce → C4 exames + mapa do Maranhão com alfinetes → C5 de lugar (alfinetes) / de tempo (relógio) → C6 o laudo chega.
+     Render: node ferramentas/animar.mjs <esta página> <saida.mp4>   ·   provas: FOTOS="t1,t2" node ferramentas/animar.mjs <página> <pasta> -->
+<script src="../camadas/mapa_br.js"></script>
+<style>
+  #fundo { position: absolute; inset: 0; background: #fff; overflow: hidden; }
+  .mancha { position: absolute; left: 0; top: 0; width: 900px; height: 900px; border-radius: 50%; filter: blur(90px); }
+  #fundo::after { content: ''; position: absolute; inset: -60px; background-image: radial-gradient(rgba(54,93,204,.16) 2.4px, transparent 3px);
+    background-size: 48px 48px; -webkit-mask-image: radial-gradient(ellipse at 50% 45%, transparent 38%, #000 82%); mask-image: radial-gradient(ellipse at 50% 45%, transparent 38%, #000 82%);
+    transform: translate(var(--dx, 0px), var(--dy, 0px)); }
+  svg.cheia { position: absolute; left: 0; top: 0; overflow: visible; }
+  .el { position: absolute; left: 0; top: 0; will-change: transform; }
+  .etq { background: #fff; color: #1C306A; font-weight: 700; font-size: 54px; line-height: 1.1; padding: 16px 32px; border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(28,48,106,.16); white-space: nowrap; text-align: center; }
+  .etq.solida { background: #365DCC; color: #fff; }
+  .etq.verde { background: #19756F; color: #fff; }
+  .etq.borda { border: 4px solid #365DCC; }
+  .pino { width: 120px; height: 156px; }
+  .card { background: #fff; border-radius: 40px; box-shadow: 0 22px 50px rgba(28,48,106,.16); border: 2px solid #E2E6ED;
+    width: 600px; height: 560px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+  .card .ic { width: 250px; height: 250px; border-radius: 50%; background: #E3E8F8; display: flex; align-items: center; justify-content: center; }
+  .card .ic svg { width: 170px; height: 170px; }
+  .card .nome { font-weight: 800; font-size: 58px; color: #1C306A; letter-spacing: -.5px; white-space: nowrap; }
+  .card .parc { display: flex; align-items: center; gap: 18px; height: 84px; font-weight: 700; font-size: 50px; color: #365DCC; }
+  .card .parc img { height: 84px; }
+  .card.tracejado { background: rgba(255,255,255,.7); border: 5px dashed #365DCC; box-shadow: none; }
+  .mini { width: 210px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .mini .q { width: 170px; height: 170px; border-radius: 34px; background: #fff; box-shadow: 0 14px 34px rgba(28,48,106,.18); display: flex; align-items: center; justify-content: center; }
+  .mini .q svg { width: 110px; height: 110px; }
+  .mini .tx { font-weight: 700; font-size: 42px; color: #1C306A; background: #fff; padding: 6px 18px; border-radius: 12px; box-shadow: 0 8px 20px rgba(28,48,106,.12); }
+  .regua-base { position: absolute; left: 0; bottom: 0; width: 1080px; z-index: 50; }
+  #intro { position: absolute; inset: 0; background: #fff; z-index: 40; }
+</style></head>
+<body>
+
+<div id="fundo"><div class="mancha" id="b1" style="background:rgba(54,93,204,.11)"></div><div class="mancha" id="b2" style="background:rgba(25,117,111,.09)"></div><div class="mancha" id="b3" style="background:rgba(54,93,204,.07)"></div></div>
+
+<!-- marca d'água: Brasil grande em deriva lenta (como no piloto) -->
+<svg id="mapa" class="cheia" width="1080" height="1920" viewBox="0 0 1080 1920" style="z-index:1"><g id="mapa-g"></g></svg>
+
+<!-- Maranhão em primeiro plano (C4, 37 s) -->
+<svg id="ma" class="cheia" width="1080" height="1920" viewBox="0 0 1080 1920" style="z-index:3"><g id="ma-g"></g></svg>
+
+<!-- linha entre os alfinetes + pulsos -->
+<svg id="lin" class="cheia" width="1080" height="1920" viewBox="0 0 1080 1920" style="z-index:4"></svg>
+
+<!-- alfinetes: A = o exame (aqui), B = quem dá o laudo (lá) -->
+<svg id="pA" class="el pino" viewBox="0 0 120 156" style="z-index:6"><ellipse cx="60" cy="150" rx="22" ry="6" fill="rgba(28,48,106,.18)"/>
+  <path d="M60 150C40 118 10 92 10 58a50 50 0 0 1 100 0c0 34-30 60-50 92Z" fill="#365DCC"/><circle cx="60" cy="58" r="34" fill="#fff"/>
+  <path d="M38 60h9l5-11 8 22 6-15 4 4h12" fill="none" stroke="#365DCC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg id="pB" class="el pino" viewBox="0 0 120 156" style="z-index:6"><ellipse cx="60" cy="150" rx="22" ry="6" fill="rgba(28,48,106,.18)"/>
+  <path d="M60 150C40 118 10 92 10 58a50 50 0 0 1 100 0c0 34-30 60-50 92Z" fill="#1C306A"/><circle cx="60" cy="58" r="34" fill="#fff"/>
+  <rect x="45" y="40" width="30" height="38" rx="4" fill="none" stroke="#1C306A" stroke-width="4.5"/><path d="M51 52h18M51 61h18M51 70h11" stroke="#1C306A" stroke-width="4" stroke-linecap="round"/></svg>
+
+<div id="eA" class="el etq" style="z-index:7">o exame aqui</div>
+<div id="eB" class="el etq" style="z-index:7">quem dá o laudo, lá</div>
+<div id="tit" class="el" style="z-index:8;font-weight:800;font-size:90px;color:#365DCC;letter-spacing:-1.5px;white-space:nowrap">Telediagnóstico</div>
+<div id="eDist" class="el etq borda" style="z-index:7">a distância</div>
+
+<!-- C3: dados -->
+<div id="mG" class="el mini" style="z-index:7"><div class="q"><svg viewBox="0 0 48 48"><rect x="7" y="26" width="8" height="15" rx="2" fill="#9DB3EC"/><rect x="20" y="17" width="8" height="24" rx="2" fill="#6F8FE0"/><rect x="33" y="9" width="8" height="32" rx="2" fill="#365DCC"/><path d="M6 21 18 12l10 5 14-11" fill="none" stroke="#19756F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tx">gráficos</div></div>
+<div id="mI" class="el mini" style="z-index:7"><div class="q"><svg viewBox="0 0 48 48"><rect x="5" y="8" width="38" height="32" rx="5" fill="#E3E8F8" stroke="#365DCC" stroke-width="3"/><circle cx="33" cy="17" r="4" fill="#19756F"/><path d="M7 37 18 24l8 9 5-5 10 10Z" fill="#365DCC"/></svg></div><div class="tx">imagens</div></div>
+<div id="mD" class="el mini" style="z-index:7"><div class="q"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="11" rx="15" ry="5.5" fill="#365DCC"/><path d="M9 11v9c0 3 7 5.5 15 5.5S39 23 39 20v-9" fill="#6F8FE0"/><path d="M9 20v9c0 3 7 5.5 15 5.5S39 32 39 29v-9" fill="#9DB3EC"/><path d="M9 29v8c0 3 7 5.5 15 5.5S39 40 39 37v-8" fill="#C7D4F4"/></svg></div><div class="tx">dados</div></div>
+
+<!-- C3: profissional de saúde (SVG) -->
+<svg id="prof" class="el" width="340" height="380" viewBox="0 0 340 380" style="z-index:6">
+  <circle cx="170" cy="190" r="168" fill="#E3E8F8"/>
+  <g id="prof-corpo">
+    <path d="M52 380c4-86 52-128 118-128s114 42 118 128Z" fill="#fff" stroke="#D6DDEC" stroke-width="3"/>
+    <path d="M140 256l30 52 30-52" fill="#365DCC"/>
+    <path d="M128 258l42 122M212 258l-42 122" stroke="#D6DDEC" stroke-width="4"/>
+    <path d="M120 270c-12 40 0 70 22 74m78-74c12 40 0 70-22 74" fill="none" stroke="#19756F" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="142" cy="346" r="11" fill="#19756F"/>
+    <rect x="152" y="214" width="36" height="46" rx="12" fill="#B9825E"/>
+    <g id="prof-cab">
+      <ellipse cx="170" cy="170" rx="58" ry="66" fill="#C99470"/>
+      <path d="M110 160c-6-58 30-86 64-86 40 0 68 26 62 84-10-24-30-40-62-42-28-2-50 14-64 44Z" fill="#2B2230"/>
+      <circle cx="148" cy="174" r="6" fill="#2B2230"/><circle cx="192" cy="174" r="6" fill="#2B2230"/>
+      <path d="M152 202c10 9 26 9 36 0" fill="none" stroke="#2B2230" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
+
+<!-- o laudo -->
+<svg id="doc" class="el" width="230" height="290" viewBox="0 0 230 290" style="z-index:9">
+  <rect x="10" y="10" width="200" height="262" rx="22" fill="#fff" stroke="#D6DDEC" stroke-width="4" style="filter:drop-shadow(0 14px 22px rgba(28,48,106,.2))"/>
+  <rect x="38" y="44" width="110" height="16" rx="8" fill="#365DCC"/>
+  <rect x="38" y="84" width="144" height="12" rx="6" fill="#D6DDEC"/><rect x="38" y="110" width="144" height="12" rx="6" fill="#D6DDEC"/>
+  <rect x="38" y="136" width="100" height="12" rx="6" fill="#D6DDEC"/>
+  <path d="M38 190h22l10-18 14 34 10-16h22" fill="none" stroke="#9DB3EC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="doc-ok"><circle cx="178" cy="240" r="40" fill="#19756F"/><path id="doc-ck" d="m160 240 13 13 23-25" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>
+<div id="eLaudo" class="el etq verde" style="z-index:9">laudo ou parecer</div>
+
+<!-- C4 -->
+<div id="eNTS" class="el etq solida" style="z-index:7;font-size:58px">Telessaúde Maranhão</div>
+<div id="eSub" class="el" style="z-index:7;font-weight:600;font-size:56px;color:#475467">telediagnóstico</div>
+<div id="x1" class="el card" style="z-index:7"><div class="ic"><svg viewBox="0 0 48 48"><path d="M3 24C9 13 16 8 24 8s15 5 21 16c-6 11-13 16-21 16S9 35 3 24Z" fill="#fff" stroke="#365DCC" stroke-width="3"/><circle cx="24" cy="24" r="10" fill="#365DCC"/><circle cx="24" cy="24" r="4.5" fill="#1C306A"/><path d="M21 21c2-2 3-2 5-1M27 27c-1 1-3 2-5 1" stroke="#E3E8F8" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="27" cy="20.5" r="2" fill="#fff"/></svg></div><div class="nome">telerretinografia</div><div class="parc" id="x1p"><img src="../../../elementos/UFG_logo.svg"><span>UFG</span></div></div>
+<div id="x2" class="el card" style="z-index:7"><div class="ic"><svg viewBox="0 0 48 48"><rect x="4" y="10" width="40" height="28" rx="5" fill="#fff" stroke="#365DCC" stroke-width="2.5"/><path d="M5 26h9l3-6 4 12 4-18 4 16 3-4h11" fill="none" stroke="#E5484D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="nome">eletrocardiograma</div><div class="parc" id="x2p"><img src="../../../elementos/ufmg-logo.svg"><span>UFMG</span></div></div>
+<div id="x3" class="el card" style="z-index:7"><div class="ic" id="x3ic"><svg viewBox="0 0 48 48"><path d="M24 6v16" stroke="#1C306A" stroke-width="3.5" stroke-linecap="round"/><path d="M24 20c-3 0-5 2-7 4" stroke="#1C306A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M24 20c3 0 5 2 7 4" stroke="#1C306A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M19 14c-8 2-13 12-13 22 0 5 3 7 7 6 5-1 8-4 8-10V16c0-2-1-2-2-2Z" fill="#365DCC"/><path d="M29 14c8 2 13 12 13 22 0 5-3 7-7 6-5-1-8-4-8-10V16c0-2 1-2 2-2Z" fill="#6F8FE0"/></svg></div><div class="nome" id="x3n">tele-espirometria</div><div class="parc" id="x3p"><img src="../../../elementos/ufmg-logo.svg"><span>UFMG</span></div></div>
+<div id="x3tag" class="el etq solida" style="z-index:8;font-size:36px;padding:10px 22px;border-radius:12px">em incorporação</div>
+
+<div id="f1" class="el etq" style="z-index:7;font-size:50px">ampliar o acesso aos exames</div>
+<div id="f2" class="el etq" style="z-index:7;font-size:50px">qualificar o diagnóstico</div>
+<div id="f3" class="el etq" style="z-index:7;line-height:1.15;font-size:50px">fortalecer a <span style="color:#365DCC">Atenção<br>Primária à Saúde</span></div>
+
+<!-- C5 -->
+<div id="eLug" class="el etq borda" style="z-index:7">de lugar</div>
+<svg id="rel" class="el" width="300" height="300" viewBox="0 0 300 300" style="z-index:6">
+  <circle cx="150" cy="150" r="138" fill="#fff" stroke="#365DCC" stroke-width="14" style="filter:drop-shadow(0 14px 24px rgba(28,48,106,.2))"/>
+  <g stroke="#9DB3EC" stroke-width="8" stroke-linecap="round"><path d="M150 32v22M150 246v22M32 150h22M246 150h22"/></g>
+  <path id="rel-h" d="M150 150V88" stroke="#1C306A" stroke-width="14" stroke-linecap="round"/>
+  <path id="rel-m" d="M150 150V58" stroke="#365DCC" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="150" cy="150" r="12" fill="#1C306A"/>
+</svg>
+<div id="eTem" class="el etq borda" style="z-index:7">de tempo</div>
+
+<div id="intro"><video id="vI" muted preload="auto" src="../../../elementos/Intro Telessaude.mp4" style="position:absolute;left:0;top:0;width:1080px"></video></div>
+
+<img class="regua-base" src="../../../elementos/regua - tele-sted-sus-govbr.svg">
+
+<script>
+const $ = (id) => document.getElementById(id);
+const P = TS.p, E = TS.ease, cl = TS.clamp;
+const mix = (a, b, k) => a + (b - a) * k;
+const busca1 = (v, tt) => Promise.race([TS.busca(v, tt), new Promise((r) => setTimeout(r, 2000))]);
+const INTRO = 57.9;                  // narração termina em 57,46 s
+window.DURACAO = INTRO + 4.395;
+const CX = 480;                      // centro da área segura (x 65–888)
+const NS = 'http://www.w3.org/2000/svg';
+
+// trilha de estados: [[t0, d, {x,y,s,o,r,b}, curva?], ...]; o 1º é o estado inicial. Cada passo anima a partir do anterior.
+function trilha(t, passos) {
+  const cur = { ...passos[0][2] };
+  for (let i = 1; i < passos.length; i++) {
+    const [t0, d, o, e = 'mola'] = passos[i];
+    if (t < t0) break;
+    const k = d > 0 ? E[e](cl((t - t0) / d, 0, 1)) : 1;
+    for (const key in o) { const a = cur[key] ?? o[key]; cur[key] = a + (o[key] - a) * k; }
+  }
+  return cur;
+}
+// põe o elemento com o CENTRO em (x, y)
+function put(el, st, ancoraY = 0.5) {
+  const o = cl(st.o ?? 1, 0, 1);
+  if (o <= 0.002) { el.style.display = 'none'; return; }
+  el.style.display = '';
+  el.style.opacity = o;
+  el.style.transform = `translate(${st.x}px, ${st.y}px) translate(-50%, -${ancoraY * 100}%) rotate(${st.r || 0}deg) scale(${Math.max(0, st.s ?? 1)})`;
+  el.style.filter = st.b > 0.1 ? `blur(${st.b}px)` : 'none';
+}
+// entrada em mola a partir do "nada" (escala pequena + opacidade), para o mesmo estado
+const surge = (t0, st, d = 0.55) => [[ -1, 0, { ...st, s: 0.4 * (st.s ?? 1), o: 0 }], [t0, d, { s: st.s ?? 1 }], [t0, 0.18, { o: 1 }, 'lin']];
+const flut = (t, f = 1, a = 8) => a * Math.sin(f * t);
+
+// ---------- mapas ----------
+MAPA.paths.forEach(({ id, d }) => { const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.id = 'm-' + id;
+  p.setAttribute('stroke', '#fff'); p.setAttribute('stroke-linejoin', 'round'); $('mapa-g').appendChild(p); });
+const MA = $('m-BR-MA').getBBox(), MAc = [MA.x + MA.width / 2, MA.y + MA.height / 2];
+const maP = document.createElementNS(NS, 'path'); maP.setAttribute('d', MAPA.paths.find((q) => q.id === 'BR-MA').d);
+maP.setAttribute('fill', '#DCE5FA'); maP.setAttribute('stroke', '#365DCC'); maP.setAttribute('stroke-linejoin', 'round'); $('ma-g').appendChild(maP);
+// alfinetes ilustrativos dentro do Maranhão (pontos testados com isPointInFill)
+const CAND = [[.55, .18], [.36, .33], [.68, .36], [.5, .5], [.28, .55], [.66, .6], [.45, .72], [.58, .84], [.4, .4], [.6, .27]];
+const PTS = CAND.map(([fx, fy]) => [MA.x + fx * MA.width, MA.y + fy * MA.height])
+  .filter(([x, y]) => { const pt = $('lin').createSVGPoint(); pt.x = x; pt.y = y; return maP.isPointInFill(pt); }).slice(0, 7);
+
+// ---------- pino (o centro da cabeça é a referência) ----------
+const PINO_OFF = 58 / 156;   // a cabeça fica a 58 px do topo do pino
+function poePino(el, st) { put(el, st, PINO_OFF); }
+
+window.render = async function (t) {
+  // ===== FUNDO VIVO + MARCA D'ÁGUA =====
+  [[$('b1'), 120, 380, 0.21, 0.6], [$('b2'), 560, 1180, 0.17, 2.1], [$('b3'), -120, 1500, 0.13, 4.0]].forEach(([el, x, y, f, ph]) => {
+    el.style.transform = `translate(${x + 90 * Math.sin(f * t + ph)}px, ${y + 70 * Math.cos(f * 0.8 * t + ph)}px)`; });
+  $('fundo').style.setProperty('--dx', `${(t * 9) % 48}px`); $('fundo').style.setProperty('--dy', `${(t * 5) % 48}px`);
+  {
+    const s = 2.6 * (1 + 0.01 * t), px = CX + 60 + 70 * Math.sin(0.3 * t), py = 1000 + 40 * Math.cos(0.2 * t);
+    $('mapa-g').setAttribute('transform', `translate(${px} ${py}) scale(${s}) translate(${-(MAc[0] + 40)} ${-(MAc[1] + 80)})`);
+    MAPA.paths.forEach(({ id }) => { const el = $('m-' + id); el.setAttribute('stroke-width', (2.2 / s).toFixed(3));
+      el.setAttribute('fill', `rgba(54,93,204,${id === 'BR-MA' ? 0.12 : 0.065})`); });
+    // some enquanto o Maranhão grande está na frente
+    const kMA = P(t, 36.9, 0.6) * (1 - P(t, 46.2, 0.6));
+    $('mapa').style.opacity = Math.min(1, t / 0.4) * (1 - 0.8 * kMA) * (1 - P(t, INTRO - 0.2, 0.4));
+  }
+
+  // ===== ALFINETES A e B (o fio condutor) =====
+  const fA = flut(t, 1.3, 6), fB = flut(t + 1, 1.1, 6);
+  const A = trilha(t, [
+    [-1, 0, { x: 250, y: 1180, s: 1.25, o: 0 }],
+    [0.30, 0.7, { y: 1330, o: 1 }],                               // cai no lugar (faixa sobre a régua)
+    [8.9, 0.9, { x: 120, y: 980, s: 1.1 }],                       // C2: estica a distância
+    [11.95, 0.9, { x: CX, y: 1330, s: 0.9 }],                     // C3: linha em pé (A embaixo, na faixa sobre a régua)
+    [18.45, 0.7, { x: -400 }, 'inOut'],                           // C4: arrasto para a esquerda
+    [46.25, 0, { x: 220, y: 700, s: 0.2, o: 0 }],                 // C5: renasce do mapa
+    [46.3, 0.6, { s: 1.25, o: 1 }],
+    [50.6, 0.8, { y: 470 }],
+    [53.75, 0.7, { y: -300 }, 'inOut'],
+    [54.75, 0, { x: CX, y: 1330, s: 0.3, o: 0 }],                 // C6: o laudo chega ao lugar do exame
+    [54.8, 0.6, { s: 1.15, o: 1 }],
+  ]);
+  const B = trilha(t, [
+    [-1, 0, { x: 700, y: 300, s: 1.25, o: 0 }],
+    [2.70, 0.7, { y: 440, o: 1 }],
+    [8.9, 0.9, { x: 840, y: 980, s: 1.1 }],
+    [11.95, 0.9, { x: CX, y: 520, s: 1 }],
+    [15.0, 0.4, { s: 0.3, o: 0 }, 'inOut'],                       // vira o profissional (metamorfose)
+    [47.2, 0, { x: 740, y: 560, s: 1.25, o: 0 }],                 // C5: o segundo alfinete
+    [47.3, 0.7, { y: 700, o: 1 }],
+    [50.6, 0.8, { y: 470 }],
+    [53.75, 0.7, { y: -300 }, 'inOut'],
+  ]);
+  poePino($('pA'), { ...A, y: A.y + fA }); poePino($('pB'), { ...B, y: B.y + fB });
+
+  // ===== LINHA =====
+  {
+    let h = '';
+    const ax = A.x, ay = A.y + fA, bx = B.x, by = B.y + fB;
+    // em C3 a ponta de cima vai até o profissional; o B some mas a linha continua até ele
+    const c6 = t > 54.7;
+    const bxx = (t > 15 && t < 47) || c6 ? CX : bx, byy = t > 15 && t < 47 ? 600 : c6 ? 720 : by;
+    const forca = (t > 15 && t < 18.6) || c6 ? 1 : 0;
+    const vis = A.o * Math.min(B.o + forca, 1);
+    const L = Math.hypot(bxx - ax, byy - ay);
+    const pontilhada = P(t, 3.1, 0.5) * (1 - P(t, 4.84, 0.2)) + (t > 47.3 && t < 47.36 ? 0 : 0);
+    const cheia = t < 46 ? P(t, 4.84, 0.7, 'inOut') : t < 54 ? P(t, 47.36, 0.6, 'inOut') : P(t, 54.9, 0.6, 'inOut');
+    if (vis > 0.01) {
+      if (pontilhada > 0.01) h += `<line x1="${ax}" y1="${ay}" x2="${bxx}" y2="${byy}" stroke="#365DCC" stroke-width="6" stroke-dasharray="4 22" stroke-linecap="round" opacity="${0.45 * pontilhada * vis}"/>`;
+      if (cheia > 0.01) {
+        h += `<line x1="${ax}" y1="${ay}" x2="${bxx}" y2="${byy}" stroke="#365DCC" stroke-width="10" stroke-linecap="round" stroke-dasharray="${L}" stroke-dashoffset="${L * (1 - cheia)}" opacity="${0.85 * vis}"/>`;
+        // pulsos de luz correndo pela linha (C1 e C2 "tecnologia")
+        const pulsos = [[5.3, 1.1], [5.7, 1.1], [11.15, 0.9], [11.35, 0.9], [11.55, 0.9]];
+        pulsos.forEach(([p0, d]) => { const f = (t - p0) / d; if (f > 0 && f < 1) {
+          const x = mix(ax, bxx, f), y = mix(ay, byy, f);
+          h += `<circle cx="${x}" cy="${y}" r="26" fill="rgba(54,93,204,.22)"/><circle cx="${x}" cy="${y}" r="12" fill="#fff" stroke="#365DCC" stroke-width="5"/>`; } });
+        // ondas de sinal no meio da linha em "tecnologia" (11,18 s)
+        const kw = P(t, 11.1, 0.3) * (1 - P(t, 12.0, 0.3));
+        if (kw > 0.01) for (let i = 0; i < 3; i++) { const f = ((t - 11.1) * 1.2 + i / 3) % 1; const r = 40 + 90 * f;
+          h += `<path d="M${(ax + bxx) / 2 - r * 0.7} ${(ay + byy) / 2 - 70 - r * 0.45} A${r} ${r} 0 0 1 ${(ax + bxx) / 2 + r * 0.7} ${(ay + byy) / 2 - 70 - r * 0.45}" fill="none" stroke="#19756F" stroke-width="8" stroke-linecap="round" opacity="${kw * (1 - f)}"/>`; }
+      }
+    }
+    $('lin').innerHTML = h;
+  }
+
+  // ===== C1: etiquetas e título =====
+  put($('eA'), trilha(t, [...surge(0.55, { x: 330, y: 1175 }), [6.4, 0.35, { o: 0, s: 0.8 }, 'in']]));
+  put($('eB'), trilha(t, [...surge(2.95, { x: 590, y: 590 }), [6.4, 0.35, { o: 0, s: 0.8 }, 'in']]));
+  {
+    // type-punch: entra enorme e desfocado, encolhe e assenta; vira cabeçalho em C2; volta no fecho
+    const st = trilha(t, [
+      [-1, 0, { x: CX, y: 860, s: 2.2, o: 0, b: 24 }],
+      [6.72, 0.55, { s: 1, b: 0 }, 'out'], [6.72, 0.2, { o: 1 }, 'lin'],
+      [8.75, 0.8, { y: 420, s: 0.7 }],
+      [11.85, 0.4, { y: 300, o: 0 }, 'in'],
+      [54.6, 0, { x: CX, y: 620, s: 2.2, o: 0, b: 24 }],
+      [54.68, 0.55, { s: 1, b: 0 }, 'out'], [54.68, 0.2, { o: 1 }, 'lin'],
+    ]);
+    put($('tit'), st);
+  }
+  put($('eDist'), trilha(t, [...surge(9.66, { x: CX, y: 980, s: 1.15 }), [11.9, 0.3, { o: 0, s: 0.7 }, 'in']]));
+
+  // ===== C3: dados sobem pela linha até o profissional =====
+  {
+    const mini = [['mG', 12.60, 220, 14.40, 380], ['mI', 13.26, CX, 14.60, 560], ['mD', 13.86, 740, 14.80, 740]];
+    mini.forEach(([id, t0, x, ts, yfim]) => {
+      put($(id), trilha(t, [
+        ...surge(t0, { x, y: 1010, s: 1.15 }),
+        [ts, 0.5, { x: CX, y: 990 }],                       // entra na linha
+        [ts + 0.45, 0.9, { y: 640, s: 0.5 }, 'inOut'],      // sobe
+        [15.4, 0.8, { x: 800, y: yfim, s: 0.6 }],           // pousa ao lado do profissional
+        [18.45, 0.9, { x: [230, CX, 730][mini.findIndex((m) => m[0] === id)], y: 900, s: 1.1 }],   // C4: descem para o centro
+        [21.5, 0.6, { y: 920 }],
+        ...(id === 'mI' ? [[23.0, 0.35, { s: 1.4, o: 0 }, 'in']] : [[23.0, 0.4, { s: 0.6, o: 0 }, 'in']]),
+      ]));
+    });
+    const pr = trilha(t, [...surge(15.0, { x: CX, y: 500, s: 1.2 }, 0.7), [18.45, 0.7, { x: -300 }, 'inOut']]);
+    put($('prof'), { ...pr, y: pr.y + flut(t, 1.4, 5) });
+    $('prof-cab').setAttribute('transform', `rotate(${3 * Math.sin(2.2 * t)} 170 230)`);
+    // laudo: nasce no profissional, desce pela linha (17,16 s)
+    const dc = trilha(t, [
+      [-1, 0, { x: CX, y: 600, s: 0.2, o: 0 }],
+      [17.05, 0.3, { s: 0.6, o: 1 }],
+      [17.3, 0.75, { y: 980, s: 1.15 }, 'inOut'],
+      [18.45, 0.7, { x: -300 }, 'inOut'],
+      [55.5, 0, { x: CX, y: 720, s: 0.4, o: 0 }],          // C6: o laudo desce pela linha até o lugar do exame
+      [55.55, 0.2, { o: 1 }, 'lin'],
+      [55.66, 0.8, { y: 1020, s: 1.3 }, 'inOut'],
+    ]);
+    put($('doc'), { ...dc, y: dc.y + (t > 18 ? flut(t, 1.2, 5) : 0) });
+    const kCk = t < 40 ? P(t, 17.75, 0.4) : P(t, 56.1, 0.4);
+    $('doc-ok').setAttribute('transform', `translate(178 240) scale(${E.back(kCk)}) translate(-178 -240)`);
+    TS.traco($('doc-ck'), t, t < 40 ? 17.95 : 56.3, 0.3);
+    put($('eLaudo'), trilha(t, [...surge(17.6, { x: CX, y: 1200, s: 1.1 }), [18.45, 0.7, { x: -400 }, 'inOut']]));
+  }
+
+  // ===== C4: os exames do NTS =====
+  put($('eNTS'), trilha(t, [...surge(19.14, { x: CX, y: 470 }), [23.0, 0.8, { y: 330, s: 0.82 }], [37.06, 0.7, { x: -700 }, 'inOut']]));
+  put($('eSub'), trilha(t, [[-1, 0, { x: CX, y: 590, o: 0, b: 10 }], [21.56, 0.45, { o: 1, b: 0 }, 'out'], [23.0, 0.3, { o: 0 }, 'in']]));
+  {
+    const x1 = trilha(t, [
+      [-1, 0, { x: CX, y: 860, s: 0.45, o: 0 }],
+      [23.15, 0.7, { s: 1 }], [23.15, 0.2, { o: 1 }, 'lin'],          // metamorfose: a "imagem" vira a retina
+      [26.4, 0.8, { x: 270, y: 610, s: 0.6 }],
+      [29.4, 0.8, { x: 255, y: 590, s: 0.56 }],
+      [37.06, 0.7, { x: -500 }, 'inOut'],
+    ]);
+    put($('x1'), { ...x1, y: x1.y + flut(t, 1.1, 5) });
+    $('x1p').style.opacity = P(t, 25.3, 0.3); $('x1p').style.transform = `scale(${0.6 + 0.4 * E.back(P(t, 25.3, 0.4))})`;
+    const x2 = trilha(t, [
+      [-1, 0, { x: 570, y: 1000, s: 0.4, o: 0 }],
+      [26.44, 0.7, { s: 0.92 }], [26.44, 0.2, { o: 1 }, 'lin'],
+      [29.4, 0.8, { x: 705, y: 650, s: 0.56 }],
+      [37.06, 0.7, { x: -500 }, 'inOut'],
+    ]);
+    put($('x2'), { ...x2, y: x2.y + flut(t + 2, 1.0, 5) });
+    $('x2p').style.opacity = P(t, 28.5, 0.3); $('x2p').style.transform = `scale(${0.6 + 0.4 * E.back(P(t, 28.5, 0.4))})`;
+    // ECG desenhando no ícone
+    const ecg = $('x2').querySelector('svg path'); TS.traco(ecg, t, 26.6, 0.9);
+    const x3 = trilha(t, [
+      [-1, 0, { x: CX, y: 1040, s: 0.5, o: 0 }],
+      [32.3, 0.7, { s: 0.82 }], [32.3, 0.25, { o: 1 }, 'lin'],
+      [37.06, 0.7, { x: -400 }, 'inOut'],
+    ]);
+    put($('x3'), { ...x3, y: x3.y + flut(t + 4, 1.0, 5) });
+    const cheio = P(t, 33.2, 0.4);
+    $('x3').classList.toggle('tracejado', cheio < 0.5);
+    $('x3ic').style.opacity = cheio; $('x3n').style.opacity = cheio;
+    $('x3ic').style.transform = `scale(${(0.6 + 0.4 * E.back(cheio)) * (1 + 0.04 * Math.sin(2.4 * t))})`;   // pulmão respirando
+    $('x3p').style.opacity = P(t, 35.75, 0.3); $('x3p').style.transform = `scale(${0.6 + 0.4 * E.back(P(t, 35.75, 0.4))})`;
+    put($('x3tag'), trilha(t, [...surge(32.5, { x: CX, y: x3.y - 230 * x3.s }), [37.06, 0.7, { x: -400 }, 'inOut']]));
+  }
+  // mapa do Maranhão + alfinetes + frases
+  {
+    const m = trilha(t, [
+      [-1, 0, { x: 1500, y: 720, s: 1 }],
+      [37.06, 0.8, { x: CX + 20 }, 'inOut'],
+      [38.8, 0.8, { y: 640, s: 0.9 }],
+      [40.7, 0.8, { y: 580, s: 0.8 }],
+      [42.3, 0.8, { y: 540, s: 0.74 }],
+      [46.0, 0.6, { s: 0.6, o: 0 }, 'in'],
+    ]);
+    const esc = 820 / MA.height * m.s * (1 + 0.015 * Math.sin(0.6 * t));
+    $('ma-g').setAttribute('transform', `translate(${m.x} ${m.y}) scale(${esc}) translate(${-MAc[0]} ${-MAc[1]})`);
+    maP.setAttribute('stroke-width', (5 / esc).toFixed(3));
+    $('ma').style.opacity = m.o ?? 1;
+    // alfinetes sobre o mapa (o mesmo desenho do pino A, pequenos), caem em sequência e se juntam em C5
+    let h = '';
+    PTS.forEach(([px, py], i) => {
+      const k = P(t, 37.5 + 0.22 * i, 0.5, 'mola'), a = cl((t - 37.5 - 0.22 * i) / 0.15, 0, 1);
+      const junta = P(t, 45.9, 0.5, 'inOut');
+      let x = m.x + (px - MAc[0]) * esc, y = m.y + (py - MAc[1]) * esc;
+      x = mix(x, 220, junta); y = mix(y, 700, junta);
+      const s = 0.42 * (1 - 0.3 * junta), o = a * (1 - P(t, 46.25, 0.15));
+      if (o > 0.01) h += `<g transform="translate(${x} ${y - (1 - k) * 60}) scale(${s}) translate(-60 -150)" opacity="${o}">
+        <path d="M60 150C40 118 10 92 10 58a50 50 0 0 1 100 0c0 34-30 60-50 92Z" fill="${i % 2 ? '#1C306A' : '#365DCC'}"/><circle cx="60" cy="58" r="24" fill="#fff"/></g>`;
+      // brilho quando acende
+      const f = (t - 37.7 - 0.22 * i) / 0.8; if (f > 0 && f < 1) h += `<circle cx="${x}" cy="${y - 92 * s}" r="${20 + 50 * f}" fill="none" stroke="#365DCC" stroke-width="5" opacity="${0.6 * (1 - f)}"/>`;
+    });
+    $('ma-g').nextSibling && $('ma-g').nextSibling.remove();
+    const g = document.createElementNS(NS, 'g'); g.innerHTML = h; $('ma').appendChild(g);
+    // frases: entram grandes na área livre embaixo; a cada nova, as anteriores encolhem e sobem
+    const sai = [[46.0, 0.45, { o: 0, s: 0.7 }, 'in']];
+    put($('f1'), trilha(t, [...surge(38.82, { x: CX, y: 1150, s: 1.05 }), [40.7, 0.8, { y: 1000, s: 0.92 }], [42.3, 0.8, { y: 930, s: 0.88 }], ...sai]));
+    put($('f2'), trilha(t, [...surge(40.76, { x: CX, y: 1140, s: 1.05 }), [42.3, 0.8, { y: 1045, s: 0.88 }], ...sai]));
+    put($('f3'), trilha(t, [...surge(42.38, { x: CX, y: 1180, s: 0.95 }), ...sai]));
+  }
+
+  // ===== C5: de lugar / de tempo =====
+  put($('eLug'), trilha(t, [...surge(48.38, { x: CX, y: 860, s: 1.15 }), [50.6, 0.8, { y: 620, s: 1.05 }], [53.75, 0.7, { y: -300 }, 'inOut']]));
+  {
+    const r = trilha(t, [...surge(50.6, { x: CX, y: 900, s: 1.15 }, 0.7), [53.75, 0.7, { y: -200 }, 'inOut']]);
+    put($('rel'), r);
+    // ponteiros: giram rápido ao entrar e assentam (o tempo passando)
+    const gira = 1 - P(t, 50.6, 1.8, 'out');
+    const ang = 720 * (1 - gira) + 15 * Math.sin(0.5 * t);
+    $('rel-m').setAttribute('transform', `rotate(${ang} 150 150)`); $('rel-h').setAttribute('transform', `rotate(${ang / 12 + 120} 150 150)`);
+    put($('eTem'), trilha(t, [...surge(51.3, { x: CX, y: 1170, s: 1.1 }), [53.75, 0.7, { y: -100 }, 'inOut']]));
+  }
+
+  // ===== FECHAMENTO =====
+  const kI = P(t, INTRO, 0.35, 'inOut');
+  $('intro').style.display = kI > 0 ? '' : 'none'; $('intro').style.opacity = kI;
+  if (kI > 0) await busca1($('vI'), Math.max(0, t - INTRO));
+};
+
+(async () => { await TS.pronto(); })();
+</script>
+</body></html>

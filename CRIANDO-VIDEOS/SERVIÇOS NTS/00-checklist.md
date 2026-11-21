@@ -34,5 +34,5 @@ Acompanhamento online: documento "Vídeos novos a produzir", seção 1 (https://
 
 ## Etapa 4: produção
 
-- [ ] Começar pelo "Diferença entre os Serviços" ou por um serviço (a decidir)
+- [x] Piloto da série: Teleorientação (decidido em 20/11/2026; a Teleconsulta saiu do piloto porque o NTS ainda não oferece o serviço; o roteiro dela vale só para a Diferença entre os Serviços, e o vídeo individual não está aprovado)
 - [ ] Quadros-chave aprovados → render → ajustes → versão final de cada vídeo

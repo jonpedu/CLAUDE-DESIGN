@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solução fechada e estabilidade · Grupo 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* fontes locais de reserva (sem internet) */
+@font-face{font-family:'Reserva Titulo';src:url('../../../fontes tipograficas/Exo_2/Exo2-VariableFont_wght.ttf');font-weight:100 900}
+@font-face{font-family:'Reserva Texto';font-weight:400;src:url('../../../fontes tipograficas/Inter/static/Inter_18pt-Regular.ttf')}
+@font-face{font-family:'Reserva Texto';font-weight:600;src:url('../../../fontes tipograficas/Inter/static/Inter_18pt-SemiBold.ttf')}
+@font-face{font-family:'Reserva Texto';font-weight:700;src:url('../../../fontes tipograficas/Inter/static/Inter_18pt-Bold.ttf')}
+:root{
+  --bg:#F6F4EE;--card:#FFFDF8;--borda:#E2DED3;--linha:#C9C7C1;--cab:#E4E2DC;
+  --navy:#15233B;--navy2:#1F3352;--txt:#15233B;--txt2:#45505E;--cinza:#6B7480;
+  --lar:#A94A14;--marca:#D9480F;--lar2:#F0A26E;--lar3:#FBE3D2;--azul:#2F6DB5;--verm:#C2410C;--verde:#2E7D5B;--verde3:#DDF0E6;
+  --tit:'Space Grotesk','Reserva Titulo',system-ui,sans-serif;--tx:'IBM Plex Sans','Reserva Texto',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0E1626;overflow:hidden}
+body{font-family:var(--tx);color:var(--txt);-webkit-font-smoothing:antialiased}
+#palco{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:0 0;background:var(--bg);overflow:hidden;box-shadow:0 10px 60px rgba(0,0,0,.45)}
+.slide{position:absolute;inset:0;background:var(--bg);opacity:0;visibility:hidden;transition:opacity .35s,visibility 0s .35s}
+.slide.atual{opacity:1;visibility:visible;transition:opacity .35s}
+.slide.escuro{background:var(--navy);color:#fff}
+.ab{position:absolute}
+.kick{position:absolute;left:86px;top:88px;font:700 12.5px var(--tx);letter-spacing:2.2px;text-transform:uppercase;color:var(--lar)}
+.escuro .kick{color:var(--lar2)}
+.tit{position:absolute;left:86px;top:108px;font:600 39px/1.15 var(--tit);color:var(--navy);letter-spacing:-.3px}
+.escuro .tit{color:#fff}
+.rod{position:absolute;left:86px;top:659px;font:400 12.5px var(--tx);color:var(--cinza)}
+.escuro .rod{color:#8C97A8}
+.card{position:absolute;background:var(--card);border:1px solid var(--borda);border-radius:10px}
+.escuro .card{background:var(--navy2);border-color:#2A4166}
+.ct{font:600 18px var(--tx);color:var(--lar)} .escuro .ct{color:var(--lar2)}
+.p{font:400 14.5px/1.5 var(--tx);color:var(--txt2)} .escuro .p{color:#D5DBE5}
+.m{font-family:var(--tx);white-space:nowrap}
+b,strong{font-weight:700;color:var(--navy)} .escuro b{color:#fff}
+sup{font-size:.62em;vertical-align:.7em;line-height:0} sub{font-size:.62em;vertical-align:-.25em;line-height:0}
+.extra{position:absolute;right:86px;top:84px;font:700 11px var(--tx);letter-spacing:2px;color:#fff;background:var(--lar);padding:4px 9px;border-radius:5px}
+/* tabelas */
+table.t{position:absolute;border-collapse:collapse;font:400 16px var(--tx);color:var(--navy)}
+table.t th{background:var(--cab);font-weight:700;text-align:left;padding:9px 8px;border:1px solid var(--linha)}
+table.t td{padding:9px 8px;border:1px solid var(--linha);background:var(--bg)}
+table.t .r{text-align:right}
+/* marcações */
+.mk{position:absolute;pointer-events:none;opacity:0;transition:opacity .3s,transform .35s cubic-bezier(.2,.9,.3,1.3);transform:scale(1.06)}
+.mk.on{opacity:1;transform:scale(1)}
+.box{border:3px solid var(--marca);border-radius:8px}
+.hl{background:rgba(245,140,70,.24);border-radius:5px;transform:scaleX(.2);transform-origin:left center}
+.hl.on{transform:scaleX(1)}
+.circ{border:3px solid var(--marca);border-radius:50%}
+.tag{font:700 15px var(--tx);color:#fff;background:var(--marca);padding:5px 11px;border-radius:6px;white-space:nowrap}
+.tag.navy{background:var(--navy)} .tag.vd{background:var(--verde)}
+.chk{font:700 30px var(--tx);color:var(--verde)}
+.rv{opacity:0;transform:translateY(10px);transition:opacity .35s,transform .35s}
+.rv.on{opacity:1;transform:none}
+svg .st{opacity:0;transition:opacity .2s calc(var(--d,0)*28ms)}
+.go svg .st,svg.go .st,g.go .st{opacity:1}
+svg .linha-anim{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s ease-in-out}
+.go .linha-anim,g.go .linha-anim{stroke-dashoffset:0}
+/* interface */
+#ui{position:fixed;left:0;right:0;bottom:0;height:34px;display:flex;align-items:center;gap:14px;padding:0 14px;color:#AEB8C8;font:500 13px var(--tx);background:rgba(10,16,28,.85);transition:opacity .3s;z-index:5}
+#ui.some{opacity:0}
+#ui button{background:none;border:1px solid #33435E;color:#D7DEEA;border-radius:6px;padding:3px 10px;font:inherit;cursor:pointer}
+#ui button:hover{background:#1D2B44}
+#barra{flex:1;height:4px;background:#26344D;border-radius:2px;overflow:hidden}#barra i{display:block;height:100%;background:var(--lar2);width:0;transition:width .3s}
+#quem{color:#fff;font-weight:600}
+#passos{display:flex;gap:4px}#passos i{width:7px;height:7px;border-radius:50%;background:#33435E}#passos i.on{background:var(--lar2)}
+#notas{position:fixed;left:0;right:0;bottom:34px;max-height:34vh;overflow:auto;background:rgba(10,16,28,.94);color:#E7ECF4;font:400 17px/1.55 var(--tx);padding:14px 22px;display:none;z-index:4;border-top:2px solid var(--lar)}
+#notas.on{display:block}#notas b{color:var(--lar2)}
+#menu{position:fixed;left:0;top:0;bottom:34px;width:340px;background:#0E1626F2;color:#DCE3EE;overflow:auto;padding:14px 0;transform:translateX(-100%);transition:transform .25s;z-index:6;font:400 14px var(--tx)}
+#menu.on{transform:none}
+#menu h4{font:700 11px var(--tx);letter-spacing:2px;color:var(--lar2);padding:12px 18px 6px;text-transform:uppercase}
+#menu a{display:flex;gap:10px;padding:7px 18px;color:#DCE3EE;text-decoration:none;cursor:pointer}
+#menu a:hover,#menu a.atual{background:#1D2B44}#menu a span{color:#7D8AA0;min-width:26px}
+#ajuda{position:fixed;right:14px;bottom:44px;background:rgba(10,16,28,.95);color:#DCE3EE;font:400 14px/1.7 var(--tx);padding:14px 18px;border-radius:10px;display:none;z-index:6}
+#ajuda.on{display:block}#ajuda kbd{background:#26344D;border-radius:4px;padding:1px 7px;font:600 12px var(--mono);color:#fff}
+/* laboratório e perguntas */
+input[type=range]{width:100%;accent-color:var(--lar)}
+.btn{font:600 13px var(--tx);border:1px solid var(--borda);background:var(--card);color:var(--navy);border-radius:7px;padding:5px 11px;cursor:pointer}
+.btn:hover{border-color:var(--lar)} .btn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.badge{display:inline-block;font:700 15px var(--tx);padding:5px 12px;border-radius:6px;color:#fff}
+#qlista{position:absolute;left:86px;top:215px;width:470px;height:420px;overflow:auto;padding-right:6px}
+#qlista div{background:var(--card);border:1px solid var(--borda);border-radius:8px;padding:9px 12px;margin-bottom:7px;font:500 14px/1.4 var(--tx);cursor:pointer;display:flex;gap:10px}
+#qlista div:hover{border-color:var(--lar2)} #qlista div.sel{border-color:var(--lar);box-shadow:0 0 0 2px var(--lar3)}
+#qlista div span{color:var(--lar);font-weight:700;min-width:22px}
+#qresp{position:absolute;left:580px;top:215px;width:615px;height:420px}
+.nivel{font:700 11px var(--tx);letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+</style>
+</head>
+<body>
+<div id="palco">
+
+<!-- ============ 1 CAPA ============ -->
+<section class="slide escuro" data-id="1" data-quem="André">
+  <div class="kick" style="top:91px">PDS · EECP0018 · UFMA · Seminário P2 · 2026.2</div>
+  <div class="ab" style="left:84px;top:210px;font:600 72px/1.08 var(--tit);color:#F6F4EE;letter-spacing:-.5px">Solução fechada e<br>estabilidade</div>
+  <div class="ab" style="left:86px;top:415px;font:400 22px var(--tx);color:var(--lar2)">Equipe Grupo 1 · Tema 2</div>
+  <div class="ab" style="left:86px;top:532px;font:400 15px/2.1 var(--tx);color:#C9D2DF"><b>André Luís Aguiar do Nascimento -</b> 20250071151<br><b>Manoel Lucas Pacheco Junior -</b> 20250071269<br><b>Antonio Marcos Patrício Castro -</b> 20260035112</div>
+  <div class="ab" style="left:661px;top:532px;font:400 15px/2.1 var(--tx);color:#C9D2DF"><b>João Pedro Miranda Sousa -</b> 20260001188<br><b>Paulo Eduardo Lima Rabelo -</b> 20260001203</div>
+  <div class="mk tag" data-s="1" style="left:86px;top:470px">h[n] = aⁿ u[n] → estável ⇔ |a| &lt; 1</div>
+</section>
+
+<!-- ============ 2 ROTEIRO ============ -->
+<section class="slide" data-id="2" data-quem="André">
+  <div class="kick">Roteiro</div><div class="tit">Quem apresenta cada parte</div>
+  <div class="ab" style="left:104px;top:196px;font:700 11px var(--tx);letter-spacing:1.6px;color:var(--cinza)">APRESENTADOR</div>
+  <div class="ab" style="left:418px;top:196px;font:700 11px var(--tx);letter-spacing:1.6px;color:var(--cinza)">ASSUNTO</div>
+  <div id="rot"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 3 O SISTEMA ============ -->
+<section class="slide" data-id="3" data-quem="André">
+  <div class="kick">Introdução · 1/2</div><div class="tit">O sistema: equação de diferenças de 1ª ordem</div>
+  <div class="card" style="left:86px;top:195px;width:1109px;height:114px"></div>
+  <div class="ab m" style="left:0;width:1280px;top:228px;text-align:center;font-size:40px;color:var(--navy)"><span id="y3">y[n]</span> = <span style="color:var(--lar)">a</span> · y[n−1] + <span id="x3">x[n]</span></div>
+  <svg class="mk ab" data-s="2" data-e="4" style="left:0;top:0" width="1280" height="720"><path d="M 467 233 C 467 196, 668 196, 668 231" fill="none" stroke="#D9480F" stroke-width="3.5" stroke-linecap="round"/><path d="M 659 220 L 668 233 L 678 221" fill="none" stroke="#D9480F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="card" style="left:86px;top:341px;width:355px;height:136px"><div class="ab m" style="left:20px;top:22px;font:700 22px var(--tx)">y[n]</div><div class="ab p" style="left:20px;top:62px">a saída no instante atual</div></div>
+  <div class="card" style="left:463px;top:341px;width:355px;height:136px"><div class="ab m" style="left:20px;top:22px;font:700 22px var(--tx);color:var(--lar)">a · y[n−1]</div><div class="ab p" style="left:20px;top:62px;width:320px">uma fração da saída anterior volta para o sistema (realimentação)</div></div>
+  <div class="card" style="left:840px;top:341px;width:355px;height:136px"><div class="ab m" style="left:20px;top:22px;font:700 22px var(--tx)">x[n]</div><div class="ab p" style="left:20px;top:62px">a entrada no instante atual</div></div>
+  <div class="ab" style="left:86px;top:511px;font:400 18px var(--tx);color:var(--txt2)">O sistema tem memória: o coeficiente <b>a</b> decide quanto da saída passada sobrevive a cada passo.</div>
+  <div class="mk box" data-s="1" data-e="2" style="left:80px;top:335px;width:367px;height:148px"></div>
+  <div class="mk box" data-s="1" data-e="2" data-alvo="y3"></div>
+  <div class="mk box" data-s="2" data-e="3" style="left:457px;top:335px;width:367px;height:148px"></div>
+  <div class="mk tag" data-s="2" data-e="4" style="left:700px;top:200px">realimentação = memória</div>
+  <div class="mk box" data-s="3" data-e="4" style="left:834px;top:335px;width:367px;height:148px"></div>
+  <div class="mk box" data-s="3" data-e="4" data-alvo="x3"></div>
+  <div class="mk hl" data-s="4" style="left:80px;top:506px;width:1052px;height:33px"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 4 OS DOIS CONCEITOS ============ -->
+<section class="slide" data-id="4" data-quem="André">
+  <div class="kick">Introdução · 2/2</div><div class="tit">Os dois conceitos que o problema usa</div>
+  <div class="card" style="left:86px;top:195px;width:544px;height:275px">
+    <div class="ab" style="left:26px;top:24px;font:700 21px var(--tx);color:var(--navy)">Resposta ao impulso h[n]</div>
+    <div class="ab p" style="left:26px;top:66px;width:500px;font-size:15.5px">A saída quando a entrada é x[n] = δ[n] e o sistema parte do repouso, y[−1] = 0.</div>
+    <div class="ab p" style="left:26px;top:132px;width:500px;font-size:15.5px">Num SLIT, h[n] descreve o sistema inteiro: qualquer saída sai dela pela convolução</div>
+    <div class="ab m" style="left:0;width:544px;top:212px;text-align:center;font-size:19px"><span id="conv4">y[n] = Σ<sub>k</sub> h[k] · x[n−k]</span></div>
+  </div>
+  <div class="card" style="left:651px;top:195px;width:544px;height:275px">
+    <div class="ab" style="left:26px;top:24px;font:700 21px var(--tx);color:var(--navy)">Estabilidade BIBO</div>
+    <div class="ab p" style="left:26px;top:66px;width:500px;font-size:15.5px">“Entrada limitada, saída limitada”: se |x[n]| ≤ B para todo n, então |y[n]| ≤ C para todo n.</div>
+    <div class="ab p" style="left:26px;top:132px;width:500px;font-size:15.5px">Para um SLIT, isso equivale a uma única conta:</div>
+    <div class="ab m" style="left:0;width:544px;top:180px;text-align:center;font:700 21px var(--tx);color:var(--lar)">estável ⇔ Σ<sub>n</sub> |h[n]| &lt; ∞</div>
+  </div>
+  <div class="mk hl" data-s="1" data-e="2" style="left:108px;top:258px;width:500px;height:52px"></div>
+  <div class="mk tag" data-s="1" data-e="2" style="left:86px;top:500px">em repouso: y[−1] = 0 · entrada δ[n] ⇒ saída = h[n]</div>
+  <div class="mk box" data-s="2" data-e="3" data-alvo="conv4"></div>
+  <div class="mk tag" data-s="2" data-e="3" style="left:86px;top:500px">conhecendo h[n], qualquer saída sai pela convolução</div>
+  <div class="mk hl" data-s="3" data-e="4" style="left:673px;top:258px;width:500px;height:52px"></div>
+  <div class="mk box" data-s="4" style="left:782px;top:369px;width:282px;height:42px"></div>
+  <div class="mk tag" data-s="4" style="left:651px;top:500px">é essa conta que os passos 3 e 4 fazem</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 5 ENUNCIADO ============ -->
+<section class="slide" data-id="5" data-quem="André">
+  <div class="kick">O problema</div><div class="tit">Enunciado e dados</div>
+  <div class="ab" style="left:86px;top:190px;width:1109px;height:126px;background:var(--card);border-left:5px solid var(--lar);border-radius:6px"></div>
+  <div class="ab" style="left:118px;top:207px;width:1060px;font:400 17px/1.55 var(--tx);color:var(--navy)">Considere y[n] = a·y[n−1] + x[n], em repouso. <b>(a)</b> Mostre que h[n] = aⁿ·u[n]. <b>(b)</b> Para a = 0,8, a = 1,2 e a = −0,8, diga se o sistema é estável, justificando com Σ|h[n]|. <b>(c)</b> Simule 30 amostras de h[n] para cada valor de a em Python e mostre os gráficos.</div>
+  <table class="t" style="left:86px;top:344px;width:1109px">
+    <tr><th style="width:388px">Dado</th><th>Valor</th></tr>
+    <tr><td>Valores de a</td><td>0,8 · 1,2 · −0,8</td></tr>
+    <tr><td>Condição inicial</td><td>repouso: y[−1] = 0</td></tr>
+    <tr><td>Entrada para h[n]</td><td>x[n] = δ[n]</td></tr>
+    <tr><td>Simulação</td><td>30 amostras, n = 0, 1, …, 29</td></tr>
+  </table>
+  <div class="mk tag" data-s="1" data-e="2" style="left:86px;top:595px">(a) João · (b) Manoel · (c) Paulo</div>
+  <div class="mk box" data-s="1" data-e="2" style="left:82px;top:186px;width:1117px;height:134px"></div>
+  <div class="mk hl" data-s="2" data-e="3" style="left:87px;top:384px;width:1107px;height:40px"></div>
+  <div class="mk hl" data-s="3" data-e="4" style="left:87px;top:424px;width:1107px;height:40px"></div>
+  <div class="mk tag" data-s="3" data-e="4" style="left:86px;top:595px">“em repouso” = y[−1] = 0: é isso que faz a saída para δ[n] ser h[n]</div>
+  <div class="mk hl" data-s="4" data-e="5" style="left:87px;top:464px;width:1107px;height:40px"></div>
+  <div class="mk hl" data-s="5" style="left:87px;top:504px;width:1107px;height:40px"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 6 RECURSÃO ============ -->
+<section class="slide" data-id="6" data-quem="João">
+  <div class="kick" style="top:89px">Resolução à mão · Passo 1 · Item (a)</div><div class="tit">Recursão com x[n] = δ[n]</div>
+  <table class="t" id="tab6" style="left:86px;top:190px;width:1109px">
+    <tr><th style="width:89px">n</th><th style="width:421px">h[n] = a·h[n−1] + δ[n]</th><th class="r">a = 0,8</th><th class="r">a = 1,2</th><th class="r">a = −0,8</th></tr>
+    <tr id="r6a"><td>−1</td><td>repouso inicial</td><td class="r">0</td><td class="r">0</td><td class="r">0</td></tr>
+    <tr id="r6b"><td>0</td><td>a·0 + <span id="u1">1</span> = 1</td><td class="r">1</td><td class="r">1</td><td class="r">1</td></tr>
+    <tr id="r6c"><td>1</td><td>a·1 + <span id="u0">0</span> = a</td><td class="r">0,8</td><td class="r">1,2</td><td class="r">−0,8</td></tr>
+    <tr id="r6d"><td>2</td><td>a·a + 0 = a²</td><td class="r">0,64</td><td class="r">1,44</td><td class="r">0,64</td></tr>
+    <tr id="r6e"><td>3</td><td>a·a² + 0 = a³</td><td class="r">0,512</td><td class="r">1,728</td><td class="r">−0,512</td></tr>
+    <tr id="r6f"><td>4</td><td>a·a³ + 0 = a⁴</td><td class="r">0,4096</td><td class="r">2,0736</td><td class="r">0,4096</td></tr>
+  </table>
+  <div class="ab" style="left:86px;top:505px;font:400 17px var(--tx);color:var(--txt2)">δ[n] = 1 só em n = 0; <span id="f6">para n ≥ 1 só a realimentação atua e cada amostra é a vezes a anterior</span>. Padrão: <b id="p6">h[n] = aⁿ</b>.</div>
+  <div id="marcas6"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 6x GRÁFICOS ============ -->
+<section class="slide" data-id="6x" data-quem="João">
+  <div class="kick">Passo 1 · em gráfico</div><div class="extra">EXTRA</div><div class="tit">Os três valores de a, amostra por amostra</div>
+  <svg id="g6x" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="mk hl" data-s="4" style="left:86px;top:592px;width:1109px;height:36px"></div>
+  <div class="ab" style="left:98px;top:598px;font:500 17px var(--tx);color:var(--navy)">Mesmo |h[n]| = 0,8ⁿ para 0,8 e −0,8; o sinal negativo só faz alternar. Com 1,2 cada passo multiplica por mais que 1.</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 7 INDUÇÃO ============ -->
+<section class="slide" data-id="7" data-quem="João">
+  <div class="kick" style="top:89px">Resolução à mão · Passo 2</div><div class="tit">Forma fechada por indução</div>
+  <svg id="dom" class="ab" style="left:770px;top:44px" width="430" height="104"></svg>
+  <div class="card" style="left:86px;top:191px;width:1109px;height:63px"><div class="ab" style="left:26px;top:20px;font:700 17px var(--tx);color:var(--lar)">Base, n = 0</div><div class="ab m" style="left:220px;top:17px;font-size:20px">h[0] = a·h[−1] + δ[0] = a·0 + 1 = 1 = a⁰</div></div>
+  <div class="card" style="left:86px;top:266px;width:1109px;height:64px"><div class="ab" style="left:26px;top:20px;font:700 17px var(--tx);color:var(--lar)">Hipótese</div><div class="ab m" style="left:220px;top:17px;font-size:20px">h[n−1] = aⁿ⁻¹ <span id="pa7">para algum n ≥ 1</span></div></div>
+  <div class="card" style="left:86px;top:342px;width:1109px;height:64px"><div class="ab" style="left:26px;top:20px;font:700 17px var(--tx);color:var(--lar)">Passo</div><div class="ab m" style="left:220px;top:17px;font-size:20px">h[n] = a·h[n−1] + <span id="d7">δ[n]</span> = <span id="aa7">a·aⁿ⁻¹</span> + 0 = <span id="an7">aⁿ</span></div></div>
+  <div class="card" style="left:86px;top:418px;width:1109px;height:63px"><div class="ab" style="left:26px;top:20px;font:700 17px var(--tx);color:var(--lar)">n &lt; 0</div><div class="ab m" style="left:220px;top:17px;font-size:20px">repouso inicial e causalidade <span id="z7">⇒ h[n] = 0</span></div></div>
+  <div class="ab" style="left:86px;top:509px;width:1109px;height:94px;background:var(--navy);border-radius:10px"></div>
+  <div class="ab m" style="left:118px;top:528px;font:700 38px var(--tit);color:#F6F4EE"><span>h[n] = aⁿ </span><span id="u7">u[n]</span></div>
+  <div class="ab" id="enf7" style="left:366px;top:545px;font:400 17px var(--tx);color:#C9D2DF">O u[n] não é enfeite: ele registra que h[n] = 0 para n &lt; 0.</div>
+  <div id="marcas7"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 7x U[N] ============ -->
+<section class="slide" data-id="7x" data-quem="João">
+  <div class="kick">Passo 2 · n &lt; 0</div><div class="extra">EXTRA</div><div class="tit">Por que o u[n] precisa estar na fórmula</div>
+  <svg id="g7x" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="card" style="left:820px;top:200px;width:375px;height:140px"><div class="ab ct" style="left:22px;top:18px">Repouso + causalidade</div><div class="ab p" style="left:22px;top:52px;width:330px">O sistema não responde antes de a entrada chegar: <b>h[n] = 0 para n &lt; 0</b>.</div></div>
+  <div class="card rv" data-s="2" style="left:820px;top:356px;width:375px;height:122px;border-color:#E8B4A0"><div class="ab ct" style="left:22px;top:18px;color:var(--verm)">Só aⁿ, sem u[n]</div><div class="ab p" style="left:22px;top:52px;width:330px">daria 0,8⁻¹ = 1,25, 0,8⁻² ≈ 1,56… para n negativo: <b>errado</b>.</div></div>
+  <div class="card rv" data-s="3" style="left:820px;top:494px;width:375px;height:122px"><div class="ab ct" style="left:22px;top:18px">u[n] corta o lado negativo</div><div class="ab p m" style="left:22px;top:54px;font-size:17px;color:var(--navy)">aⁿ·u[n] = aⁿ (n ≥ 0) · 0 (n &lt; 0)</div></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 8 PASSO 3 ============ -->
+<section class="slide" data-id="8" data-quem="Manoel">
+  <div class="kick">Resolução à mão · Passo 3</div><div class="tit">Estabilidade pela soma Σ|h[n]|</div>
+  <div class="card" style="left:86px;top:195px;width:544px;height:295px">
+    <div class="ab ct" style="left:26px;top:24px">Por que essa soma?</div>
+    <div class="ab p" style="left:26px;top:66px">Com |x[n]| ≤ B, pela convolução:</div>
+    <div class="ab m" style="left:26px;top:104px;font-size:18px;color:var(--navy)">|y[n]| ≤ Σ<sub>k</sub> |h[k]| · |x[n−k]| ≤ B · Σ<sub>k</sub> |h[k]|</div>
+    <div class="ab p" style="left:26px;top:146px;width:500px">Se a soma é finita, a saída fica presa abaixo de B·Σ|h|, para qualquer entrada limitada.</div>
+  </div>
+  <div class="card" style="left:651px;top:195px;width:544px;height:295px">
+    <div class="ab ct" style="left:26px;top:24px">Aplicando h[n] = aⁿu[n]</div>
+    <div class="ab m" style="left:26px;top:66px;font-size:18px;color:var(--navy)">Σ<sub>n=0</sub><sup>∞</sup> |aⁿ| = Σ<sub>n=0</sub><sup>∞</sup> |a|ⁿ</div>
+    <div class="ab p" style="left:26px;top:108px">Série geométrica de razão |a|. Soma parcial:</div>
+    <div class="ab m" style="left:26px;top:146px;font-size:18px;color:var(--navy)">S<sub>M</sub> = (1 − |a|<sup>M+1</sup>) / (1 − |a|)</div>
+    <div class="ab p" style="left:26px;top:188px">|a|<sup>M+1</sup> → 0 só se |a| &lt; 1, e então</div>
+    <div class="ab m" style="left:26px;top:226px;font:700 21px var(--tx);color:var(--navy)">Σ|h[n]| = 1 / (1 − |a|)</div>
+  </div>
+  <div class="mk box" data-s="1" data-e="2" style="left:80px;top:189px;width:556px;height:307px"></div>
+  <div class="mk hl" data-s="2" data-e="3" style="left:106px;top:294px;width:390px;height:34px"></div>
+  <div class="mk tag" data-s="2" data-e="3" style="left:86px;top:520px">desigualdade triangular + |x| ≤ B</div>
+  <div class="mk hl" data-s="3" data-e="4" style="left:671px;top:256px;width:230px;height:34px"></div>
+  <div class="mk hl" data-s="4" data-e="5" style="left:671px;top:336px;width:290px;height:36px"></div>
+  <div class="mk tag" data-s="4" data-e="5" style="left:651px;top:520px">S<sub>M</sub>: escreve, multiplica por |a| e subtrai</div>
+  <div class="mk box" data-s="5" style="left:668px;top:412px;width:262px;height:44px"></div>
+  <div class="mk tag" data-s="5" style="left:651px;top:520px">|a| &lt; 1 ⇒ converge · |a| ≥ 1 ⇒ diverge</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 9 PASSO 4 ============ -->
+<section class="slide" data-id="9" data-quem="Manoel">
+  <div class="kick">Resolução à mão · Passo 4 · Item (b)</div><div class="tit">Os três valores do enunciado</div>
+  <table class="t" style="left:86px;top:195px;width:1109px">
+    <tr><th style="width:134px">a</th><th style="width:111px">|a|</th><th style="width:310px">h[n] = aⁿu[n]</th><th style="width:333px">Σ|h[n]| = Σ|a|ⁿ</th><th>Conclusão</th></tr>
+    <tr id="t9a"><td>0,8</td><td>0,8</td><td>0,8ⁿ: decai</td><td>1 / (1 − 0,8) = 5</td><td>estável</td></tr>
+    <tr id="t9b"><td>1,2</td><td>1,2</td><td>1,2ⁿ: cresce</td><td>|a| &gt; 1: diverge</td><td>instável</td></tr>
+    <tr id="t9c"><td>−0,8</td><td><span id="m9">0,8</span></td><td>(−0,8)ⁿ: alterna e decai</td><td>1 / (1 − 0,8) = 5</td><td>estável</td></tr>
+  </table>
+  <div class="ab" style="left:86px;top:404px;font:400 17px var(--tx);color:var(--txt2)">No módulo o sinal de a some: |h[n]| = |a|ⁿ. Por isso a = 0,8 e a = −0,8 têm a mesma soma, e a regra é <b id="r9">estável ⇔ |a| &lt; 1</b>.</div>
+  <div class="mk hl" data-s="1" data-e="2" data-alvo="t9a"></div>
+  <div class="mk hl" data-s="2" data-e="3" data-alvo="t9b"></div>
+  <div class="mk hl" data-s="3" data-e="4" data-alvo="t9c"></div>
+  <div class="mk circ" data-s="3" data-e="4" data-alvo="m9"></div>
+  <div class="mk tag" data-s="3" data-e="4" style="left:86px;top:470px">o módulo apaga o sinal: |−0,8| = 0,8</div>
+  <div class="mk box" data-s="4" data-alvo="r9"></div>
+  <div class="mk tag navy" data-s="4" style="left:86px;top:470px">estável ⇔ |a| &lt; 1</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 10 PASSO 5 ============ -->
+<section class="slide" data-id="10" data-quem="Paulo">
+  <div class="kick">Resolução à mão · Passo 5 · Interpretação</div><div class="tit">O que Σ|h[n]| = 5 garante</div>
+  <div class="card" style="left:86px;top:195px;width:544px;height:202px">
+    <div class="ab ct" style="left:26px;top:22px">Garantia BIBO</div>
+    <div class="ab m" style="left:26px;top:62px;font-size:18px;color:var(--navy)">a = 0,8 ou a = −0,8:</div>
+    <div class="ab m" style="left:26px;top:104px;font-size:18px;color:var(--navy)">|x[n]| ≤ B ⇒ |y[n]| ≤ 5B</div>
+    <div class="ab p" style="left:26px;top:146px">a = 1,2: não existe teto; a soma é infinita.</div>
+  </div>
+  <div class="card" style="left:651px;top:195px;width:544px;height:202px">
+    <div class="ab ct" style="left:26px;top:22px">Teste: degrau u[n] com a = 0,8</div>
+    <div class="ab m" style="left:26px;top:62px;font-size:18px;color:var(--navy)">s[n] = Σ<sub>k=0</sub><sup>n</sup> 0,8<sup>k</sup> = (1 − 0,8<sup>n+1</sup>) / 0,2</div>
+    <div class="ab p" style="left:26px;top:104px">s[0] = 1 · s[1] = 1,8 · s[2] = 2,44 · s[29] ≈ 4,99 → 5</div>
+  </div>
+  <div class="ab" style="left:86px;top:422px;width:1109px;height:71px;background:var(--navy);border-radius:10px"></div>
+  <div class="ab" style="left:118px;top:446px;font:400 17px var(--tx);color:#E7ECF4">Com B = 1, a saída ao degrau tende exatamente a 5: o teto Σ|h[n]| é atingido, não só respeitado.</div>
+  <svg id="g10" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="mk box" data-s="1" data-e="2" style="left:80px;top:189px;width:556px;height:214px"></div>
+  <div class="mk hl" data-s="1" data-e="2" style="left:106px;top:296px;width:240px;height:32px"></div>
+  <div class="mk box" data-s="2" data-e="3" style="left:645px;top:189px;width:556px;height:214px"></div>
+  <div class="mk box" data-s="4" style="left:80px;top:416px;width:1121px;height:83px"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 11 PYTHON 1 ============ -->
+<section class="slide" data-id="11" data-quem="Paulo">
+  <div class="kick">Conferência em Python · 1/3 · Item (a)</div><div class="tit">h[n]: recursão, forma fechada e lfilter</div>
+  <div class="ab" style="left:86px;top:190px;width:626px;height:280px;background:var(--navy);border-radius:10px"></div>
+  <pre class="ab" style="left:112px;top:212px;font:400 15px/26px var(--mono);color:#E7ECF4"><span style="color:#7D8AA0"># 30 amostras, y[-1] = 0</span>
+for a in [0.8, 1.2, -0.8]:
+    h_rec  = recursao(a, delta)
+    h_fech = a**n
+    h_lf   = lfilter([1], [1, -a], delta)
+<span style="color:var(--lar2)">a    h[0] h[1] h[2] h[3]</span>
+0.8  1.0  0.8  0.64 0.512
+1.2  1.0  1.2  1.44 1.728
+-0.8 1.0  -0.8 0.64 -0.512</pre>
+  <div class="card" style="left:735px;top:190px;width:460px;height:253px">
+    <div class="ab ct" style="left:26px;top:22px">O que conferimos</div>
+    <div class="ab p" style="left:26px;top:60px;width:410px">Os três métodos repetem a tabela do passo 1.</div>
+    <div class="ab p" style="left:26px;top:100px;width:410px">Maior diferença em 30 amostras: 1,1 × 10⁻¹⁶ (0,8), 8,5 × 10⁻¹⁴ (1,2), 5,6 × 10⁻¹⁷ (−0,8). É arredondamento de ponto flutuante.</div>
+    <div class="ab p" style="left:26px;top:194px;width:420px">Em lfilter: y[n] − a·y[n−1] = x[n] ⇒ <b id="lf11">[1, −a]</b>.</div>
+  </div>
+  <div class="mk hl" data-s="1" data-e="2" style="left:104px;top:262px;width:330px;height:26px"></div>
+  <div class="mk tag" data-s="1" data-e="2" style="left:86px;top:500px">laço igual à conta à mão do passo 1</div>
+  <div class="mk hl" data-s="2" data-e="3" style="left:104px;top:288px;width:330px;height:26px"></div>
+  <div class="mk tag" data-s="2" data-e="3" style="left:86px;top:500px">a fórmula fechada do passo 2</div>
+  <div class="mk hl" data-s="3" data-e="4" style="left:104px;top:314px;width:440px;height:26px"></div>
+  <div class="mk tag" data-s="3" data-e="4" style="left:86px;top:500px">filtro do SciPy: b = [1], a = [1, −a]</div>
+  <div class="mk box" data-s="4" data-e="5" style="left:100px;top:342px;width:340px;height:120px"></div>
+  <div class="mk box" data-s="5" data-e="6" style="left:752px;top:286px;width:428px;height:90px"></div>
+  <div class="mk tag" data-s="5" data-e="6" style="left:735px;top:460px">1,2: valores perto de 200 ⇒ erro relativo ainda ~10⁻¹⁶</div>
+  <div class="mk circ" data-s="6" data-alvo="lf11"></div>
+  <div class="mk tag" data-s="6" style="left:735px;top:460px">a·y[n−1] passa para a esquerda ⇒ coeficiente −a</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 12 PYTHON 2 ============ -->
+<section class="slide" data-id="12" data-quem="Paulo">
+  <div class="kick">Conferência em Python · 2/3 · Item (b)</div><div class="tit">Somas parciais de |h[n]|</div>
+  <table class="t" style="left:86px;top:195px;width:1109px">
+    <tr><th style="width:132px">a</th><th class="r" style="width:176px">S₁₀</th><th class="r" style="width:176px">S₂₉</th><th class="r" style="width:220px">S₁₀₀</th><th>À mão (passo 4)</th></tr>
+    <tr><td>0,8</td><td class="r">4,571</td><td class="r">4,994</td><td class="r">5,000</td><td>5, estável · confere</td></tr>
+    <tr><td>1,2</td><td class="r">32,15</td><td class="r">1182</td><td class="r">4,97 × 10⁸</td><td>diverge, instável · confere</td></tr>
+    <tr><td>−0,8</td><td class="r">4,571</td><td class="r">4,994</td><td class="r">5,000</td><td>5, estável · confere</td></tr>
+  </table>
+  <div class="ab" style="left:86px;top:356px;width:1109px;font:400 16px/1.5 var(--tx);color:var(--txt2)">S_M = Σ<sub>n=0</sub><sup>M</sup> |h[n]|. Com 0,8 e −0,8 a soma estaciona em 5 (as linhas são idênticas, porque |h| = 0,8ⁿ nos dois); com 1,2 explode.</div>
+  <svg id="g12" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="mk hl" data-s="1" data-e="2" style="left:87px;top:238px;width:1107px;height:40px"></div>
+  <div class="mk hl" data-s="2" data-e="3" style="left:87px;top:278px;width:1107px;height:40px"></div>
+  <div class="mk hl" data-s="3" data-e="4" style="left:87px;top:318px;width:1107px;height:40px"></div>
+  <div class="mk tag" data-s="3" data-e="4" style="left:900px;top:420px">linha idêntica à de 0,8</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 13 PYTHON 3 ============ -->
+<section class="slide" data-id="13" data-quem="Paulo">
+  <div class="kick">Conferência em Python · 3/3 · Item (c)</div><div class="tit">30 amostras de h[n] para cada a</div>
+  <div class="ab" style="left:86px;top:189px;width:1109px;height:311px;background:#fff;border-radius:8px"></div>
+  <svg id="g13" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="ab" style="left:86px;top:520px;font:400 17px var(--tx);color:var(--txt2)">h[29]: 0,0015 (a = 0,8) · 197,8 (a = 1,2) · −0,0015 (a = −0,8). Decai, explode, alterna e decai.</div>
+  <div class="mk hl" data-s="4" style="left:80px;top:514px;width:735px;height:34px"></div>
+  <div class="ab" style="left:86px;top:600px;font:400 13px var(--tx);color:var(--cinza)">Passe o mouse sobre uma haste para ver o valor.</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 14 ERRO COMUM ============ -->
+<section class="slide escuro" data-id="14" data-quem="Antonio">
+  <div class="kick">Erro comum</div><div class="tit">Esquecer o módulo em Σ|h[n]|</div>
+  <div class="card" style="left:86px;top:195px;width:544px;height:222px">
+    <div class="ab ct" style="left:26px;top:22px">O erro</div>
+    <div class="ab p" style="left:26px;top:60px;width:500px">Ver h[n] de a = −0,8 trocando de sinal e concluir “instável”; ou somar h[n] sem o módulo.</div>
+    <div class="ab p" style="left:26px;top:130px;width:500px">Com a = −1, as somas sem módulo ficam 1, 0, 1, 0, …: parecem limitadas e o sistema parece “estável”.</div>
+  </div>
+  <div class="card" style="left:651px;top:195px;width:544px;height:222px">
+    <div class="ab ct" style="left:26px;top:22px">Como evitar</div>
+    <div class="ab p" style="left:26px;top:60px;width:500px">O critério é <b>Σ|h[n]| = Σ|a|ⁿ</b>: só |a| importa. a = −0,8 dá 5, estável.</div>
+    <div class="ab p" style="left:26px;top:130px;width:500px">a = −1: com módulo, 1, 2, 3, … → ∞, instável. Com x[n] = (−1)ⁿ, limitada, a saída é 1, −2, 3, −4, …</div>
+  </div>
+  <svg id="g14" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="mk box" data-s="1" data-e="2" style="left:80px;top:189px;width:556px;height:234px;border-color:var(--lar2)"></div>
+  <div class="mk box" data-s="2" data-e="3" style="left:645px;top:189px;width:556px;height:234px;border-color:var(--lar2)"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 15 CONCLUSÃO ============ -->
+<section class="slide" data-id="15" data-quem="Antonio">
+  <div class="kick">Conclusão</div><div class="tit">O que fica do tema</div>
+  <div class="card" style="left:86px;top:190px;width:1109px;height:83px"><div class="ab" style="left:26px;top:20px;font:700 30px var(--tit);color:var(--lar)">1</div><div class="ab" style="left:96px;top:30px;font:400 17px var(--tx);color:var(--txt2)">A recursão leva à forma fechada <b>h[n] = aⁿu[n]</b>, provada por indução e conferida em Python.</div></div>
+  <div class="card" style="left:86px;top:285px;width:1109px;height:82px"><div class="ab" style="left:26px;top:20px;font:700 30px var(--tit);color:var(--lar)">2</div><div class="ab" style="left:96px;top:30px;font:400 17px var(--tx);color:var(--txt2)">Estável ⇔ Σ|h[n]| &lt; ∞ ⇔ <b>|a| &lt; 1</b>, e nesse caso Σ|h[n]| = 1/(1 − |a|).</div></div>
+  <div class="card" style="left:86px;top:379px;width:1109px;height:83px"><div class="ab" style="left:26px;top:20px;font:700 30px var(--tit);color:var(--lar)">3</div><div class="ab" style="left:96px;top:30px;font:400 17px var(--tx);color:var(--txt2)">O sinal de a não decide nada: oscilar não é ser instável.</div></div>
+  <div class="ab" style="left:86px;top:488px;width:1109px;height:76px;background:var(--navy);border-radius:10px"></div>
+  <div class="ab" style="left:118px;top:512px;font:700 19px var(--tx);color:#fff">a = 0,8 e a = −0,8: estáveis, Σ|h[n]| = 5 · a = 1,2: instável.</div>
+  <div class="mk box" data-s="1" data-e="2" style="left:80px;top:184px;width:1121px;height:95px"></div>
+  <div class="mk tag" data-s="1" data-e="2" style="left:1010px;top:610px">João · item (a)</div>
+  <div class="mk box" data-s="2" data-e="3" style="left:80px;top:279px;width:1121px;height:94px"></div>
+  <div class="mk tag" data-s="2" data-e="3" style="left:1010px;top:610px">Manoel · item (b)</div>
+  <div class="mk box" data-s="3" data-e="4" style="left:80px;top:373px;width:1121px;height:95px"></div>
+  <div class="mk tag" data-s="3" data-e="4" style="left:1010px;top:610px">Antonio · erro comum</div>
+  <div class="mk box" data-s="4" style="left:80px;top:482px;width:1121px;height:88px;border-color:var(--lar2)"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ 16 OBRIGADO ============ -->
+<section class="slide" data-id="16" data-quem="Antonio">
+  <div class="ab" style="left:92px;top:205px;font:700 78px/1 var(--tit);color:var(--navy)">Obrigado!</div>
+  <div class="ab" style="left:92px;top:300px;font:400 64px/1 var(--tit);color:var(--navy)">Perguntas?</div>
+  <div class="card" style="left:744px;top:191px;width:450px;height:280px">
+    <div class="ab" style="left:36px;top:38px;font:700 12px var(--tx);letter-spacing:2px;color:var(--lar)">USO DE IA</div>
+    <div class="ab" style="left:36px;top:80px;font:400 17px var(--tx);color:var(--txt2)"><b>Ferramenta:</b> Claude (Anthropic)</div>
+    <div class="ab" style="left:36px;top:130px;width:380px;font:400 17px/1.35 var(--tx);color:var(--txt2)"><b>O que a IA fez:</b> ajudou na construção dos slides; auxílio na revisão, correção e formatação dos documentos.</div>
+  </div>
+  <div class="ab" style="left:92px;top:420px;font:400 14px var(--tx);color:var(--cinza)">Apêndice para a arguição: tecla → (laboratório, repouso, transformada Z, perguntas)</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ A1 LABORATÓRIO ============ -->
+<section class="slide" data-id="A1" data-quem="Arguição">
+  <div class="kick">Apêndice · Arguição</div><div class="extra">INTERATIVO</div><div class="tit">Laboratório: mude o a</div>
+  <div class="ab" style="left:86px;top:178px;width:520px">
+    <div style="display:flex;align-items:baseline;gap:14px"><span class="m" style="font:700 30px var(--tx)">a = <span id="labA">0,80</span></span><span id="labBadge" class="badge" style="background:var(--verde)">estável</span></div>
+    <input id="labR" type="range" min="-1.5" max="1.5" step="0.01" value="0.8" style="margin-top:10px">
+    <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap" id="labPre"></div>
+  </div>
+  <div class="card" style="left:640px;top:178px;width:555px;height:118px">
+    <div class="ab p" style="left:20px;top:14px;width:520px;font-size:15px">|h[n]| = |a|ⁿ · soma das 30 amostras S₂₉ = <b id="labS">4,994</b><br>Σ|h[n]| (infinita) = <b id="labInf">1/(1 − 0,8) = 5</b><br>polo de H(z) = 1/(1 − a·z⁻¹) em <b id="labP">z = 0,80</b></div>
+  </div>
+  <svg id="labG" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ A2 REPOUSO ============ -->
+<section class="slide" data-id="A2" data-quem="Arguição">
+  <div class="kick">Apêndice · Arguição</div><div class="tit">Onde exatamente entra o repouso, y[−1] = 0</div>
+  <div class="card" style="left:86px;top:190px;width:544px;height:290px">
+    <div class="ab ct" style="left:26px;top:20px">1. Na primeira conta</div>
+    <div class="ab m" style="left:26px;top:58px;font-size:18px;color:var(--navy)">h[0] = a·<b style="color:var(--lar)">h[−1]</b> + δ[0] = a·<b style="color:var(--lar)">0</b> + 1 = 1</div>
+    <div class="ab p" style="left:26px;top:96px;width:500px">É o ponto de partida da recursão e a base da indução.</div>
+    <div class="ab ct" style="left:26px;top:150px">2. Nos n negativos</div>
+    <div class="ab p" style="left:26px;top:186px;width:500px">Repouso + causalidade ⇒ <b>h[n] = 0 para n &lt; 0</b>, e é isso que o <b>u[n]</b> registra.</div>
+  </div>
+  <div class="card rv" data-s="1" style="left:651px;top:190px;width:544px;height:290px">
+    <div class="ab ct" style="left:26px;top:20px">Sem repouso: y[−1] = c</div>
+    <div class="ab m" style="left:26px;top:58px;font-size:20px;color:var(--navy)">y[n] = <span style="color:var(--verm)">c·aⁿ⁺¹</span> + <span style="color:var(--verde)">aⁿ</span>, n ≥ 0</div>
+    <div class="ab p" style="left:26px;top:104px;width:500px"><b style="color:var(--verde)">aⁿ</b>: resposta à entrada (estado zero) = h[n]<br><b style="color:var(--verm)">c·aⁿ⁺¹</b>: resposta à condição inicial (entrada zero)</div>
+    <div class="ab p rv" data-s="2" style="left:26px;top:170px;width:500px">• h[n] deixaria de ser único (1ª ordem pede 1 condição inicial)<br>• entrada zero daria saída ≠ 0: <b>não linear</b><br>• sem SLIT, convolução e Σ|h| &lt; ∞ não se aplicam</div>
+  </div>
+  <div class="ab rv" data-s="3" style="left:86px;top:505px;width:1109px;height:84px;background:var(--navy);border-radius:10px"></div>
+  <div class="ab rv" data-s="3" style="left:118px;top:522px;width:1050px;font:500 17px/1.5 var(--tx);color:#fff">O repouso garante que a saída dependa só da entrada: sem ele não existe uma resposta ao impulso bem definida, e as ferramentas de SLIT não se aplicam.</div>
+  <div class="mk hl" data-s="0" data-e="1" style="left:106px;top:244px;width:360px;height:34px"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ A3 TRANSFORMADA Z ============ -->
+<section class="slide" data-id="A3" data-quem="Arguição">
+  <div class="kick">Apêndice · Arguição</div><div class="tit">A mesma resposta pela transformada Z</div>
+  <table class="t" style="left:86px;top:188px;width:640px;font-size:15px">
+    <tr><th>No tempo</th><th>Vira</th><th>Por quê</th></tr>
+    <tr class="rv" data-s="1"><td>y[n]</td><td>Y(z)</td><td>definição: Σ y[n]·z⁻ⁿ</td></tr>
+    <tr class="rv" data-s="2"><td>y[n−1]</td><td>z⁻¹·Y(z)</td><td>atraso empurra cada etiqueta z⁻ⁿ</td></tr>
+    <tr class="rv" data-s="3"><td>δ[n]</td><td>1</td><td>só o termo n = 0: 1·z⁰</td></tr>
+    <tr class="rv" data-s="4"><td>aⁿu[n]</td><td>1/(1 − a·z⁻¹)</td><td>série geométrica, |z| &gt; |a|</td></tr>
+  </table>
+  <div class="card rv" data-s="5" style="left:750px;top:188px;width:445px;height:210px">
+    <div class="ab ct" style="left:22px;top:18px">Aplicando na equação</div>
+    <div class="ab m" style="left:22px;top:58px;font-size:17px;color:var(--navy)">Y(z) = a·z⁻¹·Y(z) + X(z)</div>
+    <div class="ab m" style="left:22px;top:98px;font:700 21px var(--tx);color:var(--navy)">H(z) = Y/X = 1/(1 − a·z⁻¹)</div>
+    <div class="ab p" style="left:22px;top:140px;width:400px">= transformada de aⁿu[n]: confere o item (a)</div>
+  </div>
+  <svg id="gZ" class="ab" style="left:0;top:0" width="1280" height="720"></svg>
+  <div class="ab rv" data-s="6" style="left:290px;top:440px;width:420px;font:400 16px/1.5 var(--tx);color:var(--txt2)">Polo em <b>z = a</b>. Causal e estável ⇔ polo dentro do círculo unitário ⇔ <b>|a| &lt; 1</b>, o mesmo critério de Σ|h[n]|.</div>
+  <div class="ab rv" data-s="7" style="left:750px;top:420px;width:445px;font:400 15px/1.5 var(--tx);color:var(--txt2)">Com y[−1] = c (Z unilateral):<br><span class="m" style="color:var(--navy);font-size:16px">Y(z) = a·c/(1 − a·z⁻¹) + X(z)/(1 − a·z⁻¹)</span><br>o repouso zera o 1º termo ⇒ Y = H·X.</div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+<!-- ============ A4 PERGUNTAS ============ -->
+<section class="slide" data-id="A4" data-quem="Arguição">
+  <div class="kick">Apêndice · Arguição</div><div class="extra">INTERATIVO</div><div class="tit">Banco de perguntas</div>
+  <div class="ab" id="qfiltros" style="left:86px;top:176px;display:flex;gap:6px"></div>
+  <div id="qlista"></div>
+  <div id="qresp" class="card"></div>
+  <div class="rod">Equipe Grupo 1 · Tema 2 — Solução fechada e estabilidade</div>
+</section>
+
+</div>
+
+<div id="notas"></div>
+<div id="menu"></div>
+<div id="ajuda"><kbd>→</kbd> <kbd>espaço</kbd> <kbd>clique</kbd> próxima marcação · <kbd>←</kbd> volta<br><kbd>PgDn</kbd> <kbd>PgUp</kbd> pula o slide inteiro<br><kbd>N</kbd> falas do roteiro · <kbd>M</kbd> menu · <kbd>F</kbd> tela cheia<br><kbd>Home</kbd> <kbd>End</kbd> início e fim · <kbd>H</kbd> esta ajuda</div>
+<div id="ui"><button id="bMenu">☰ Slides</button><span id="num"></span><span id="quem"></span><div id="passos"></div><div id="barra"><i></i></div><button id="bNotas">Falas (N)</button><button id="bTela">Tela cheia (F)</button><button id="bAjuda">?</button></div>
+
+<script>
+// ================== utilidades ==================
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, at = {}, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); if (pai) pai.appendChild(e); return e; };
+const fmt = (x, c = 3) => { if (!isFinite(x)) return '∞'; const s = Math.abs(x) >= 1e5 ? x.toExponential(2).replace('e+', ' × 10^') : (+x.toFixed(c)).toString(); return s.replace('.', ',').replace('-', '−'); };
+const COR = { a08: '#2F6DB5', a12: '#C2410C', am08: '#2E7D5B', navy: '#15233B', cinza: '#6B7480', linha: '#C9C7C1' };
+const $ = (s, r = document) => r.querySelector(s);
+const html = (tag, cls, css, txt, pai) => { const d = document.createElement(tag); if (cls) d.className = cls; if (css) d.style.cssText = css; if (txt != null) d.innerHTML = txt; if (pai) pai.appendChild(d); return d; };
+
+// gráfico de hastes; devolve o grupo (classe .st em cada haste para aparecer em sequência)
+function hastes(svg, o) {
+  const { x, y, w, h, ns, vs, ymin, ymax, cor, titulo, ticks = [], xticks = [], r = 3.2, dica = true, eixoN = true } = o;
+  const g = el('g', {}, svg);
+  const X = (n) => x + (n - ns[0]) / (ns[ns.length - 1] - ns[0] || 1) * w;
+  const Y = (v) => y + h - (Math.max(ymin, Math.min(ymax, v)) - ymin) / (ymax - ymin) * h;
+  if (titulo) el('text', { x: x + w / 2, y: y - 12, 'text-anchor': 'middle', 'font-family': 'IBM Plex Sans,Reserva Texto,sans-serif', 'font-size': 14, 'font-weight': 600, fill: COR.navy }, g).textContent = titulo;
+  for (const t of ticks) { el('line', { x1: x, x2: x + w, y1: Y(t), y2: Y(t), stroke: '#ECEAE4' }, g); el('text', { x: x - 6, y: Y(t) + 4, 'text-anchor': 'end', 'font-size': 11, fill: COR.cinza, 'font-family': 'IBM Plex Sans,sans-serif' }, g).textContent = fmt(t, 2); }
+  el('line', { x1: x, x2: x + w, y1: Y(0), y2: Y(0), stroke: '#9AA1AA', 'stroke-width': 1.2 }, g);
+  for (const t of xticks) el('text', { x: X(t), y: y + h + 16, 'text-anchor': 'middle', 'font-size': 11, fill: COR.cinza, 'font-family': 'IBM Plex Sans,sans-serif' }, g).textContent = String(t).replace('-', '−');
+  if (eixoN) el('text', { x: x + w + 8, y: Y(0) + 4, 'font-size': 12, fill: COR.cinza, 'font-style': 'italic' }, g).textContent = 'n';
+  const sts = [];
+  ns.forEach((n, i) => {
+    const v = vs[i], s = el('g', { class: 'st', style: `--d:${i}` }, g);
+    el('line', { x1: X(n), x2: X(n), y1: Y(0), y2: Y(v), stroke: cor, 'stroke-width': 1.8 }, s);
+    el('circle', { cx: X(n), cy: Y(v), r, fill: cor }, s);
+    if (v > ymax) el('path', { d: `M ${X(n) - 4} ${Y(v) + 6} L ${X(n)} ${Y(v) - 1} L ${X(n) + 4} ${Y(v) + 6}`, fill: 'none', stroke: cor, 'stroke-width': 1.6 }, s);
+    if (dica) { el('title', {}, s).textContent = `n = ${n}: ${fmt(v, 4)}`; el('rect', { x: X(n) - 5, y: Math.min(Y(0), Y(v)) - 6, width: 10, height: Math.abs(Y(0) - Y(v)) + 12, fill: 'transparent' }, s); }
+    sts.push(s);
+  });
+  g.X = X; g.Y = Y; g.sts = sts;
+  return g;
+}
+function linhaG(svg, pts, cor, extra = {}) { return el('path', { d: 'M ' + pts.map((p) => p.join(' ')).join(' L '), fill: 'none', stroke: cor, 'stroke-width': 2.6, 'stroke-linejoin': 'round', pathLength: 1, class: 'linha-anim', ...extra }, svg); }
+
+// ================== conteúdo gerado ==================
+// slide 2: linhas do roteiro
+(() => {
+  const L = [['André Nascimento', 'Introdução: o sistema, h[n], estabilidade BIBO e enunciado'], ['João Pedro Sousa', 'Passos 1 e 2: recursão e forma fechada · item (a)'],
+    ['Manoel Pacheco Junior', 'Passos 3 e 4: Σ|h[n]| e os três valores de a · item (b)'], ['Paulo Rabelo', 'Passo 5 e conferência em Python · item (c)'], ['Antonio Castro', 'Erro comum, conclusão e uso de IA']];
+  const sl = ['slides 1–5', 'slides 6–7', 'slides 8–9', 'slides 10–13', 'slides 14–16'];
+  const pai = $('#rot');
+  L.forEach(([n, a], i) => {
+    const y = 228 + i * 80;
+    html('div', 'card', `left:86px;top:${y}px;width:1109px;height:67px`, `<div class="ab" style="left:18px;top:22px;font:700 17px var(--tx);color:var(--navy)">${n}</div><div class="ab" style="left:332px;top:22px;font:400 16px var(--tx);color:var(--txt2)">${a}</div>`, pai);
+    html('div', 'mk box', `left:80px;top:${y - 6}px;width:1121px;height:79px`, '', pai).dataset.s = i + 1;
+    const t = html('div', 'mk tag', `left:1060px;top:${y + 19}px`, sl[i], pai); t.dataset.s = i + 1; t.dataset.e = i + 2;
+    pai.lastChild.previousSibling.dataset.e = i + 2;
+  });
+})();
+
+// slide 6: marcações iguais às do vídeo
+(() => {
+  const M = [ // [tipo, passoIni, passoFim, css, texto]
+    ['box', 1, 2, 'left:172px;top:188px;width:427px;height:46px'],
+    ['hl', 2, 3, 'id:r6a'],
+    ['tag', 2, 3, 'right:86px;top:96px', 'repouso: h[−1] = 0'],
+    ['hl', 3, 4, 'id:r6b'],
+    ['circ', 3, 4, 'id:u1'],
+    ['tag', 3, 4, 'right:86px;top:96px', 'n = 0: único instante em que o impulso entra'],
+    ['hl', 4, 5, 'id:r6c'],
+    ['circ', 4, 5, 'id:u0'],
+    ['hl', 5, 6, 'id:r6d'],
+    ['hl', 6, 7, 'id:r6e'], ['hl', 6, 7, 'id:r6f'],
+    ['tag', 6, 7, 'right:86px;top:96px', 'cada amostra = a × a anterior'],
+    ['hl', 7, 8, 'id:f6'],
+    ['box', 8, 9, 'left:594px;top:188px;width:204px;height:290px'],
+    ['tag', 8, 12, 'left:640px;top:157px', 'encolhe ↓'],
+    ['box', 9, 10, 'left:794px;top:188px;width:204px;height:290px'],
+    ['tag', 9, 12, 'left:850px;top:157px', 'cresce ↑'],
+    ['box', 10, 11, 'left:993px;top:188px;width:205px;height:290px'],
+    ['circ', 10, 11, 'left:1128px;top:318px;width:66px;height:32px'],
+    ['circ', 10, 11, 'left:1112px;top:399px;width:82px;height:32px'],
+    ['tag', 10, 12, 'left:1036px;top:157px', 'sinal alterna ±'],
+    ['box', 11, 12, 'id:p6'],
+    ['tag navy', 11, 12, 'right:86px;top:84px', 'padrão ≠ prova'],
+    ['tag', 11, 12, 'right:86px;top:124px', '→ passo 2'],
+  ];
+  const pai = $('#marcas6');
+  for (const [t, a, b, css, txt] of M) {
+    const d = html('div', 'mk ' + t, css.startsWith('id:') ? '' : css, txt || '', pai); d.dataset.s = a; d.dataset.e = b;
+    if (css.startsWith('id:')) d.dataset.alvo = css.slice(3);
+  }
+})();
+
+// slide 7: marcações + dominós
+(() => {
+  const M = [
+    ['box', 1, 2, 'left:82px;top:187px;width:1117px;height:71px'], ['chk', 1, 99, 'left:1150px;top:200px', '✓'],
+    ['tag', 1, 2, 'right:86px;top:154px', 'o 1º dominó cai'],
+    ['box', 2, 3, 'left:82px;top:262px;width:1117px;height:72px'],
+    ['hl', 2, 3, 'id:pa7'],
+    ['tag', 2, 3, 'right:86px;top:154px', 'um dominó qualquer caiu'],
+    ['box', 3, 5, 'left:82px;top:338px;width:1117px;height:72px'],
+    ['circ', 3, 4, 'id:d7'], ['tag', 3, 4, 'right:86px;top:154px', 'n ≥ 1 ⇒ δ[n] = 0'],
+    ['circ', 4, 5, 'id:an7'], ['tag vd', 4, 99, 'left:960px;top:357px', '✓ todo n ≥ 0'],
+    ['tag', 4, 5, 'right:86px;top:154px', 'ele derruba o próximo ⇒ todos caem'],
+    ['box', 5, 6, 'left:82px;top:414px;width:1117px;height:71px'], ['hl', 5, 6, 'id:z7'],
+    ['hl', 6, 7, 'id:u7', '', 'background:rgba(240,162,110,.35)'], ['hl', 6, 7, 'id:enf7', '', 'background:rgba(240,162,110,.25)'],
+    ['box', 7, 99, 'left:80px;top:503px;width:1121px;height:106px;border-color:#F0A26E'],
+    ['tag', 7, 99, 'left:1040px;top:542px;background:none;color:#F0A26E', 'ITEM (A) ✓'],
+    ['tag', 7, 99, 'right:86px;top:154px', '→ Manoel: estabilidade'],
+  ];
+  const pai = $('#marcas7');
+  for (const [t, a, b, css, txt, extra] of M) {
+    const d = html('div', 'mk ' + t, css.startsWith('id:') ? (extra || '') : css, txt || '', pai); d.dataset.s = a; d.dataset.e = b;
+    if (css.startsWith('id:')) d.dataset.alvo = css.slice(3);
+  }
+  // seta hipótese → passo
+  const s = el('svg', { class: 'mk ab', width: 1280, height: 720, style: 'left:0;top:0' }); pai.appendChild(s); s.dataset.s = 4; s.dataset.e = 5;
+  el('path', { d: 'M 418 312 Q 470 332 548 360', fill: 'none', stroke: '#D9480F', 'stroke-width': 3, 'stroke-linecap': 'round' }, s);
+  el('path', { d: 'M 535 352 L 549 360 L 537 368', fill: 'none', stroke: '#D9480F', 'stroke-width': 3, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, s);
+  // dominós
+  const D = $('#dom'), rot = ['0', '1', '2', '…', 'n−1', 'n', 'n+1', '…'];
+  D.doms = [];
+  rot.forEach((r, i) => {
+    const x = 20 + i * 52;
+    if (r !== '…') { const g = el('g', {}, D); el('rect', { x, y: 30, width: 12, height: 50, rx: 3, fill: i === 0 ? COR.a08 : (i >= 4 && i <= 5) ? '#D9480F' : COR.navy }, g); g.style.transformOrigin = `${x + 12}px 80px`; g.style.transition = 'transform .45s ease-in'; g.i = i; D.doms.push(g); }
+    else el('text', { x: x + 7, y: 64, 'text-anchor': 'middle', fill: COR.cinza, 'font-size': 20 }, D).textContent = '…';
+    el('text', { x: x + 7, y: 98, 'text-anchor': 'middle', fill: COR.cinza, 'font-size': 12, 'font-weight': 600 }, D).textContent = r;
+  });
+  el('line', { x1: 5, x2: 420, y1: 80, y2: 80, stroke: COR.linha, 'stroke-width': 2 }, D);
+})();
+GANCHOS = {};
+GANCHOS['7'] = (p) => {
+  const D = $('#dom'); D.doms.forEach((g) => {
+    const cai = (g.i === 0 && p >= 1) || (g.i === 4 && p >= 2) || (g.i === 5 && p >= 4) || p >= 4;
+    g.style.transitionDelay = p >= 4 && ![0, 4, 5].includes(g.i) ? `${g.i * 90}ms` : '0ms';
+    g.style.transform = cai ? 'rotate(38deg)' : 'none';
+  });
+};
+
+// posiciona marcações que seguem um elemento do slide (data-alvo)
+function encaixa() {
+  document.querySelectorAll('[data-alvo]').forEach((m) => {
+    const alvo = document.getElementById(m.dataset.alvo); const sl = m.closest('.slide');
+    const A = alvo.getBoundingClientRect(), S = sl.getBoundingClientRect(), k = S.width / 1280;
+    const x = (A.left - S.left) / k, y = (A.top - S.top) / k, w = A.width / k, h = A.height / k;
+    const pad = m.classList.contains('circ') ? [9, 6] : [4, 3];
+    m.style.left = (x - pad[0]) + 'px'; m.style.top = (y - pad[1]) + 'px'; m.style.width = (w + 2 * pad[0]) + 'px'; m.style.height = (h + 2 * pad[1]) + 'px';
+  });
+}
+
+// 6x: três gráficos (n = 0…7)
+(() => {
+  const S = $('#g6x'); const ns = [0, 1, 2, 3, 4, 5, 6, 7];
+  const C = [[0.8, 'a = 0,8 · encolhe', COR.a08, -0.2, 1.1, [0, 0.5, 1]], [1.2, 'a = 1,2 · cresce', COR.a12, -0.4, 4, [0, 1, 2, 3, 4]], [-0.8, 'a = −0,8 · alterna', COR.am08, -1, 1.1, [-1, -0.5, 0, 0.5, 1]]];
+  S.gs = C.map(([a, t, c, y0, y1, tk], i) => hastes(S, { x: 130 + i * 370, y: 225, w: 290, h: 300, ns, vs: ns.map((n) => a ** n), ymin: y0, ymax: y1, cor: c, titulo: t, ticks: tk, xticks: ns, r: 4.5 }));
+})();
+GANCHOS['6x'] = (p) => $('#g6x').gs.forEach((g, i) => g.classList.toggle('go', p >= i + 1));
+
+// 7x: aⁿ com e sem u[n]
+(() => {
+  const S = $('#g7x'); const ns = [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7];
+  const g = hastes(S, { x: 110, y: 215, w: 660, h: 330, ns, vs: ns.map((n) => (n < 0 ? 0 : 0.8 ** n)), ymin: -0.1, ymax: 2.6, cor: COR.navy, titulo: 'h[n] = 0,8ⁿ u[n]', ticks: [0, 1, 2], xticks: ns, r: 5 });
+  const gh = el('g', {}, S);
+  ns.filter((n) => n < 0).forEach((n, i) => {
+    const s = el('g', { class: 'st', style: `--d:${i}` }, gh);
+    el('line', { x1: g.X(n), x2: g.X(n), y1: g.Y(0), y2: g.Y(0.8 ** n), stroke: COR.a12, 'stroke-width': 2, 'stroke-dasharray': '5 4' }, s);
+    el('circle', { cx: g.X(n), cy: g.Y(0.8 ** n), r: 5, fill: 'none', stroke: COR.a12, 'stroke-width': 2 }, s);
+  });
+  el('text', { x: g.X(-4), y: g.Y(2.6) + 4, fill: COR.a12, 'font-size': 14, 'font-weight': 600, class: 'st' }, gh).textContent = 'só aⁿ (sem u[n])';
+  const x1 = el('path', { d: `M ${g.X(-4.3)} ${g.Y(2.5)} L ${g.X(-0.7)} ${g.Y(0.2)} M ${g.X(-4.3)} ${g.Y(0.2)} L ${g.X(-0.7)} ${g.Y(2.5)}`, stroke: COR.a12, 'stroke-width': 4, opacity: 0, style: 'transition:opacity .3s' }, S);
+  S.g = g; S.gh = gh; S.x1 = x1;
+})();
+GANCHOS['7x'] = (p) => { const S = $('#g7x'); S.g.classList.toggle('go', true); S.gh.classList.toggle('go', p >= 2); S.gh.style.opacity = p >= 3 ? 0.35 : 1; S.x1.setAttribute('opacity', p >= 3 ? 0.9 : 0); };
+
+// 10: degrau s[n] com teto 5
+(() => {
+  const S = $('#g10'); const ns = [...Array(30).keys()];
+  const g = hastes(S, { x: 130, y: 532, w: 1000, h: 92, ns, vs: ns.map((n) => (1 - 0.8 ** (n + 1)) / 0.2), ymin: 0, ymax: 5.6, cor: COR.a08, ticks: [0, 5], xticks: [0, 5, 10, 15, 20, 25, 29], r: 3.4, eixoN: false });
+  const teto = el('g', { opacity: 0, style: 'transition:opacity .4s' }, S);
+  el('line', { x1: 130, x2: 1130, y1: g.Y(5), y2: g.Y(5), stroke: '#D9480F', 'stroke-width': 2, 'stroke-dasharray': '7 5' }, teto);
+  el('text', { x: 1136, y: g.Y(5) + 4, fill: '#D9480F', 'font-size': 13, 'font-weight': 700 }, teto).textContent = 'teto 5';
+  el('text', { x: 130, y: 518, fill: COR.navy, 'font-size': 13, 'font-weight': 600 }, g).textContent = 's[n]: saída ao degrau, a = 0,8';
+  S.g = g; S.teto = teto;
+})();
+GANCHOS['10'] = (p) => { const S = $('#g10'); S.g.style.opacity = p >= 3 ? 1 : 0; S.g.classList.toggle('go', p >= 3); S.teto.setAttribute('opacity', p >= 3 ? 1 : 0); };
+
+// 12: curvas S_M
+(() => {
+  const S = $('#g12'); const x = 150, y = 440, w = 700, h = 175, M = 40, top = 12;
+  const g = el('g', { opacity: 0, style: 'transition:opacity .3s' }, S);
+  const X = (m) => x + (m / M) * w, Y = (v) => y + h - Math.min(v, top) / top * h;
+  [0, 5, 10].forEach((t) => { el('line', { x1: x, x2: x + w, y1: Y(t), y2: Y(t), stroke: '#ECEAE4' }, g); el('text', { x: x - 8, y: Y(t) + 4, 'text-anchor': 'end', 'font-size': 11, fill: COR.cinza }, g).textContent = t; });
+  [0, 10, 20, 29, 40].forEach((t) => el('text', { x: X(t), y: y + h + 16, 'text-anchor': 'middle', 'font-size': 11, fill: COR.cinza }, g).textContent = t);
+  el('text', { x: x + w + 10, y: y + h + 4, 'font-size': 12, fill: COR.cinza, 'font-style': 'italic' }, g).textContent = 'M';
+  el('line', { x1: x, x2: x + w, y1: Y(5), y2: Y(5), stroke: '#D9480F', 'stroke-dasharray': '6 5', 'stroke-width': 1.6 }, g);
+  const S08 = [], S12 = []; let a = 0, b = 0;
+  for (let m = 0; m <= M; m++) { a += 0.8 ** m; b += 1.2 ** m; S08.push([X(m), Y(a)]); if (b <= top * 1.02) S12.push([X(m), Y(b)]); else if (S12.length && S12[S12.length - 1][1] > Y(top)) S12.push([X(m - 1 + (top - (b - 1.2 ** m)) / (1.2 ** m)), Y(top)]); }
+  const l1 = linhaG(g, S08, COR.a08); const l2 = linhaG(g, S12, COR.a12);
+  const l3 = linhaG(g, S08, COR.am08, { 'stroke-dasharray': '1', 'stroke-width': 2 }); l3.style.strokeDasharray = '0.012 0.012';
+  el('text', { x: X(40) + 6, y: Y(5) - 8, fill: COR.a08, 'font-size': 13, 'font-weight': 700 }, g).textContent = '0,8 e −0,8 → 5';
+  el('text', { x: X(12.5), y: Y(top) + 14, fill: COR.a12, 'font-size': 13, 'font-weight': 700 }, g).textContent = '1,2 → ∞ (sai do gráfico)';
+  el('text', { x: x, y: y - 8, fill: COR.navy, 'font-size': 13, 'font-weight': 600 }, g).textContent = 'S_M = Σ |h[n]| até M';
+  S.g = g;
+})();
+GANCHOS['12'] = (p) => { const S = $('#g12'); S.g.setAttribute('opacity', p >= 4 ? 1 : 0); S.g.classList.toggle('go', p >= 4); };
+
+// 13: os três gráficos de 30 amostras
+(() => {
+  const S = $('#g13'); const ns = [...Array(30).keys()];
+  const C = [[0.8, 'a = 0.8  (|a| < 1: estável)', COR.a08, 0, 1.05, [0, 0.2, 0.4, 0.6, 0.8, 1]], [1.2, 'a = 1.2  (|a| > 1: instável)', COR.a12, 0, 205, [0, 50, 100, 150, 200]], [-0.8, 'a = −0.8  (|a| < 1: estável)', COR.a08, -0.85, 1.05, [-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1]]];
+  S.gs = C.map(([a, t, c, y0, y1, tk], i) => hastes(S, { x: 150 + i * 365, y: 222, w: 270, h: 225, ns, vs: ns.map((n) => a ** n), ymin: y0, ymax: y1, cor: c, titulo: t, ticks: tk, xticks: [0, 5, 10, 15, 20, 25, 30], r: 2.6 }));
+})();
+GANCHOS['13'] = (p) => $('#g13').gs.forEach((g, i) => g.classList.toggle('go', p >= i + 1 || p === 0 && false));
+
+// 14: a = −1, somas com e sem módulo + saída para (−1)ⁿ
+(() => {
+  const S = $('#g14'); const ns = [...Array(10).keys()];
+  const g1 = el('g', { opacity: 0, style: 'transition:opacity .3s' }, S);
+  const x = 110, y = 455, w = 470, h = 170, X = (m) => x + m / 9 * w, Y = (v) => y + h - v / 10 * h;
+  el('text', { x, y: y - 10, fill: '#fff', 'font-size': 13, 'font-weight': 600 }, g1).textContent = 'a = −1: somas parciais';
+  el('line', { x1: x, x2: x + w, y1: Y(0), y2: Y(0), stroke: '#5B6B86' }, g1);
+  [0, 5, 10].forEach((t) => el('text', { x: x - 8, y: Y(t) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#8C97A8' }, g1).textContent = t);
+  let s = 0, sa = 0; const P1 = [], P2 = [];
+  ns.forEach((n) => { s += (-1) ** n; sa += 1; P1.push([X(n), Y(s)]); P2.push([X(n), Y(sa)]); });
+  linhaG(g1, P1, '#9FB3CF'); linhaG(g1, P2, '#F0A26E');
+  P1.forEach(([a, b]) => el('circle', { cx: a, cy: b, r: 3.5, fill: '#9FB3CF' }, g1)); P2.forEach(([a, b]) => el('circle', { cx: a, cy: b, r: 3.5, fill: '#F0A26E' }, g1));
+  el('text', { x: X(9) + 8, y: Y(1) + 4, fill: '#9FB3CF', 'font-size': 12, 'font-weight': 700 }, g1).textContent = 'sem módulo: 1, 0, 1, 0…';
+  el('text', { x: X(3.2), y: Y(8.4), fill: '#F0A26E', 'font-size': 12, 'font-weight': 700 }, g1).textContent = 'com módulo: 1, 2, 3… → ∞';
+  const g2 = el('g', { opacity: 0, style: 'transition:opacity .3s' }, S);
+  const x2 = 760, w2 = 420, X2 = (n) => x2 + n / 9 * w2, Y2 = (v) => y + h / 2 - v / 10 * (h / 2);
+  el('text', { x: x2, y: y - 10, fill: '#fff', 'font-size': 13, 'font-weight': 600 }, g2).textContent = 'a = −1, x[n] = (−1)ⁿ (limitada): y[n] = (−1)ⁿ(n+1)';
+  el('line', { x1: x2, x2: x2 + w2, y1: Y2(0), y2: Y2(0), stroke: '#5B6B86' }, g2);
+  ns.forEach((n) => { const v = (-1) ** n * (n + 1); const st = el('g', { class: 'st', style: `--d:${n}` }, g2); el('line', { x1: X2(n), x2: X2(n), y1: Y2(0), y2: Y2(v), stroke: '#F0A26E', 'stroke-width': 2 }, st); el('circle', { cx: X2(n), cy: Y2(v), r: 4, fill: '#F0A26E' }, st); });
+  S.g1 = g1; S.g2 = g2;
+})();
+GANCHOS['14'] = (p) => { const S = $('#g14'); S.g1.setAttribute('opacity', p >= 3 ? 1 : 0); S.g1.classList.toggle('go', p >= 3); S.g2.setAttribute('opacity', p >= 4 ? 1 : 0); S.g2.classList.toggle('go', p >= 4); };
+
+// A1: laboratório
+(() => {
+  const S = $('#labG'); const R = $('#labR');
+  const pre = $('#labPre'); [0.8, 1.2, -0.8, 1, -1, 0.5, 0].forEach((v) => { const b = html('button', 'btn', '', fmt(v, 2), pre); b.onclick = (e) => { e.stopPropagation(); R.value = v; desenha(); }; });
+  R.addEventListener('input', desenha); R.addEventListener('click', (e) => e.stopPropagation());
+  function desenha() {
+    const a = +R.value; S.innerHTML = ''; const ns = [...Array(30).keys()], vs = ns.map((n) => a ** n);
+    const mx = Math.max(1, ...vs.map(Math.abs)); const neg = vs.some((v) => v < -1e-9);
+    hastes(S, { x: 130, y: 345, w: 560, h: 255, ns, vs, ymin: neg ? -mx * 1.05 : 0, ymax: mx * 1.05, cor: Math.abs(a) < 1 ? COR.a08 : COR.a12, titulo: 'h[n] = aⁿu[n], 30 amostras', ticks: neg ? [-mx, 0, mx] : [0, mx / 2, mx], xticks: [0, 10, 20, 29], r: 3 }).classList.add('go');
+    // plano z
+    const cx = 960, cy = 470, rr = 95;
+    el('text', { x: cx, y: 340, 'text-anchor': 'middle', 'font-size': 14, 'font-weight': 600, fill: COR.navy }, S).textContent = 'Plano z: polo em z = a';
+    el('line', { x1: cx - 170, x2: cx + 170, y1: cy, y2: cy, stroke: '#B8B6B0' }, S); el('line', { x1: cx, x2: cx, y1: cy - 120, y2: cy + 120, stroke: '#B8B6B0' }, S);
+    el('circle', { cx, cy, r: rr, fill: Math.abs(a) < 1 ? 'rgba(46,125,91,.08)' : 'none', stroke: COR.navy, 'stroke-width': 1.6, 'stroke-dasharray': '5 4' }, S);
+    el('text', { x: cx + rr + 4, y: cy + 16, 'font-size': 11, fill: COR.cinza }, S).textContent = '1';
+    el('text', { x: cx - rr - 14, y: cy + 16, 'font-size': 11, fill: COR.cinza }, S).textContent = '−1';
+    const px = cx + Math.max(-1.6, Math.min(1.6, a)) * rr;
+    el('path', { d: `M ${px - 8} ${cy - 8} L ${px + 8} ${cy + 8} M ${px - 8} ${cy + 8} L ${px + 8} ${cy - 8}`, stroke: Math.abs(a) < 1 ? COR.verde || '#2E7D5B' : COR.a12, 'stroke-width': 3.5 }, S);
+    el('text', { x: cx, y: cy + 140, 'text-anchor': 'middle', 'font-size': 13, fill: COR.txt2 || '#45505E' }, S).textContent = Math.abs(a) < 1 ? 'polo dentro do círculo unitário ⇒ estável' : 'polo no círculo ou fora ⇒ instável';
+    $('#labA').textContent = fmt(a, 2);
+    const est = Math.abs(a) < 1; const b = $('#labBadge'); b.textContent = est ? 'estável' : 'instável'; b.style.background = est ? '#2E7D5B' : '#C2410C';
+    let s = 0; vs.forEach((v) => (s += Math.abs(v))); $('#labS').textContent = fmt(s, 3);
+    $('#labInf').textContent = est ? `1/(1 − ${fmt(Math.abs(a), 2)}) = ${fmt(1 / (1 - Math.abs(a)), 3)}` : (Math.abs(a) === 1 ? '1 + 1 + 1 + … = ∞' : '∞ (diverge)');
+    $('#labP').textContent = 'z = ' + fmt(a, 2);
+  }
+  desenha();
+})();
+
+// A3: plano z simples
+(() => {
+  const S = $('#gZ'); const g = el('g', { class: 'rv' }, S); g.dataset.s = 6;
+  const cx = 180, cy = 520, rr = 70;
+  el('line', { x1: cx - 110, x2: cx + 110, y1: cy, y2: cy, stroke: '#B8B6B0' }, g); el('line', { x1: cx, x2: cx, y1: cy - 90, y2: cy + 90, stroke: '#B8B6B0' }, g);
+  el('circle', { cx, cy, r: rr, fill: 'none', stroke: COR.navy, 'stroke-dasharray': '5 4', 'stroke-width': 1.5 }, g);
+  [[0.8, '#2E7D5B', '0,8'], [-0.8, '#2E7D5B', '−0,8'], [1.2, '#C2410C', '1,2']].forEach(([a, c, t]) => {
+    const px = cx + a * rr; el('path', { d: `M ${px - 6} ${cy - 6} L ${px + 6} ${cy + 6} M ${px - 6} ${cy + 6} L ${px + 6} ${cy - 6}`, stroke: c, 'stroke-width': 3 }, g);
+    el('text', { x: px + (a > 1 ? 10 : a > 0 ? -8 : 0), y: cy - 12, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 700, fill: c }, g).textContent = t;
+  });
+})();
+
+// A4: banco de perguntas
+const Q = [
+  ['f', 'O que é h[n]?', 'É a saída do sistema quando a entrada é o impulso δ[n] e o sistema parte do repouso.'],
+  ['f', 'O que são δ[n] e u[n]?', 'δ[n] vale 1 só em n = 0 e 0 nos demais. u[n] vale 1 para n ≥ 0 e 0 para n < 0.'],
+  ['f', 'O que significa “em repouso”?', 'Que y[−1] = 0: o sistema não tem nenhuma saída anterior antes de a entrada começar.'],
+  ['f', 'O que é estabilidade BIBO?', 'Entrada limitada gera saída limitada: se |x[n]| ≤ B para todo n, então |y[n]| ≤ C para todo n.'],
+  ['f', 'Qual é o critério de estabilidade para um SLIT?', 'O sistema é estável se, e somente se, Σ|h[n]| < ∞.'],
+  ['f', 'Qual é a forma fechada de h[n] neste sistema?', 'h[n] = aⁿu[n].'],
+  ['f', 'Quais dos três valores dão sistema estável?', 'a = 0,8 e a = −0,8 são estáveis; a = 1,2 é instável.'],
+  ['f', 'Por que o sistema é de primeira ordem?', 'Porque a saída depende de apenas uma saída passada, y[n−1].'],
+  ['m', 'Por que usar indução, se a tabela já mostra o padrão aⁿ?', 'A tabela só mostra alguns valores, e um padrão observado não é prova. A indução garante que o padrão vale para todo n ≥ 0.'],
+  ['m', 'Para que serve o u[n] em h[n] = aⁿu[n]?', 'Registra que h[n] = 0 para n < 0, porque o sistema é causal e parte do repouso. Sem o u[n], aⁿ daria valores diferentes de zero para n negativo.'],
+  ['m', 'Calcule h[3] para a = −0,8.', 'h[3] = (−0,8)³ = −0,512.'],
+  ['m', 'Como se chega a S_M = (1 − |a|ᴹ⁺¹)/(1 − |a|)?', 'Escreve-se S_M = 1 + |a| + … + |a|ᴹ, multiplica-se por |a| e subtrai-se uma da outra. Sobra S_M(1 − |a|) = 1 − |a|ᴹ⁺¹.'],
+  ['m', 'Por que 1/(1 − |a|) não vale para |a| = 1?', 'Porque o denominador zera. Nesse caso, somando direto, S_M = M + 1, que vai para infinito.'],
+  ['m', 'Por que a série diverge para a = 1,2?', 'Porque os termos 1,2ⁿ não vão a zero, crescem. Uma série só pode convergir se seus termos tendem a zero.'],
+  ['m', 'Por que a = 0,8 e a = −0,8 têm a mesma soma Σ|h[n]|?', 'Porque o módulo elimina o sinal: |(−0,8)ⁿ| = 0,8ⁿ. As duas somas valem 5.'],
+  ['m', 'O que garante, na prática, Σ|h[n]| = 5?', 'Se |x[n]| ≤ B, então |y[n]| ≤ 5B. Com o degrau (B = 1) e a = 0,8, a saída tende exatamente a 5.'],
+  ['d', 'Prove que, se Σ|h[n]| = ∞, o sistema é instável.', 'Escolha x[n] = sinal(h[−n]), limitada por 1. Na convolução em n = 0, y[0] = Σ h[k]·sinal(h[k]) = Σ|h[k]| = ∞. Uma entrada limitada gera saída ilimitada.'],
+  ['d', 'O sistema com a = 1 é estável?', 'Não. h[n] = u[n] é limitada, mas Σ|h[n]| = 1 + 1 + … = ∞. É o acumulador: com o degrau, a saída é a rampa n + 1.'],
+  ['d', 'Com a = −1, h[n] = (−1)ⁿ não cresce. Por que é instável?', 'Porque Σ|h[n]| = ∞. Com x[n] = (−1)ⁿ, a saída é 1, −2, 3, −4, … Sem o módulo, as somas 1, 0, 1, 0 enganam.'],
+  ['d', 'Para a = −0,8, qual entrada limitada por 1 leva a saída ao teto 5?', 'x[n] = (−1)ⁿ, que casa com a troca de sinal de h[n]: |y[n]| = Σ0,8ᵏ → 5. O degrau, nesse caso, dá só 1/1,8 ≈ 0,556.'],
+  ['d', 'E se o sistema não estivesse em repouso (y[−1] = c)?', 'A saída ganharia a parcela c·aⁿ⁺¹ da condição inicial. Ela deixa de ser a resposta ao impulso, e o sistema deixa de ser linear.'],
+  ['d', 'Esse sistema é FIR ou IIR?', 'IIR: h[n] = aⁿ nunca zera de vez, por causa da realimentação de y[n−1].'],
+  ['d', 'Por que no lfilter os coeficientes são [1, −a]?', 'O lfilter usa y[n] + a₁y[n−1] = x[n]. Passando a·y[n−1] para a esquerda: y[n] − a·y[n−1] = x[n], então a₁ = −a.'],
+  ['d', 'Por que a diferença foi 10⁻¹⁴ para a = 1,2 e 10⁻¹⁶ para os outros?', 'Os valores chegam perto de 198. O erro relativo é o mesmo (~10⁻¹⁶): só arredondamento de ponto flutuante.'],
+  ['x', 'Onde exatamente é usado o repouso? O que ele agrega?', 'Em dois lugares: na 1ª conta, h[0] = a·h[−1] + δ[0] = a·0 + 1 = 1 (partida da recursão e base da indução); e nos n < 0, onde repouso + causalidade dão h[n] = 0 (o u[n]). Agrega unicidade e linearidade: sem ele a saída teria c·aⁿ⁺¹, não seria só h[n], e convolução e Σ|h| não se aplicariam.'],
+  ['x', 'Qual é a transformada Z de h[n]?', 'H(z) = Σ aⁿz⁻ⁿ = 1/(1 − a·z⁻¹) = z/(z − a), com RDC |z| > |a|. Polo em z = a: estável ⇔ |a| < 1, o mesmo critério de Σ|h|.'],
+  ['x', 'O que vira cada termo na transformada Z, e por quê?', 'y[n] → Y(z) (definição); y[n−1] → z⁻¹Y(z) (o atraso desloca as etiquetas z⁻ⁿ); δ[n] → 1 (só o termo n = 0); a equação vira Y = a·z⁻¹Y + X ⇒ H = 1/(1 − a·z⁻¹).'],
+];
+(() => {
+  const NV = { f: ['Fácil', '#DDF0E6', '#2E7D5B'], m: ['Média', '#FBE3D2', '#A94A14'], d: ['Difícil', '#F6D9D2', '#B42318'], x: ['Extra', '#DCE6F5', '#2F6DB5'] };
+  const lista = $('#qlista'), resp = $('#qresp'), filt = $('#qfiltros'); let filtro = 'todas', sel = -1, aberto = false;
+  const mostra = (i) => {
+    sel = i; aberto = false; const [nv, q] = Q[i];
+    resp.innerHTML = `<div class="ab" style="left:24px;top:20px"><span class="nivel" style="background:${NV[nv][1]};color:${NV[nv][2]}">${NV[nv][0]} · ${i + 1}</span></div>
+      <div class="ab" style="left:24px;top:56px;width:565px;font:600 22px/1.3 var(--tit);color:var(--navy)">${q}</div>
+      <button class="btn ab" id="qver" style="left:24px;top:170px">Mostrar resposta</button>
+      <div class="ab" id="qr" style="left:24px;top:215px;width:565px;font:400 17px/1.5 var(--tx);color:var(--txt2);display:none">${Q[i][2]}</div>`;
+    $('#qver').onclick = (e) => { e.stopPropagation(); $('#qr').style.display = 'block'; e.target.remove(); };
+    lista.querySelectorAll('div').forEach((d) => d.classList.toggle('sel', +d.dataset.i === i));
+  };
+  function monta() {
+    lista.innerHTML = '';
+    Q.forEach(([nv, q], i) => { if (filtro !== 'todas' && nv !== filtro) return; const d = html('div', '', '', `<span>${i + 1}</span>${q}`, lista); d.dataset.i = i; d.onclick = (e) => { e.stopPropagation(); mostra(i); }; });
+  }
+  [['todas', 'Todas'], ['f', 'Fáceis'], ['m', 'Médias'], ['d', 'Difíceis'], ['x', 'Extras']].forEach(([k, t]) => {
+    const b = html('button', 'btn' + (k === 'todas' ? ' on' : ''), '', t, filt); b.onclick = (e) => { e.stopPropagation(); filtro = k; filt.querySelectorAll('.btn').forEach((x) => x.classList.toggle('on', x === b)); monta(); };
+  });
+  const sb = html('button', 'btn', 'margin-left:16px;background:var(--lar);color:#fff;border-color:var(--lar)', '🎲 Sortear', filt);
+  sb.onclick = (e) => { e.stopPropagation(); const ids = Q.map((_, i) => i).filter((i) => filtro === 'todas' || Q[i][0] === filtro); mostra(ids[Math.floor(Math.random() * ids.length)]); };
+  monta(); resp.innerHTML = '<div class="ab p" style="left:24px;top:24px;width:560px;font-size:16px">Escolha uma pergunta na lista ou clique em <b>Sortear</b>. Tente responder em voz alta antes de abrir a resposta.</div>';
+  resp.addEventListener('click', (e) => e.stopPropagation()); lista.addEventListener('wheel', (e) => e.stopPropagation());
+})();
+
+// ================== falas do roteiro (tecla N) ==================
+const FALAS = {
+  1: '<b>André:</b> “Somos o Grupo 1, com o Tema 2: solução fechada e estabilidade. Vamos mostrar que a resposta ao impulso do sistema de primeira ordem tem uma forma fechada e usar essa forma para decidir quando o sistema é estável.”',
+  2: '<b>André:</b> “Os cinco vão apresentar nesta ordem. Eu faço a introdução e o enunciado; o João resolve o item (a); o Manoel, o item (b); o Paulo confere tudo em Python, que é o item (c); e o Antonio fecha com um erro comum e a conclusão.”',
+  3: '<b>André:</b> “A saída de agora é uma fração a da saída anterior mais a entrada de agora. O termo a·y[n−1] é uma realimentação: o sistema tem memória, e o coeficiente a decide quanto do passado sobrevive a cada passo. É isso que a estabilidade vai medir.”',
+  4: '<b>André:</b> “Resposta ao impulso: é a saída quando x[n] = δ[n] e o sistema parte do repouso, y[−1] = 0. Num SLIT, h[n] descreve tudo, porque qualquer saída sai da convolução. Estabilidade BIBO: se |x[n]| ≤ B para todo n, então |y[n]| ≤ C. Para um SLIT, isso se reduz a uma única conta: Σ|h[n]| &lt; ∞.”',
+  5: '<b>André:</b> “Considere y[n] = a·y[n−1] + x[n], em repouso. (a) Mostre que h[n] = aⁿu[n]. (b) Para 0,8, 1,2 e −0,8, diga se é estável, justificando com Σ|h[n]|. (c) Simule 30 amostras em Python. ‘Em repouso’ significa y[−1] = 0, e é isso que faz a saída para δ[n] ser a resposta ao impulso. Passo a palavra para o João.”',
+  6: '<b>João:</b> “Troco x[n] por δ[n] e chamo a saída de h[n]: h[n] = a·h[n−1] + δ[n], com h[−1] = 0. Em n = 0: a·0 + 1 = 1, o único instante em que o impulso entra. Em n = 1: a·1 + 0 = a. Em n = 2: a². E assim por diante. A partir de n = 1 o δ é zero: só a realimentação trabalha, e cada amostra é a vezes a anterior. Com 0,8 encolhe; com 1,2 cresce; com −0,8, mesmos módulos, sinal alternando. A tabela sugere aⁿ, mas padrão não é prova: são cinco valores, e n vai até o infinito. Por isso, o passo 2.”',
+  '6x': '<b>João (extra):</b> mostrar que 0,8 e −0,8 têm o mesmo envelope; −0,8 só alterna o sinal. 1,2 multiplica por mais que 1 a cada passo.',
+  7: '<b>João:</b> “Para provar para todo n, uso indução, como numa fila de dominós. Base, n = 0: h[0] = 1 = a⁰. Hipótese: h[n−1] = aⁿ⁻¹ para algum n ≥ 1. Passo: h[n] = a·h[n−1] + δ[n]; como n ≥ 1, δ[n] = 0; pela hipótese, a·aⁿ⁻¹ = aⁿ. Vale para todo n ≥ 0. Para n negativo: repouso e causalidade dão h[n] = 0, e o u[n] registra isso. Isso responde o item (a): h[n] = aⁿu[n]. Passo a palavra para o Manoel.”',
+  '7x': '<b>João (extra):</b> sem o u[n], aⁿ daria 1,25; 1,56; … para n negativo. O u[n] corta esse lado: h[n] = 0 para n &lt; 0.',
+  8: '<b>Manoel:</b> “Com |x[n]| ≤ B, a convolução e a desigualdade triangular dão |y[n]| ≤ B·Σ|h[k]|. Se a soma é finita, a saída fica presa abaixo de B·Σ|h| para qualquer entrada limitada. Aplicando a forma fechada: Σ|a|ⁿ, série geométrica. S_M = (1 − |a|ᴹ⁺¹)/(1 − |a|). |a|ᴹ⁺¹ só vai a zero se |a| &lt; 1, e então Σ|h[n]| = 1/(1 − |a|).”',
+  9: '<b>Manoel:</b> “a = 0,8: Σ0,8ⁿ = 1/(1 − 0,8) = 5, estável. a = 1,2: |a| &gt; 1, diverge, instável. a = −0,8: |−0,8|ⁿ = 0,8ⁿ, soma 5, estável. No módulo o sinal de a some. A regra é: estável ⇔ |a| &lt; 1. Passo a palavra para o Paulo.”',
+  10: '<b>Paulo:</b> “Para 0,8 ou −0,8: |x[n]| ≤ B ⇒ |y[n]| ≤ 5B. Para 1,2 não existe teto. Testamos com o degrau, limitado por B = 1, e a = 0,8: s[0] = 1, s[1] = 1,8, s[2] = 2,44, s[29] ≈ 4,99 → 5. A saída tende exatamente a 5: o teto é atingido, não só respeitado.”',
+  11: '<b>Paulo:</b> “Para cada a, 30 amostras de três jeitos: recursão (laço igual ao da mão), fórmula aⁿ e lfilter do SciPy. Os três repetem a tabela do passo 1. Maiores diferenças: 1,1×10⁻¹⁶, 8,5×10⁻¹⁴ e 5,6×10⁻¹⁷: arredondamento. Com 1,2 é maior só porque os valores chegam perto de 200. No lfilter: y[n] − a·y[n−1] = x[n] ⇒ b = [1], a = [1, −a].” <i>(Se der, rodar a célula ao vivo.)</i>',
+  12: '<b>Paulo:</b> “O computador não soma infinitos termos, então olhamos somas parciais cada vez maiores. Com 0,8 e −0,8 a soma estaciona em 5, e as duas linhas são idênticas, porque |h[n]| = 0,8ⁿ nos dois. Com 1,2 ela explode.”',
+  13: '<b>Paulo:</b> “À esquerda h[n] decai; no meio chega perto de 200 em 30 amostras; à direita tem o mesmo envelope da esquerda, só que trocando de sinal. Passo a palavra para o Antonio.”',
+  14: '<b>Antonio:</b> “O enunciado inclui a = −0,8 por causa deste erro: ver h[n] trocando de sinal e concluir ‘instável’ está errado, porque o critério usa o módulo: Σ0,8ⁿ = 5, estável. O contrário também engana: com a = −1, somar sem o módulo dá 1, 0, 1, 0… Com o módulo diverge, então a = −1 é instável. Com x[n] = (−1)ⁿ, a saída é 1, −2, 3, −4…”',
+  15: '<b>Antonio:</b> “Três pontos: 1) h[n] = aⁿu[n], por indução e Python; 2) estável ⇔ Σ|h| &lt; ∞ ⇔ |a| &lt; 1, com Σ|h| = 1/(1 − |a|); 3) o sinal de a não decide: oscilar não é ser instável. Item (b): 0,8 e −0,8 estáveis, Σ = 5; 1,2 instável.”',
+  16: '<b>Antonio:</b> “Obrigado. Como pede a especificação, declaramos o uso de IA: usamos o Claude, da Anthropic, que ajudou na construção dos slides. Estamos à disposição para as perguntas.” <i>(Deixar este slide na tela durante a arguição.)</i>',
+  A1: 'Laboratório: arraste o controle ou use os botões. Bom para “e se a = 1?”, “e a = −1?”: mostra h[n], a soma das 30 amostras, Σ|h| e o polo no plano z.',
+  A2: 'Resposta para “onde entra o repouso?”: na 1ª conta (h[−1] = 0 ⇒ h[0] = 1) e nos n &lt; 0 (u[n]). Sem ele, aparece c·aⁿ⁺¹: h[n] não seria único e o sistema não seria linear.',
+  A3: 'Transformada Z: atraso vira z⁻¹, impulso vira 1, a equação vira álgebra. H(z) = 1/(1 − a·z⁻¹), polo em z = a, estável ⇔ |a| &lt; 1.',
+  A4: 'Banco com as 24 perguntas simuladas + extras. Filtre por nível ou sorteie.',
+};
+
+// ================== motor da apresentação ==================
+const palco = $('#palco'), slides = [...document.querySelectorAll('.slide')];
+let iS = 0, passo = 0;
+slides.forEach((s) => { const ps = [...s.querySelectorAll('[data-s]')].map((e) => +e.dataset.s); s.nPassos = Math.max(0, ...ps); });
+['6x', '10', '12', '13', '14', '7x'].forEach((id) => { const s = slides.find((x) => x.dataset.id === id); s.nPassos = Math.max(s.nPassos, { '6x': 4, '10': 4, '12': 4, '13': 4, '14': 4, '7x': 3 }[id]); });
+function escala() { const k = Math.min(innerWidth / 1280, (innerHeight - 34) / 720); palco.style.transform = `translate(${-640 * k}px, ${-360 * k - 17}px) scale(${k})`; }
+addEventListener('resize', () => { escala(); encaixa(); }); escala();
+function aplica() {
+  slides.forEach((s, i) => s.classList.toggle('atual', i === iS));
+  const s = slides[iS];
+  s.querySelectorAll('[data-s]').forEach((e) => { const a = +e.dataset.s, b = e.dataset.e ? +e.dataset.e : 999; e.classList.toggle('on', passo >= a && passo < b); });
+  if (GANCHOS[s.dataset.id]) GANCHOS[s.dataset.id](passo);
+  $('#num').textContent = `${s.dataset.id.startsWith('A') ? 'Apêndice ' + s.dataset.id : 'Slide ' + s.dataset.id} · ${iS + 1}/${slides.length}`;
+  $('#quem').textContent = s.dataset.quem;
+  $('#passos').innerHTML = Array.from({ length: s.nPassos }, (_, k) => `<i class="${k < passo ? 'on' : ''}"></i>`).join('');
+  $('#barra i').style.width = ((iS + passo / (s.nPassos + 1)) / (slides.length - 1) * 100) + '%';
+  $('#notas').innerHTML = FALAS[s.dataset.id] || '';
+  document.querySelectorAll('#menu a').forEach((a, i) => a.classList.toggle('atual', i === iS));
+  history.replaceState(null, '', '#' + s.dataset.id + (passo ? '.' + passo : ''));
+}
+function vai(i, p = 0) { iS = Math.max(0, Math.min(slides.length - 1, i)); passo = p === 'fim' ? slides[iS].nPassos : p; aplica(); }
+function prox() { if (passo < slides[iS].nPassos) { passo++; aplica(); } else if (iS < slides.length - 1) vai(iS + 1); }
+function ant() { if (passo > 0) { passo--; aplica(); } else if (iS > 0) vai(iS - 1, 'fim'); }
+addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' && ['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+  const k = e.key;
+  if (['ArrowRight', ' ', 'Enter', 'ArrowDown'].includes(k)) { e.preventDefault(); prox(); }
+  else if (['ArrowLeft', 'Backspace', 'ArrowUp'].includes(k)) { e.preventDefault(); ant(); }
+  else if (k === 'PageDown') vai(iS + 1); else if (k === 'PageUp') vai(iS - 1);
+  else if (k === 'Home') vai(0); else if (k === 'End') vai(slides.length - 1);
+  else if (k === 'n' || k === 'N') $('#notas').classList.toggle('on');
+  else if (k === 'm' || k === 'M') $('#menu').classList.toggle('on');
+  else if (k === 'h' || k === 'H' || k === '?') $('#ajuda').classList.toggle('on');
+  else if (k === 'f' || k === 'F') tela();
+  else if (k === 'Escape') { $('#menu').classList.remove('on'); $('#ajuda').classList.remove('on'); }
+});
+palco.addEventListener('click', (e) => { if (e.target.closest('button,input,a,#qlista,#qresp')) return; const r = palco.getBoundingClientRect(); (e.clientX - r.left < r.width * 0.2) ? ant() : prox(); });
+function tela() { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+$('#bTela').onclick = tela; $('#bNotas').onclick = () => $('#notas').classList.toggle('on');
+$('#bMenu').onclick = () => $('#menu').classList.toggle('on'); $('#bAjuda').onclick = () => $('#ajuda').classList.toggle('on');
+// menu
+(() => {
+  const m = $('#menu'); let grupo = '';
+  slides.forEach((s, i) => {
+    const q = s.dataset.quem; if (q !== grupo) { html('h4', '', '', q, m); grupo = q; }
+    const t = (s.querySelector('.tit') || s.querySelector('.ab')).textContent.trim();
+    const a = html('a', '', '', `<span>${s.dataset.id}</span>${t}`, m); a.onclick = () => { vai(i); m.classList.remove('on'); };
+  });
+})();
+// esconde a barra depois de parado
+let tUI; addEventListener('mousemove', () => { $('#ui').classList.remove('some'); clearTimeout(tUI); tUI = setTimeout(() => $('#ui').classList.add('some'), 2500); });
+// começa pelo endereço (#6.3 = slide 6, passo 3)
+document.fonts.ready.then(encaixa);
+const h0 = location.hash.slice(1).split('.'); const i0 = slides.findIndex((s) => s.dataset.id === h0[0]);
+vai(i0 >= 0 ? i0 : 0, +(h0[1] || 0));
+setTimeout(encaixa, 300);
+window.vai = vai; window.SL = slides;
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{
+  "voz": "pt-BR-FranciscaNeural",
+  "taxa": "+0%",
+  "falas": [
+    {"id": "b0", "cena": "abertura", "pausa": 0.9, "texto": "Oi, João. Esta é a videoaula da sua parte no seminário de PDS: os passos um e dois, que respondem o item a. No fim, você vai saber calcular h de n na mão e provar que ele vale a elevado a n, vezes u de n."},
+
+    {"id": "b1", "cena": "equipe", "pausa": 0.9, "texto": "Antes, onde você entra. O André apresenta o sistema e os conceitos. Você mostra de onde vem a fórmula de h de n. Depois, o Manoel usa essa fórmula para decidir a estabilidade, e o Paulo confere tudo em Python. Ou seja: o resto do trabalho depende do resultado que você prova."},
+
+    {"id": "b2", "cena": "sistema", "pausa": 0.4, "texto": "O sistema é este: y de n, igual a a vezes y de n menos um, mais x de n."},
+    {"id": "b3", "cena": "sistema", "pausa": 0.9, "texto": "A saída de agora é uma fração a da saída anterior, somada à entrada de agora. Esse termo com y de n menos um é a realimentação: é a memória do sistema."},
+
+    {"id": "b4", "cena": "ingredientes", "pausa": 0.4, "texto": "Para achar a resposta ao impulso, precisamos de três ideias. Primeira: o impulso, delta de n, vale um só em n igual a zero, e zero em todos os outros instantes."},
+    {"id": "b5", "cena": "ingredientes", "pausa": 0.4, "texto": "Segunda: a resposta ao impulso, h de n, é a saída quando a entrada é exatamente esse impulso."},
+    {"id": "b6", "cena": "ingredientes", "pausa": 0.9, "texto": "Terceira: o sistema está em repouso. Isso quer dizer que y de menos um é zero. Antes de o impulso chegar, não havia nada guardado na memória."},
+
+    {"id": "b7", "cena": "troca", "pausa": 0.9, "texto": "Então trocamos x por delta, e y por h. A equação vira: h de n, igual a a vezes h de n menos um, mais delta de n. Com h de menos um igual a zero."},
+
+    {"id": "b8", "cena": "recursao", "pausa": 0.4, "texto": "Passo um: aplicar a equação amostra por amostra."},
+    {"id": "b9", "cena": "recursao", "pausa": 0.4, "texto": "Em n igual a zero: h de zero é a vezes h de menos um, que é zero, mais delta de zero, que é um. Resultado: um. É o único momento em que o impulso entra."},
+    {"id": "b10", "cena": "recursao", "pausa": 0.4, "texto": "Em n igual a um: a vezes h de zero, que é um, mais delta de um, que agora é zero. Resultado: a."},
+    {"id": "b11", "cena": "recursao", "pausa": 0.4, "texto": "Em n igual a dois: a vezes a, mais zero. a ao quadrado."},
+    {"id": "b12", "cena": "recursao", "pausa": 0.9, "texto": "E assim segue: a ao cubo, a à quarta. A partir de n igual a um, o impulso já passou. Só a realimentação trabalha, e cada amostra é a vezes a anterior."},
+
+    {"id": "b13", "cena": "valores", "pausa": 0.4, "texto": "Agora, com os números do enunciado. Com a igual a 0,8: um; 0,8; 0,64; 0,512. A sequência encolhe."},
+    {"id": "b14", "cena": "valores", "pausa": 0.4, "texto": "Com a igual a 1,2: um; 1,2; 1,44; 1,728. A sequência cresce."},
+    {"id": "b15", "cena": "valores", "pausa": 0.9, "texto": "E com a igual a menos 0,8: os mesmos valores do primeiro caso, mas o sinal alterna. Positivo, negativo, positivo, negativo. Toda potência de um número negativo troca de sinal a cada passo."},
+
+    {"id": "b16", "cena": "padrao", "pausa": 0.4, "texto": "A tabela sugere um padrão: h de n igual a a elevado a n. Mas atenção, porque o professor pode cobrar isto: padrão não é prova. A tabela mostra cinco valores, e n vai até o infinito."},
+    {"id": "b17", "cena": "padrao", "pausa": 0.9, "texto": "Para garantir que vale para todo n, usamos indução matemática. Pense numa fila de dominós."},
+
+    {"id": "b18", "cena": "inducao", "pausa": 0.5, "texto": "Base: o primeiro dominó cai. Em n igual a zero, h de zero é um, e um é a elevado a zero. Confere."},
+    {"id": "b19", "cena": "inducao", "pausa": 0.5, "texto": "Hipótese: suponha que um dominó qualquer caiu. Ou seja, h de n menos um é igual a a elevado a n menos um, para algum n maior ou igual a um."},
+    {"id": "b20", "cena": "inducao", "pausa": 0.5, "texto": "Passo: mostre que ele derruba o próximo. Pela equação, h de n é a vezes h de n menos um, mais delta de n. Como n é pelo menos um, delta de n é zero. Sobra a vezes a elevado a n menos um, que é a elevado a n."},
+    {"id": "b21", "cena": "inducao", "pausa": 0.9, "texto": "Vale no zero e, sempre que vale num n, vale no seguinte. Logo, vale para todo n maior ou igual a zero. Todos os dominós caem."},
+
+    {"id": "b22", "cena": "degrau", "pausa": 0.4, "texto": "Falta um detalhe: e para n negativo? O sistema parte do repouso e é causal, ou seja, não responde antes de a entrada chegar. Então h de n é zero para todo n negativo."},
+    {"id": "b23", "cena": "degrau", "pausa": 0.5, "texto": "Quem registra isso é o degrau, u de n: vale um para n maior ou igual a zero, e zero antes. O u de n não é enfeite. Sem ele, a elevado a n daria valores diferentes de zero para n negativo."},
+    {"id": "b24", "cena": "degrau", "pausa": 1.0, "texto": "E está respondido o item a: h de n, igual a a elevado a n, vezes u de n."},
+
+    {"id": "b25", "cena": "fala", "pausa": 0.5, "texto": "Na apresentação, a sua fala cabe em quatro ideias."},
+    {"id": "b26", "cena": "fala", "pausa": 0.4, "texto": "Um: troco x por delta e parto do repouso."},
+    {"id": "b27", "cena": "fala", "pausa": 0.4, "texto": "Dois: calculo amostra por amostra, e o padrão a elevado a n aparece."},
+    {"id": "b28", "cena": "fala", "pausa": 0.4, "texto": "Três: padrão não é prova, então provo por indução, com base, hipótese e passo."},
+    {"id": "b29", "cena": "fala", "pausa": 0.4, "texto": "Quatro: para n negativo é zero, e o u de n registra isso."},
+    {"id": "b30", "cena": "fala", "pausa": 1.0, "texto": "No fim, passe a palavra para o Manoel."},
+
+    {"id": "p0", "cena": "perguntas", "pausa": 0.8, "texto": "Agora, perguntas que o professor pode fazer sobre a sua parte. Tente responder antes de a resposta aparecer."},
+    {"id": "q1", "cena": "q1", "pausa": 3.0, "texto": "Por que usar indução, se a tabela já mostra o padrão?"},
+    {"id": "r1", "cena": "q1", "pausa": 1.0, "texto": "Porque a tabela mostra só alguns valores. A indução garante que o padrão vale para todo n maior ou igual a zero."},
+    {"id": "q2", "cena": "q2", "pausa": 3.0, "texto": "O que significa, em repouso?"},
+    {"id": "r2", "cena": "q2", "pausa": 1.0, "texto": "Que y de menos um é zero. Sem isso, a saída teria uma parcela da condição inicial, e não seria a resposta ao impulso."},
+    {"id": "q3", "cena": "q3", "pausa": 3.0, "texto": "Para que serve o u de n, na resposta?"},
+    {"id": "r3", "cena": "q3", "pausa": 1.0, "texto": "Registra que h de n é zero para n negativo, porque o sistema é causal e parte do repouso."},
+    {"id": "q4", "cena": "q4", "pausa": 3.0, "texto": "Quanto vale h de três, para a igual a menos 0,8?"},
+    {"id": "r4", "cena": "q4", "pausa": 1.0, "texto": "Menos 0,8 ao cubo: menos 0,512. Expoente ímpar, sinal negativo."},
+    {"id": "q5", "cena": "q5", "pausa": 3.0, "texto": "Por que o sistema é de primeira ordem?"},
+    {"id": "r5", "cena": "q5", "pausa": 1.0, "texto": "Porque a saída depende de uma única saída passada: y de n menos um."},
+    {"id": "q6", "cena": "q6", "pausa": 3.0, "texto": "Esse sistema é FIR, ou IIR?"},
+    {"id": "r6", "cena": "q6", "pausa": 1.0, "texto": "IIR, de resposta ao impulso infinita. a elevado a n nunca zera de vez, por causa da realimentação."},
+    {"id": "q7", "cena": "q7", "pausa": 3.0, "texto": "E se o sistema não estivesse em repouso, com y de menos um igual a c?"},
+    {"id": "r7", "cena": "q7", "pausa": 1.0, "texto": "A saída ganharia uma parcela, c vezes a elevado a n mais um, devida à condição inicial. Aí ela deixa de ser a resposta ao impulso."},
+
+    {"id": "b31", "cena": "fim", "pausa": 2.5, "texto": "Resumindo: recursão para enxergar o padrão, indução para provar, e u de n para os instantes negativos. h de n, igual a a elevado a n, vezes u de n. Boa apresentação, João!"}
+  ]
+}

@@ -1,0 +1,6 @@
+[  0.00 –  12.14] Então, trocamos x por delta e y por h. A equação vira h de n, igual a a vezes h de n menos um, mais delta de n,
+[ 12.60 –  19.36] com h de menos um, igual a zero. Passo um. Aplicar a equação a mostra por a mostra.
+[ 20.18 –  28.86] Em n igual a zero, h de zero é a vezes h de menos um, que é zero, mais delta de zero, que é um.
+[ 29.38 –  40.44] Resultado um. É o único momento em que o impulso entra. Em n igual a um, a vezes h de zero, que é um, mais delta de um,
+[ 40.68 –  50.80] que agora é zero. Resultado a. Em n igual a dois, a vezes a mais zero, a ao quadrado. E assim segue.
+[ 50.80 –  62.66] Ao cubo, à quarta. A partir de n igual a um, o impulso já passou. Só a realimentação trabalha e cada amostra é a vezes a anterior.

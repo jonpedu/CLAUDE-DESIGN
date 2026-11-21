@@ -18,6 +18,7 @@ Este arquivo resume a conversa de planejamento (claude.ai, 14/11/2026) para dar 
 - Para outro cliente ou marca, crie uma nova sub-skill copiando `telessaude/` e mantendo só o que é específico; para um novo tipo de vídeo do Telessaúde, crie `telessaude/tipos/<nome>.md`.
 - `analise-referencias/RELATORIO-ANALISE.md` tem a análise dos vídeos de referência (15/11/2026) que deu origem ao perfil.
 - `GUIA-MOTION.md`, na raiz, é o mapa dessas skills para o usuário.
+- **`.claude/skills/prompts-flow/`** (20/11/2026): prompts do Google Flow a partir do roteiro aprovado, só para as cenas que o motion gráfico não resolve (personagens e ações). Substitui o Gem do Gemini. Testada primeiro na série Serviços do NTS.
 - **`/editar [vídeo]`** (`.claude/skills/editar/`, 16/11/2026): retoma o vídeo pelo `00-estado.md`, faz uma etapa e salva o estado; permite `/clear` entre etapas sem perder o contexto.
 
 ## Plano de trabalho (decidido em 14/11/2026)
@@ -56,11 +57,14 @@ O estado de cada vídeo (versão atual, final aprovado, decisões só dele) fica
 | --- | --- | --- |
 | IAM (infarto), 9:16 | `CRIANDO-VIDEOS/IAM/` | v4.1 oficial e v5.1 candidata, aguardando validação da equipe |
 | AVC, 9:16 | `CRIANDO-VIDEOS/AVC/` | concluído (v4.1) |
+| Teleorientação (série Serviços do NTS, piloto), 9:16 | `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEORIENTAÇÃO/` | v3 final entregue (20/11/2026), aguardando o ok final; depois 16:9 |
+| Telediagnóstico (série Serviços do NTS), 9:16 | `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEDIAGNÓSTICO/` | v4: cenas 1–4 e 8 refeitas; proposta do ChatGPT para 5, 6, 7, 9 e 10 salva (`03-proposta-...md`), falta implementar e renderizar (20/11/2026) |
 | Hipertensão parte 2, 16:9 (reconstrução) | `REFAZENDO-VIDEOS/hipertensao 2/` | concluído |
 
 ## Pendências do fluxo (anotado em 16/11/2026)
 
 - **Banco de elementos:** montar uma biblioteca reutilizável de elementos (SVG primeiro: ícones, órgãos, setas, grafismos; regra 12 de `motion/SKILL.md`).
+- **Banco de trilhas:** criado em 20/11/2026 em `biblioteca-trilhas/` (geral, por clima: corporativo, tecnologia, animado, suave, emocional; 20 faixas com LUFS e licença no `README.md`). A trilha segue o clima de cada trecho e pode mudar dentro do vídeo (`motion/som.md`).
 - **Banco de efeitos sonoros:** ampliar e organizar `biblioteca-sfx/` (hoje só sintetizados), com nomes descritivos e trechos úteis do áudio do Flow.
 - **Tipos ainda não testados:** campanha, institucional, registro de ação, horizontal feito do zero, `.srt`. O primeiro de cada um vai mostrar o que falta nas regras.
 - **Vídeo com câmera real:** criar `motion/video-real.md` no primeiro vídeo desse tipo (ferramentas já anotadas em `motion/tecnico.md`).

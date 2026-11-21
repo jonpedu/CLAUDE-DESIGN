@@ -1,0 +1,13 @@
+[  0.00 –   9.54] Base. O primeiro dominó cai. Em n igual a zero, h de zero é um, e um é a elevado a zero. Confere.
+[ 10.60 –  19.22] Hipótese. Suponha que um dominó qualquer caiu. Ou seja, h de n menos um é igual a a elevado a n menos um
+[ 19.22 –  21.52] para algum n maior ou igual a um.
+[ 22.86 –  31.94] Passo. Mostre que ele derruba o próximo. Pela equação, h de n é a vezes h de n menos um mais delta de n.
+[ 32.42 –  41.20] Como n é pelo menos um, delta de n é zero. Sobra a vezes a elevado a n menos um, que é a elevado a n.
+[ 41.98 –  49.42] Vale no zero, e sempre que vale no n, vale no seguinte. Logo, vale para todo n maior ou igual a zero.
+[ 49.42 –  51.30] Todos os dominó caem.
+[ 52.12 –  55.00] Falta um detalhe. E para n negativo.
+[ 55.70 –  61.02] O sistema parte do repouso e é causal. Ou seja, não responde antes de a entrada chegar.
+[ 61.70 –  67.22] Então, h de n é zero para todo n negativo. Quem registra isso é o de grau.
+[ 67.56 –  72.00] U de n. Vale um para n maior ou igual a zero e zero antes.
+[ 72.00 –  79.66] O u de n não é enfeite. Sem ele, a elevado a n daria valores diferentes de zero para a n negativo.
+[ 80.50 –  87.00] E está respondido o item a. H de n igual a a elevado a n vezes u de n.

@@ -1,0 +1,5 @@
+[  0.00 –   8.00] ou e joão. Esta é a vídeo-aula da sua parte no seminário de pds, os passos um e dois, que respondem o item a.
+[  8.62 –  15.80] No fim, você vai saber calcular h de n na mão e provar que ele vale a elevado a n, vezes u de n.
+[ 16.40 –  24.64] Antes, onde você entra. O André apresenta o sistema e os conceitos. Você mostra de onde vem a fórmula de h de n.
+[ 25.24 –  31.24] Depois, o Manoel usa essa fórmula para decidir a estabilidade e o Paulo confere tudo em Python.
+[ 31.84 –  35.90] Ou seja, o resto do trabalho depende do resultado que você prova.

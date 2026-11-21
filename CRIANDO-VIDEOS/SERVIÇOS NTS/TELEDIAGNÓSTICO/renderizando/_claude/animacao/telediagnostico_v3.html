@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Telediagnóstico (Serviços do NTS) · v3 · 9:16 · gerado de telediagnostico_v3.src.html por monta_v3.py (logos embutidos)
+     Devolutiva da v2 (20/11/2026): sem mapa mexendo no fundo, sem alfinetes soltos, informação na área segura quando é falada,
+     título sem linha cortando, logos grandes e animados (só o logo, sem a sigla ao lado), nada de cartão repetido cena após cena.
+     Uma linguagem por cena: C1 tela dividida aqui/lá → C2 as metades se afastam, dados sobem → C3 aproximação no doutor (Flow) →
+     C4 tipografia → olho em tela cheia (UFG) → mergulho na pupila → fita de ECG (UFMG) → a fita vira a respiração (tele-espirometria) →
+     Maranhão parado com a cobertura saindo de São Luís → C5 doutora + lugar/tempo → C6 volta ao exame, que recebe o laudo.
+     Médicos: quadros JPG dos clipes do Flow (fundo branco) em multiplicar, na raiz da página (nada colorido atrás deles).
+     Render: node ferramentas/animar.mjs <telediagnostico_v3.html> <saida.mp4> · provas: FOTOS="t1,t2" -->
+<script src="../camadas/mapa_br.js"></script>
+<style>
+  #fundo { position: absolute; inset: 0; background: #fff; overflow: hidden; }
+  .mancha { position: absolute; left: 0; top: 0; width: 900px; height: 900px; border-radius: 50%; filter: blur(100px); }
+  #fundo::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(54,93,204,.14) 2.4px, transparent 3px);
+    background-size: 48px 48px; -webkit-mask-image: radial-gradient(ellipse at 50% 45%, transparent 40%, #000 85%); mask-image: radial-gradient(ellipse at 50% 45%, transparent 40%, #000 85%); }
+  .el { position: absolute; left: 0; top: 0; will-change: transform; }
+  svg.cheia { position: absolute; left: 0; top: 0; overflow: visible; }
+  .med { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; mix-blend-mode: multiply; }
+  .txt { white-space: nowrap; line-height: 1.02; }
+  .leve { font-weight: 300; font-size: 60px; color: #475467; }
+  .peso { font-weight: 800; color: #365DCC; letter-spacing: -2px; }
+  .etq { background: #fff; color: #1C306A; font-weight: 700; font-size: 56px; line-height: 1.1; padding: 16px 32px; border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(28,48,106,.16); white-space: nowrap; }
+  .etq.verde { background: #19756F; color: #fff; }
+  .etq.solida { background: #365DCC; color: #fff; }
+  .circ { border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .regua-base { position: absolute; left: 0; bottom: 0; width: 1080px; z-index: 50; }
+  #intro { position: absolute; inset: 0; background: #fff; z-index: 40; }
+  .logo svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .logo svg path, .logo svg rect, .logo svg polygon { transform-box: fill-box; transform-origin: center; }
+  .item { display: flex; align-items: center; gap: 26px; }
+  .item .ic { width: 104px; height: 104px; flex: none; border-radius: 28px; background: #E3E8F8; display: flex; align-items: center; justify-content: center; }
+  .item .ic svg { width: 64px; height: 64px; }
+  .item .tx { font-weight: 700; font-size: 52px; line-height: 1.12; color: #1C306A; white-space: nowrap; }
+</style></head>
+<body>
+
+<div id="fundo"><div class="mancha" id="b1" style="background:rgba(54,93,204,.10)"></div><div class="mancha" id="b2" style="background:rgba(25,117,111,.08)"></div><div class="mancha" id="b3" style="background:rgba(54,93,204,.07)"></div></div>
+
+<!-- metade de baixo (o lugar do exame, "aqui"): tom azul bem claro -->
+<div id="painel" class="el" style="width:1080px;height:1100px;background:#EEF3FD;z-index:1"></div>
+<svg id="divisa" class="cheia" width="1080" height="1920" style="z-index:2"><line id="divisa-l" x1="-20" x2="1100" y1="0" y2="0" stroke="#365DCC" stroke-width="6" stroke-dasharray="4 22" stroke-linecap="round"/></svg>
+
+<!-- médicos (quadros do Flow em multiplicar, sempre na raiz) -->
+<img id="v-doutor" class="med" style="z-index:3">
+<img id="v-doutora" class="med" style="z-index:3">
+
+<!-- o exame (papel impresso) -->
+<svg id="papel" class="el" width="600" height="800" viewBox="0 0 600 800" style="z-index:4">
+  <rect x="12" y="12" width="576" height="800" rx="30" fill="#fff" stroke="#D6DDEC" stroke-width="5" style="filter:drop-shadow(0 18px 30px rgba(28,48,106,.18))"/>
+  <rect x="56" y="60" width="200" height="22" rx="11" fill="#365DCC"/><rect x="56" y="104" width="300" height="16" rx="8" fill="#D6DDEC"/><rect x="56" y="136" width="220" height="16" rx="8" fill="#D6DDEC"/>
+  <g stroke="#E3E8F8" stroke-width="3"><path d="M56 220h488M56 280h488M56 340h488M56 400h488M56 460h488M56 520h488M56 580h488"/><path d="M96 200v400M156 200v400M216 200v400M276 200v400M336 200v400M396 200v400M456 200v400M516 200v400"/></g>
+  <path id="papel-tr" d="M56 420h70l18-34 22 92 26-170 26 150 16-38h52l18-34 22 92 26-170 26 150 16-38h70" fill="none" stroke="#1C306A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="56" y="650" width="488" height="16" rx="8" fill="#D6DDEC"/><rect x="56" y="684" width="340" height="16" rx="8" fill="#D6DDEC"/>
+</svg>
+
+<!-- C1 textos -->
+<div id="tLa1" class="el txt leve" style="z-index:6">quem dá o laudo,</div>
+<div id="tLa2" class="el txt peso" style="z-index:6;font-size:190px">lá</div>
+<div id="tAq1" class="el txt leve" style="z-index:6">o exame</div>
+<div id="tAq2" class="el txt peso" style="z-index:6;font-size:170px;color:#1C306A">aqui</div>
+<div id="qq" class="el circ" style="z-index:7;width:150px;height:150px;background:#fff;box-shadow:0 14px 30px rgba(28,48,106,.2);font-weight:800;font-size:100px;color:#365DCC">?</div>
+
+<!-- a faixa azul com o título (a ponte entre aqui e lá) -->
+<div id="faixa" class="el" style="z-index:8;width:1300px;height:190px;background:#365DCC;box-shadow:0 16px 40px rgba(28,48,106,.25)"></div>
+<div id="tit" class="el txt" style="z-index:9;font-weight:800;font-size:104px;color:#fff;letter-spacing:-2px">Telediagnóstico</div>
+
+<div id="tDist" class="el txt" style="z-index:6"><span class="leve" style="font-size:64px">a </span><span class="peso" style="font-size:120px;color:#19756F">distância</span></div>
+<svg id="dados" class="cheia" width="1080" height="1920" style="z-index:7"></svg>
+
+<!-- C3 -->
+<div id="cab" class="el etq solida" style="z-index:6;font-size:44px;padding:12px 26px">Telediagnóstico</div>
+<div id="wG" class="el item" style="z-index:6"><span class="ic" id="iG"><svg viewBox="0 0 48 48"><rect x="7" y="26" width="8" height="15" rx="2" fill="#9DB3EC"/><rect x="20" y="17" width="8" height="24" rx="2" fill="#6F8FE0"/><rect x="33" y="9" width="8" height="32" rx="2" fill="#365DCC"/><path d="M6 21 18 12l10 5 14-11" fill="none" stroke="#19756F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="tx" style="font-size:72px">gráficos</span></div>
+<div id="wI" class="el item" style="z-index:6"><span class="ic" id="iI"><svg viewBox="0 0 48 48"><rect x="5" y="8" width="38" height="32" rx="5" fill="#fff" stroke="#365DCC" stroke-width="3"/><circle cx="33" cy="17" r="4" fill="#19756F"/><path d="M7 37 18 24l8 9 5-5 10 10Z" fill="#365DCC"/></svg></span><span class="tx" style="font-size:72px">imagens</span></div>
+<div id="wD" class="el item" style="z-index:6"><span class="ic" id="iD"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="11" rx="15" ry="5.5" fill="#365DCC"/><path d="M9 11v9c0 3 7 5.5 15 5.5S39 23 39 20v-9" fill="#6F8FE0"/><path d="M9 20v9c0 3 7 5.5 15 5.5S39 32 39 29v-9" fill="#9DB3EC"/><path d="M9 29v8c0 3 7 5.5 15 5.5S39 40 39 37v-8" fill="#C7D4F4"/></svg></span><span class="tx" style="font-size:72px">dados</span></div>
+<svg id="voo" class="cheia" width="1080" height="1920" style="z-index:7"></svg>
+<svg id="doc" class="el" width="230" height="290" viewBox="0 0 230 290" style="z-index:9">
+  <rect x="10" y="10" width="200" height="262" rx="22" fill="#fff" stroke="#D6DDEC" stroke-width="4" style="filter:drop-shadow(0 14px 22px rgba(28,48,106,.22))"/>
+  <rect x="38" y="44" width="110" height="16" rx="8" fill="#365DCC"/>
+  <rect x="38" y="84" width="144" height="12" rx="6" fill="#D6DDEC"/><rect x="38" y="110" width="144" height="12" rx="6" fill="#D6DDEC"/><rect x="38" y="136" width="100" height="12" rx="6" fill="#D6DDEC"/>
+  <path d="M38 190h22l10-18 14 34 10-16h22" fill="none" stroke="#9DB3EC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="doc-ok"><circle cx="178" cy="240" r="40" fill="#19756F"/><path id="doc-ck" d="m160 240 13 13 23-25" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>
+<div id="eLaudo" class="el etq verde" style="z-index:9">laudo ou parecer</div>
+
+<!-- C4a: tipografia -->
+<div id="k1" class="el txt peso" style="z-index:6;font-size:132px">Telessaúde</div>
+<div id="k2" class="el txt peso" style="z-index:6;font-size:132px;color:#1C306A">Maranhão</div>
+<div id="k3" class="el txt leve" style="z-index:6;font-size:58px">oferece serviços de</div>
+<div id="k4" class="el txt" style="z-index:6;font-weight:800;font-size:100px;color:#1C306A;letter-spacing:-1.5px;padding:0 14px;
+  background:linear-gradient(transparent 55%, rgba(255,201,40,.65) 55%, rgba(255,201,40,.65) 92%, transparent 92%);background-repeat:no-repeat">telediagnóstico</div>
+
+<!-- os três exames: círculos que espiam por baixo (C4a) e viram as cenas -->
+<div id="cOlho" class="el circ" style="z-index:5;width:480px;height:480px;background:#E3E8F8">
+  <svg id="olho" viewBox="0 0 400 400" style="width:78%;height:78%;overflow:visible">
+    <path d="M20 200C70 110 135 70 200 70s130 40 180 130c-50 90-115 130-180 130S70 290 20 200Z" fill="#fff" stroke="#1C306A" stroke-width="12" stroke-linejoin="round"/>
+    <g id="iris"><circle cx="200" cy="200" r="98" fill="#365DCC"/><circle cx="200" cy="200" r="74" fill="#6F8FE0"/>
+      <g stroke="#E5484D" stroke-width="4" fill="none" stroke-linecap="round" opacity=".75"><path d="M200 200c-20-14-28-34-26-56M200 200c22-8 40-4 54 10M200 200c-6 24-22 38-44 44M200 200c18 14 22 32 18 52"/></g>
+      <circle id="pupila" cx="200" cy="200" r="38" fill="#1C306A"/><circle cx="222" cy="176" r="14" fill="#fff"/><circle cx="178" cy="226" r="6" fill="#fff" opacity=".8"/></g>
+  </svg>
+</div>
+<div id="cEcg" class="el circ" style="z-index:5;width:480px;height:480px;background:#E3E8F8">
+  <svg viewBox="0 0 48 48" style="width:55%;height:55%"><path d="M3 26h9l3-7 4 14 4-22 4 20 3-5h15" fill="none" stroke="#E5484D" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div id="cPul" class="el circ" style="z-index:5;width:480px;height:480px;background:#E3E8F8">
+  <svg class="pulmao" viewBox="0 0 400 400" style="width:62%;height:62%"><use href="#pulmao-d"/></svg></div>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <g id="pulmao-d"><path d="M200 40v130" stroke="#1C306A" stroke-width="26" stroke-linecap="round"/>
+    <path d="M200 160c-24 0-44 14-60 34M200 160c24 0 44 14 60 34" stroke="#1C306A" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M158 100C90 112 46 196 46 288c0 46 28 64 64 56 46-10 70-40 70-92V120c0-14-8-22-22-20Z" fill="#365DCC"/>
+    <path d="M242 100c68 12 112 96 112 188 0 46-28 64-64 56-46-10-70-40-70-92V120c0-14 8-22 22-20Z" fill="#6F8FE0"/>
+    <path d="M96 250c20-10 40-8 58 4M110 300c16-6 30-4 44 4M304 250c-20-10-40-8-58 4M290 300c-16-6-30-4-44 4" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity=".55"/></g>
+</defs></svg>
+
+<div id="tRet" class="el txt peso" style="z-index:6;font-size:84px;color:#1C306A">telerretinografia</div>
+<div id="flash" class="el" style="z-index:9;width:1080px;height:1920px;background:#fff;pointer-events:none"></div>
+
+<!-- C4c/d: a fita de ECG que vira a respiração -->
+<div id="fita" class="el" style="z-index:4;width:1300px;height:640px;background:#fff;border-top:6px solid #E3E8F8;border-bottom:6px solid #E3E8F8;
+  background-image:linear-gradient(#EEF3FD 2px, transparent 2px), linear-gradient(90deg, #EEF3FD 2px, transparent 2px), linear-gradient(#F6F8FE 1px, transparent 1px), linear-gradient(90deg, #F6F8FE 1px, transparent 1px);
+  background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px"></div>
+<svg id="traco" class="cheia" width="1080" height="1920" style="z-index:5"></svg>
+<div id="tEcg" class="el txt peso" style="z-index:6;font-size:84px;color:#1C306A">eletrocardiograma</div>
+
+<div id="mais" class="el circ" style="z-index:6;width:560px;height:560px;border:10px dashed #365DCC;background:rgba(255,255,255,.6)">
+  <svg id="mais-x" viewBox="0 0 100 100" style="width:34%;height:34%"><path d="M50 14v72M14 50h72" stroke="#365DCC" stroke-width="14" stroke-linecap="round"/></svg>
+  <svg id="mais-p" class="pulmao" viewBox="0 0 400 400" style="position:absolute;width:74%;height:74%"><use href="#pulmao-d"/></svg>
+</div>
+<div id="tagInc" class="el etq solida" style="z-index:7;font-size:40px;padding:10px 24px;border-radius:12px">em incorporação</div>
+<div id="tEsp" class="el txt peso" style="z-index:6;font-size:84px;color:#1C306A">tele-espirometria</div>
+<div id="bOlho" class="el circ" style="z-index:6;width:170px;height:170px;background:#fff;box-shadow:0 10px 26px rgba(28,48,106,.16)">
+  <svg viewBox="0 0 400 400" style="width:70%;height:70%"><path d="M20 200C70 110 135 70 200 70s130 40 180 130c-50 90-115 130-180 130S70 290 20 200Z" fill="#fff" stroke="#1C306A" stroke-width="18"/><circle cx="200" cy="200" r="92" fill="#365DCC"/><circle cx="200" cy="200" r="40" fill="#1C306A"/></svg></div>
+<div id="bEcg" class="el circ" style="z-index:6;width:170px;height:170px;background:#fff;box-shadow:0 10px 26px rgba(28,48,106,.16)">
+  <svg viewBox="0 0 48 48" style="width:62%;height:62%"><path d="M3 26h9l3-7 4 14 4-22 4 20 3-5h15" fill="none" stroke="#E5484D" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+<!-- logos das parcerias (embutidos por monta_v3.py, animados aqui) -->
+<div id="logoUFG" class="el logo" style="z-index:8;height:300px"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="384px" height="587px" viewBox="0 0 3840 5870" preserveAspectRatio="xMidYMid meet">
+<g id="layer101" fill="#1d1d1b" stroke="none">
+<path d="M438 5815 c-130 -35 -210 -101 -268 -218 -64 -129 -69 -178 -70 -654 l0 -413 140 0 140 0 0 358 c0 386 9 507 42 584 70 162 297 181 385 31 49 -84 53 -125 53 -565 l0 -408 146 0 146 0 -4 428 c-4 396 -6 432 -26 504 -29 105 -65 172 -126 234 -98 97 -208 134 -396 133 -63 0 -136 -7 -162 -14z"/>
+<path d="M3220 5819 c-274 -37 -457 -190 -526 -440 -28 -101 -26 -302 4 -399 45 -144 117 -247 228 -326 132 -95 279 -135 486 -135 185 0 354 34 344 69 -3 10 -15 58 -27 107 -12 50 -25 94 -29 98 -4 5 -38 -1 -75 -12 -84 -26 -240 -37 -318 -22 -234 44 -364 234 -329 482 21 144 92 253 202 309 65 33 174 53 250 45 105 -11 101 -5 98 -158 l-3 -132 -97 -3 -98 -3 0 -109 0 -110 235 0 235 0 0 339 0 338 -60 17 c-157 44 -381 63 -520 45z"/>
+<path d="M1580 5170 l0 -640 395 0 395 0 0 115 0 115 -250 0 -250 0 0 150 0 150 230 0 230 0 0 115 0 115 -230 0 -230 0 0 260 0 260 -145 0 -145 0 0 -640z"/>
+</g>
+<g id="layer102" fill="#0075be" stroke="none">
+<path d="M2488 3903 l-308 -178 0 -360 0 -360 312 -180 c172 -99 317 -179 322 -177 4 2 145 82 312 178 l304 176 0 362 0 361 -301 174 c-166 95 -309 175 -318 177 -9 3 -154 -76 -323 -173z"/>
+<path d="M1488 3622 l-188 -107 3 -219 2 -220 186 -108 187 -108 186 107 186 107 0 221 0 220 -132 75 c-72 41 -156 89 -187 107 l-56 32 -187 -107z"/>
+<path d="M360 2822 l-305 -177 -3 -361 -2 -361 314 -182 314 -181 308 178 309 178 2 365 2 364 -304 175 c-168 96 -311 176 -318 177 -6 1 -149 -78 -317 -175z"/>
+<path d="M3052 2639 l-242 -141 2 -291 3 -291 240 -139 c132 -77 245 -140 251 -140 6 0 122 64 257 142 l247 143 0 287 -1 286 -248 143 c-137 78 -252 142 -257 142 -5 0 -118 -64 -252 -141z"/>
+<path d="M1048 1627 l-248 -142 3 -289 2 -289 249 -144 248 -143 249 142 249 143 0 290 0 290 -249 143 c-136 78 -250 142 -252 142 -2 0 -115 -65 -251 -143z"/>
+<path d="M2428 1557 l-367 -212 -1 -437 0 -436 373 -216 374 -216 376 217 377 218 0 431 0 431 -375 216 c-207 120 -379 217 -383 216 -4 0 -172 -95 -374 -212z"/>
+</g>
+
+
+</svg></div>
+<div id="logoUFMG" class="el logo" style="z-index:8;height:240px"><svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="700mm"
+   height="700mm"
+   viewBox="0 0 700 700"
+   version="1.1"
+   id="svg3856"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ufmg-logo.svg"
+   inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-0.png"
+   inkscape:export-xdpi="148.6263"
+   inkscape:export-ydpi="148.6263">
+  <defs
+     id="defs3850" />
+  
+  
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,403)">
+    <g
+       transform="matrix(4.4846285,0,0,4.4846285,-201.16084,-2799.1623)"
+       id="g1759">
+      <path
+         inkscape:connector-curvature="0"
+         class="st0"
+         d="m 67.599999,601.80001 v -11 c 0,-1 -0.8,-1.3 -1.7,-1.4 v -1 h 6.7 v 1 c -0.8,0.1 -1.5,0.4 -1.5,1.3 v 10.9 c 0,3.7 2.3,5.2 5.4,5.2 5.6,0 5.6,-4.3 5.6,-8.3 v -4.7 c 0,-3.4 -0.3,-4.1 -2,-4.3 v -1 h 5.6 v 0.9 c -1,0.1 -1.8,0.6 -1.8,2.8 v 8.1 c 0,4.6 -2.2,8.1 -8,8.1 -5.2,0 -8.3,-1.9 -8.3,-6.6 z"
+         id="path1679"
+         inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-5.png"
+         inkscape:export-xdpi="19.872953"
+         inkscape:export-ydpi="19.872953" />
+      <path
+         inkscape:connector-curvature="0"
+         class="st0"
+         d="m 96.699999,605.70001 v -14.5 c 0,-1.2 -0.7,-1.6 -1.9,-1.7 v -1.1 c 2.2,0 4.5,0.1 6.700001,0.1 3.8,0 6.1,0 8.4,-0.1 l 0.1,3.2 h -1 c -0.6,-1.6 -1.6,-1.9 -4.6,-1.9 h -4.3 v 7.5 h 3.8 c 1.6,0 2.5,0 2.8,-1.3 h 0.8 v 3.8 h -0.8 c -0.3,-1.1 -1,-1.2 -2.7,-1.2 h -3.8 v 6.4 c 0,2 0.8,2.5 2.4,2.5 v 0.9 h -7.800001 v -1 c 1.2,0 1.9,-0.4 1.9,-1.6 z"
+         id="path1681"
+         inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-5.png"
+         inkscape:export-xdpi="19.872953"
+         inkscape:export-ydpi="19.872953" />
+      <path
+         inkscape:connector-curvature="0"
+         class="st0"
+         d="m 178.3,602.50001 v 1.3 3.8 c -2,0.5 -4.6,1.2 -7.5,1.2 -6.4,0 -10.9,-4.5 -10.9,-10.1 0,-6.4 5,-10.4 11.2,-10.4 1,0 1.9,0.1 3.8,0.4 0.5,0.1 3.1,0.6 3.7,0.7 l 0.3,3.7 h -1.3 c -0.9,-1.8 -2.2,-3.4 -5.6,-3.4 -4.4,0 -8,2.6 -8,9 0,3.7 2.1,8.9 8.4,8.9 1,0 1.9,-0.2 2.8,-0.6 0,-0.4 0.1,-2.6 0.1,-3.1 0,-1.8 -0.2,-2.5 -1.6,-2.7 v -1 h 6.2 v 0.9 c -1.3,-0.1 -1.6,0.3 -1.6,1.4 z"
+         id="path1683"
+         inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-5.png"
+         inkscape:export-xdpi="19.872953"
+         inkscape:export-ydpi="19.872953" />
+      <path
+         inkscape:connector-curvature="0"
+         class="st1"
+         d="m 151.3,602.50001 c -0.7,0.7 -3,2.7 -3.8,2.7 -0.3,0 -0.7,-0.2 -0.7,-0.5 0,-0.5 0.4,-1.3 0.6,-2 l 3.5,-10.1 c 0.2,-0.6 0.4,-1.4 0.4,-2.1 0,-1 -0.4,-1.8 -1.7,-1.8 -4.1,0 -10.6,7.3 -12.9,10.2 h -0.1 l 2.1,-6.4 c 0.3,-0.8 0.5,-1.6 0.5,-2.3 0,-0.8 -0.6,-1.4 -1.9,-1.4 -3.8,0 -10.2,7.1 -12.3,10.1 h -0.1 l 2.2,-6.5 c 0.2,-0.5 0.5,-1.3 0.5,-2.1 0,-0.8 -0.4,-1.5 -1.5,-1.5 -2.9,0 -5.9,3.5 -7.5,5.5 0,0 -0.4,0.5 -0.1,0.8 0.4,0.3 0.7,0 0.7,0 l 1.2,-1.3 c 0.8,-0.8 1.6,-1.5 2.5,-1.5 0.5,0 0.7,0.4 0.7,0.9 0,0.4 -0.1,0.8 -0.2,1.1 l -4.5,13.6 c -0.1,0.5 0.8,0.8 1.3,0.8 1.1,0 1.6,-0.3 1.7,-0.7 l 0.8,-2.3 c 1.2,-3.3 3,-6.3 5.4,-8.8 1.4,-1.5 4,-4.5 6.3,-4.5 0.6,0 0.8,0.5 0.8,1.1 0,1.1 -0.6,2.8 -0.7,3.2 l -3.8,11.3 c -0.1,0.4 0.3,0.8 1.5,0.9 1.1,0 1.4,-0.4 1.5,-0.8 l 0.7,-1.8 c 1.2,-3.1 2.4,-5.4 4.4,-7.9 1.4,-1.7 5.3,-6.1 7.6,-6.1 0.5,0 1,0.3 1,1 0,0.4 -0.3,1.2 -0.5,1.8 l -3.5,10 c -0.3,0.9 -0.5,1.6 -0.5,2 0,1.1 0.8,1.5 1.6,1.5 2.4,0 4.4,-1.9 6.1,-3.8 l 1.3,-1.5 c 0,0 0.4,-0.4 0,-0.7 -0.3,-0.4 -0.6,-0.1 -0.6,-0.1 z"
+         id="path1685"
+         style="fill:#ce181e;fill-opacity:1"
+         inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-5.png"
+         inkscape:export-xdpi="19.872953"
+         inkscape:export-ydpi="19.872953" />
+      <rect
+         x="119.1"
+         y="614"
+         class="st2"
+         width="29.9"
+         height="7.1999998"
+         id="rect1687"
+         style="fill:#ce181e;fill-opacity:1"
+         inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-5.png"
+         inkscape:export-xdpi="19.872953"
+         inkscape:export-ydpi="19.872953" />
+      <g
+         id="g1757"
+         transform="translate(-5.9090738e-7,8.4789631e-6)"
+         inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-5.png"
+         inkscape:export-xdpi="19.872953"
+         inkscape:export-ydpi="19.872953">
+        <g
+           id="g1727">
+          <path
+             inkscape:connector-curvature="0"
+             d="m 121.5,629.7 c -0.2,0.2 -0.5,0.3 -1,0.3 -0.6,0 -1,-0.2 -1.2,-0.5 -0.1,-0.2 -0.2,-0.4 -0.2,-0.7 v -2.2 h 0.7 v 2.1 c 0,0.2 0,0.4 0.1,0.5 0.1,0.2 0.3,0.3 0.6,0.3 0.2,0 0.4,-0.1 0.5,-0.2 0.1,-0.1 0.1,-0.2 0.1,-0.5 v -2.1 h 0.7 v 2.2 c 0,0.4 -0.1,0.6 -0.3,0.8 z"
+             id="path1689" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 124.7,630 -0.8,-1.5 c -0.2,-0.3 -0.4,-0.7 -0.4,-0.9 0,0.2 0,0.6 0,0.9 v 1.5 h -0.7 v -3.3 h 0.8 l 0.8,1.5 c 0.2,0.3 0.3,0.6 0.4,0.8 0,-0.2 -0.1,-0.5 -0.1,-0.9 v -1.4 h 0.7 v 3.3 z"
+             id="path1691" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 126.6,630 v -3.3 h 0.7 v 3.3 z"
+             id="path1693" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 129.9,630 h -0.6 l -1.3,-3.4 h 0.8 l 0.6,1.6 c 0.1,0.3 0.2,0.6 0.2,0.7 0,-0.1 0.1,-0.4 0.2,-0.7 l 0.7,-1.6 h 0.7 z"
+             id="path1695" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 131.7,630 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+             id="path1697" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 136.6,630 -0.3,-0.5 c -0.3,-0.5 -0.4,-0.7 -0.6,-0.8 -0.1,0 -0.2,-0.1 -0.2,-0.1 v 1.4 h -0.7 v -3.3 h 1.1 c 0.4,0 0.7,0.1 1,0.2 0.2,0.2 0.3,0.4 0.3,0.7 0,0.5 -0.4,0.9 -0.8,0.9 0,0 0.1,0.1 0.2,0.2 0.1,0.1 0.3,0.4 0.4,0.6 l 0.5,0.7 z m -1.1,-2.8 v 0.9 h 0.3 c 0.3,0 0.5,0 0.6,-0.1 0.1,-0.1 0.1,-0.2 0.1,-0.3 0,-0.2 -0.1,-0.3 -0.3,-0.4 -0.1,0 -0.2,0 -0.4,0 h -0.3 z"
+             id="path1699" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 140.1,629.9 c -0.2,0.1 -0.6,0.2 -0.9,0.2 -0.4,0 -0.8,-0.1 -1.2,-0.3 l 0.3,-0.5 c 0.3,0.2 0.6,0.3 1,0.3 0.2,0 0.3,0 0.5,-0.1 0.1,-0.1 0.2,-0.2 0.2,-0.3 0,-0.2 -0.2,-0.4 -0.5,-0.4 l -0.4,-0.1 c -0.3,-0.1 -0.6,-0.2 -0.7,-0.4 -0.1,-0.2 -0.1,-0.3 -0.1,-0.5 0,-0.6 0.5,-1 1.3,-1 0.4,0 0.9,0.1 1.2,0.3 l -0.3,0.5 c -0.3,-0.2 -0.6,-0.3 -0.9,-0.3 -0.3,0 -0.6,0.1 -0.6,0.4 0,0.2 0.1,0.3 0.5,0.4 l 0.4,0.1 c 0.3,0.1 0.5,0.2 0.7,0.3 0.2,0.2 0.2,0.4 0.2,0.6 -0.1,0.2 -0.3,0.6 -0.7,0.8 z"
+             id="path1701" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 141.6,630 v -3.3 h 0.7 v 3.3 z"
+             id="path1703" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 145.1,626.7 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 h -0.9 v -3.3 h 0.7 c 0.4,0 0.7,0 1,0 z m 0,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 H 144 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0.1,-0.4 0.1,-0.7 -0.1,-0.9 z"
+             id="path1705" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 148.9,630 -0.3,-0.8 h -1.1 l -0.3,0.8 h -0.7 l 1.2,-3.3 h 0.8 l 1.2,3.3 z m -0.8,-2.7 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c -0.1,-0.3 -0.4,-1.2 -0.4,-1.4 z"
+             id="path1707" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 151.9,626.7 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 h -0.9 v -3.3 h 0.7 c 0.5,0 0.8,0 1,0 z m 0.1,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 H 151 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0,-0.4 -0.1,-0.7 -0.2,-0.9 z"
+             id="path1709" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 153.9,630 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+             id="path1711" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 160.3,627.2 h -1.2 v 0.8 h 1 v 0.6 h -1 v 1.5 h -0.7 v -3.3 h 2 z"
+             id="path1713" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 161.2,630 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+             id="path1715" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 165.9,626.7 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 h -0.9 v -3.3 h 0.7 c 0.5,0 0.8,0 1,0 z m 0.1,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 H 165 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0,-0.4 -0.1,-0.7 -0.2,-0.9 z"
+             id="path1717" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 167.9,630 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+             id="path1719" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 172.8,630 -0.3,-0.5 c -0.3,-0.5 -0.4,-0.7 -0.6,-0.8 -0.1,0 -0.2,-0.1 -0.2,-0.1 V 630 H 171 v -3.3 h 1.1 c 0.4,0 0.7,0.1 1,0.2 0.2,0.2 0.3,0.4 0.3,0.7 0,0.5 -0.4,0.9 -0.8,0.9 0,0 0.1,0.1 0.2,0.2 0.1,0.1 0.3,0.4 0.4,0.6 l 0.5,0.7 z m -1.1,-2.8 v 0.9 h 0.3 c 0.3,0 0.5,0 0.6,-0.1 0.1,-0.1 0.1,-0.2 0.1,-0.3 0,-0.2 -0.1,-0.3 -0.3,-0.4 -0.1,0 -0.2,0 -0.4,0 h -0.3 z"
+             id="path1721" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 176.4,630 -0.3,-0.8 H 175 l -0.3,0.8 H 174 l 1.2,-3.3 h 0.8 l 1.2,3.3 z m -0.9,-2.7 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c -0.1,-0.3 -0.4,-1.2 -0.4,-1.4 z"
+             id="path1723" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 179.7,630 h -1.9 v -3.3 h 0.7 v 2.8 h 1.4 z"
+             id="path1725" />
+        </g>
+        <g
+           id="g1755">
+          <path
+             inkscape:connector-curvature="0"
+             d="m 120.8,633 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 h -0.9 V 633 h 0.7 c 0.5,-0.1 0.8,-0.1 1,0 z m 0.1,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 h -0.4 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0.1,-0.4 0,-0.7 -0.1,-0.9 z"
+             id="path1729" />
+          <path
+             inkscape:connector-curvature="0"
+             d="M 122.8,636.3 V 633 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+             id="path1731" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 130.3,636.3 -0.1,-1.9 c 0,-0.2 0,-0.5 0,-0.6 0,0.1 -0.1,0.4 -0.2,0.6 l -0.6,1.9 h -0.6 l -0.6,-1.9 c -0.1,-0.2 -0.1,-0.5 -0.2,-0.7 0,0.1 0,0.5 0,0.7 l -0.1,1.9 h -0.7 l 0.4,-3.3 h 0.9 l 0.5,1.7 c 0.1,0.2 0.1,0.5 0.2,0.6 0,-0.1 0.1,-0.4 0.2,-0.7 l 0.5,-1.7 h 0.9 l 0.3,3.3 h -0.8 z"
+             id="path1733" />
+          <path
+             inkscape:connector-curvature="0"
+             d="M 132,636.3 V 633 h 0.7 v 3.3 z"
+             id="path1735" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 135.7,636.3 -0.8,-1.5 c -0.2,-0.3 -0.4,-0.7 -0.4,-0.9 0,0.2 0,0.6 0,0.9 v 1.5 h -0.7 V 633 h 0.8 l 0.8,1.5 c 0.2,0.3 0.3,0.6 0.4,0.8 0,-0.2 -0.1,-0.5 -0.1,-0.9 V 633 h 0.7 v 3.3 z"
+             id="path1737" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 139.4,636.3 -0.3,-0.8 H 138 l -0.3,0.8 H 137 l 1.2,-3.3 h 0.8 l 1.2,3.3 z m -0.8,-2.7 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c -0.1,-0.3 -0.4,-1.2 -0.4,-1.4 z"
+             id="path1739" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 142.7,636.1 c -0.2,0.1 -0.6,0.2 -0.9,0.2 -0.4,0 -0.8,-0.1 -1.2,-0.3 l 0.3,-0.5 c 0.3,0.2 0.6,0.3 1,0.3 0.2,0 0.3,0 0.5,-0.1 0.1,-0.1 0.2,-0.2 0.2,-0.3 0,-0.2 -0.2,-0.4 -0.5,-0.4 l -0.4,-0.1 c -0.3,-0.1 -0.6,-0.2 -0.7,-0.4 -0.1,-0.2 -0.1,-0.3 -0.1,-0.5 0,-0.6 0.5,-1 1.3,-1 0.4,0 0.9,0.1 1.2,0.3 l -0.3,0.5 c -0.3,-0.2 -0.6,-0.3 -0.9,-0.3 -0.3,0 -0.6,0.1 -0.6,0.4 0,0.2 0.1,0.3 0.5,0.4 l 0.4,0.1 c 0.3,0.1 0.5,0.2 0.7,0.3 0.2,0.2 0.2,0.4 0.2,0.6 -0.1,0.3 -0.3,0.7 -0.7,0.8 z"
+             id="path1741" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 147.1,636.3 c -0.6,0 -0.9,-0.2 -1.3,-0.5 -0.3,-0.3 -0.4,-0.7 -0.4,-1.2 0,-0.7 0.2,-1.1 0.7,-1.4 0.3,-0.2 0.6,-0.3 1,-0.3 0.4,0 0.8,0.1 1.2,0.4 l -0.4,0.4 c -0.2,-0.2 -0.5,-0.3 -0.8,-0.3 -0.4,0 -0.7,0.2 -0.8,0.5 -0.1,0.2 -0.1,0.5 -0.1,0.8 0,0.5 0.1,0.8 0.4,1 0.2,0.1 0.3,0.2 0.6,0.2 0.2,0 0.3,0 0.4,-0.1 V 635 H 147 l -0.1,-0.5 h 1.4 v 1.6 c -0.4,0.1 -0.8,0.2 -1.2,0.2 z"
+             id="path1743" />
+          <path
+             inkscape:connector-curvature="0"
+             d="M 149.2,636.3 V 633 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+             id="path1745" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 154.1,636.3 -0.3,-0.5 c -0.3,-0.5 -0.4,-0.7 -0.6,-0.8 -0.1,0 -0.2,-0.1 -0.2,-0.1 v 1.4 h -0.7 V 633 h 1.1 c 0.4,0 0.7,0.1 1,0.2 0.2,0.2 0.3,0.4 0.3,0.7 0,0.5 -0.4,0.9 -0.8,0.9 0,0 0.1,0.1 0.2,0.2 0.1,0.1 0.3,0.4 0.4,0.6 l 0.5,0.7 z m -1.1,-2.8 v 0.9 h 0.3 c 0.3,0 0.5,0 0.6,-0.1 0.1,-0.1 0.1,-0.2 0.1,-0.3 0,-0.2 -0.1,-0.3 -0.3,-0.4 -0.1,0 -0.2,0 -0.4,0 H 153 Z"
+             id="path1747" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 157.7,636.3 -0.3,-0.8 h -1.1 l -0.3,0.8 h -0.7 l 1.2,-3.3 h 0.8 l 1.2,3.3 z m -0.8,-2.7 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c -0.1,-0.3 -0.4,-1.2 -0.4,-1.4 z"
+             id="path1749" />
+          <path
+             inkscape:connector-curvature="0"
+             d="M 159.1,636.3 V 633 h 0.7 v 3.3 z"
+             id="path1751" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 162.7,636.1 c -0.2,0.1 -0.6,0.2 -0.9,0.2 -0.4,0 -0.8,-0.1 -1.2,-0.3 l 0.3,-0.5 c 0.3,0.2 0.6,0.3 1,0.3 0.2,0 0.3,0 0.5,-0.1 0.1,-0.1 0.2,-0.2 0.2,-0.3 0,-0.2 -0.2,-0.4 -0.5,-0.4 l -0.4,-0.1 c -0.3,-0.1 -0.6,-0.2 -0.7,-0.4 -0.1,-0.2 -0.1,-0.3 -0.1,-0.5 0,-0.6 0.5,-1 1.3,-1 0.4,0 0.9,0.1 1.2,0.3 l -0.3,0.5 c -0.3,-0.2 -0.6,-0.3 -0.9,-0.3 -0.3,0 -0.6,0.1 -0.6,0.4 0,0.2 0.1,0.3 0.5,0.4 l 0.4,0.1 c 0.3,0.1 0.5,0.2 0.7,0.3 0.2,0.2 0.2,0.4 0.2,0.6 -0.1,0.3 -0.3,0.7 -0.7,0.8 z"
+             id="path1753" />
+        </g>
+      </g>
+      <g
+         transform="matrix(1.2102337,0,0,1.2102337,-254.54993,-40.330536)"
+         id="g1853">
+        <g
+           id="g1841"
+           transform="translate(-0.3181466)"
+           inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-4.png"
+           inkscape:export-xdpi="15.219235"
+           inkscape:export-ydpi="15.219235">
+          <g
+             id="g1811">
+            <path
+               inkscape:connector-curvature="0"
+               d="m 315.2,619.6 c -0.2,0.2 -0.5,0.3 -1,0.3 -0.6,0 -1,-0.2 -1.2,-0.5 -0.1,-0.2 -0.2,-0.4 -0.2,-0.7 v -2.2 h 0.7 v 2.1 c 0,0.2 0,0.4 0.1,0.5 0.1,0.2 0.3,0.3 0.6,0.3 0.2,0 0.4,-0.1 0.5,-0.2 0.1,-0.1 0.1,-0.2 0.1,-0.5 v -2.1 h 0.7 v 2.2 c 0,0.4 -0.1,0.6 -0.3,0.8 z"
+               id="path1773" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 318.4,619.8 -0.8,-1.5 c -0.2,-0.3 -0.4,-0.7 -0.4,-0.9 0,0.2 0,0.6 0,0.9 v 1.5 h -0.7 v -3.3 h 0.8 l 0.8,1.5 c 0.2,0.3 0.3,0.6 0.4,0.8 0,-0.2 -0.1,-0.5 -0.1,-0.9 v -1.4 h 0.7 v 3.3 z"
+               id="path1775" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 320.3,619.8 v -3.3 h 0.7 v 3.3 z"
+               id="path1777" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 323.5,619.9 h -0.6 l -1.3,-3.4 h 0.8 l 0.6,1.6 c 0.1,0.3 0.2,0.6 0.2,0.7 0,-0.1 0.1,-0.4 0.2,-0.7 l 0.7,-1.6 h 0.7 z"
+               id="path1779" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 325.4,619.8 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+               id="path1781" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 330.3,619.8 -0.3,-0.5 c -0.3,-0.5 -0.4,-0.7 -0.6,-0.8 -0.1,-0.1 -0.2,-0.1 -0.2,-0.1 v 1.4 h -0.7 v -3.3 h 1.1 c 0.4,0 0.8,0.1 1,0.2 0.2,0.2 0.3,0.4 0.3,0.7 0,0.5 -0.4,0.9 -0.8,0.9 0,0 0.1,0.1 0.2,0.2 0.1,0.1 0.3,0.4 0.4,0.6 l 0.5,0.7 z m -1.1,-2.8 v 0.9 h 0.3 c 0.3,0 0.5,0 0.6,-0.1 0.1,-0.1 0.1,-0.2 0.1,-0.3 0,-0.2 -0.1,-0.3 -0.3,-0.4 -0.1,0 -0.2,-0.1 -0.4,-0.1 z"
+               id="path1783" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 333.8,619.7 c -0.2,0.1 -0.6,0.2 -0.9,0.2 -0.4,0 -0.8,-0.1 -1.2,-0.3 l 0.3,-0.5 c 0.3,0.2 0.6,0.3 1,0.3 0.2,0 0.3,0 0.5,-0.1 0.1,-0.1 0.2,-0.2 0.2,-0.3 0,-0.2 -0.2,-0.4 -0.5,-0.4 l -0.4,-0.1 c -0.3,-0.1 -0.6,-0.2 -0.7,-0.4 -0.1,-0.2 -0.1,-0.3 -0.1,-0.5 0,-0.6 0.5,-1 1.3,-1 0.4,0 0.9,0.1 1.2,0.3 l -0.3,0.5 c -0.3,-0.2 -0.6,-0.3 -0.9,-0.3 -0.3,0 -0.6,0.1 -0.6,0.4 0,0.2 0.1,0.3 0.5,0.4 l 0.4,0.1 c 0.3,0.1 0.5,0.2 0.7,0.3 0.2,0.2 0.2,0.4 0.2,0.6 -0.1,0.3 -0.3,0.6 -0.7,0.8 z"
+               id="path1785" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 335.3,619.8 v -3.3 h 0.7 v 3.3 z"
+               id="path1787" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 338.8,616.6 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 h -0.9 v -3.3 h 0.7 c 0.4,-0.1 0.7,-0.1 1,0 z m 0.1,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 h -0.4 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0.1,-0.5 0,-0.7 -0.1,-0.9 z"
+               id="path1789" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 342.6,619.8 -0.3,-0.8 h -1.1 l -0.3,0.8 h -0.7 l 1.2,-3.4 h 0.8 l 1.2,3.4 z m -0.8,-2.7 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c -0.1,-0.2 -0.4,-1.2 -0.4,-1.4 z"
+               id="path1791" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 345.7,616.6 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 H 344 v -3.3 h 0.7 c 0.4,-0.1 0.7,-0.1 1,0 z m 0,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 h -0.4 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0.1,-0.5 0.1,-0.7 -0.1,-0.9 z"
+               id="path1793" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 347.6,619.8 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+               id="path1795" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 354.1,617 h -1.2 v 0.8 h 1 v 0.6 h -1 v 1.5 h -0.7 v -3.3 h 2 z"
+               id="path1797" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 354.9,619.8 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+               id="path1799" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 359.7,616.6 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 H 358 v -3.3 h 0.7 c 0.4,-0.1 0.7,-0.1 1,0 z m 0.1,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 h -0.4 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0.1,-0.5 0,-0.7 -0.1,-0.9 z"
+               id="path1801" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 361.7,619.8 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+               id="path1803" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 366.6,619.8 -0.3,-0.5 c -0.3,-0.5 -0.4,-0.7 -0.6,-0.8 -0.1,-0.1 -0.2,-0.1 -0.2,-0.1 v 1.4 h -0.7 v -3.3 h 1.1 c 0.4,0 0.8,0.1 1,0.2 0.2,0.2 0.3,0.4 0.3,0.7 0,0.5 -0.4,0.9 -0.8,0.9 0,0 0.1,0.1 0.2,0.2 0.1,0.1 0.3,0.4 0.4,0.6 l 0.5,0.7 z m -1.1,-2.8 v 0.9 h 0.3 c 0.3,0 0.5,0 0.6,-0.1 0.1,-0.1 0.1,-0.2 0.1,-0.3 0,-0.2 -0.1,-0.3 -0.3,-0.4 -0.1,0 -0.2,-0.1 -0.4,-0.1 z"
+               id="path1805" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 370.2,619.8 -0.3,-0.8 h -1.1 l -0.3,0.8 h -0.7 l 1.2,-3.4 h 0.8 l 1.2,3.4 z m -0.9,-2.7 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c 0,-0.2 -0.3,-1.2 -0.4,-1.4 z"
+               id="path1807" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 373.5,619.8 h -1.9 v -3.3 h 0.7 v 2.8 h 1.4 z"
+               id="path1809" />
+          </g>
+          <g
+             id="g1839">
+            <path
+               inkscape:connector-curvature="0"
+               d="m 314.5,622.9 c 0.6,0.2 1,0.6 1,1.6 0,1 -0.6,1.5 -1.1,1.6 -0.2,0.1 -0.4,0.1 -0.7,0.1 h -0.9 v -3.3 h 0.7 c 0.4,-0.1 0.7,-0.1 1,0 z m 0.1,0.8 c -0.2,-0.2 -0.4,-0.3 -0.7,-0.3 h -0.4 v 2.3 h 0.4 c 0.1,0 0.2,0 0.4,-0.1 0.2,-0.1 0.4,-0.3 0.4,-1 0.1,-0.4 0,-0.7 -0.1,-0.9 z"
+               id="path1813" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 316.5,626.2 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+               id="path1815" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 324,626.2 -0.1,-1.9 c 0,-0.2 0,-0.5 0,-0.6 0,0.1 -0.1,0.4 -0.2,0.6 l -0.6,1.9 h -0.6 l -0.6,-1.9 c -0.1,-0.2 -0.1,-0.5 -0.2,-0.7 0,0.1 0,0.5 0,0.7 l -0.1,1.9 h -0.7 l 0.4,-3.3 h 0.9 l 0.5,1.7 c 0.1,0.2 0.1,0.5 0.2,0.6 0,-0.1 0.1,-0.4 0.2,-0.7 l 0.5,-1.7 h 0.9 l 0.3,3.3 H 324 Z"
+               id="path1817" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 325.7,626.2 v -3.3 h 0.7 v 3.3 z"
+               id="path1819" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 329.4,626.2 -0.8,-1.5 c -0.2,-0.3 -0.4,-0.7 -0.4,-0.9 0,0.2 0,0.6 0,0.9 v 1.5 h -0.7 v -3.3 h 0.8 l 0.8,1.5 c 0.2,0.3 0.3,0.6 0.4,0.8 0,-0.2 -0.1,-0.5 -0.1,-0.9 v -1.4 h 0.7 v 3.3 z"
+               id="path1821" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 333.1,626.2 -0.3,-0.8 h -1.1 l -0.3,0.8 h -0.7 l 1.2,-3.4 h 0.8 l 1.2,3.4 z m -0.8,-2.8 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c -0.1,-0.2 -0.4,-1.2 -0.4,-1.4 z"
+               id="path1823" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 336.4,626 c -0.2,0.1 -0.6,0.2 -0.9,0.2 -0.4,0 -0.8,-0.1 -1.2,-0.3 l 0.3,-0.5 c 0.3,0.2 0.6,0.3 1,0.3 0.2,0 0.3,0 0.5,-0.1 0.1,-0.1 0.2,-0.2 0.2,-0.3 0,-0.2 -0.2,-0.4 -0.5,-0.4 l -0.4,-0.1 c -0.3,-0.1 -0.6,-0.2 -0.7,-0.4 -0.1,-0.2 -0.1,-0.3 -0.1,-0.5 0,-0.6 0.5,-1 1.3,-1 0.4,0 0.9,0.1 1.2,0.3 l -0.3,0.5 c -0.3,-0.2 -0.6,-0.3 -0.9,-0.3 -0.3,0 -0.6,0.1 -0.6,0.4 0,0.2 0.1,0.3 0.5,0.4 l 0.4,0.1 c 0.3,0.1 0.5,0.2 0.7,0.3 0.2,0.2 0.2,0.4 0.2,0.6 -0.1,0.3 -0.3,0.6 -0.7,0.8 z"
+               id="path1825" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 340.8,626.2 c -0.6,0 -1,-0.2 -1.3,-0.5 -0.3,-0.3 -0.4,-0.7 -0.4,-1.2 0,-0.7 0.2,-1.1 0.7,-1.4 0.3,-0.2 0.6,-0.3 1,-0.3 0.4,0 0.8,0.1 1.2,0.4 l -0.4,0.4 c -0.2,-0.2 -0.5,-0.3 -0.8,-0.3 -0.4,0 -0.7,0.2 -0.8,0.5 -0.1,0.2 -0.1,0.5 -0.1,0.8 0,0.5 0.1,0.8 0.4,1 0.2,0.1 0.3,0.2 0.6,0.2 0.2,0 0.3,0 0.4,-0.1 v -0.8 h -0.6 l -0.1,-0.5 h 1.4 v 1.6 c -0.4,0.1 -0.8,0.2 -1.2,0.2 z"
+               id="path1827" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 342.9,626.2 v -3.3 h 2.1 l -0.1,0.5 h -1.3 v 0.8 h 1.1 v 0.6 h -1.1 v 0.9 h 1.4 v 0.6 h -2.1 z"
+               id="path1829" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 347.9,626.2 -0.3,-0.5 c -0.3,-0.5 -0.4,-0.7 -0.6,-0.8 -0.1,-0.1 -0.2,-0.1 -0.2,-0.1 v 1.4 h -0.7 v -3.3 h 1.1 c 0.4,0 0.8,0.1 1,0.2 0.2,0.2 0.3,0.4 0.3,0.7 0,0.5 -0.4,0.9 -0.8,0.9 0,0 0.1,0.1 0.2,0.2 0.1,0.1 0.3,0.4 0.4,0.6 l 0.5,0.7 z m -1.1,-2.9 v 0.9 h 0.3 c 0.3,0 0.5,0 0.6,-0.1 0.1,-0.1 0.1,-0.2 0.1,-0.3 0,-0.2 -0.1,-0.3 -0.3,-0.4 -0.1,0 -0.2,-0.1 -0.4,-0.1 z"
+               id="path1831" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 351.5,626.2 -0.3,-0.8 H 350 l -0.3,0.8 H 349 l 1.2,-3.4 h 0.8 l 1.2,3.4 z m -0.9,-2.8 c 0,0.2 -0.4,1.2 -0.4,1.4 h 0.8 c -0.1,-0.2 -0.4,-1.2 -0.4,-1.4 z"
+               id="path1833" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 352.8,626.2 v -3.3 h 0.7 v 3.3 z"
+               id="path1835" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m 356.5,626 c -0.2,0.1 -0.6,0.2 -0.9,0.2 -0.4,0 -0.8,-0.1 -1.2,-0.3 l 0.3,-0.5 c 0.3,0.2 0.6,0.3 1,0.3 0.2,0 0.3,0 0.5,-0.1 0.1,-0.1 0.2,-0.2 0.2,-0.3 0,-0.2 -0.2,-0.4 -0.5,-0.4 l -0.4,-0.1 c -0.3,-0.1 -0.6,-0.2 -0.7,-0.4 -0.1,-0.2 -0.1,-0.3 -0.1,-0.5 0,-0.6 0.5,-1 1.3,-1 0.4,0 0.9,0.1 1.2,0.3 l -0.3,0.5 c -0.3,-0.2 -0.6,-0.3 -0.9,-0.3 -0.3,0 -0.6,0.1 -0.6,0.4 0,0.2 0.1,0.3 0.5,0.4 l 0.4,0.1 c 0.3,0.1 0.5,0.2 0.7,0.3 0.2,0.2 0.2,0.4 0.2,0.6 -0.1,0.3 -0.3,0.6 -0.7,0.8 z"
+               id="path1837" />
+          </g>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           class="st0"
+           d="m 251.18185,622.7 v -5.4 c 0,-0.5 -0.4,-0.6 -0.8,-0.7 v -0.5 h 3.3 v 0.5 c -0.4,0 -0.8,0.2 -0.8,0.6 v 5.3 c 0,1.8 1.1,2.5 2.6,2.5 2.7,0 2.7,-2.1 2.7,-4.1 v -2.3 c 0,-1.7 -0.1,-2 -1,-2.1 V 616 h 2.8 v 0.5 c -0.5,0.1 -0.9,0.3 -0.9,1.4 v 4 c 0,2.3 -1.1,4 -3.9,4 -2.5,0 -4,-0.9 -4,-3.2 z"
+           id="path1843"
+           inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-4.png"
+           inkscape:export-xdpi="15.219235"
+           inkscape:export-ydpi="15.219235" />
+        <path
+           inkscape:connector-curvature="0"
+           class="st0"
+           d="m 265.38185,624.6 v -7.1 c 0,-0.6 -0.3,-0.8 -0.9,-0.8 v -0.5 c 1.1,0 2.2,0 3.3,0 1.8,0 3,0 4.1,0 l 0.1,1.5 h -0.5 c -0.3,-0.8 -0.8,-0.9 -2.2,-0.9 h -2.1 v 3.7 h 1.8 c 0.8,0 1.2,0 1.4,-0.7 h 0.4 v 1.9 h -0.4 c -0.1,-0.5 -0.5,-0.6 -1.3,-0.6 h -1.8 v 3.1 c 0,1 0.4,1.2 1.2,1.2 v 0.5 h -3.8 v -0.5 c 0.4,-0.1 0.7,-0.2 0.7,-0.8 z"
+           id="path1845"
+           inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-4.png"
+           inkscape:export-xdpi="15.219235"
+           inkscape:export-ydpi="15.219235" />
+        <path
+           inkscape:connector-curvature="0"
+           class="st0"
+           d="m 305.38185,623 v 0.6 1.9 c -1,0.3 -2.3,0.6 -3.7,0.6 -3.1,0 -5.4,-2.2 -5.4,-4.9 0,-3.1 2.4,-5.1 5.5,-5.1 0.5,0 0.9,0.1 1.8,0.2 0.3,0 1.5,0.3 1.8,0.3 l 0.1,1.8 h -0.6 c -0.4,-0.9 -1.1,-1.7 -2.8,-1.7 -2.1,0 -3.9,1.3 -3.9,4.4 0,1.8 1,4.4 4.1,4.4 0.5,0 0.9,-0.1 1.4,-0.3 0,-0.2 0,-1.2 0,-1.5 0,-0.9 -0.1,-1.2 -0.8,-1.3 v -0.5 h 3.1 v 0.5 c -0.5,-0.1 -0.6,0.1 -0.6,0.6 z"
+           id="path1847"
+           inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-4.png"
+           inkscape:export-xdpi="15.219235"
+           inkscape:export-ydpi="15.219235" />
+        <path
+           inkscape:connector-curvature="0"
+           class="st1"
+           d="m 292.08185,623 c -0.3,0.3 -1.5,1.3 -1.8,1.3 -0.1,0 -0.3,-0.1 -0.3,-0.3 0,-0.2 0.2,-0.7 0.3,-1 l 1.7,-5 c 0.1,-0.3 0.2,-0.7 0.2,-1 0,-0.5 -0.2,-0.9 -0.8,-0.9 -2,0 -5.2,3.6 -6.3,5 v 0 l 1,-3.2 c 0.1,-0.4 0.2,-0.8 0.2,-1.1 0,-0.4 -0.3,-0.7 -1,-0.7 -1.9,0 -5,3.5 -6,5 v 0 l 1.1,-3.2 c 0.1,-0.3 0.2,-0.7 0.2,-1 0,-0.4 -0.2,-0.7 -0.7,-0.7 -1.4,0 -2.9,1.7 -3.7,2.7 0,0 -0.2,0.3 0,0.4 0.2,0.2 0.4,0 0.4,0 l 0.6,-0.6 c 0.4,-0.4 0.8,-0.7 1.2,-0.7 0.3,0 0.3,0.2 0.3,0.4 0,0.2 -0.1,0.4 -0.1,0.5 l -2.2,6.7 c 0,0.2 0.4,0.4 0.6,0.4 0.5,0 0.8,-0.2 0.8,-0.3 l 0.4,-1.1 c 0.6,-1.6 1.5,-3.1 2.6,-4.3 0.7,-0.7 1.9,-2.2 3.1,-2.2 0.3,0 0.4,0.2 0.4,0.5 0,0.6 -0.3,1.4 -0.4,1.6 l -1.9,5.5 c 0,0.2 0.1,0.4 0.7,0.4 0.5,0 0.7,-0.2 0.7,-0.4 l 0.3,-0.9 c 0.6,-1.5 1.2,-2.6 2.2,-3.8 0.7,-0.8 2.6,-3 3.7,-3 0.2,0 0.5,0.2 0.5,0.5 0,0.2 -0.1,0.6 -0.2,0.9 l -1.7,4.9 c -0.2,0.4 -0.3,0.8 -0.3,1 0,0.5 0.4,0.7 0.8,0.7 1.2,0 2.2,-1 3,-1.9 l 0.7,-0.7 c 0,0 0.2,-0.2 0,-0.3 -0.1,-0.2 -0.3,-0.1 -0.3,-0.1 z"
+           id="path1849"
+           style="fill:#ce181e;fill-opacity:1"
+           inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-4.png"
+           inkscape:export-xdpi="15.219235"
+           inkscape:export-ydpi="15.219235" />
+        <rect
+           x="276.38187"
+           y="628.70001"
+           class="st2"
+           width="14.6"
+           height="3.5"
+           id="rect1851"
+           style="fill:#ce181e;fill-opacity:1"
+           inkscape:export-filename="C:\Users\suitedoalex\sites\ufmg-logo-4.png"
+           inkscape:export-xdpi="15.219235"
+           inkscape:export-ydpi="15.219235" />
+      </g>
+    </g>
+  </g>
+</svg></div>
+
+<!-- C4e: Maranhão parado, a cobertura sai de São Luís -->
+<svg id="wipe" class="cheia" width="1080" height="1920" style="z-index:3"></svg>
+<svg id="ma" class="cheia" width="1080" height="1920" viewBox="0 0 1080 1920" style="z-index:4">
+  <defs><clipPath id="cobre"><circle id="cobre-c" cx="0" cy="0" r="0"/></clipPath></defs>
+  <g id="ma-g"></g><g id="ma-ondas"></g></svg>
+<div id="f1" class="el item" style="z-index:6"><span class="ic"><svg viewBox="0 0 48 48"><path d="M10 38 38 10M24 10h14v14M10 24v14h14" fill="none" stroke="#365DCC" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="tx">ampliar o acesso<br>aos exames</span></div>
+<div id="f2" class="el item" style="z-index:6"><span class="ic"><svg viewBox="0 0 48 48"><circle cx="21" cy="21" r="13" fill="none" stroke="#365DCC" stroke-width="4.5"/><path d="m31 31 10 10" stroke="#365DCC" stroke-width="5" stroke-linecap="round"/><path d="m15 21 4.5 4.5L28 17" fill="none" stroke="#19756F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="tx">qualificar<br>o diagnóstico</span></div>
+<div id="f3" class="el item" style="z-index:6"><span class="ic"><svg viewBox="0 0 48 48"><path d="M7 22 24 8l17 14v18H7Z" fill="#365DCC"/><path d="M20 40V30h8v10" fill="#fff"/><path d="M24 15v9M19.5 19.5h9" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/></svg></span><span class="tx">fortalecer a <span style="color:#365DCC">Atenção<br>Primária à Saúde</span></span></div>
+
+<!-- C5 -->
+<div id="tLug" class="el" style="z-index:6;display:flex;align-items:center;gap:20px">
+  <svg viewBox="0 0 120 156" style="width:86px;height:112px"><path d="M60 150C40 118 10 92 10 58a50 50 0 0 1 100 0c0 34-30 60-50 92Z" fill="#365DCC"/><circle cx="60" cy="58" r="22" fill="#fff"/></svg>
+  <span class="txt" style="font-weight:800;font-size:96px;color:#1C306A;letter-spacing:-1.5px">de lugar</span></div>
+<svg id="rota" class="cheia" width="1080" height="1920" style="z-index:5"></svg>
+<div id="tTem" class="el txt" style="z-index:6;font-weight:800;font-size:96px;color:#1C306A;letter-spacing:-1.5px">de tempo</div>
+<svg id="rel" class="el" width="300" height="300" viewBox="0 0 300 300" style="z-index:6">
+  <circle cx="150" cy="150" r="138" fill="#fff" stroke="#365DCC" stroke-width="14" style="filter:drop-shadow(0 14px 24px rgba(28,48,106,.2))"/>
+  <g stroke="#9DB3EC" stroke-width="8" stroke-linecap="round"><path d="M150 32v22M150 246v22M32 150h22M246 150h22"/></g>
+  <path id="rel-h" d="M150 150V88" stroke="#1C306A" stroke-width="14" stroke-linecap="round"/>
+  <path id="rel-m" d="M150 150V58" stroke="#365DCC" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="150" cy="150" r="12" fill="#1C306A"/></svg>
+
+<div id="intro"><video id="vI" muted preload="auto" src="../../../elementos/Intro Telessaude.mp4" style="position:absolute;left:0;top:0;width:1080px"></video></div>
+<img class="regua-base" src="../../../elementos/regua - tele-sted-sus-govbr.svg">
+
+<script>
+const $ = (id) => document.getElementById(id);
+const P = TS.p, E = TS.ease, cl = TS.clamp;
+const mix = (a, b, k) => a + (b - a) * k;
+const busca1 = (v, tt) => Promise.race([TS.busca(v, tt), new Promise((r) => setTimeout(r, 2000))]);
+const INTRO = 57.9;
+window.DURACAO = INTRO + 4.395;
+const BASE = 1760;                      // topo da régua: o "chão" de tudo que vem de baixo
+const NS = 'http://www.w3.org/2000/svg';
+
+function trilha(t, passos) {
+  const cur = { ...passos[0][2] };
+  for (let i = 1; i < passos.length; i++) {
+    const [t0, d, o, e = 'mola'] = passos[i];
+    if (t < t0) break;
+    const k = d > 0 ? E[e](cl((t - t0) / d, 0, 1)) : 1;
+    for (const key in o) { const a = cur[key] ?? o[key]; cur[key] = a + (o[key] - a) * k; }
+  }
+  return cur;
+}
+// põe o elemento com a âncora (ax, ay) em (x, y). Texto fica parado; objetos (vivo) flutuam de leve.
+const fase = (el) => el._f ?? (el._f = [...el.id].reduce((a, c) => a + c.charCodeAt(0) * 0.37, 0));
+function put(el, st, ay = 0.5, ax = 0.5) {
+  const o = cl(st.o ?? 1, 0, 1);
+  if (o <= 0.002) { el.style.display = 'none'; return; }
+  const f = fase(el), T = window._t, v = st.vivo ? 1 : 0;
+  el.style.display = '';
+  el.style.opacity = o;
+  el.style.transformOrigin = `${ax * 100}% ${ay * 100}%`;
+  el.style.transform = `translate(${st.x + v * 3 * Math.sin(0.8 * T + f)}px, ${st.y + v * 6 * Math.sin(1.1 * T + f)}px) translate(-${ax * 100}%, -${ay * 100}%) rotate(${(st.r || 0) + v * 0.8 * Math.sin(0.7 * T + f)}deg) scale(${Math.max(0, st.s ?? 1)})`;
+  el.style.filter = st.b > 0.1 ? `blur(${st.b}px)` : 'none';
+}
+const surge = (t0, st, d = 0.6) => [[-1, 0, { ...st, s: 0.5 * (st.s ?? 1), o: 0, b: 12 }], [t0, d, { s: st.s ?? 1 }], [t0, 0.2, { o: 1 }, 'lin'], [t0, 0.35, { b: 0 }, 'out']];
+const entraLado = (t0, st, dx) => [[-1, 0, { ...st, x: st.x + dx, o: 0, b: 14 }], [t0, 0.7, { x: st.x }], [t0, 0.2, { o: 1 }, 'lin'], [t0, 0.4, { b: 0 }, 'out']];
+const sai = (t0, o, d = 0.5) => [t0, d, { ...o }, 'in'];
+
+// ---------- médicos: quadros JPG do clipe original do Flow (vertical 1080×1920, fundo branco; o corpo toca a borda de baixo) ----------
+const MED = { doutor: { cx: 535, n: 118, H: 1920 }, doutora: { cx: 582, n: 118, H: 1920 } };
+const tclip = (tl, dur = 3.9) => { if (tl <= dur) return Math.max(0, tl); const c = (tl - dur) % 3.4; return c < 1.7 ? dur - c : dur - 1.7 + (c - 1.7); };
+async function poeMed(nome, st, tl) {
+  const el = $('v-' + nome), M = MED[nome];
+  const o = cl(st.o ?? 1, 0, 1);
+  if (o <= 0.002) { el.style.display = 'none'; return; }
+  el.style.display = '';
+  const i = Math.min(M.n, Math.max(1, 1 + Math.round(tclip(tl) * 30)));
+  const src = `../camadas/quadros_orig/${nome}/${String(i).padStart(3, '0')}.jpg`;
+  if (el._src !== src) { el._src = src; el.src = src; try { await el.decode(); } catch (e) {} }
+  // st.x = centro do personagem, st.y = "chão" (a borda de baixo do quadro do clipe), st.s = escala
+  el.style.transform = `translate(${st.x - M.cx * st.s}px, ${st.y - M.H * st.s}px) scale(${st.s})`;
+  el.style.opacity = o;
+}
+// ponto do clipe (coordenadas do quadro 1920×1080) na tela
+const naTela = (nome, st, fx, fy) => [st.x + (fx - MED[nome].cx) * st.s, st.y + (fy - MED[nome].H) * st.s];
+const TABLET = [630, 1110];   // tablet do doutor no quadro do clipe
+
+// ---------- logos: partes animadas ----------
+function prepLogo(div, tipo) {
+  const svg = div.querySelector('svg');
+  const vb = svg.viewBox.baseVal;                      // quadro original do arquivo: o que fica fora dele não é o logo
+  const raiz = svg.getScreenCTM().inverse();
+  let partes = [...svg.querySelectorAll('path, rect, polygon')].map((p) => {
+    // caixa da parte no espaço da raiz (as partes da UFMG ficam em grupos com escala)
+    const b0 = p.getBBox(), m = raiz.multiply(p.getScreenCTM());
+    const b = { x: m.a * b0.x + m.e, y: m.d * b0.y + m.f, width: b0.width * Math.abs(m.a), height: b0.height * Math.abs(m.d) };
+    return { p, b, cor: getComputedStyle(p).fill };
+  });
+  partes = partes.filter(({ p, b }) => { const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+    const dentro = cx > vb.x && cx < vb.x + vb.width && cy > vb.y && cy < vb.y + vb.height; if (!dentro) p.remove(); return dentro; });
+  const x0 = Math.min(...partes.map((q) => q.b.x)), y0 = Math.min(...partes.map((q) => q.b.y));
+  const x1 = Math.max(...partes.map((q) => q.b.x + q.b.width)), y1 = Math.max(...partes.map((q) => q.b.y + q.b.height));
+  const bb = { x: x0, y: y0, width: x1 - x0, height: y1 - y0 }, pad = bb.width * 0.02;
+  svg.removeAttribute('width'); svg.removeAttribute('height');
+  svg.setAttribute('viewBox', `${bb.x - pad} ${bb.y - pad} ${bb.width + 2 * pad} ${bb.height + 2 * pad}`);
+  div.style.width = `${parseFloat(div.style.height) * (bb.width + 2 * pad) / (bb.height + 2 * pad)}px`;
+  partes.forEach((q) => {
+    const { b, cor } = q;
+    if (tipo === 'UFG') q.cls = /rgb\(0, 11\d, 1\d\d\)/.test(cor) ? 'hex' : 'letra';
+    else if (b.height > bb.height * 0.22) q.cls = 'letra';
+    else if (cor.includes('206, 24') && b.width > b.height * 2) q.cls = 'barra';
+    else q.cls = 'texto';
+  });
+  if (tipo === 'UFMG') {   // descarta o que não pertence ao bloco das letras (a barra solta do outro logo do arquivo)
+    const L = partes.filter((q) => q.cls === 'letra');
+    const lx0 = Math.min(...L.map((q) => q.b.x)), lx1 = Math.max(...L.map((q) => q.b.x + q.b.width));
+    const ly0 = Math.min(...L.map((q) => q.b.y)), ly1 = Math.max(...L.map((q) => q.b.y + q.b.height)), lh = ly1 - ly0;
+    partes = partes.filter((q) => { const cx = q.b.x + q.b.width / 2, cy = q.b.y + q.b.height / 2;
+      const ok = cx > lx0 - 0.05 * (lx1 - lx0) && cx < lx1 + 0.05 * (lx1 - lx0) && cy > ly0 - 0.2 * lh && cy < ly1 + 1.3 * lh; if (!ok) q.p.remove(); return ok; });
+
+  }
+  partes.sort((a, z) => (a.b.x - z.b.x) || (a.b.y - z.b.y));
+  div._partes = partes; div._bb = bb; div._tipo = tipo;
+}
+function animaLogo(div, t, t0) {
+  if (!div._partes) return;
+  let iL = 0, iH = 0;
+  div._partes.forEach(({ p, b, cls }) => {
+    let k, tr;
+    if (cls === 'hex') { k = P(t, t0 + 0.08 * iH++, 0.6, 'molaViva'); tr = `scale(${Math.max(0, k)}) rotate(${(1 - k) * 60}deg)`; }
+    else if (cls === 'letra') { k = P(t, t0 + (div._tipo === 'UFG' ? 0.25 : 0) + 0.09 * iL++, 0.55, 'mola'); tr = `translateY(${(1 - k) * 60}%) scale(${0.6 + 0.4 * k})`; }
+    else if (cls === 'barra') { k = P(t, t0 + 0.55, 0.5, 'out'); tr = `scaleX(${k})`; p.style.transformOrigin = 'left center'; }
+    else { k = P(t, t0 + 0.4 + 0.004 * iL, 0.4, 'out'); tr = `translateY(${(1 - k) * 30}%)`; }
+    p.style.transform = tr; p.style.opacity = cl(k * 1.4, 0, 1);
+  });
+}
+
+// ---------- Maranhão ----------
+MAPA.paths.forEach(() => {});
+const maD = MAPA.paths.find((q) => q.id === 'BR-MA').d;
+const maBase = document.createElementNS(NS, 'path'); maBase.setAttribute('d', maD); maBase.setAttribute('fill', '#E3E8F8');
+maBase.setAttribute('stroke', '#365DCC'); maBase.setAttribute('stroke-linejoin', 'round');
+const maCob = document.createElementNS(NS, 'path'); maCob.setAttribute('d', maD); maCob.setAttribute('fill', '#365DCC'); maCob.setAttribute('opacity', '0.42');
+maCob.setAttribute('clip-path', 'url(#cobre)');
+$('ma-g').append(maBase, maCob);
+const MA = maBase.getBBox(), MAc = [MA.x + MA.width / 2, MA.y + MA.height / 2];
+const SL = [MA.x + 0.66 * MA.width, MA.y + 0.09 * MA.height];   // São Luís (ilha, no litoral norte)
+
+// ---------- ECG / respiração ----------
+function ecg(x) {   // um batimento a cada 340 px
+  const u = ((x % 340) + 340) % 340;
+  const g = (c, w, a) => a * Math.exp(-((u - c) ** 2) / (2 * w * w));
+  return g(70, 14, -18) + g(140, 5, 22) + g(152, 6, -150) + g(165, 5, 40) + g(250, 22, -34);
+}
+
+window.render = async function (t) {
+  window._t = t;
+  [[$('b1'), 160, 260, 0.11, 0.6], [$('b2'), 520, 1100, 0.09, 2.1], [$('b3'), -80, 1460, 0.07, 4.0]].forEach(([el, x, y, f, ph]) => {
+    el.style.transform = `translate(${x + 50 * Math.sin(f * t + ph)}px, ${y + 40 * Math.cos(f * 0.8 * t + ph)}px)`; });
+
+  // ===================== C1 / C2: tela dividida (aqui embaixo, lá em cima) =====================
+  // a divisa entre as metades: onde a faixa do título nasce
+  const DV = trilha(t, [[-1, 0, { y: 1760 }], [2.75, 0.9, { y: 960 }], [8.7, 1.0, { y: 1080 }], [12.0, 0.8, { y: 2000 }, 'inOut'],
+    [54.2, 0, { y: 1760 }], [54.3, 0.9, { y: 1000 }]]);
+  put($('painel'), { x: 0, y: DV.y, o: t < 12.9 || t > 54.2 ? 1 : 0 }, 0, 0);
+  $('divisa-l').setAttribute('y1', DV.y); $('divisa-l').setAttribute('y2', DV.y);
+  $('divisa').style.opacity = P(t, 3.0, 0.4) * (1 - P(t, 6.72, 0.25));
+
+  // o exame: papel que sai de baixo e imprime o traçado
+  const PA = trilha(t, [
+    [-1, 0, { x: 640, y: BASE + 820, s: 1.05, r: -3 }],
+    [0.15, 1.1, { y: BASE + 40 }, 'out'],                         // sobe, ancorado na régua
+    [2.75, 0.9, { x: 790, y: BASE + 60, s: 0.72, r: -4 }],        // a metade de baixo encolhe
+    [8.7, 1.0, { y: BASE + 330 }],                                // C2: as metades se afastam
+    [12.0, 0.7, { y: BASE + 900 }, 'in'],
+    [54.2, 0, { x: 690, y: BASE + 900, s: 0.98, r: -3 }],         // C6: o exame volta
+    [54.3, 1.0, { y: BASE + 60 }],
+  ]);
+  put($('papel'), { ...PA, vivo: 1 }, 1);
+  TS.traco($('papel-tr'), t, t < 40 ? 0.5 : 54.6, 1.6, 'inOut');
+
+  put($('tAq1'), trilha(t, [...entraLado(0.42, { x: 90, y: 430 }, -120), [2.75, 0.9, { y: 1050 }], sai(6.5, { o: 0, x: -200 })]), 0.5, 0);
+  put($('tAq2'), trilha(t, [...entraLado(1.28, { x: 80, y: 600 }, -160), [2.75, 0.9, { y: 1170, s: 0.62 }], sai(6.5, { o: 0, x: -300 })]), 0.5, 0);
+  put($('tLa1'), trilha(t, [...entraLado(2.86, { x: 90, y: 400 }, -120), sai(8.6, { o: 0, y: 250 })]), 0.5, 0);
+  put($('tLa2'), trilha(t, [...entraLado(3.6, { x: 80, y: 560 }, -160), sai(8.6, { o: 0, y: 380 })]), 0.5, 0);
+
+  // o doutor "lá", na metade de cima (o chão dele é a divisa); depois a câmera se aproxima dele (C3)
+  const DR = trilha(t, [
+    [-1, 0, { x: 790, y: -400, s: 0.4, o: 1 }],
+    [2.75, 0.9, { y: 960 }],
+    [8.7, 1.0, { y: 700 }],                                        // C2: a metade de cima sobe
+    [12.0, 1.0, { x: 700, y: BASE, s: 0.72 }, 'inOut'],             // C3: aproximação, ele vira o protagonista
+    [18.45, 0.6, { x: 1700 }, 'in'],
+  ]);
+  if (t < 19.2) await poeMed('doutor', DR, t < 14.4 ? 1.2 + 0.6 * Math.sin(0.5 * t) : t - 14.4);
+  else $('v-doutor').style.display = 'none';
+
+  // "Como resolver?": a pergunta na divisa
+  put($('qq'), trilha(t, [...surge(4.84, { x: 540, y: 960, r: -8, vivo: 1 }, 0.5), [6.72, 0.3, { s: 0.2, o: 0 }, 'in']]));
+  // a faixa azul nasce da divisa e vira a ponte; o título entra nela (sem linha cortando o nome)
+  {
+    const fx = trilha(t, [[-1, 0, { h: 0, y: 960 }], [6.62, 0.55, { h: 190 }], [8.7, 1.0, { y: 860 }], [12.0, 0.6, { h: 0 }, 'in'],
+      [54.6, 0, { h: 0, y: 560 }], [54.62, 0.55, { h: 190 }]]);
+    const el = $('faixa'); el.style.height = `${fx.h}px`;
+    put(el, { x: 540, y: fx.y, o: fx.h > 1 ? 1 : 0, r: -2 });
+    put($('tit'), trilha(t, [[-1, 0, { x: 480, y: 960, s: 1.6, o: 0, b: 20, r: -2 }], [6.72, 0.55, { s: 1, b: 0 }, 'out'], [6.72, 0.2, { o: 1 }, 'lin'],
+      [8.7, 1.0, { y: 860 }], [11.9, 0.3, { o: 0, s: 0.8 }, 'in'],
+      [54.6, 0, { x: 480, y: 560, s: 1.6, o: 0, b: 20 }], [54.68, 0.55, { s: 1, b: 0 }, 'out'], [54.68, 0.2, { o: 1 }, 'lin']]));
+  }
+  // C2: "a distância" na fresta que se abriu; "tecnologia": dados sobem do exame até o tablet
+  put($('tDist'), trilha(t, [...entraLado(9.66, { x: 80, y: 1120 }, -140), sai(11.95, { o: 0, x: -300 })]), 0.5, 0);
+  {
+    let h = '';
+    const k = P(t, 11.0, 0.3) * (1 - P(t, 12.3, 0.4));
+    if (k > 0.01) {
+      const [tx, ty] = naTela('doutor', DR, ...TABLET), x0 = PA.x, y0 = BASE + 330 - 620 * 0.72;
+      for (let i = 0; i < 9; i++) { const f = ((t - 11.0) * 0.9 + i / 9) % 1;
+        const x = mix(x0, tx, f) + 60 * Math.sin(f * Math.PI) * (i % 2 ? 1 : -1), y = mix(y0, ty, f);
+        h += `<rect x="${x - 11}" y="${y - 11}" width="22" height="22" rx="5" fill="${i % 3 ? '#365DCC' : '#19756F'}" opacity="${k * Math.sin(f * Math.PI)}"/>`; }
+    }
+    $('dados').innerHTML = h;
+  }
+
+  // ===================== C3: o doutor recebe os dados e emite o laudo =====================
+  put($('cab'), trilha(t, [...surge(12.4, { x: 70, y: 310 }), sai(18.45, { o: 0, y: 200 })]), 0.5, 0);
+  {
+    const W = [['wG', 'iG', 12.60, 440, 14.40], ['wI', 'iI', 13.26, 570, 14.60], ['wD', 'iD', 13.86, 700, 14.80]];
+    let h = '';
+    const [tx, ty] = naTela('doutor', DR, ...TABLET);
+    W.forEach(([w, ic, t0, y, tv]) => {
+      put($(w), trilha(t, [...entraLado(t0, { x: 70, y }, -160), sai(16.8, { o: 0, x: -400 })]), 0.5, 0);
+      // o ícone "voa" do texto até o tablet (cópia no SVG #voo; o ícone do texto fica apagado depois que sai)
+      const f = P(t, tv, 0.9, 'inOut');
+      $(ic).style.opacity = t < tv ? 1 : 0.25;
+      if (f > 0 && f < 1) {
+        const x0 = 70 + 52, y0 = y, x = mix(x0, tx, f), yy = mix(y0, ty, f) - 220 * Math.sin(f * Math.PI), s = 1 - 0.6 * f;
+        h += `<g transform="translate(${x} ${yy}) scale(${s})" opacity="${1 - 0.6 * f}"><rect x="-52" y="-52" width="104" height="104" rx="28" fill="#E3E8F8"/>${$(ic).innerHTML.replace('<svg', '<svg x="-32" y="-32" width="64" height="64"')}</g>`;
+      }
+      const g = (t - tv - 0.9) / 0.6; if (g > 0 && g < 1) h += `<circle cx="${tx}" cy="${ty}" r="${20 + 80 * g}" fill="none" stroke="#365DCC" stroke-width="6" opacity="${0.6 * (1 - g)}"/>`;
+    });
+    $('voo').innerHTML = h;
+    // o laudo sai do tablet e sobe
+    const dc = trilha(t, [
+      [-1, 0, { x: tx, y: ty, s: 0.3, o: 0, r: -10 }],
+      [17.1, 0.25, { o: 1 }, 'lin'], [17.1, 0.8, { x: 270, y: 640, s: 1.3, r: -6 }],
+      sai(18.45, { x: -400 }),
+      [55.4, 0, { x: 380, y: -300, s: 1.2, o: 1, r: -14 }],       // C6: o laudo chega de longe e pousa no exame
+      [55.66, 0.9, { x: 640, y: 1270, r: 5 }],
+    ]);
+    put($('doc'), { ...dc, vivo: 1 });
+    const kCk = t < 40 ? P(t, 17.75, 0.4) : P(t, 56.3, 0.4);
+    $('doc-ok').setAttribute('transform', `translate(178 240) scale(${E.back(kCk)}) translate(-178 -240)`);
+    TS.traco($('doc-ck'), t, t < 40 ? 17.95 : 56.5, 0.3);
+    put($('eLaudo'), trilha(t, [...surge(17.55, { x: 80, y: 920, r: -2 }), sai(18.45, { x: -900 })]), 0.5, 0);
+  }
+
+  // ===================== C4a: tipografia + os três exames espiando por baixo =====================
+  put($('k1'), trilha(t, [...entraLado(19.14, { x: 70, y: 470 }, -260), sai(23.0, { o: 0, y: 300 })]), 0.5, 0);
+  put($('k2'), trilha(t, [...entraLado(19.86, { x: 1010, y: 610 }, 260), sai(23.0, { o: 0, y: 450 })]), 0.5, 1);
+  put($('k3'), trilha(t, [...entraLado(20.36, { x: 80, y: 760 }, -160), sai(23.0, { o: 0, y: 650 })]), 0.5, 0);
+  put($('k4'), trilha(t, [...entraLado(21.56, { x: 70, y: 880 }, -200), sai(23.0, { o: 0, y: 760 })]), 0.5, 0);
+  $('k4').style.backgroundSize = `${P(t, 22.0, 0.5, 'inOut') * 100}% 100%`;
+  {
+    // olho: espia por baixo, cresce e vira a cena da retinografia; depois a câmera mergulha na pupila
+    const co = trilha(t, [[-1, 0, { x: 540, y: 2100, s: 1 }], [20.6, 0.9, { y: 1620 }], [23.0, 0.9, { y: 1250, s: 2.3 }, 'inOut'],
+      [26.4, 0.55, { s: 18, y: 1250 }, 'in']]);
+    put($('cOlho'), { ...co, o: t < 26.95 ? 1 : 0, vivo: t < 23 ? 1 : 0 });
+    put($('cEcg'), trilha(t, [[-1, 0, { x: 120, y: 2100 }], [20.8, 0.9, { y: 1660 }], sai(23.0, { y: 2300 })]));
+    put($('cPul'), trilha(t, [[-1, 0, { x: 960, y: 2100 }], [21.0, 0.9, { y: 1660 }], sai(23.0, { y: 2300 })]));
+    $('cPul').querySelector('svg').style.transform = `scale(${1 + 0.05 * Math.sin(2.4 * t)})`;
+    // varredura da retina + flash da foto
+    $('iris').style.transform = `scale(${1 + 0.04 * Math.sin(1.6 * t)})`; $('iris').style.transformOrigin = '200px 200px';
+    const fl = P(t, 24.55, 0.08) * (1 - P(t, 24.65, 0.5)) + P(t, 26.75, 0.15) * (1 - P(t, 26.9, 0.45));
+    put($('flash'), { x: 0, y: 0, o: 0.85 * fl }, 0, 0);
+  }
+  put($('tRet'), trilha(t, [...surge(23.18, { x: 480, y: 380 }), sai(26.4, { o: 0, y: 250 })]));
+  {
+    // varredura (linha que passa pelo olho)
+    const sv = (t - 23.6) / 0.95;
+    $('olho').style.filter = sv > 0 && sv < 1 ? `drop-shadow(0 ${(-1 + 2 * sv) * 160}px 0 rgba(25,117,111,.25))` : 'none';
+  }
+  put($('logoUFG'), trilha(t, [[-1, 0, { x: 480, y: 600, o: 0 }], [25.2, 0.01, { o: 1 }], sai(26.4, { o: 0, s: 0.7 })]));
+  animaLogo($('logoUFG'), t, 25.25);
+
+  // ===================== C4c/d: fita de ECG → respiração =====================
+  {
+    const ft = trilha(t, [[-1, 0, { y: 1250, o: 0, h: 640 }], [26.75, 0.2, { o: 1 }, 'lin'], [29.4, 1.0, { y: 1600, h: 260 }, 'inOut'], sai(37.06, { y: 2100 })]);
+    $('fita').style.height = `${ft.h}px`;
+    put($('fita'), { x: 540, y: ft.y, o: ft.o });
+    let h = '';
+    if (ft.o > 0.01 && t < 37.7) {
+      const cab = t < 29.4 ? (t - 26.8) / 2.3 * 1180 - 60 : 2000;   // ponta que desenha (C4c)
+      const m = P(t, 29.4, 1.4, 'inOut');                             // ECG → onda da respiração
+      const fase = m > 0 ? (t - 29.4) * 160 : 0, A = ft.h / 640;
+      let d = '';
+      for (let x = -10; x <= Math.min(1090, cab); x += 5) {
+        const y = ft.y + A * (ecg(x + 40) * (1 - m) + m * -80 * Math.sin((x - fase) / 1080 * 2 * Math.PI * 1.5) * (0.6 + 0.4 * Math.sin(1.1 * t)));
+        d += (d ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+      }
+      h += `<path d="${d}" fill="none" stroke="${m < 0.5 ? '#E5484D' : '#365DCC'}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`;
+      if (cab < 1090 && cab > 0) { const yy = ft.y + A * ecg(cab + 40); h += `<circle cx="${cab}" cy="${yy}" r="26" fill="rgba(229,72,77,.25)"/><circle cx="${cab}" cy="${yy}" r="12" fill="#E5484D"/>`; }
+    }
+    $('traco').innerHTML = h;
+  }
+  put($('tEcg'), trilha(t, [...surge(26.44, { x: 480, y: 380 }), sai(29.4, { o: 0, y: 250 })]));
+  put($('logoUFMG'), trilha(t, [[-1, 0, { x: 480, y: 640, o: 0 }], [28.45, 0.01, { o: 1 }], [30.3, 0.9, { x: 830, y: 1330, s: 0.5 }],
+    [35.75, 0.8, { x: 480, y: 600, s: 0.95 }], sai(37.06, { o: 0, s: 0.6 })]));
+  animaLogo($('logoUFMG'), t, t < 35 ? 28.5 : 35.75);
+  // os exames já oferecidos viram marcas no alto; no meio, o "+" que vira o novo exame
+  put($('bOlho'), trilha(t, [...surge(29.6, { x: 150, y: 190, vivo: 1 }), sai(37.06, { o: 0, y: 0 })]));
+  put($('bEcg'), trilha(t, [...surge(29.8, { x: 930, y: 190, vivo: 1 }), sai(37.06, { o: 0, y: 0 })]));
+  {
+    const ms = trilha(t, [...surge(30.0, { x: 540, y: 1060, s: 0.55, r: -30 }), [32.38, 0.7, { s: 1, r: 0 }], [37.06, 0.8, { s: 5, o: 0 }, 'in']]);
+    put($('mais'), { ...ms, vivo: 1 });
+    const cheio = P(t, 33.2, 0.5);
+    $('mais').style.borderStyle = cheio > 0.5 ? 'solid' : 'dashed';
+    $('mais').style.borderColor = cheio > 0.5 ? '#E3E8F8' : '#365DCC';
+    $('mais').style.background = cheio > 0.5 ? '#E3E8F8' : 'rgba(255,255,255,.6)';
+    $('mais-x').style.opacity = 1 - P(t, 32.3, 0.3); $('mais-x').style.transform = `rotate(${90 * P(t, 30.0, 0.8, 'mola')}deg)`;
+    $('mais-p').style.opacity = cheio; $('mais-p').style.transform = `scale(${(0.6 + 0.4 * E.back(cheio)) * (1 + 0.06 * Math.sin(2.4 * t))})`;
+    put($('tagInc'), trilha(t, [...surge(32.5, { x: 540, y: 1060 - 300 * ms.s, r: -3 }), sai(37.06, { o: 0 })]));
+  }
+  put($('tEsp'), trilha(t, [...surge(33.2, { x: 480, y: 380 }), sai(37.06, { o: 0, y: 250 })]));
+
+  // ===================== C4e: Maranhão parado, a cobertura sai de São Luís =====================
+  {
+    // o círculo do pulmão vira um "wipe" circular que abre a cena do mapa
+    const kw = P(t, 37.06, 0.8, 'inOut') * (1 - P(t, 46.2, 0.5));
+    $('wipe').innerHTML = kw > 0.01 ? `<circle cx="540" cy="1060" r="${1400 * P(t, 37.06, 0.8, 'inOut')}" fill="#F3F6FE" opacity="${1 - P(t, 46.2, 0.5)}"/>` : '';
+    const m = trilha(t, [[-1, 0, { s: 0.6, o: 0 }], [37.4, 0.9, { s: 1, o: 1 }], [37.4, 8.6, { z: 1 }, 'inOut'], sai(46.0, { o: 0, s: 1.1 })]);
+    const esc = 1060 / MA.height * m.s * (1 + 0.05 * (m.z || 0));
+    const cx = 680, cy = 1320;
+    $('ma-g').setAttribute('transform', `translate(${cx} ${cy}) scale(${esc}) translate(${-MAc[0]} ${-MAc[1]})`);
+    $('ma-ondas').setAttribute('transform', $('ma-g').getAttribute('transform'));
+    maBase.setAttribute('stroke-width', (6 / esc).toFixed(3));
+    $('ma').style.opacity = m.o;
+    $('cobre-c').setAttribute('cx', SL[0]); $('cobre-c').setAttribute('cy', SL[1]);
+    $('cobre-c').setAttribute('r', MA.height * 1.15 * E.inOut(cl((t - 38.0) / 7.2, 0, 1)));
+    let h = '';
+    if (t > 37.9 && t < 46.2) for (let i = 0; i < 3; i++) { const f = ((t - 37.9) / 1.8 + i / 3) % 1;
+      h += `<circle cx="${SL[0]}" cy="${SL[1]}" r="${(20 + 140 * f) / esc}" fill="none" stroke="#365DCC" stroke-width="${5 / esc}" opacity="${0.7 * (1 - f)}"/>`; }
+    h += `<circle cx="${SL[0]}" cy="${SL[1]}" r="${11 / esc}" fill="#1C306A" opacity="${P(t, 37.9, 0.3) * (1 - P(t, 46.0, 0.3))}"/>`;
+    $('ma-ondas').innerHTML = h;
+  }
+  put($('f1'), trilha(t, [...entraLado(38.82, { x: 70, y: 410 }, -200), sai(46.0, { o: 0, x: -400 })]), 0.5, 0);
+  put($('f2'), trilha(t, [...entraLado(40.76, { x: 70, y: 570 }, -200), sai(46.1, { o: 0, x: -400 })]), 0.5, 0);
+  put($('f3'), trilha(t, [...entraLado(42.38, { x: 70, y: 730 }, -200), sai(46.2, { o: 0, x: -400 })]), 0.5, 0);
+
+  // ===================== C5: a doutora (quem analisa) · de lugar / de tempo =====================
+  const DA = trilha(t, [[-1, 0, { x: 320, y: BASE + 1300, s: 0.72 }], [46.4, 1.0, { y: BASE }], [53.75, 0.6, { x: -800 }, 'in']]);
+  if (t > 46.2 && t < 54.5) await poeMed('doutora', DA, t - 46.6); else $('v-doutora').style.display = 'none';
+  put($('tLug'), trilha(t, [...entraLado(48.38, { x: 1010, y: 430 }, 220), sai(53.75, { o: 0, x: 1300 })]), 0.5, 1);
+  {
+    // a rota entre dois lugares, com o ponto viajando (de lugar)
+    const k = P(t, 48.6, 0.8, 'inOut') * (1 - P(t, 53.75, 0.4));
+    let h = '';
+    if (k > 0.01) {
+      const x0 = 590, x1 = 1000, y = 590, d = `M${x0} ${y} C ${x0 + 120} ${y - 110}, ${x1 - 120} ${y + 110}, ${x1} ${y}`;
+      h += `<path d="${d}" fill="none" stroke="#365DCC" stroke-width="8" stroke-dasharray="6 22" stroke-linecap="round" opacity="${k}"/>`;
+      h += `<circle cx="${x0}" cy="${y}" r="16" fill="#1C306A" opacity="${k}"/><circle cx="${x1}" cy="${y}" r="16" fill="#1C306A" opacity="${k}"/>`;
+      const f = ((t - 48.6) / 1.6) % 1, bx = (1 - f) ** 3 * x0 + 3 * (1 - f) ** 2 * f * (x0 + 120) + 3 * (1 - f) * f * f * (x1 - 120) + f ** 3 * x1;
+      const by = (1 - f) ** 3 * y + 3 * (1 - f) ** 2 * f * (y - 110) + 3 * (1 - f) * f * f * (y + 110) + f ** 3 * y;
+      h += `<circle cx="${bx}" cy="${by}" r="14" fill="#19756F" opacity="${k}"/>`;
+    }
+    $('rota').innerHTML = h;
+  }
+  put($('tTem'), trilha(t, [...entraLado(51.3, { x: 1010, y: 860 }, 220), sai(53.75, { o: 0, x: 1300 })]), 0.5, 1);
+  {
+    const r = trilha(t, [[-1, 0, { x: 800, y: 2300, s: 1.6 }], [50.6, 0.9, { y: 1330 }], sai(53.75, { y: 2400 })]);
+    put($('rel'), { ...r, vivo: 1 });
+    const ang = 1080 * P(t, 50.8, 2.0, 'out') + 10 * Math.sin(0.5 * t);
+    $('rel-m').setAttribute('transform', `rotate(${ang} 150 150)`); $('rel-h').setAttribute('transform', `rotate(${ang / 12 + 120} 150 150)`);
+  }
+
+  // ===================== FECHAMENTO =====================
+  const kI = P(t, INTRO, 0.35, 'inOut');
+  $('intro').style.display = kI > 0 ? '' : 'none'; $('intro').style.opacity = kI;
+  if (kI > 0) await busca1($('vI'), Math.max(0, t - INTRO));
+};
+
+(async () => { await TS.pronto(); prepLogo($('logoUFG'), 'UFG'); prepLogo($('logoUFMG'), 'UFMG'); })();
+</script>
+</body></html>

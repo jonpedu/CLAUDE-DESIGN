@@ -1,0 +1,6 @@
+file 'trechos/01-dengue.mp4'
+file 'trechos/02-obesidade.mp4'
+file 'trechos/03-retinopatia.mp4'
+file 'trechos/04-hipertensao.mp4'
+file 'trechos/05-avc.mp4'
+file 'trechos/06-hanseniase.mp4'

@@ -1,0 +1,7 @@
+[  0.00 –  14.38] Agora, com os números do enunciado. Com a igual a 0,8. 1, 0,8, 0,64, 0,512. A sequência encole.
+[ 15.14 –  26.72] Com a igual a 1,2. 1, 1,2, 1,44, 1,728. A sequência cresce.
+[ 27.72 –  34.62] E com a igual a menos 0,8. Os mesmos valores do primeiro caso, mas o sinal alterna.
+[ 35.22 –  43.50] Positivo, negativo, positivo, negativo. Toda a potência de um número negativo troca de sinal a cada passo.
+[ 44.22 –  52.44] A tabela sugere um padrão. H de n igual a a e levado a n. Mas atenção, porque o professor pode cobrar isto.
+[ 52.44 –  58.82] Padrão não é prova. A tabela mostra cinco valores e n vai até o infinito.
+[ 59.34 –  65.44] Para garantir que vale para todo n, usamos indução matemática. Pense numa fila de dominós.

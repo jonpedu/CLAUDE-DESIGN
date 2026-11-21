@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Videoaula PDS · João</title>
+<style>
+@font-face{font-family:'Exo2';font-weight:100 900;src:url('../../../fontes tipograficas/Exo_2/Exo2-VariableFont_wght.ttf');}
+@font-face{font-family:'InterV';font-weight:400;src:url('../../../fontes tipograficas/Inter/static/Inter_24pt-Regular.ttf');}
+@font-face{font-family:'InterV';font-weight:500;src:url('../../../fontes tipograficas/Inter/static/Inter_24pt-Medium.ttf');}
+@font-face{font-family:'InterV';font-weight:600;src:url('../../../fontes tipograficas/Inter/static/Inter_24pt-SemiBold.ttf');}
+@font-face{font-family:'InterV';font-weight:700;src:url('../../../fontes tipograficas/Inter/static/Inter_24pt-Bold.ttf');}
+:root{--bg:#F6F4EE;--card:#FFFDF8;--borda:#E2DED3;--navy:#15233B;--navy2:#45505E;--cinza:#6B7480;--linha:#C4C3BE;
+  --lar:#A94A14;--lar2:#F0A26E;--lar3:#FBE6D6;--azul:#2F5DA8;--azul3:#DCE6F5;--verde:#2E7D5B;--verde3:#DDF0E6;--verm:#B42318;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px!important;height:1080px!important;overflow:hidden;background:var(--bg)!important}
+body{position:relative;font-family:'InterV',sans-serif!important;color:var(--navy)!important;-webkit-font-smoothing:antialiased}
+.cena{position:absolute;inset:0}
+.kick{position:absolute;left:120px;top:84px;font:600 24px 'InterV';letter-spacing:3px;color:var(--lar);text-transform:uppercase}
+.tit{position:absolute;left:120px;top:122px;font:700 66px/1.1 'Exo2';color:var(--navy);letter-spacing:-.5px}
+.m{font-family:'InterV';font-weight:500;white-space:nowrap}
+sup{font-size:.6em;vertical-align:.75em;line-height:0}
+.ab{position:absolute}
+.card{position:absolute;background:var(--card);border:2px solid var(--borda);border-radius:22px}
+.lar{color:var(--lar)} .cz{color:var(--cinza)} .az{color:var(--azul)} .vd{color:var(--verde)} .vm{color:var(--verm)}
+.tag{display:inline-block;font:600 22px 'InterV';letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border-radius:8px}
+.hl{background-image:linear-gradient(var(--lar3),var(--lar3));background-size:0% 100%;background-repeat:no-repeat;border-radius:8px;padding:0 4px}
+.chip{display:inline-block;border-radius:14px;padding:10px 22px}
+/* progresso */
+#prog{position:absolute;left:120px;right:120px;bottom:40px;height:34px}
+#prog .seg{position:absolute;top:0;height:34px}
+#prog .seg .bar{position:absolute;left:0;right:6px;top:24px;height:6px;border-radius:3px;background:#E2DED3;overflow:hidden}
+#prog .seg .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--lar);width:0}
+#prog .seg b{position:absolute;left:0;top:0;font:600 15px 'InterV';letter-spacing:1.5px;text-transform:uppercase;color:var(--cinza);white-space:nowrap}
+/* tabela */
+.tab{position:absolute;border-collapse:collapse;font:500 40px 'InterV'}
+.tab td,.tab th{padding:14px 30px;text-align:center;border-bottom:2px solid var(--borda)}
+.tab th{font:600 26px 'InterV';letter-spacing:1px;color:var(--cinza);border-bottom:3px solid var(--navy)}
+.lista li{list-style:none;display:flex;gap:28px;align-items:baseline;margin-bottom:34px}
+.num{font:700 54px 'Exo2';color:var(--lar);min-width:52px}
+.qcard{position:absolute;left:120px;right:120px;top:250px;height:640px}
+</style>
+<script src="timeline.js"></script>
+</head>
+<body>
+
+<!-- 0 ABERTURA -->
+<section class="cena" data-cena="abertura">
+  <div class="kick" data-in="b0">PDS · EECP0018 · Seminário P2 · Tema 2</div>
+  <div class="ab" style="left:120px;top:250px;font:800 128px/1.02 'Exo2';letter-spacing:-2px">
+    <div data-in="b0+0.2">Da recursão</div>
+    <div data-in="b0+0.45" class="lar">à forma fechada</div>
+  </div>
+  <div class="ab" style="left:124px;top:560px;font:500 40px 'InterV';color:var(--navy2)" data-in="b0@passos">
+    Sua parte, João: <b>passos 1 e 2</b> · item (a) · slides 6 e 7</div>
+  <div class="card" style="left:120px;top:690px;padding:34px 56px" data-in="b0@elevado" data-fx="pop">
+    <span class="m" style="font-size:84px">h[n] = a<sup>n</sup> u[n]</span>
+  </div>
+  <div class="ab" style="left:900px;top:735px;font:500 32px 'InterV';color:var(--cinza)" data-in="b0@calcular">
+    ① calcular na mão &nbsp;&nbsp; ② provar por indução</div>
+</section>
+
+<!-- 1 EQUIPE -->
+<section class="cena" data-cena="equipe">
+  <div class="kick" data-in="b1">Onde a sua parte entra</div>
+  <div class="tit" data-in="b1+0.1">5 apresentadores, 16 slides</div>
+  <div id="equipe"></div>
+  <div class="ab" style="left:120px;top:800px;width:1680px;text-align:center;font:600 44px 'InterV'" data-in="b1@depende">
+    Todo o resto <span class="hl" data-in="b1@resultado" data-fx="hl">depende do h[n] que você prova.</span></div>
+</section>
+
+<!-- 2 SISTEMA -->
+<section class="cena" data-cena="sistema">
+  <div class="kick" data-in="b2">O sistema</div>
+  <div class="tit" data-in="b2+0.1">Primeira ordem, com realimentação</div>
+  <svg class="ab" style="left:0;top:0" width="1920" height="1080">
+    <path id="laco" d="M 550 455 C 550 320, 1000 320, 1000 452" fill="none" stroke="#A94A14" stroke-width="5" stroke-linecap="round" data-in="b3@realimentação" data-fx="traco"/>
+    <path d="M 986 432 L 1000 454 L 1016 434" fill="none" stroke="#A94A14" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" data-in="b3@realimentação+0.8"/>
+  </svg>
+  <div class="ab" style="left:775px;top:290px;transform:translateX(-50%);font:600 30px 'InterV'" data-in="b3@realimentação+0.4"><span class="lar">realimentação = memória</span></div>
+  <div class="ab m" style="left:0;width:1920px;top:470px;text-align:center;font-size:104px">
+    <span data-in="b2@y">y[n]</span> <span data-in="b2@igual">=</span>
+    <span data-in="b2@vezes">a·y[n−1]</span> <span data-in="b2@mais">+ x[n]</span>
+  </div>
+  <div class="ab" style="left:395px;top:640px;width:300px;text-align:center;font:500 30px 'InterV';color:var(--cinza)" data-in="b3@agora">saída<br>de agora</div>
+  <div class="ab" style="left:675px;top:640px;width:560px;text-align:center;font:500 30px 'InterV';color:var(--cinza)" data-in="b3@fração">fração <b class="lar">a</b> da<br>saída anterior</div>
+  <div class="ab" style="left:1140px;top:640px;width:340px;text-align:center;font:500 30px 'InterV';color:var(--cinza)" data-in="b3@somada">+ entrada<br>de agora</div>
+  <div class="ab" style="left:0;width:1920px;top:800px;text-align:center;font:500 34px 'InterV';color:var(--navy2)" data-in="b3@memória">
+    o coeficiente <b class="lar">a</b> decide quanto do passado sobrevive a cada passo</div>
+</section>
+
+<!-- 3 INGREDIENTES -->
+<section class="cena" data-cena="ingredientes">
+  <div class="kick" data-in="b4">Antes de calcular</div>
+  <div class="tit" data-in="b4+0.1">Três ideias</div>
+  <div class="card" style="left:120px;top:270px;width:540px;height:640px" data-in="b4@Primeira">
+    <div class="ab" style="left:40px;top:34px"><span class="num">1</span></div>
+    <div class="ab" style="left:40px;top:120px;font:700 46px 'Exo2'">Impulso <span class="m lar">δ[n]</span></div>
+    <svg class="ab" id="sv-delta" style="left:20px;top:220px" width="500" height="260"></svg>
+    <div class="ab" style="left:40px;top:500px;width:460px;font:500 30px/1.4 'InterV';color:var(--navy2)" data-in="b4@zero">vale <b>1</b> só em <b>n = 0</b>;<br>zero em todo o resto</div>
+  </div>
+  <div class="card" style="left:690px;top:270px;width:540px;height:640px" data-in="b5">
+    <div class="ab" style="left:40px;top:34px"><span class="num">2</span></div>
+    <div class="ab" style="left:40px;top:120px;font:700 46px 'Exo2'">Resposta <span class="m lar">h[n]</span></div>
+    <div class="ab" style="left:40px;top:270px;width:460px;display:flex;align-items:center;justify-content:space-between;font:600 34px 'InterV'">
+      <span class="m" data-in="b5@impulso">δ[n]</span><span class="cz" data-in="b5@impulso">→</span>
+      <span style="border:3px solid var(--navy);border-radius:12px;padding:16px 18px;font-size:28px" data-in="b5@saída">sistema</span>
+      <span class="cz" data-in="b5@saída+0.2">→</span><span class="m lar" data-in="b5@saída+0.3">h[n]</span>
+    </div>
+    <div class="ab" style="left:40px;top:500px;width:460px;font:500 30px/1.4 'InterV';color:var(--navy2)" data-in="b5@exatamente">é a <b>saída</b> quando a entrada é o <b>impulso</b></div>
+  </div>
+  <div class="card" style="left:1260px;top:270px;width:540px;height:640px" data-in="b6">
+    <div class="ab" style="left:40px;top:34px"><span class="num">3</span></div>
+    <div class="ab" style="left:40px;top:120px;font:700 46px 'Exo2'">Repouso</div>
+    <div class="ab m" style="left:40px;top:270px;font-size:64px" data-in="b6@quer"><span class="lar">y[−1] = 0</span></div>
+    <div class="ab" style="left:40px;top:500px;width:460px;font:500 30px/1.4 'InterV';color:var(--navy2)" data-in="b6@Antes">memória vazia antes de o impulso chegar</div>
+  </div>
+</section>
+
+<!-- 4 TROCA -->
+<section class="cena" data-cena="troca">
+  <div class="kick" data-in="b7">Montando a equação de h[n]</div>
+  <div class="tit" data-in="b7+0.1">Entrada = impulso, saída = h[n]</div>
+  <div class="ab m" style="left:0;width:1920px;top:300px;text-align:center;font-size:72px;color:var(--cinza)" data-in="b7">y[n] = a·y[n−1] + x[n]</div>
+  <div class="ab" style="left:0;width:1920px;top:430px;text-align:center;font:600 40px 'InterV'">
+    <span class="chip" style="background:var(--lar3)" data-in="b7@delta" data-fx="pop"><span class="m">x → δ</span></span>
+    &nbsp;&nbsp;&nbsp;
+    <span class="chip" style="background:var(--lar3)" data-in="b7@h" data-fx="pop"><span class="m">y → h</span></span>
+  </div>
+  <div class="ab m" style="left:0;width:1920px;top:580px;text-align:center;font-size:100px" data-in="b7@vira">
+    h[n] = a·h[n−1] + <span class="lar">δ[n]</span></div>
+  <div class="ab m" style="left:0;width:1920px;top:740px;text-align:center;font-size:52px;color:var(--navy2)" data-in="b7@Com">com <span class="lar">h[−1] = 0</span> (repouso)</div>
+</section>
+
+<!-- 5 RECURSÃO -->
+<section class="cena" data-cena="recursao">
+  <div class="kick" data-in="b8">Passo 1 · slide 6</div>
+  <div class="tit" data-in="b8+0.1">Recursão, amostra por amostra</div>
+  <div class="ab m" style="left:1250px;top:150px;font-size:40px;color:var(--navy2)" data-in="b8+0.3">h[n] = a·h[n−1] + δ[n]</div>
+  <table class="tab" style="left:120px;top:270px;width:1100px">
+    <tr data-in="b8+0.4"><th>n</th><th>a · h[n−1]</th><th>+ δ[n]</th><th>= h[n]</th></tr>
+    <tr><td data-in="b9@igual">0</td><td data-in="b9@vezes">a · 0</td><td data-in="b9@delta" class="lar" style="font-weight:700">+ 1</td><td data-in="b9@Resultado" data-fx="pop"><b>1</b></td></tr>
+    <tr><td data-in="b10@igual">1</td><td data-in="b10@vezes">a · 1</td><td data-in="b10@delta">+ 0</td><td data-in="b10@Resultado" data-fx="pop"><b>a</b></td></tr>
+    <tr><td data-in="b11@igual">2</td><td data-in="b11@vezes">a · a</td><td data-in="b11@mais">+ 0</td><td data-in="b11@quadrado" data-fx="pop"><b>a<sup>2</sup></b></td></tr>
+    <tr><td data-in="b12@cubo">3</td><td data-in="b12@cubo">a · a<sup>2</sup></td><td data-in="b12@cubo">+ 0</td><td data-in="b12@cubo+0.2" data-fx="pop"><b>a<sup>3</sup></b></td></tr>
+    <tr><td data-in="b12@quarta">4</td><td data-in="b12@quarta">a · a<sup>3</sup></td><td data-in="b12@quarta">+ 0</td><td data-in="b12@quarta+0.2" data-fx="pop"><b>a<sup>4</sup></b></td></tr>
+  </table>
+  <div class="card" style="left:1290px;top:270px;width:510px;height:330px" data-in="b9@impulso">
+    <div class="ab" style="left:34px;top:30px;font:700 34px 'Exo2'" ><span class="lar">n = 0</span>: o impulso entra</div>
+    <div class="ab" style="left:34px;top:100px;width:440px;font:500 28px/1.45 'InterV';color:var(--navy2)">h[−1] = 0 (repouso) e δ[0] = 1.<br>É a <b>única</b> vez que δ[n] vale 1.</div>
+  </div>
+  <div class="card" style="left:1290px;top:630px;width:510px;height:300px;border-color:var(--lar2)" data-in="b12@partir">
+    <div class="ab" style="left:34px;top:30px;font:700 34px 'Exo2'"><span class="lar">n ≥ 1</span>: só realimentação</div>
+    <div class="ab m" style="left:34px;top:108px;font-size:40px" data-in="b12@trabalha">h[n] = a·h[n−1]</div>
+    <div class="ab" style="left:34px;top:190px;width:440px;font:500 28px/1.4 'InterV';color:var(--navy2)" data-in="b12@cada">cada amostra = <b>a</b> × a anterior</div>
+  </div>
+</section>
+
+<!-- 6 VALORES -->
+<section class="cena" data-cena="valores">
+  <div class="kick" data-in="b13">Passo 1 · os três valores do enunciado</div>
+  <div class="tit" data-in="b13+0.1">Substituindo a</div>
+  <div id="valores"></div>
+</section>
+
+<!-- 7 PADRÃO -->
+<section class="cena" data-cena="padrao">
+  <div class="kick" data-in="b16">Do passo 1 para o passo 2</div>
+  <div class="ab m" style="left:0;width:1920px;top:250px;text-align:center;font-size:120px" data-in="b16@padrão">h[n] = a<sup>n</sup> <span class="lar" data-in="b16@atenção" data-fx="pop">?</span></div>
+  <div class="ab" style="left:0;width:1920px;top:470px;text-align:center" data-in="b16@padrão#2" data-fx="pop">
+    <span class="chip" style="background:var(--navy);color:#fff;font:700 64px 'Exo2';padding:18px 44px;transform:rotate(-2deg);display:inline-block">padrão <span style="font-family:'InterV'">≠</span> prova</span></div>
+  <div class="ab" style="left:0;width:1920px;top:640px;text-align:center;font:500 38px 'InterV';color:var(--navy2)" data-in="b16@cinco">
+    a tabela mostra <b>5 valores</b> · n vai até <b class="lar">∞</b></div>
+  <div class="ab" style="left:0;width:1920px;top:770px;text-align:center;font:700 54px 'Exo2'" data-in="b17@indução">
+    → <span class="hl" data-in="b17@indução+0.2" data-fx="hl">indução matemática</span></div>
+</section>
+
+<!-- 8 INDUÇÃO -->
+<section class="cena" data-cena="inducao">
+  <div class="kick" data-in="b18">Passo 2 · slide 7</div>
+  <div class="tit" data-in="b18+0.1">Forma fechada por indução</div>
+  <svg class="ab" id="sv-dom" style="left:1060px;top:110px" width="760" height="230"></svg>
+  <div class="ab" style="left:120px;top:330px;width:1680px">
+    <div class="card" style="position:relative;height:150px;margin-bottom:22px" data-in="b18">
+      <div class="ab" style="left:36px;top:30px"><span class="tag" style="background:var(--azul3);color:var(--azul)">Base · n = 0</span></div>
+      <div class="ab m" style="left:340px;top:44px;font-size:48px" data-in="b18@h">h[0] = a·0 + 1 = 1 = <span class="az">a<sup>0</sup></span></div>
+      <div class="ab" style="left:1540px;top:36px;font:700 60px 'Exo2'" class="vd" data-in="b18@Confere" data-fx="pop"><span class="vd">✓</span></div>
+    </div>
+    <div class="card" style="position:relative;height:150px;margin-bottom:22px" data-in="b19">
+      <div class="ab" style="left:36px;top:30px"><span class="tag" style="background:var(--lar3);color:var(--lar)">Hipótese</span></div>
+      <div class="ab m" style="left:340px;top:44px;font-size:48px" data-in="b19@Ou">h[n−1] = a<sup>n−1</sup> <span style="font-size:34px;color:var(--cinza)">&nbsp;para algum n ≥ 1</span></div>
+    </div>
+    <div class="card" style="position:relative;height:230px" data-in="b20">
+      <div class="ab" style="left:36px;top:30px"><span class="tag" style="background:var(--verde3);color:var(--verde)">Passo</span></div>
+      <div class="ab m" style="left:340px;top:40px;font-size:48px">
+        <span data-in="b20@Pela">h[n] = a·<span class="hl" data-in="b20@Sobra" data-fx="hl">h[n−1]</span> + <span class="hl" data-in="b20@Como" data-fx="hl">δ[n]</span></span>
+        <span data-in="b20@Sobra"> = a·a<sup>n−1</sup> + 0</span>
+        <span data-in="b20@elevado#2"> = <b class="vd">a<sup>n</sup></b></span>
+      </div>
+      <div class="ab" style="left:340px;top:140px;font:500 30px 'InterV';color:var(--navy2)" data-in="b20@Como">n ≥ 1 ⇒ <b>δ[n] = 0</b> &nbsp;·&nbsp; <span data-in="b20@Sobra">usa a hipótese no h[n−1]</span></div>
+    </div>
+  </div>
+  <div class="ab" style="left:0;width:1920px;top:910px;text-align:center;font:700 44px 'Exo2'" data-in="b21@Logo">
+    ∴ <span class="m">h[n] = a<sup>n</sup></span> para <span class="lar">todo n ≥ 0</span></div>
+</section>
+
+<!-- 9 DEGRAU -->
+<section class="cena" data-cena="degrau">
+  <div class="kick" data-in="b22">Passo 2 · e para n &lt; 0?</div>
+  <div class="tit" data-in="b22+0.1">O papel do u[n]</div>
+  <svg class="ab" id="sv-deg" style="left:100px;top:250px" width="1000" height="560"></svg>
+  <div class="card" style="left:1160px;top:270px;width:640px;height:220px" data-in="b22@causal">
+    <div class="ab" style="left:36px;top:30px;font:700 34px 'Exo2'">Repouso + causal</div>
+    <div class="ab m" style="left:36px;top:100px;font-size:42px" data-in="b22@Então">h[n] = 0 &nbsp;<span style="font-size:32px;color:var(--cinza)">para n &lt; 0</span></div>
+  </div>
+  <div class="card" style="left:1160px;top:520px;width:640px;height:260px" data-in="b23@degrau">
+    <div class="ab" style="left:36px;top:30px;font:700 34px 'Exo2'">Degrau <span class="m lar">u[n]</span></div>
+    <div class="ab m" style="left:36px;top:96px;font-size:34px;line-height:1.5">1 para n ≥ 0<br>0 para n &lt; 0</div>
+    <div class="ab" style="left:330px;top:110px;width:280px;font:600 28px/1.35 'InterV';color:var(--lar)" data-in="b23@enfeite">o u[n] não é enfeite</div>
+  </div>
+  <div class="ab" style="left:120px;top:850px;width:1680px;text-align:center" data-in="b24@respondido" data-fx="pop">
+    <span class="chip" style="background:var(--navy);color:#fff;padding:22px 54px"><span class="m" style="font-size:70px">h[n] = a<sup>n</sup> u[n]</span>
+    <span style="font:700 30px 'InterV';color:var(--lar2);margin-left:26px;vertical-align:14px">ITEM (A) ✓</span></span></div>
+</section>
+
+<!-- 10 FALA -->
+<section class="cena" data-cena="fala">
+  <div class="kick" data-in="b25">Para a apresentação</div>
+  <div class="tit" data-in="b25+0.1">Sua fala em 4 ideias</div>
+  <ul class="lista ab" style="left:120px;top:290px;width:1680px;font:500 44px 'InterV'">
+    <li data-in="b26"><span class="num">1</span><span>Troco <span class="m">x</span> por <span class="m lar">δ</span> e parto do repouso: <span class="m">h[−1] = 0</span></span></li>
+    <li data-in="b27"><span class="num">2</span><span>Amostra por amostra: <span class="m">1, a, a<sup>2</sup>, a<sup>3</sup>…</span> → padrão <span class="m lar">a<sup>n</sup></span></span></li>
+    <li data-in="b28"><span class="num">3</span><span>Padrão ≠ prova → <b>indução</b>: base, hipótese, passo</span></li>
+    <li data-in="b29"><span class="num">4</span><span><span class="m">n &lt; 0</span> ⇒ zero, e o <span class="m lar">u[n]</span> registra isso</span></li>
+  </ul>
+  <div class="ab" style="left:120px;top:850px;font:600 36px 'InterV';color:var(--cinza)" data-in="b30">→ “Passo a palavra para o <b style="color:var(--navy)">Manoel</b>.”</div>
+</section>
+
+<!-- 11 PERGUNTAS -->
+<section class="cena" data-cena="perguntas">
+  <div class="ab" style="left:0;width:1920px;top:330px;text-align:center" data-in="p0"><span class="tag" style="background:var(--lar3);color:var(--lar);font-size:26px">Arguição</span></div>
+  <div class="ab" style="left:0;width:1920px;top:410px;text-align:center;font:800 100px 'Exo2'" data-in="p0+0.15">Perguntas da sua parte</div>
+  <div class="ab" style="left:0;width:1920px;top:570px;text-align:center;font:500 40px 'InterV';color:var(--navy2)" data-in="p0@Tente">Responda em voz alta <b class="lar">antes</b> de a resposta aparecer.</div>
+</section>
+<div id="qs"></div>
+
+<!-- 12 FIM -->
+<section class="cena" data-cena="fim">
+  <div class="kick" data-in="b31">Resumo</div>
+  <div class="ab" style="left:120px;top:200px;width:1680px;display:flex;gap:36px">
+    <div class="card" style="position:relative;flex:1;height:300px" data-in="b31@recursão"><div class="ab" style="left:40px;top:40px;font:700 50px 'Exo2'">Recursão</div><div class="ab" style="left:40px;top:140px;font:500 34px/1.4 'InterV';color:var(--navy2)">para <b>enxergar</b><br>o padrão</div></div>
+    <div class="card" style="position:relative;flex:1;height:300px" data-in="b31@indução"><div class="ab" style="left:40px;top:40px;font:700 50px 'Exo2'">Indução</div><div class="ab" style="left:40px;top:140px;font:500 34px/1.4 'InterV';color:var(--navy2)">para <b>provar</b><br>para todo n ≥ 0</div></div>
+    <div class="card" style="position:relative;flex:1;height:300px" data-in="b31@u"><div class="ab m" style="left:40px;top:40px;font-size:50px" class="lar"><span class="lar">u[n]</span></div><div class="ab" style="left:40px;top:140px;font:500 34px/1.4 'InterV';color:var(--navy2)">para os<br>instantes <b>negativos</b></div></div>
+  </div>
+  <div class="ab" style="left:0;width:1920px;top:600px;text-align:center" data-in="b31@h" data-fx="pop"><span class="m" style="font-size:120px">h[n] = a<sup>n</sup> u[n]</span></div>
+  <div class="ab" style="left:0;width:1920px;top:820px;text-align:center;font:700 50px 'Exo2'" data-in="b31@Boa"><span class="lar">Boa apresentação, João!</span></div>
+</section>
+
+<div id="prog"></div>
+
+<script>
+// ---------- tempo ----------
+const norm = (w) => w.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w,]/g, '').replace(/,+$/, '');
+function T(spec) {
+  const m = spec.match(/^(\w+)(?:@([^#+>]+?)(?:#(\d+))?)?(>)?([+-][\d.]+)?$/);
+  if (!m) throw new Error('spec ' + spec);
+  const b = B[m[1]]; if (!b) throw new Error('fala ' + spec);
+  let t = b.ini;
+  if (m[2]) {
+    const alvo = norm(m[2]); let k = Number(m[3] || 1);
+    const hit = b.pal.find(([w]) => norm(w) === alvo && --k === 0);
+    if (!hit) { console.warn('palavra não achada', spec); } else t = hit[1];
+  }
+  if (m[4]) t = b.fim;
+  return t + Number(m[5] || 0);
+}
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const E = { out: (t) => 1 - Math.pow(1 - t, 3), inOut: (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+  back: (t) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); } };
+const P = (t, t0, d, e = 'out') => E[e](clamp((t - t0) / d, 0, 1));
+const NS = 'http://www.w3.org/2000/svg';
+const sv = (tag, at, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); pai && pai.appendChild(e); return e; };
+const custom = [];
+
+// ---------- gráfico de hastes ----------
+// pai: <svg>; ns: lista de n; ys: valores; ox,oy origem; dx px por amostra; sy px por unidade; ins: lista de specs (ou uma spec)
+function hastes(pai, { ns, ys, ox, oy, dx, sy, ins, cor = '#15233B', r = 9, rot = true, eixo = [ox - 30, ox + dx * ns.length], cls = '' }) {
+  if (eixo) {
+    sv('line', { x1: eixo[0], y1: oy, x2: eixo[1], y2: oy, stroke: '#C4C3BE', 'stroke-width': 3 }, pai);
+    sv('text', { x: eixo[1] + 12, y: oy + 8, 'font-family': 'InterV', 'font-size': 24, fill: '#6B7480' }, pai).textContent = 'n';
+  }
+  const gs = [];
+  ns.forEach((n, i) => {
+    const x = ox + (n - ns[0]) * dx, y = oy - ys[i] * sy;
+    const g = sv('g', { class: cls }, pai);
+    sv('line', { x1: x, y1: oy, x2: x, y2: y, stroke: cor, 'stroke-width': 4 }, g);
+    sv('circle', { cx: x, cy: y, r, fill: cor }, g);
+    if (rot) { const tx = sv('text', { x, y: oy + 34, 'text-anchor': 'middle', 'font-family': 'InterV', 'font-size': 20, fill: '#6B7480' }, pai); tx.textContent = String(n).replace('-', '−'); }
+    const spec = Array.isArray(ins) ? ins[i] : ins;
+    if (spec) { g.dataset.in = spec; g.dataset.fx = 'haste'; g.style.transformOrigin = `${x}px ${oy}px`; }
+    gs.push(g);
+  });
+  return gs;
+}
+
+// ---------- montagem das cenas geradas ----------
+// equipe
+(function () {
+  const pai = document.getElementById('equipe');
+  const P5 = [['André', '1 – 5', 'Sistema, h[n], BIBO, enunciado', 'b1@André'],
+    ['João', '6 – 7', 'Recursão e indução · item (a)', 'b1@Você#2'],
+    ['Manoel', '8 – 9', 'Σ|h[n]| e estabilidade · item (b)', 'b1@Manoel'],
+    ['Paulo', '10 – 13', 'Conferência em Python · item (c)', 'b1@Paulo'],
+    ['Antonio', '14 – 16', 'Erro comum e conclusão', 'b1@Python+0.4']];
+  P5.forEach(([nome, sl, ass, spec], i) => {
+    const eu = nome === 'João';
+    const d = document.createElement('div');
+    d.className = 'card'; d.dataset.in = spec;
+    d.style.cssText = `left:${120 + i * 344}px;top:${eu ? 300 : 330}px;width:320px;height:${eu ? 400 : 340}px;` +
+      (eu ? 'background:#15233B;border-color:#15233B;color:#fff' : '');
+    d.innerHTML = `<div class="ab" style="left:30px;top:30px;font:600 20px 'InterV';letter-spacing:2px;color:${eu ? '#F0A26E' : '#A94A14'}">SLIDES ${sl}</div>
+      <div class="ab" style="left:30px;top:74px;font:700 ${eu ? 58 : 46}px 'Exo2'">${nome}${eu ? '<span style="font-size:26px;color:#F0A26E"> · você</span>' : ''}</div>
+      <div class="ab" style="left:30px;top:${eu ? 180 : 160}px;width:260px;font:500 ${eu ? 30 : 26}px/1.4 'InterV';color:${eu ? '#E8ECF2' : '#45505E'}">${ass}</div>`;
+    pai.appendChild(d);
+  });
+  // setas de dependência
+  const s = sv('svg', { class: 'ab', width: 1920, height: 1080, style: 'left:0;top:0;position:absolute' }, pai);
+  [[804, 1150], [804, 1494]].forEach(([x0, x1], k) => {
+    const p = sv('path', { d: `M 620 705 C 620 785, ${x1 - 188} 785, ${x1 - 188} 672`, fill: 'none', stroke: '#A94A14', 'stroke-width': 4, 'stroke-dasharray': '1', 'stroke-linecap': 'round' }, s);
+    p.dataset.in = k ? 'b1@resto+0.3' : 'b1@resto'; p.dataset.fx = 'traco';
+  });
+})();
+
+// impulso δ[n]
+hastes(document.getElementById('sv-delta'), { ns: [-3, -2, -1, 0, 1, 2, 3, 4], ys: [0, 0, 0, 1, 0, 0, 0, 0], ox: 70, oy: 200, dx: 52, sy: 150,
+  ins: ['b4@vale', 'b4@vale', 'b4@vale', 'b4@um', 'b4@todos', 'b4@todos', 'b4@todos', 'b4@todos'], cor: '#A94A14' });
+
+// três valores
+(function () {
+  const pai = document.getElementById('valores');
+  const C = [[0.8, 'b13', 'encolhe', '#2F5DA8', ['um', '0,8#2', '0,64', '0,512'], 'encolhe'],
+    [1.2, 'b14', 'cresce', '#B42318', ['um', '1,2#2', '1,44', '1,728'], 'cresce'],
+    [-0.8, 'b15', 'alterna o sinal', '#2E7D5B', ['menos', 'mesmos', 'valores', 'caso'], 'alterna']];
+  const fmt = (x) => (Math.round(x * 10000) / 10000).toString().replace('.', ',').replace('-', '−');
+  C.forEach(([a, b, rot, cor, ws, wfim], i) => {
+    const x0 = 120 + i * 572;
+    const c = document.createElement('div'); c.className = 'card'; c.dataset.in = b;
+    c.style.cssText = `left:${x0}px;top:260px;width:536px;height:690px`;
+    c.innerHTML = `<div class="ab m" style="left:36px;top:28px;font-size:52px;color:${cor}">a = ${fmt(a)}</div>
+      <div class="ab" style="left:36px;top:104px;font:600 24px 'InterV';letter-spacing:2px;color:#6B7480;text-transform:uppercase" data-in="${b}@${wfim}">→ ${rot}</div>`;
+    const s = sv('svg', { width: 536, height: 330, style: 'position:absolute;left:0;top:150px' }, c);
+    const ys = [0, 1, 2, 3, 4, 5, 6, 7].map((n) => Math.pow(a, n));
+    const sc = a > 1 ? 34 : 110; const oy = a < 0 ? 175 : 290;
+    const semRot = a < 0;
+    const ins = ys.map((_, n) => n < 4 ? `${b}@${ws[n]}` : `${b}@${ws[3]}+${(n - 3) * 0.18}`);
+    hastes(s, { ns: [0, 1, 2, 3, 4, 5, 6, 7], ys, ox: 60, oy, dx: 56, sy: sc, ins, cor, r: 8, eixo: [40, 500], rot: !semRot });
+    const lst = document.createElement('div'); lst.className = 'ab m';
+    lst.style.cssText = 'left:36px;top:500px;width:470px;font-size:34px;line-height:1.55;color:#15233B';
+    lst.innerHTML = ys.slice(0, 5).map((y, n) => `<span data-in="${ins[n]}" style="display:inline-block;margin-right:22px">${fmt(y)}</span>`).join('');
+    c.appendChild(lst);
+    pai.appendChild(c);
+  });
+})();
+
+// dominós
+(function () {
+  const s = document.getElementById('sv-dom');
+  const rot = ['0', '1', '2', '3', '…', 'n−1', 'n', 'n+1', '…'];
+  const W = 26, H = 130, gap = 78, base = 170;
+  const quedas = { 0: 'b18@cai', 5: 'b19@caiu', 6: 'b20@derruba+0.3' };
+  rot.forEach((r, i) => {
+    const x = 30 + i * gap;
+    if (r !== '…') {
+      const hl = i === 5 || i === 6;
+      const g = sv('g', {}, s);
+      sv('rect', { x, y: base - H, width: W, height: H, rx: 5, fill: i === 0 ? '#2F5DA8' : hl ? '#A94A14' : '#15233B' }, g);
+      g.dataset.queda = quedas[i] || `b21@caem-${(8 - i) * 0.12 + 0.6}`;
+      g.dataset.qx = x + W; g.dataset.qy = base;
+      g.dataset.alvo = i === 7 ? 'b20@derruba+0.3' : '';
+    } else {
+      sv('text', { x: x + W / 2, y: base - 40, 'text-anchor': 'middle', 'font-size': 40, fill: '#6B7480', 'font-family': 'InterV' }, s).textContent = '…';
+    }
+    sv('text', { x: x + W / 2, y: base + 40, 'text-anchor': 'middle', 'font-size': 24, fill: '#45505E', 'font-family': 'InterV', 'font-weight': 600 }, s).textContent = r;
+  });
+  sv('line', { x1: 10, y1: base, x2: 740, y2: base, stroke: '#C4C3BE', 'stroke-width': 3 }, s);
+  const gs = [...s.querySelectorAll('g')].map((g) => ({ g, t0: T(g.dataset.queda), x: g.dataset.qx, y: g.dataset.qy }));
+  custom.push((t) => { gs.forEach(({ g, t0, x, y }) => {
+    const k = P(t, t0, 0.5, 'inOut');
+    g.setAttribute('transform', `rotate(${k * 36} ${x} ${y})`);
+  }); });
+})();
+
+// degrau: a^n com e sem u[n]
+(function () {
+  const s = document.getElementById('sv-deg');
+  const a = 0.8, ns = [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7], oy = 420, ox = 90, dx = 72, sy = 120;
+  sv('text', { x: 620, y: 60, 'font-family': 'InterV', 'font-size': 26, fill: '#6B7480', 'font-weight': 600 }, s).textContent = 'exemplo: a = 0,8';
+  // fantasmas: a^n sem u[n] para n < 0
+  const neg = ns.filter((n) => n < 0);
+  const fant = hastes(s, { ns: neg, ys: neg.map((n) => Math.pow(a, n)), ox, oy, dx, sy, ins: 'b23@Sem', cor: '#B42318', rot: false, eixo: null });
+  fant.forEach((g) => { g.querySelector('line').setAttribute('stroke-dasharray', '8 8'); g.querySelector('circle').setAttribute('fill', 'none'); g.querySelector('circle').setAttribute('stroke', '#B42318'); g.querySelector('circle').setAttribute('stroke-width', 3); g.dataset.out = 'b23@negativo+0.8'; });
+  const lb = sv('text', { x: ox + 10, y: oy - 330, 'font-family': 'InterV', 'font-size': 26, fill: '#B42318', 'font-weight': 600 }, s);
+  lb.textContent = 'sem u[n]: aⁿ ≠ 0 para n < 0'; lb.dataset.in = 'b23@Sem'; lb.dataset.out = 'b23@negativo+0.8';
+  // h[n] = a^n u[n]
+  hastes(s, { ns, ys: ns.map((n) => (n < 0 ? 0 : Math.pow(a, n))), ox, oy, dx, sy,
+    ins: ns.map((n, i) => (n < 0 ? 'b22@zero' : `b22+${0.2 + i * 0.08}`)), cor: '#15233B', eixo: [ox - 40, ox + dx * ns.length] });
+  const zona = sv('rect', { x: ox - 30, y: oy - 20, width: dx * 4 - 12, height: 40, rx: 10, fill: '#A94A14', 'fill-opacity': .15 }, s);
+  zona.dataset.in = 'b22@zero';
+  const zt = sv('text', { x: ox + dx * 1.5, y: oy + 80, 'text-anchor': 'middle', 'font-family': 'InterV', 'font-size': 26, fill: '#A94A14', 'font-weight': 600 }, s);
+  zt.textContent = 'h[n] = 0'; zt.dataset.in = 'b22@zero';
+})();
+
+// perguntas
+(function () {
+  const Q = [
+    ['q1', 'Por que usar indução, se a tabela já mostra o padrão?', 'A tabela mostra só alguns valores. A indução garante o padrão para <b style="white-space:nowrap">todo n ≥ 0</b>.'],
+    ['q2', 'O que significa “em repouso”?', '<span class="m lar">y[−1] = 0</span>. Sem isso, a saída teria uma parcela da condição inicial e <b>não seria h[n]</b>.'],
+    ['q3', 'Para que serve o u[n] em h[n] = a<sup>n</sup>u[n]?', 'Registra que <span class="m">h[n] = 0</span> para <b>n &lt; 0</b>: o sistema é causal e parte do repouso.'],
+    ['q4', 'Quanto vale h[3] para a = −0,8?', '<span class="m">(−0,8)<sup>3</sup> = <b class="lar">−0,512</b></span> · expoente ímpar, sinal negativo.'],
+    ['q5', 'Por que o sistema é de primeira ordem?', 'A saída depende de <b>uma única</b> saída passada: <span class="m">y[n−1]</span>.'],
+    ['q6', 'Esse sistema é FIR ou IIR?', '<b>IIR</b> (resposta ao impulso infinita): <span class="m">a<sup>n</sup></span> nunca zera de vez, por causa da realimentação.'],
+    ['q7', 'E se não estivesse em repouso, com y[−1] = c?', 'Ganharia a parcela <span class="m lar">c·a<sup>n+1</sup></span> da condição inicial; a saída deixa de ser a resposta ao impulso.']];
+  const pai = document.getElementById('qs');
+  Q.forEach(([id, q, r], i) => {
+    const rid = 'r' + id.slice(1);
+    const s = document.createElement('section'); s.className = 'cena'; s.dataset.cena = id;
+    s.innerHTML = `<div class="kick" data-in="${id}">Arguição · pergunta ${i + 1} de ${Q.length}</div>
+      <div class="ab" style="left:120px;top:200px;width:1680px;font:700 66px/1.2 'Exo2'" data-in="${id}+0.1">${q}</div>
+      <div class="ab" style="left:120px;top:470px;width:1680px;height:10px;border-radius:5px;background:#E2DED3;overflow:hidden" data-in="${id}>" data-out="${rid}"><i class="cronometro" data-de="${id}" style="position:absolute;left:0;top:0;bottom:0;background:#A94A14"></i></div>
+      <div class="ab" style="left:120px;top:505px;font:600 26px 'InterV';color:#6B7480;letter-spacing:2px" data-in="${id}>" data-out="${rid}">PENSE…</div>
+      <div class="card" style="left:120px;top:520px;width:1680px;height:300px;border-color:#2E7D5B;border-width:3px" data-in="${rid}">
+        <div class="ab" style="left:44px;top:36px"><span class="tag" style="background:#DDF0E6;color:#2E7D5B">Resposta</span></div>
+        <div class="ab" style="left:44px;top:110px;width:1590px;font:500 46px/1.4 'InterV'">${r}</div></div>`;
+    pai.appendChild(s);
+  });
+  const crs = [...document.querySelectorAll('.cronometro')].map((el) => ({ el, a: T(el.dataset.de + '>'), b: T('r' + el.dataset.de.slice(1)) }));
+  custom.push((t) => crs.forEach(({ el, a, b }) => { el.style.width = (clamp((t - a) / (b - a), 0, 1) * 100) + '%'; }));
+})();
+
+// ---------- progresso ----------
+const CAP = [['Contexto', 'abertura'], ['Passo 1 · recursão', 'recursao'], ['Passo 2 · indução', 'padrao'], ['Sua fala', 'fala'], ['Arguição', 'perguntas'], ['', 'fim']];
+const iniCena = (c) => Math.min(...Object.values(B).filter((b) => b.cena === c).map((b) => b.ini));
+const capT = CAP.map(([n, c]) => [n, iniCena(c)]);
+(function () {
+  const pr = document.getElementById('prog'); const tot = capT[capT.length - 1][1] - capT[0][1]; const W = 1680;
+  for (let i = 0; i < capT.length - 1; i++) {
+    const a = capT[i][1], b = capT[i + 1][1];
+    const d = document.createElement('div'); d.className = 'seg';
+    d.style.left = ((a - capT[0][1]) / tot * W) + 'px'; d.style.width = ((b - a) / tot * W) + 'px';
+    d.innerHTML = `<b>${capT[i][0]}</b><div class="bar"><i></i></div>`; d._a = a; d._b = b; pr.appendChild(d);
+  }
+})();
+
+// ---------- registro ----------
+const cenas = [...document.querySelectorAll('.cena')].map((el) => ({ el, a: iniCena(el.dataset.cena) - 0.45 }));
+cenas.sort((x, y) => x.a - y.a);
+cenas.forEach((c, i) => { c.b = i + 1 < cenas.length ? cenas[i + 1].a : DURACAO + 5; });
+const itens = [...document.querySelectorAll('[data-in]')].map((el) => ({ el, t0: T(el.dataset.in), fx: el.dataset.fx || 'entra',
+  t1: el.dataset.out ? T(el.dataset.out) : null, svg: el instanceof SVGElement }));
+
+window.render = function (t) {
+  for (const c of cenas) {
+    const k = Math.min(P(t, c.a, 0.45), 1 - P(t, c.b, 0.45));
+    c.el.style.display = k <= 0 ? 'none' : '';
+    c.el.style.opacity = k;
+    c.vis = k > 0;
+  }
+  for (const it of itens) {
+    const { el, t0, fx, t1 } = it;
+    let sai = t1 !== null ? 1 - P(t, t1, 0.35) : 1;
+    if (fx === 'entra') {
+      const k = P(t, t0, 0.5);
+      el.style.opacity = k * sai;
+      if (!it.svg) { el.style.transform = `translateY(${(1 - k) * 28}px)`; el.style.filter = k < 1 ? `blur(${(1 - k) * 8}px)` : 'none'; }
+    } else if (fx === 'pop') {
+      const k = P(t, t0, 0.5, 'back'); el.style.opacity = clamp((t - t0) / 0.12, 0, 1) * sai;
+      el.style.transform = `scale(${Math.max(0, 0.6 + 0.4 * k)})`;
+    } else if (fx === 'hl') {
+      el.style.backgroundSize = `${P(t, t0, 0.5, 'inOut') * 100}% 100%`;
+    } else if (fx === 'traco') {
+      const L = el._L || (el._L = el.getTotalLength());
+      el.style.strokeDasharray = L; el.style.strokeDashoffset = L * (1 - P(t, t0, 0.8, 'inOut'));
+    } else if (fx === 'haste') {
+      const k = P(t, t0, 0.45, 'back'); el.style.opacity = clamp((t - t0) / 0.1, 0, 1) * sai;
+      el.style.transform = `scaleY(${Math.max(0, k)})`;
+    }
+  }
+  for (const f of custom) f(t);
+  for (const d of document.querySelectorAll('#prog .seg')) {
+    d.querySelector('i').style.width = (clamp((t - d._a) / (d._b - d._a), 0, 1) * 100) + '%';
+    d.querySelector('b').style.color = t >= d._a && t < d._b ? '#A94A14' : '#6B7480';
+  }
+  document.getElementById('prog').style.opacity = 1 - P(t, iniCena('fim') - 0.4, 0.4);
+};
+window.render(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+[  0.00 –   8.86] A partir de n igual a um, o delta já é zero. Então só a realimentação trabalha. E cada amostra é a vezes a anterior.
+[  9.80 –  25.38] Com os valores do enunciado, para a igual a 0,8, a sequência encole 1, 0,8, 0,64, 0,512. Para a igual a 1,2, ela cresce.
+[ 25.38 –  39.22] 1, 1,2, 1,44, 1,728. E para a igual a menos 0,8 temos os mesmos valores do primeiro caso, mas o sinal alterna,
+[ 39.48 –  48.18] porque a potência de um número negativo troca de sinal a cada passo. A tabela sugere que h de n é a elevado a n.
+[ 48.18 –  55.16] Mas padrão não é prova, são só cinco valores e n vai até o infinito, por isso o passo 2.

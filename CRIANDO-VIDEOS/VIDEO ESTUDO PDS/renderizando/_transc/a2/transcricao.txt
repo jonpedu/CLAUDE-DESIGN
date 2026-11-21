@@ -1,0 +1,8 @@
+[  0.00 –   8.60] O sistema é este, yⁿ igual a A vezes yⁿ⁻¹ mais xⁿ.
+[  9.44 –  15.28] A saída de agora é uma fração A da saída anterior, somada à entrada de agora.
+[ 16.00 –  21.28] Esse termo com yⁿ⁻¹ é a realimentação, é a memória do sistema.
+[ 22.14 –  26.44] Para achar a resposta ao impulso, precisamos de três ideias.
+[ 26.44 –  35.06] Primeira, o impulso Δn vale 1 só em n igual a zero, e zero em todos os outros instantes.
+[ 35.66 –  43.44] Segunda, a resposta ao impulso h de n é a saída quando a entrada é exatamente esse impulso.
+[ 43.68 –  49.78] Terceira, o sistema está em repouso, isso quer dizer que y⁻¹ é zero.
+[ 50.34 –  53.98] Antes de o impulso chegar, não havia nada guardado na memória.

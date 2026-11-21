@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>V2 apresentando</title>
+<style>
+@font-face{font-family:'InterV';font-weight:600;src:url('../../../../fontes tipograficas/Inter/static/Inter_24pt-SemiBold.ttf');}
+@font-face{font-family:'InterV';font-weight:700;src:url('../../../../fontes tipograficas/Inter/static/Inter_24pt-Bold.ttf');}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px!important;height:1080px!important;overflow:hidden;background:#F6F4EE!important}
+.sl{position:absolute;left:0;top:0;width:1920px;height:1080px}
+svg{position:absolute;left:0;top:0}
+</style>
+<script src="timeline.js"></script>
+</head>
+<body>
+<img class="sl" id="s6" src="../P2_Grupo-1_Tema-2_slides/Slide6.PNG">
+<img class="sl" id="s7" src="../P2_Grupo-1_Tema-2_slides/Slide7.PNG">
+<svg id="m" width="1920" height="1080" viewBox="0 0 1280 720"></svg>
+<script>
+const LAR = '#C2410C', LAR2 = '#F0A26E', NAVY = '#15233B', VD = '#2E7D5B';
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const E = { out: (t) => 1 - Math.pow(1 - t, 3), inOut: (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+  back: (t) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); } };
+const P = (t, t0, d, e = 'out') => E[e](clamp((t - t0) / d, 0, 1));
+const NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('m');
+const el = (tag, at, pai = svg) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); pai.appendChild(e); return e; };
+const TROCA = 124.3, FIMV = DURACAO;
+const M = [];
+// tipos: caixa (contorno desenhado), fundo (marca-texto), circ (elipse), sub (sublinhado), seta, tag (etiqueta), check
+function add(tipo, a, b, g) { M.push({ tipo, a, b, ...g }); }
+
+// ---------- SLIDE 6 ----------
+add('caixa', 3.4, 8.0, { x: 376, y: 85, w: 66, h: 24 });                       // ITEM (A)
+add('caixa', 12.7, 18.6, { x: 382, y: 110, w: 222, h: 54 });                   // x[n] = δ[n]
+add('caixa', 18.8, 31.4, { x: 175, y: 191, w: 421, h: 40 });                   // h[n] = a·h[n−1] + δ[n]
+add('fundo', 27.9, 35.2, { x: 86, y: 231, w: 1109, h: 41 });                   // linha n = −1 (repouso)
+add('tag', 28.0, 35.2, { topo: 1, y: 100, txt: 'repouso: h[−1] = 0' });
+add('seta', 33.0, 36.0, { pts: [[62, 248], [62, 468]] });                     // amostra por amostra
+add('fundo', 35.5, 50.1, { x: 86, y: 272, w: 1109, h: 40 });                   // n = 0
+add('circ', 42.7, 50.1, { cx: 237, cy: 292, rx: 16, ry: 15 });                 // + 1 (δ[0])
+add('tag', 46.8, 50.1, { topo: 1, y: 100, txt: 'n = 0: único instante em que o impulso entra' });
+add('fundo', 50.2, 59.0, { x: 86, y: 312, w: 1109, h: 41 });                   // n = 1
+add('circ', 55.2, 59.0, { cx: 237, cy: 333, rx: 16, ry: 15 });                 // + 0
+add('fundo', 59.0, 64.5, { x: 86, y: 353, w: 1109, h: 40 });                   // n = 2
+add('fundo', 65.9, 68.6, { x: 86, y: 393, w: 1109, h: 41 });                   // n = 3
+add('fundo', 66.8, 68.6, { x: 86, y: 434, w: 1109, h: 41 });                   // n = 4
+add('fundo', 68.6, 78.2, { x: 377, y: 504, w: 530, h: 30 });                   // "para n ≥ 1 só a realimentação…"
+add('caixa', 80.5, 91.0, { x: 597, y: 191, w: 198, h: 284 });                  // coluna 0,8
+add('tag', 82.9, 112.8, { x: 640, y: 157, txt: 'encolhe ↓' });
+add('caixa', 91.0, 100.9, { x: 797, y: 191, w: 198, h: 284 });                 // coluna 1,2
+add('tag', 93.5, 112.8, { x: 848, y: 157, txt: 'cresce ↑' });
+add('caixa', 100.9, 112.8, { x: 996, y: 191, w: 199, h: 284 });                // coluna −0,8
+add('circ', 107.1, 112.8, { cx: 1162, cy: 333, rx: 30, ry: 16 });
+add('circ', 107.4, 112.8, { cx: 1152, cy: 414, rx: 40, ry: 16 });
+add('tag', 107.1, 112.8, { x: 1030, y: 157, txt: 'sinal alterna ±' });
+add('caixa', 113.1, 124.3, { x: 980, y: 503, w: 90, h: 31 });                  // h[n] = aⁿ
+add('carimbo', 117.6, 124.3, { topo: 1, y: 72, txt: 'padrão ≠ prova' });
+add('tag', 123.3, 124.3, { topo: 1, y: 118, txt: '→ passo 2' });
+
+// ---------- SLIDE 7 ----------
+add('sub', 127.5, 135.4, { x: 486, y: 162, w: 168 });                           // indução
+add('tag', 129.6, 135.4, { topo: 1, y: 100, txt: 'dominós: o 1º cai ⇒ todos caem' });
+add('caixa', 135.6, 142.9, { x: 86, y: 191, w: 1109, h: 63 });                  // Base
+add('check', 141.4, FIMV, { x: 1150, y: 222 });
+add('caixa', 142.9, 154.1, { x: 86, y: 266, w: 1109, h: 64 });                  // Hipótese
+add('sub', 150.9, 154.1, { x: 438, y: 312, w: 175 });                           // para algum n ≥ 1
+add('caixa', 154.1, 181.7, { x: 86, y: 342, w: 1109, h: 64 });                  // Passo
+add('circ', 163.0, 170.6, { cx: 499, cy: 373, rx: 22, ry: 17 });                // δ[n] → 0
+add('tag', 163.0, 170.6, { topo: 1, y: 100, txt: 'n ≥ 1  ⇒  δ[n] = 0' });
+add('seta', 164.9, 171.6, { pts: [[415, 310], [480, 334], [562, 360]], curva: true });  // hipótese → passo
+add('circ', 171.7, 181.7, { cx: 677, cy: 373, rx: 20, ry: 17 });                // aⁿ
+add('tag', 178.0, 181.7, { x: 960, y: 362, txt: '✓ todo n ≥ 0', cor: VD });
+add('caixa', 181.7, 194.6, { x: 86, y: 418, w: 1109, h: 63 });                  // n < 0
+add('fundo', 190.5, 194.6, { x: 598, y: 435, w: 116, h: 30 });                  // ⇒ h[n] = 0
+add('sub', 196.1, 204.2, { x: 262, y: 578, w: 78, cor: LAR2 });                 // u[n]
+add('sub', 202.3, 210.0, { x: 365, y: 572, w: 465, cor: LAR2 });                // não é enfeite…
+add('caixa', 210.2, FIMV, { x: 80, y: 503, w: 1121, h: 105, cor: LAR2 });       // resposta
+add('tag', 211.3, FIMV, { x: 1040, y: 545, txt: 'ITEM (A) ✓', cor: LAR2, escuro: true });
+add('tag', 217.2, FIMV, { topo: 1, y: 100, txt: '→ passo a palavra para o Manoel (slide 8)' });
+
+// ---------- montagem ----------
+for (const m of M) {
+  const cor = m.cor || LAR;
+  const g = el('g', {}); m.g = g;
+  if (m.tipo === 'caixa') m.p = el('rect', { x: m.x - 3, y: m.y - 3, width: m.w + 6, height: m.h + 6, rx: 7, fill: 'none', stroke: cor, 'stroke-width': 3.2 }, g);
+  else if (m.tipo === 'fundo') m.p = el('rect', { x: m.x, y: m.y, width: m.w, height: m.h, rx: 4, fill: '#F59E5B', 'fill-opacity': .26 }, g);
+  else if (m.tipo === 'circ') m.p = el('ellipse', { cx: m.cx, cy: m.cy, rx: m.rx, ry: m.ry, fill: 'none', stroke: cor, 'stroke-width': 3 }, g);
+  else if (m.tipo === 'sub') m.p = el('path', { d: `M ${m.x} ${m.y} Q ${m.x + m.w / 2} ${m.y + 4} ${m.x + m.w} ${m.y - 1}`, fill: 'none', stroke: cor, 'stroke-width': 4, 'stroke-linecap': 'round' }, g);
+  else if (m.tipo === 'seta') {
+    const [a, b, c] = m.pts;
+    const d = m.curva ? `M ${a[0]} ${a[1]} Q ${b[0]} ${b[1]} ${c[0]} ${c[1]}` : `M ${a[0]} ${a[1]} L ${b[0]} ${b[1]}`;
+    m.p = el('path', { d, fill: 'none', stroke: cor, 'stroke-width': 3.5, 'stroke-linecap': 'round' }, g);
+    const fim = m.curva ? c : b, ant = m.curva ? b : a;
+    const ang = Math.atan2(fim[1] - ant[1], fim[0] - ant[0]);
+    const pt = (r, da) => `${fim[0] - r * Math.cos(ang + da)},${fim[1] - r * Math.sin(ang + da)}`;
+    m.ponta = el('polyline', { points: `${pt(13, .5)} ${fim[0]},${fim[1]} ${pt(13, -.5)}`, fill: 'none', stroke: cor, 'stroke-width': 3.5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, g);
+  } else if (m.tipo === 'tag' || m.tipo === 'carimbo') {
+    const car = m.tipo === 'carimbo';
+    const tx = el('text', { x: (m.x || 0) + 12, y: m.y + (m.topo && !car ? 25 : 22), 'font-family': 'InterV', 'font-weight': 700, 'font-size': car ? 22 : (m.topo ? 20 : 17),
+      fill: car ? '#fff' : (m.escuro ? m.cor : '#fff') }, g);
+    tx.textContent = m.txt; m.tx = tx;
+    const L = tx.getComputedTextLength();
+    if (!m.escuro) {
+      const r = m.r = el('rect', { x: m.x || 0, y: m.y, width: L + 24, height: car ? 34 : (m.topo ? 36 : 31), rx: 6, fill: car ? NAVY : (m.cor || LAR) }, g);
+      g.insertBefore(r, tx);
+      if (car) { tx.setAttribute('y', m.y + 24); if (!m.topo) g.setAttribute('transform', `rotate(-2 ${m.x} ${m.y})`); }
+    }
+  } else if (m.tipo === 'check') {
+    m.p = el('path', { d: `M ${m.x - 12} ${m.y} L ${m.x - 3} ${m.y + 10} L ${m.x + 14} ${m.y - 12}`, fill: 'none', stroke: VD, 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, g);
+  }
+  if (m.p && m.p.getTotalLength && m.tipo !== 'fundo') { m.L = m.p.getTotalLength(); m.p.style.strokeDasharray = m.L; }
+}
+
+window.render = function (t) {
+  const k7 = P(t, TROCA - 0.25, 0.5, 'inOut');
+  document.getElementById('s7').style.opacity = k7;
+  for (const m of M) {
+    const vis = t >= m.a - 0.01 && t < m.b + 0.4;
+    m.g.style.display = vis ? '' : 'none';
+    if (!vis) continue;
+    const sai = 1 - P(t, m.b, 0.35);
+    const k = P(t, m.a, m.tipo === 'fundo' ? 0.35 : 0.5, 'inOut');
+    if (m.L) m.p.style.strokeDashoffset = m.L * (1 - k);
+    if (m.ponta) m.ponta.style.opacity = clamp((k - .85) / .15, 0, 1);
+    if (m.tipo === 'fundo') m.p.style.opacity = k;
+    if (m.tipo === 'tag' || m.tipo === 'carimbo') {
+      if (m.r && !m.wok) { const L = m.tx.getComputedTextLength(); m.r.setAttribute('width', L + 24); m.wok = 1;
+        if (m.topo) { const x = 1195 - L - 24; m.r.setAttribute('x', x); m.tx.setAttribute('x', x + 12); if (m.tipo === 'carimbo') m.g.setAttribute('transform', `rotate(-2 ${x} ${m.y})`); } }
+      const kb = P(t, m.a, 0.45, 'back');
+      m.g.style.opacity = clamp((t - m.a) / 0.15, 0, 1) * sai;
+      m.g.style.transformBox = 'fill-box'; m.g.style.transformOrigin = m.topo ? 'right center' : 'left center';
+      m.g.style.transform = `scale(${0.7 + 0.3 * kb})`;
+    } else m.g.style.opacity = sai;
+  }
+};
+window.render(0);
+</script>
+</body>
+</html>

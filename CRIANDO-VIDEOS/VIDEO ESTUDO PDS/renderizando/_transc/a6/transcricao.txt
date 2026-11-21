@@ -1,0 +1,10 @@
+[  0.00 –   7.68] Na apresentação, a sua fala cabe em quatro ideias. 1. Troca o x por delta e parto do repouso.
+[  8.40 –  13.42] 2. Calculo a mostra por amostra, e o padrão a elevado a n aparece.
+[ 14.48 –  20.34] 3. Padrão não é prova, então prova por indução, com base, hipótese e passo.
+[ 21.10 –  25.82] 4. Para a n negativo, é zero, e o u de n registra isso.
+[ 26.46 –  28.54] No fim, passe a palavra para o Manoel.
+[ 28.54 –  35.52] Agora, perguntas que o professor pode fazer sobre a sua parte. Tente responder antes de a resposta aparecer.
+[ 36.32 –  39.34] Por que usar indução se a tabela já mostra o padrão?
+[ 40.00 –  46.76] Porque a tabela mostra só alguns valores. A indução garante que o padrão vale para todo o n maior ou igual a zero.
+[ 47.56 –  52.00] O que significa, em repouso, que y de n menos um é zero.
+[ 52.46 –  57.94] Sem isso, a saída teria uma parcela da condição inicial e não seria a resposta ao impulso.

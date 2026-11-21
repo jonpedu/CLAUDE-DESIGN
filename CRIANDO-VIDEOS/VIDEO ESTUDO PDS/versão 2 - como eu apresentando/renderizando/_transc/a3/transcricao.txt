@@ -1,0 +1,9 @@
+[  0.00 –   5.72] Para provar que vale para todo n, eu uso indução. A ideia é a de uma fila de dominoz.
+[  6.00 –   9.78] Se o primeiro cai e cada um derruba o próximo, todos caem.
+[ 10.60 –  16.88] Base n igual a zero. h de zero é um. E um é a elevado a zero. Confere.
+[ 17.90 –  25.94] Hipótese. Suponho que vale para n menos um. Ou seja, h de n menos um é igual a a elevado a n menos um.
+[ 25.94 –  28.20] Para algum n maior ou igual a um.
+[ 29.16 –  35.40] Passo. Pela equação, h de n é a vezes h de n menos um, mais delta de n.
+[ 35.96 –  45.40] Como n é pelo menos um, delta de n é zero. Usando a hipótese, h de n é a vezes a elevado a n menos um, mais zero.
+[ 45.84 –  51.84] Ou seja, a elevado a n. Vale no zero e sempre que vale no n, vale no seguinte.
+[ 51.84 –  55.70] Logo, vale para todo n maior ou igual a zero.

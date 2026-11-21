@@ -1,0 +1,201 @@
+<title>Linha de produção · Serviços do NTS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: cabeçalho com o vídeo em produção, depois o quadro (vídeo × etapa) e a situação dos roteiros; azul do núcleo como acento */
+:root{
+  --bg:#F5F7FC; --surface:#FFFFFF; --fg:#16213F; --muted:#5B6685; --line:#DCE2F0;
+  --accent:#365DCC; --accent-strong:#1C306A; --accent-soft:#E4EAFA;
+  --ok:#19756F; --ok-soft:#DDF1EE; --wait:#B26B00; --wait-soft:#FBEED6; --part:#6D4BC4; --part-soft:#EEE8FB; --none:#C3CADB;
+  --display:"Poppins",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1426; --surface:#151D35; --fg:#E7ECF8; --muted:#9AA6C6; --line:#26324F;
+  --accent:#7D9BF0; --accent-strong:#B9C9F7; --accent-soft:#1D2A52;
+  --ok:#5CC7BE; --ok-soft:#123733; --wait:#F2B35C; --wait-soft:#3A2B12; --part:#B79CF5; --part-soft:#2A2150; --none:#3A4566; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1426; --surface:#151D35; --fg:#E7ECF8; --muted:#9AA6C6; --line:#26324F;
+  --accent:#7D9BF0; --accent-strong:#B9C9F7; --accent-soft:#1D2A52;
+  --ok:#5CC7BE; --ok-soft:#123733; --wait:#F2B35C; --wait-soft:#3A2B12; --part:#B79CF5; --part-soft:#2A2150; --none:#3A4566; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
+.wrap{max-width:1120px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;color:var(--accent-strong)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.15}
+h2{font-size:1.2rem}
+.eyebrow{font:600 .75rem var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.lead{color:var(--muted);max-width:65ch;margin:6px 0 0}
+header{display:grid;gap:18px}
+.now{display:flex;flex-wrap:wrap;gap:12px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-weight:600;font-size:.9rem;background:var(--surface);border:1px solid var(--line)}
+.chip.live{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip.live::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.chip.live::before{animation:none}}
+section{display:grid;gap:14px}
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+thead th{font:600 .72rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.board th.step{text-align:center;writing-mode:horizontal-tb}
+.board td.st{text-align:center}
+.board td.name{font-weight:600;white-space:nowrap}
+.board tr.current td{background:var(--accent-soft)}
+.dot{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;font-size:.8rem;font-weight:700}
+.dot.ok{background:var(--ok);color:#fff}
+.dot.wait{background:var(--wait-soft);color:var(--wait);box-shadow:inset 0 0 0 2px var(--wait)}
+.dot.part{background:var(--part-soft);color:var(--part);box-shadow:inset 0 0 0 2px var(--part)}
+.dot.none{background:transparent;box-shadow:inset 0 0 0 2px var(--none)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;color:var(--muted);font-size:.85rem}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend .dot{width:16px;height:16px;font-size:.6rem}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78rem;font-weight:600;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.wait{background:var(--wait-soft);color:var(--wait)}
+.pill.part{background:var(--part-soft);color:var(--part)}
+td.note{color:var(--muted);min-width:240px}
+.tag{font-size:.75rem;color:var(--accent);font-weight:600;margin-left:6px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:grid;gap:10px;min-width:0}
+ol,ul{margin:0;padding-left:20px;display:grid;gap:8px}
+li strong{color:var(--fg)}
+code{font-size:.85em;background:var(--accent-soft);color:var(--accent-strong);padding:1px 6px;border-radius:5px;word-break:break-word}
+footer{color:var(--muted);font-size:.82rem}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Telessaúde Maranhão · NTS-UFMA</div>
+      <h1>Linha de produção dos vídeos Serviços do NTS</h1>
+      <p class="lead">Um quadro por vídeo, da validação do roteiro até a publicação. Formato: vertical (9:16) primeiro, depois horizontal (16:9). Atualizado em 20/11/2026 (noite).</p>
+    </div>
+    <div class="now">
+      <span class="chip live">Em produção: Teleorientação (piloto) · Telediagnóstico</span>
+      <span class="chip">Pode começar: Teleconsultoria</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Quadro de produção</h2>
+    <div class="legend">
+      <span><i class="dot ok">✓</i> feito</span>
+      <span><i class="dot wait">…</i> em andamento ou aguardando</span>
+      <span><i class="dot part">½</i> aprovado só para a Diferença entre os Serviços</span>
+      <span><i class="dot none"></i> ainda não começou</span>
+    </div>
+    <div class="scroll">
+      <table class="board" id="board">
+        <thead><tr><th>Vídeo</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Situação de cada roteiro</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Vídeo</th><th>Duração</th><th>Valida</th><th>Situação</th><th>Observação</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Teleorientação</strong></td><td>~25 s</td><td>Amanda</td><td><span class="pill ok">Aprovado</span></td><td class="note">Miniaturas aprovadas; "nenhuma outra consideração".</td></tr>
+          <tr><td><strong>Telediagnóstico</strong></td><td>~45 s</td><td>Amanda</td><td><span class="pill ok">Aprovado</span></td><td class="note">"Achei ótimo"; frase da espirometria aprovada em 20/11.</td></tr>
+          <tr><td><strong>Teleconsultoria</strong></td><td>~30 s</td><td>Amanda</td><td><span class="pill ok">Aprovado</span></td><td class="note">Ok da Amanda na v2 (20/11/2026).</td></tr>
+          <tr><td><strong>Teleconsulta</strong></td><td>~30 s</td><td>Amanda</td><td><span class="pill part">Aprovado só para a Diferença</span></td><td class="note">O NTS ainda não oferece o serviço (proposta de implementação). O texto vale para o vídeo Diferença entre os Serviços; o vídeo individual não está aprovado (perguntas abertas: quais profissionais, onde fica o paciente, chamada de acesso).</td></tr>
+          <tr><td><strong>Teleducação</strong></td><td>~28 s</td><td>Amanda</td><td><span class="pill wait">Falta o ok da v2</span></td><td class="note">Público e matriciamento reescritos com base no retorno dela.</td></tr>
+          <tr><td><strong>Teleinterconsulta</strong></td><td>~58 s</td><td>Gyovanna</td><td><span class="pill wait">Aguardando</span></td><td class="note">Fluxo do NTS (começa com uma teleconsultoria); Hospital Genésio Rego retirado a pedido da Amanda.</td></tr>
+          <tr><td><strong>Telerregulação</strong></td><td>~33 s</td><td>Gyovanna</td><td><span class="pill wait">Aguardando</span></td><td class="note">Tipo de regulação que o NTS oferece.</td></tr>
+          <tr><td><strong>Diferença entre os Serviços</strong></td><td>~60 s</td><td>Gyovanna</td><td><span class="pill wait">Aguardando</span></td><td class="note">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Perguntas opcionais sem resposta nos roteiros aprovados (canal da teleconsultoria, chamada para solicitar) não mudam o texto.</p>
+  </section>
+
+  <div class="grid2">
+    <section class="card">
+      <h2>Ordem de produção</h2>
+      <ol>
+        <li><strong>Teleorientação</strong>, o piloto: define o visual que os outros repetem (etiquetas, ganchos, transições, régua e fechamento).</li>
+        <li><strong>Telediagnóstico</strong>: mais longo; usa o mapa do Maranhão e os ícones dos exames.</li>
+        <li><strong>Teleconsultoria</strong>.</li>
+        <li><strong>Teleconsulta</strong>: vídeo individual sem aprovação, porque o serviço ainda não é oferecido; por ora o texto entra só na Diferença entre os Serviços.</li>
+        <li>Teleducação, Teleinterconsulta, Telerregulação e Diferença entre os Serviços, conforme chegarem os oks.</li>
+      </ol>
+    </section>
+    <section class="card">
+      <h2>Itens comuns da série</h2>
+      <ul>
+        <li><strong>Régua:</strong> Telessaúde, STED/UFMA, SUS Digital, Ministério da Saúde e Governo Federal (confirmada no piloto).</li>
+        <li><strong>Fechamento:</strong> logo animado do Telessaúde, vertical, 4,4 s, com som. Falta a versão horizontal.</li>
+        <li><strong>Trilha:</strong> escolhida por vídeo, conforme o clima, no banco geral de trilhas.</li>
+        <li><strong>Personagens:</strong> enfermeira da UBS, médico a distância, paciente, agente comunitário de saúde, estudante.</li>
+        <li><strong>Narração:</strong> voz Sulafat no Google AI Studio (configuração completa no cartão abaixo).</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Narração no Google AI Studio</h2>
+    <p class="lead" style="margin:0">Configuração usada no piloto (Teleorientação, 20/11/2026). Repita igual em todos os vídeos da série, para a voz ser sempre a mesma.</p>
+    <div class="scroll">
+      <table>
+        <tbody>
+          <tr><td><strong>Onde</strong></td><td>Google AI Studio → Playground → geração de fala (<code>aistudio.google.com/generate-speech</code>)</td></tr>
+          <tr><td><strong>Modelo</strong></td><td>Gemini 3.1 Flash TTS Preview (<code>gemini-3.1-flash-tts-preview</code>)</td></tr>
+          <tr><td><strong>Voz</strong></td><td><strong>Sulafat</strong>, Speaker 1 (Warm, Middle pitch), locutor <code>Narrador</code></td></tr>
+          <tr><td><strong>Text</strong></td><td>Gerado pelo Gem do Gemini: a narração aprovada com marcações de entrega (<code>[clear]</code>, <code>[projecting]</code>, <code>[warm]</code>, <code>[informative]</code>, <code>[professional]</code>, <code>[no pause]</code>), começando com <code>[speaker: Narrador]</code>.</td></tr>
+          <tr><td><strong>Saída</strong></td><td>Baixar o <code>.wav</code> e salvar em <code>audios/</code> do vídeo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin:6px 0 0"><strong>Scene</strong> (igual em todos os vídeos)</p>
+    <blockquote style="margin:0;padding:12px 16px;background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:8px">Scene: Estúdio profissional de gravação com acústica limpa e isolamento total, clima acolhedor, informativo e dinâmico voltado para comunicação pública em saúde.</blockquote>
+    <p style="margin:6px 0 0"><strong>Sample Context</strong> (muda só a primeira frase: duração e serviço; abaixo, o do piloto)</p>
+    <blockquote style="margin:0;padding:12px 16px;background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:8px">Sample Context: Vídeo institucional curto (cerca de 25 segundos) do Telessaúde Maranhão explicando ao cidadão o conceito de teleorientação por meio de exemplos cotidianos no celular. Director's Notes: Voz de locutor profissional, clara e com excelente projeção. NÃO sussurrar e não usar voz soprosa (sem excesso de ar). A entrega deve ser firme, nítida e contínua, com ritmo ágil e natural. Manter leitura limpa e neutra em português brasileiro, sem sotaques carregados, arrastados ou caricatos.</blockquote>
+  </section>
+
+  <section class="card">
+    <h2>O que cada etapa quer dizer</h2>
+    <ol>
+      <li><strong>Roteiro ok:</strong> validação da equipe (Amanda ou Gyovanna). Texto na tela e narração só mudam com novo ok.</li>
+      <li><strong>Assets:</strong> tudo o que o vídeo precisa, cena a cena; o que faltar é pesquisado e sugerido com link e licença.</li>
+      <li><strong>Narração:</strong> gravada no Google AI Studio com o texto aprovado.</li>
+      <li><strong>Cenas Flow:</strong> personagens do Google Flow (motion + flat design, fundo claro).</li>
+      <li><strong>Pacote:</strong> régua, fechamento, trilha e narração confirmados arquivo por arquivo.</li>
+      <li><strong>Quadros-chave:</strong> 4 a 6 quadros em tamanho real, com a área segura marcada.</li>
+      <li><strong>Render 9:16:</strong> primeira versão completa, para avaliação e ajustes por cena.</li>
+      <li><strong>Final 9:16:</strong> versão aprovada, com a capa.</li>
+      <li><strong>16:9:</strong> versão horizontal recomposta, não recortada.</li>
+      <li><strong>Publicado:</strong> Instagram (Reels) e YouTube (Shorts e vídeo 16:9).</li>
+    </ol>
+  </section>
+
+  <footer>Fonte: <code>01-linha-de-producao.md</code> na pasta da série; esta página é republicada a cada mudança dele. Histórico das validações em <code>00-checklist.md</code>.</footer>
+</div>
+
+<script>
+const etapas=["Roteiro","Assets","Narração","Flow","Pacote","Quadros-chave","Render 9:16","Final 9:16","16:9","Publicado"];
+// o = feito, w = em andamento/aguardando, p = aprovado só para a Diferença, - = não começou
+const videos=[
+  ["Teleorientação","ooooooow--","piloto"],
+  ["Telediagnóstico","ooooow----","em produção"],
+  ["Teleconsultoria","o---------"],
+  ["Teleconsulta","p---------"],
+  ["Teleducação","w---------"],
+  ["Teleinterconsulta","w---------"],
+  ["Telerregulação","w---------"],
+  ["Diferença entre os Serviços","w---------"]
+];
+const t=document.getElementById("board");
+etapas.forEach(e=>{const th=document.createElement("th");th.className="step";th.textContent=e;t.tHead.rows[0].appendChild(th)});
+const lab={o:["ok","✓","feito"],w:["wait","…","em andamento ou aguardando"],p:["part","½","aprovado só para a Diferença entre os Serviços"],"-":["none","","não começou"]};
+videos.forEach(([nome,s,atual])=>{
+  const tr=t.tBodies[0].insertRow(); if(atual) tr.className="current";
+  const td=tr.insertCell(); td.className="name"; td.textContent=nome;
+  if(atual){const g=document.createElement("span");g.className="tag";g.textContent=atual;td.appendChild(g)}
+  [...s].forEach((c,i)=>{const cell=tr.insertCell();cell.className="st";const d=document.createElement("i");d.className="dot "+lab[c][0];d.textContent=lab[c][1];d.title=etapas[i]+": "+lab[c][2];cell.appendChild(d)});
+});
+</script>

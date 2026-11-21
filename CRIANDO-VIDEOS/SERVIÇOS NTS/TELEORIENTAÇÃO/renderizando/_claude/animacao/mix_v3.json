@@ -1,0 +1,20 @@
+{
+  "video": "previa_v3_video.mp4", "saida": "../versoes-anteriores/Teleorientacao_previa_v3.mp4", "dur": 24.85,
+  "narracao": {"arq": "../../../audios/áudio teleorientação.wav", "ini": 0, "db": 0},
+  "trilha": {"arq": "../../../../../../biblioteca-trilhas/animado/joyful-marimba-universfield.mp3", "db": -11, "fade_in": 0.3, "fade_out": 0.8, "desde": 0, "ate": 20.6, "ducking": {"reducao_db": 5}},
+  "fim_audio": {"arq": "../../../elementos/Intro Telessaude.mp4", "em": 20.45, "db": 0},
+  "sfx_db_extra": -5,
+  "sfx": [
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/notificacao_marimba.wav", "em": 0.88, "db": -4},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav", "em": 3.0, "db": -10},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav", "em": 5.28, "db": -12},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/swish_marca.wav", "em": 6.34, "db": -10},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/swish_marca_1.wav", "em": 7.68, "db": -10},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav", "em": 8.7, "db": -10},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/tique.wav", "em": 12.2, "db": -9},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/tique_1.wav", "em": 13.24, "db": -9},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/tique_2.wav", "em": 14.68, "db": -9},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav", "em": 16.4, "db": -10},
+    {"arq": "../../../../../../biblioteca-sfx/sintetizados/notificacao_marimba.wav", "em": 18.16, "db": -10}
+  ]
+}

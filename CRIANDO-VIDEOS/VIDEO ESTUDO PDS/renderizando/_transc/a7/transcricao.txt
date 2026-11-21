@@ -1,0 +1,14 @@
+[  0.00 –   2.64] Para que serve o u de n na resposta?
+[  3.42 –  10.18] Registra que h de n é zero para n negativo, porque o sistema é causal e parte do repouso.
+[ 10.90 –  15.30] Quanto vale h de 3 para a igual a menos zero vírgula oito?
+[ 15.84 –  22.68] Menos zero vírgula oito ao cubo, menos zero vírgula quinhentos e doze, expoente ímpar, sinal negativo.
+[ 23.38 –  25.44] Porque o sistema é de primeira ordem?
+[ 25.96 –  30.58] Porque a saída depende de uma única saída passada, y de n menos um.
+[ 31.26 –  37.72] Esse sistema é FIR ou IIR? IIR, de resposta ao impulso infinita.
+[ 38.36 –  42.10] A elevado a n nunca zera de vez, por causa da realimentação.
+[ 42.88 –  47.54] E se o sistema não estivesse em repouso, com y de menos um igual a c?
+[ 48.16 –  54.58] A saída ganharia uma parcela, c vezes a elevado a n mais um devido à condição inicial.
+[ 55.22 –  57.54] Aí ela deixa de ser a resposta ao impulso.
+[ 58.12 –  65.02] Resumindo, recursão para enxergar o padrão, indução para provar e u de n para os instantes negativos.
+[ 65.62 –  69.82] H de n igual a a elevado a n vezes u de n.
+[ 70.46 –  71.74] Boa apresentação, João!

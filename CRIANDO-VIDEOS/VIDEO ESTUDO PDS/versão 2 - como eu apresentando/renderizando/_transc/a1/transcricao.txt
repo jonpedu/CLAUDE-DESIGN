@@ -1,0 +1,6 @@
+[  0.00 –  11.16] Obrigado, André. Eu vou responder o item a. Mostrar de onde vem a fórmula de h de n. A resposta ao impulso é a saída quando a entrada é o impulso.
+[ 11.70 –  26.04] Então eu troco x de n por delta de n, e chamo a saída de h de n. A equação fica h de n, igual a a vezes h de n menos um, mais delta de n.
+[ 26.04 –  33.98] E o repouso me dá h de menos um, igual a zero. Agora é só aplicar a equação amostra por amostra.
+[ 34.52 –  45.06] Em n igual a zero, h de zero é a vezes h de menos um, que é zero, mais delta de zero, que é um. Resultado? Um.
+[ 45.76 –  55.94] Esse é o único instante em que o impulso entra. Em n igual a um, a vezes h de zero, que é um, mais delta de um, que é zero.
+[ 55.94 –  66.52] Resultado? A. Em n igual a dois, a vezes a mais zero, a ao quadrado. E assim por diante, a ao cubo, a à quarta.

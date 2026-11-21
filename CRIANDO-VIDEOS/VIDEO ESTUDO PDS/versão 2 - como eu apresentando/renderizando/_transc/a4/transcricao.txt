@@ -1,0 +1,7 @@
+[  0.00 –   6.86] falta o caso de n negativo. O sistema parte do repouso e é causal. Não responde
+[  6.86 –  13.72] antes de a entrada chegar. Então h de n é zero para todo n negativo. Quem registra
+[ 13.72 –  20.88] isso é o degrau, o de n, que vale um para n maior ou igual a zero e zero antes. O
+[ 20.88 –  26.00] o de n não é enfeite. Sem ele, a elevado a n daria valores diferentes de
+[ 26.00 –  34.58] zero para n negativo. Isso responde o item a. h de n igual a a elevado a n vezes o de
+[ 34.58 –  39.62] n. Passa a palavra para o Manuel, que vai usar essa fórmula para decidir a
+[ 40.12 –  40.28] estabilidade.
