@@ -122,7 +122,7 @@ Base: o guia de cores do portal. **O azul da marca é o padrão** e aparece em t
 
 ### Tipografia
 
-Arquivos na pasta `fontes tipograficas/`.
+Arquivos na pasta `biblioteca/marca/fontes/`.
 
 | Uso | Fonte | Peso | Tamanho em 9:16 | Tamanho em 16:9 |
 | --- | --- | --- | --- | --- |

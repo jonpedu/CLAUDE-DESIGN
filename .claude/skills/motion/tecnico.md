@@ -15,6 +15,8 @@ Tudo roda na máquina do usuário (Windows). Numa máquina ou conta nova, rode `
 | Script | Para quê |
 | --- | --- |
 | `novo_video.py` | cria as pastas de um vídeo novo e o `_claude/00-estado.md` (primeiro comando de todo vídeo) |
+| `da_biblioteca.py` | procura na `biblioteca/` (`--listar termo`) e copia um item para a pasta do vídeo, sem substituir; `--inventario` regrava `biblioteca/INVENTARIO.md` |
+| `preparar.py` | diagnóstico do ambiente e do material de cada vídeo (usado por `/preparar`) |
 | `transcrever.py` | tempo por palavra da narração |
 | `narracao.py` | silêncio no início e pausas maiores/menores entre frases (só dentro dos silêncios); imprime a função `N(t)` para a página |
 | `bordas.py` | margem fantasma: bordas que cada clipe toca |

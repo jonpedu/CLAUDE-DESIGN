@@ -6,7 +6,7 @@ import json, subprocess, re, sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
-REF = RAIZ / "videos-referencia"
+REF = RAIZ / "biblioteca/videos-publicados"
 SAIDA = RAIZ / "analise-referencias" / "dados"
 SAIDA.mkdir(parents=True, exist_ok=True)
 

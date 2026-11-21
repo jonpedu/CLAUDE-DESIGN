@@ -11,14 +11,14 @@ Entradas e saídas seguem `organizacao.md`. Elementos de marca e elementos visua
 
 | Passo | O que fazer | Entrada |
 | --- | --- | --- |
-| 1. Conferir o pacote | listar o que existe em `PARTE N/` e apontar o que falta (checklist de `organizacao.md`) | todas as pastas |
+| 1. Conferir o pacote | consultar a `biblioteca/` e copiar para o vídeo o que já existe (`ferramentas/da_biblioteca.py`); listar o que existe na pasta do vídeo e apontar o que falta (checklist de `organizacao.md`) | biblioteca e pastas do vídeo |
 | 2. Medir a narração | duração real, tempo por palavra, pausas; dividir em batidas | `audios/` |
 | 3. Mapa de cenas | plano cronometrado (`motion/metodo-referencia.md`): para cada batida, tela, composição, efeito, texto exato, transição, som. Seguir o formato (`formatos/`) e o tipo (`tipos/`) | roteiro final, parecer |
 | 4. Decupar os takes | clipes gerados (AI Studio/Flow) viram trechos com tags (`motion/takes.md`); rodar `ferramentas/bordas.py` para saber em que bordas cada clipe precisa ficar colado (margem fantasma) | `elementos/` |
 | 5. Quadros-chave | 4–6 quadros em tamanho real (gancho, um cartão, alerta, chamada, fechamento) com a régua aplicada e uma cópia com a máscara de área segura → **aprovação do usuário**. Para ajustes de posição e tamanho, ofereça o **editor de quadros** (`motion/tecnico.md`): o usuário mexe direto na cena e salva um `ajustes.json` | — |
 | 6. Animar | renderizar por cena (`motion/tecnico.md`): HTML/CSS + Playwright para texto e grafismos com as fontes da marca, ffmpeg/Python para composição | — |
 
-Texto na tela: digitado pelo Claude com as fontes da marca, copiado exatamente do roteiro aprovado (e das correções do parecer). Personagens, ícones, cenas e imagens: só os de `elementos/`; o que faltar é pedido, não inventado.
+Texto na tela: digitado pelo Claude com as fontes da marca, copiado exatamente do roteiro aprovado (e das correções do parecer). Personagens, ícones, cenas e imagens: só os de `elementos/` (copiados da biblioteca ou entregues no pacote); o que faltar é pedido, não inventado.
 
 ## Etapa 2 — Finalização
 

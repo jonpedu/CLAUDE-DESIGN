@@ -9,252 +9,252 @@
  },
  "sfx": [
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop.wav",
    "em": 0.05,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_subida.wav",
    "em": 0.4,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/impacto.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/impacto.wav",
    "em": 2.38,
    "db": -8
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_grave.wav",
    "em": 2.66,
    "db": -12
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 3.45,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 4.75,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop.wav",
    "em": 5.3,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_subida.wav",
    "em": 5.45,
    "db": -17
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/swish_marca.wav",
    "em": 7.1,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca_1.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/swish_marca_1.wav",
    "em": 7.5,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_1.wav",
    "em": 7.9,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_grave.wav",
    "em": 9.9,
    "db": -12
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_subida.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_subida.wav",
    "em": 11.95,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/swish_marca_2.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/swish_marca_2.wav",
    "em": 13.0,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_2.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_2.wav",
    "em": 13.8,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/impacto.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/impacto.wav",
    "em": 14.56,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop.wav",
    "em": 16.7,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_1.wav",
    "em": 17.6,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_2.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_2.wav",
    "em": 18.4,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_3.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_3.wav",
    "em": 19.6,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_grave.wav",
    "em": 21.75,
    "db": -12
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 23.8,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 26.1,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop.wav",
    "em": 26.3,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_1.wav",
    "em": 27.6,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_entrada.wav",
    "em": 29.6,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_grave.wav",
    "em": 35.15,
    "db": -12
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/tique.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/tique.wav",
    "em": 35.6,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_1.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/tique_1.wav",
    "em": 35.8,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_2.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/tique_2.wav",
    "em": 36.0,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 36.6,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 37.6,
    "db": -16
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_4.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_4.wav",
    "em": 40.9,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_grave.wav",
    "em": 48.4,
    "db": -12
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 50.5,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop.wav",
    "em": 51.3,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_grave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_grave.wav",
    "em": 51.7,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/impacto.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/impacto.wav",
    "em": 54.3,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_entrada.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_entrada.wav",
    "em": 55.6,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 55.7,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_1.wav",
    "em": 56.6,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_3.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_3.wav",
    "em": 56.9,
    "db": -14
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 59.6,
    "db": -16
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop.wav",
    "em": 62.0,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 63.8,
    "db": -16
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_1.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_1.wav",
    "em": 63.9,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/pop_2.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/pop_2.wav",
    "em": 65.4,
    "db": -13
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 66.4,
    "db": -15
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/whoosh_suave.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/whoosh_suave.wav",
    "em": 70.3,
    "db": -17
   },
   {
-   "arq": "../../../../../biblioteca-sfx/sintetizados/tique_3.wav",
+   "arq": "../../../../../biblioteca/sfx/sintetizados/tique_3.wav",
    "em": 70.55,
    "db": -15
   }

@@ -1,6 +1,6 @@
 [
   {
-    "arquivo": "videos-referencia\\Ação em Tauá-Mirim\\video completo.mp4",
+    "arquivo": "biblioteca/videos-publicados\\Ação em Tauá-Mirim\\video completo.mp4",
     "duracao_s": 134.3,
     "tamanho_mb": 135.5,
     "bitrate_mbps": 8.1,
@@ -19,7 +19,7 @@
     "true_peak": 0.2
   },
   {
-    "arquivo": "videos-referencia\\Ação em Tauá-Mirim\\video curto.mp4",
+    "arquivo": "biblioteca/videos-publicados\\Ação em Tauá-Mirim\\video curto.mp4",
     "duracao_s": 26.2,
     "tamanho_mb": 21.6,
     "bitrate_mbps": 6.6,
@@ -38,7 +38,7 @@
     "true_peak": 1.2
   },
   {
-    "arquivo": "videos-referencia\\Dia Nacional de Combate ao Glaucoma\\Dia Nacional de Combate ao Glaucoma.mp4",
+    "arquivo": "biblioteca/videos-publicados\\Dia Nacional de Combate ao Glaucoma\\Dia Nacional de Combate ao Glaucoma.mp4",
     "duracao_s": 72.93,
     "tamanho_mb": 118.0,
     "bitrate_mbps": 12.9,
@@ -57,7 +57,7 @@
     "true_peak": 0.0
   },
   {
-    "arquivo": "videos-referencia\\Kits de Telessaúde - NOVO PAC\\KITS Novo PAC.mp4",
+    "arquivo": "biblioteca/videos-publicados\\Kits de Telessaúde - NOVO PAC\\KITS Novo PAC.mp4",
     "duracao_s": 84.23,
     "tamanho_mb": 136.9,
     "bitrate_mbps": 13.0,
@@ -76,7 +76,7 @@
     "true_peak": 0.0
   },
   {
-    "arquivo": "videos-referencia\\Prevenção do Câncer de Pênis\\Prevenção do Câncer de Pênis.mp4",
+    "arquivo": "biblioteca/videos-publicados\\Prevenção do Câncer de Pênis\\Prevenção do Câncer de Pênis.mp4",
     "duracao_s": 39.55,
     "tamanho_mb": 7.1,
     "bitrate_mbps": 1.4,
@@ -95,7 +95,7 @@
     "true_peak": -0.4
   },
   {
-    "arquivo": "videos-referencia\\Retrospectiva 2025\\retrospectiva 2025 - com trilha sonora.mp4",
+    "arquivo": "biblioteca/videos-publicados\\Retrospectiva 2025\\retrospectiva 2025 - com trilha sonora.mp4",
     "duracao_s": 135.78,
     "tamanho_mb": 280.3,
     "bitrate_mbps": 16.5,
@@ -114,7 +114,7 @@
     "true_peak": -1.0
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Câncer de Pênis\\parte 1\\Câncer de Penis - pt 1.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\Câncer de Pênis\\parte 1\\Câncer de Penis - pt 1.mp4",
     "duracao_s": 76.43,
     "tamanho_mb": 88.1,
     "bitrate_mbps": 9.2,
@@ -133,7 +133,7 @@
     "true_peak": 0.1
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Câncer de Pênis\\parte 2\\Cancer de Penis - pt 2.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\Câncer de Pênis\\parte 2\\Cancer de Penis - pt 2.mp4",
     "duracao_s": 73.23,
     "tamanho_mb": 87.4,
     "bitrate_mbps": 9.5,
@@ -152,7 +152,7 @@
     "true_peak": 0.1
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Hanseníase\\Parte 1\\Vídeo Hanseniese logo SES.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\Hanseníase\\Parte 1\\Vídeo Hanseniese logo SES.mp4",
     "duracao_s": 65.47,
     "tamanho_mb": 48.6,
     "bitrate_mbps": 5.9,
@@ -171,7 +171,7 @@
     "true_peak": 0.1
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Hanseníase\\Parte 2\\Vídeo Hanseniese - Parte 2 logo SES.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\Hanseníase\\Parte 2\\Vídeo Hanseniese - Parte 2 logo SES.mp4",
     "duracao_s": 80.57,
     "tamanho_mb": 68.5,
     "bitrate_mbps": 6.8,
@@ -190,7 +190,7 @@
     "true_peak": 0.1
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Hipertensão\\Hipertensão.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\Hipertensão\\Hipertensão.mp4",
     "duracao_s": 98.3,
     "tamanho_mb": 116.9,
     "bitrate_mbps": 9.5,
@@ -209,7 +209,7 @@
     "true_peak": 0.1
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DENGUE PARTE 1\\DENGUE parte 1.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\DENGUE PARTE 1\\DENGUE parte 1.mp4",
     "duracao_s": 72.73,
     "tamanho_mb": 122.1,
     "bitrate_mbps": 13.4,
@@ -228,7 +228,7 @@
     "true_peak": -1.6
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DENGUE PARTE 2\\DENGUE parte 2.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\DENGUE PARTE 2\\DENGUE parte 2.mp4",
     "duracao_s": 84.73,
     "tamanho_mb": 117.4,
     "bitrate_mbps": 11.1,
@@ -247,7 +247,7 @@
     "true_peak": -1.4
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DIABETES PARTE 1\\Diabetes parte 1.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\DIABETES PARTE 1\\Diabetes parte 1.mp4",
     "duracao_s": 104.8,
     "tamanho_mb": 160.5,
     "bitrate_mbps": 12.3,
@@ -266,7 +266,7 @@
     "true_peak": -1.7
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\DIABETES PARTE 2\\Diabetes parte 2.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\DIABETES PARTE 2\\Diabetes parte 2.mp4",
     "duracao_s": 110.33,
     "tamanho_mb": 123.5,
     "bitrate_mbps": 9.0,
@@ -285,7 +285,7 @@
     "true_peak": -1.7
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HANSENÍASE OUTUBRO PARTE 1\\Hanseníase Outubro parte 1.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\HANSENÍASE OUTUBRO PARTE 1\\Hanseníase Outubro parte 1.mp4",
     "duracao_s": 76.53,
     "tamanho_mb": 128.0,
     "bitrate_mbps": 13.4,
@@ -304,7 +304,7 @@
     "true_peak": -0.5
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HANSENÍASE OUTUBRO PARTE 2\\Hanseníase Outubro parte 2.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\HANSENÍASE OUTUBRO PARTE 2\\Hanseníase Outubro parte 2.mp4",
     "duracao_s": 82.33,
     "tamanho_mb": 130.7,
     "bitrate_mbps": 12.7,
@@ -323,7 +323,7 @@
     "true_peak": 0.1
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HIPERTENSÃO 01\\defeso - Hipertensão PET SAUDE parte 1.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\HIPERTENSÃO 01\\defeso - Hipertensão PET SAUDE parte 1.mp4",
     "duracao_s": 101.43,
     "tamanho_mb": 160.1,
     "bitrate_mbps": 12.6,
@@ -342,7 +342,7 @@
     "true_peak": -1.7
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\HIPERTENSÃO 02\\defeso - Hipertensão PET SAUDE parte 2.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\HIPERTENSÃO 02\\defeso - Hipertensão PET SAUDE parte 2.mp4",
     "duracao_s": 78.0,
     "tamanho_mb": 85.6,
     "bitrate_mbps": 8.8,
@@ -361,7 +361,7 @@
     "true_peak": -1.0
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\OBESIDADE INFANTIL 1\\Obesidade Infantil parte 1.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\OBESIDADE INFANTIL 1\\Obesidade Infantil parte 1.mp4",
     "duracao_s": 143.67,
     "tamanho_mb": 257.5,
     "bitrate_mbps": 14.3,
@@ -380,7 +380,7 @@
     "true_peak": -1.6
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\PET SAUDE\\OBESIDADE INFANTIL 2\\Obesidade Infantil parte 2.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\PET SAUDE\\OBESIDADE INFANTIL 2\\Obesidade Infantil parte 2.mp4",
     "duracao_s": 77.9,
     "tamanho_mb": 135.8,
     "bitrate_mbps": 13.9,
@@ -399,7 +399,7 @@
     "true_peak": 1.9
   },
   {
-    "arquivo": "videos-referencia\\TELEORIENTAÇÃO\\Retinopatia diabética\\Retinopatia diabetica.mp4",
+    "arquivo": "biblioteca/videos-publicados\\TELEORIENTAÇÃO\\Retinopatia diabética\\Retinopatia diabetica.mp4",
     "duracao_s": 76.83,
     "tamanho_mb": 93.3,
     "bitrate_mbps": 9.7,

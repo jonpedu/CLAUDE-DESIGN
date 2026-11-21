@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont
 arq = Path(sys.argv[1])
 D = json.loads(arq.read_text(encoding="utf-8"))
 pasta = arq.parent
-FONTE = Path(__file__).resolve().parent.parent / "fontes tipograficas" / "Poppins" / "Poppins-Bold.ttf"
+FONTE = Path(__file__).resolve().parent.parent / "biblioteca/marca/fontes" / "Poppins" / "Poppins-Bold.ttf"
 fonte = lambda n: ImageFont.truetype(str(FONTE), n) if FONTE.exists() else ImageFont.load_default()
 LAR, VER, VERM = (247, 144, 9), (18, 183, 106), (240, 68, 56)
 

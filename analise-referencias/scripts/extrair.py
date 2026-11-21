@@ -9,7 +9,7 @@ import cv2
 from PIL import Image, ImageDraw, ImageFont
 
 RAIZ = Path(__file__).resolve().parents[2]
-REF = RAIZ / "videos-referencia"
+REF = RAIZ / "biblioteca/videos-publicados"
 BASE = RAIZ / "analise-referencias"
 DADOS, FOLHAS, QUADROS = BASE / "dados", BASE / "folhas", BASE / "quadros"
 for d in (DADOS, FOLHAS, QUADROS):

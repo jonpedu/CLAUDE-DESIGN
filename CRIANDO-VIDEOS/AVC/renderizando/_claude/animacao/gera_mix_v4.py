@@ -8,7 +8,7 @@ TI2, Z0, TL4, LIFT, P6, W7 = N(2.95) + 0.3, N(7.60) - 0.3, N(10.45), N(13.0) + 0
 P8, S8, U9, R9, F10 = N(36.5) + 0.2, N(40.6), N(44.0), N(48.45), N(52.56) + 0.6
 FA, I11 = F10 + 0.55, F10 + 4.5; DUR = round(I11 + 4.6, 2)
 tp = N(33.02); td = [N(42.48), N(42.48) + 0.2, N(42.48) + 0.4]; tExp = 0.45
-S = "../../../../../biblioteca-sfx/sintetizados/"
+S = "../../../../../biblioteca/sfx/sintetizados/"
 ev = [
  # C1 gancho
  ("pop_grave", 0.04, -12), ("dig_avc2_pergunta", 0.0, -15), ("whoosh_suave", tExp, -15),

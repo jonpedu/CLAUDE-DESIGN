@@ -11,7 +11,7 @@ d = json.loads((RAIZ / "analise-referencias/dados/paletas.json").read_text(encod
 for k, v in d.items():
     print(k[:50].ljust(50), " ".join(f"{c['hex']}:{c['pct']}" for c in v[:6]))
 
-p = RAIZ / "videos-referencia/TELEORIENTAÇÃO/Hipertensão/Hipertensão.mp4"
+p = RAIZ / "biblioteca/videos-publicados/TELEORIENTAÇÃO/Hipertensão/Hipertensão.mp4"
 r = subprocess.run(["ffmpeg", "-v", "error", "-ss", "97.5", "-i", str(p), "-frames:v", "1",
                     "-f", "image2pipe", "-vcodec", "png", "-"], capture_output=True)
 a = np.asarray(Image.open(io.BytesIO(r.stdout)).convert("RGB")).reshape(-1, 3).astype(int)

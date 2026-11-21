@@ -1,6 +1,6 @@
 # Análise dos vídeos de referência — Telessaúde Maranhão
 
-Análise de 22 vídeos e 12 capas da pasta `videos-referencia/`, feita em 15/11/2026. Ela serve de base para o perfil "telessaude" do fluxo de edição. **O perfil é tendência, não regra:** o objetivo é variar entre vídeos sem sair da identidade.
+Análise de 22 vídeos e 12 capas da pasta `biblioteca/videos-publicados/`, feita em 15/11/2026. Ela serve de base para o perfil "telessaude" do fluxo de edição. **O perfil é tendência, não regra:** o objetivo é variar entre vídeos sem sair da identidade.
 
 Material gerado nesta pasta:
 - `folhas/`: folhas de contato com um quadro a cada 2 s, com o tempo marcado.

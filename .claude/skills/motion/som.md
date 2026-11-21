@@ -37,4 +37,4 @@ O pop é opcional: há marcas que o rejeitam (no Telessaúde, nada de pop/bolha/
 ## Trilha por clima (preferência do usuário, 20/11/2026)
 
 - Escolha a trilha pelo **clima** de cada trecho: corporativo, tecnologia, animado, suave, emocional, ou **sem trilha**. O clima pode mudar dentro do vídeo (alerta → emocional, fecho → corporativo), com crossfade de 1 a 2 s num corte de cena; o silêncio também é uma escolha (pausa dramática, dado forte).
-- O banco geral fica em `biblioteca-trilhas/` (raiz do projeto), organizado por clima, com duração, LUFS, fonte e licença no `README.md`. Proponha 1 ou 2 faixas por clima e diga por quê; faixa nova entra no banco com a licença.
+- O banco geral fica em `biblioteca/trilhas/` (raiz do projeto), organizado por clima, com duração, LUFS, fonte e licença no `README.md`. Proponha 1 ou 2 faixas por clima e diga por quê; faixa nova entra no banco com a licença.

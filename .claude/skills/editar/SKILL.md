@@ -14,7 +14,7 @@ O Claude Code fica aberto na **raiz do projeto** (onde estão `CLAUDE.md`, `.cla
 - **Nome ou pasta dado** (`/editar IAM`, `/editar CRIANDO-VIDEOS/DENGUE`): procure em `CRIANDO-VIDEOS/`, `REFAZENDO-VIDEOS/` e nas pastas de série uma pasta de vídeo com esse nome (sem diferenciar maiúsculas e acentos).
   - Achou, com `00-estado.md`: continue dele.
   - Achou, sem `00-estado.md` (vídeo antigo ou pasta que o usuário já montou): rode `novo_video.py` nela (só cria o que falta, não apaga nada) e comece pela etapa 1.
-  - **Não achou:** é vídeo novo. Proponha o lugar (`CRIANDO-VIDEOS/<NOME>/`, ou a série que o usuário indicar) e **confirme antes de criar**. Depois rode `py ferramentas/novo_video.py "<pasta>" <NOME>`, diga onde colocar a narração, o roteiro e os elementos, e acrescente o vídeo ao índice "Vídeos" do `CLAUDE.md`.
+  - **Não achou:** é vídeo novo. Proponha o lugar (`CRIANDO-VIDEOS/<NOME>/`, ou a série que o usuário indicar) e **confirme antes de criar**. Depois rode `py ferramentas/novo_video.py "<pasta>" <NOME>`, consulte a `biblioteca/` e copie para o vídeo o que já servir (`py ferramentas/da_biblioteca.py`), diga onde colocar a narração, o roteiro e os elementos que faltam, e acrescente o vídeo ao índice "Vídeos" do `CLAUDE.md`.
 - **Sem argumento** (`/editar`): liste os vídeos (índice "Vídeos" do `CLAUDE.md` + os `00-estado.md` encontrados) com a situação de cada um e pergunte qual, ou se é um vídeo novo e com que nome.
 
 ## 2. Ler só o necessário
@@ -25,7 +25,7 @@ O Claude Code fica aberto na **raiz do projeto** (onde estão `CLAUDE.md`, `.cla
 
 | Etapa (de `telessaude/producao.md`; para outro cliente, a sub-skill dele) | Leia |
 | --- | --- |
-| 1. Conferir o pacote | `telessaude/organizacao.md` (checklist), `telessaude/SKILL.md` (régua e fechamento) |
+| 1. Conferir o pacote | `biblioteca/README.md` (o que já existe), `telessaude/organizacao.md` (checklist), `telessaude/SKILL.md` (régua e fechamento) |
 | 2. Medir a narração | `motion/tecnico.md` (ferramentas) |
 | 3. Mapa de cenas | `motion/metodo-referencia.md`, `motion/efeitos.md`, `telessaude/SKILL.md`, o formato (`formatos/`) e o tipo (`tipos/`) |
 | 4. Decupar os takes | `motion/takes.md` |

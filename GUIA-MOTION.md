@@ -17,8 +17,8 @@ CLAUDE-DESIGN/
   CRIANDO-VIDEOS/                    vídeos novos (cada um com renderizando/_claude/00-estado.md)
   REFAZENDO-VIDEOS/                  reconstruções em 16:9 de verticais já publicados
   ferramentas/                       motor e scripts (animar.mjs, mixar.py, preparar.py, novo_video.py…)
-  biblioteca-trilhas/  biblioteca-sfx/   trilhas por clima e efeitos sonoros
-  fontes tipograficas/  cores hex/   fontes e paleta da marca
+  biblioteca/                        FONTE GERAL: marca (réguas, fechamentos, logos, fontes, cores), trilhas,
+                                     efeitos sonoros, personagens do Flow, mapas, vídeos publicados (README = catálogo)
   _arquivo/                          entregas antigas, só registro
   .claude/skills/
     preparar/                        /preparar: primeira conversa num PC ou numa conta nova
@@ -38,7 +38,7 @@ CLAUDE-DESIGN/
     telessaude/                      SUB-SKILL da marca Telessaúde (todo vídeo do Telessaúde)
       SKILL.md                       identidade: régua, fechamento, cor do tema, fontes, personagens, som
       cores.md                       paleta do portal (clara e escura) + tokens CSS
-      fontes.md                      fontes da pasta "fontes tipograficas", usos e licenças
+      fontes.md                      fontes de `biblioteca/marca/fontes/`, usos e licenças
       organizacao.md                 pastas de cada vídeo (tema › parte › audios, roteiro, elementos…)
       producao.md                    papel do Claude: montar a base (antes Canva) e finalizar (antes Premiere)
       formatos/
@@ -58,6 +58,7 @@ CLAUDE-DESIGN/
 - **Continuar um vídeo:** `/editar TELEDIAGNÓSTICO` (ou só `/editar` para escolher). Faz uma etapa e salva o estado em `renderizando/_claude/00-estado.md`; entre etapas, `/clear` limpa a conversa sem perder nada.
 - **Ajustar posição e tamanho pelo olho:** `node ferramentas/editor.mjs "<página .html>" "t1,t2"` abre o editor de quadros; salve e avise no chat.
 - **Vídeo novo do Telessaúde:** `/editar DENGUE` (o Claude propõe a pasta em `CRIANDO-VIDEOS/`, cria a estrutura e pede o pacote) e diga o tipo e o formato: teleorientação, campanha, institucional ou registro; vertical ou horizontal.
+- **Ver o que já existe:** "O que tem na biblioteca para um vídeo de dengue?" (ou `py ferramentas/da_biblioteca.py --listar dengue`).
 - **Prompts do Flow:** "Faz os prompts do Flow do roteiro de teleconsultoria."
 - **Reconstruir em horizontal:** "Reconstrói em 16:9 a Diabetes parte 1" (lista em `planejamento/videos-para-refazer-na-horizontal.md`; pasta `REFAZENDO-VIDEOS/<tema>/`). Mande junto as páginas do Canva exportadas em PNG: o resultado fica melhor.
 - **Vídeo fora da série:** "Faz um vídeo 1:1 de 20 s para o LinkedIn, estilo editorial pastel 3D, com as cores da marca X."

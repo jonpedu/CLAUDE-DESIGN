@@ -6,7 +6,7 @@ P8, S8, U9, R9, F10 = N(36.5) + 0.2, N(40.6), N(44.0), N(48.45), N(52.56) + 0.6
 FA, I11 = F10 + 0.55, F10 + 4.5; DUR = round(I11 + 4.6, 2)
 tp = N(33.02); td = [N(42.48), N(42.48) + 0.2, N(42.48) + 0.4]
 voa5 = [N(14.66) - 0.1, N(16.58) - 0.1, N(19.60) - 0.1, N(21.82) - 0.25]   # cartão vai para a grade provisória / grade final
-S = "../../../../../biblioteca-sfx/sintetizados/"
+S = "../../../../../biblioteca/sfx/sintetizados/"
 ev = [
  ("bolha", 0.02, -16), ("pop_grave", 0.06, -11), ("dig_avc2_pergunta", 0.0, -14), ("whoosh_suave", N(0.36) - 0.2, -14),
  ("dig_avc2_cidente", N(0.36) + 0.12, -15), ("dig_avc2_ascular", N(0.76) + 0.12, -15), ("dig_avc2_erebral", N(1.34) + 0.12, -15), ("bolha", N(2.38), -17),

@@ -1,5 +1,5 @@
-# Repositório = o "cérebro" do fluxo (skills, normas, ferramentas, fontes, cores, efeitos sonoros,
-# estudos e fontes das animações). Mídia pesada e material de cada vídeo ficam no Drive.
+# Git = histórico local dos textos do fluxo (skills, normas, ferramentas, estados, páginas, mixagens).
+# A pasta inteira (com a mídia) vai para o Drive; a mídia fica fora do Git para ele não pesar.
 
 # dependências, caches e configurações locais
 node_modules/
@@ -8,7 +8,6 @@ ferramentas/_cache_busca/
 .claude/settings.local.json
 
 # mídia pesada e material institucional (vai pelo Drive)
-videos-referencia/
 *.mp4
 *.mov
 *.mkv
@@ -29,9 +28,9 @@ videos-referencia/
 *.7z
 
 # exceções: o que o pipeline usa direto
-!biblioteca-sfx/**
-!fontes tipograficas/**
-!cores hex/**
+!biblioteca/sfx/**
+!biblioteca/marca/fontes/**
+!biblioteca/marca/cores/**
 
 # cópias para envio (o original fica em <SERVIÇO>/roteiro/)
 roteiros para enviar/

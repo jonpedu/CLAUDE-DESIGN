@@ -61,7 +61,7 @@ Legenda: ✅ feito · ⏳ em andamento ou aguardando · 🟣 aprovado só para a
 
 - Régua de marca: `regua - tele-sted-sus-govbr.svg` (Telessaúde, STED/UFMA, SUS Digital, Ministério da Saúde/Governo Federal), confirmada no piloto (20/11/2026).
 - Fechamento: `Intro Telessaude.mp4` (vertical, 4,4 s, com som), confirmado no piloto. Falta a versão horizontal.
-- Trilha: escolhida por vídeo, conforme o clima, no banco `biblioteca-trilhas/`.
+- Trilha: escolhida por vídeo, conforme o clima, no banco `biblioteca/trilhas/`.
 - Personagens recorrentes: enfermeira da UBS, médico (especialista a distância), paciente, agente comunitário de saúde, estudante.
 
 ## Narração no Google AI Studio (configuração da série)

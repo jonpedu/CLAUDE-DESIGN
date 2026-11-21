@@ -1,6 +1,6 @@
 # Fontes do Telessaúde
 
-Arquivos entregues pelo usuário em `fontes tipograficas/` (raiz do projeto), em 15/11/2026. Use sempre estes arquivos no render (`@font-face` no HTML, `fontfile=` no ffmpeg); não dependa das fontes instaladas no Windows.
+Arquivos entregues pelo usuário em `biblioteca/marca/fontes/` (raiz do projeto), em 15/11/2026. Use sempre estes arquivos no render (`@font-face` no HTML, `fontfile=` no ffmpeg); não dependa das fontes instaladas no Windows.
 
 | Família | Arquivos | Licença | Uso |
 | --- | --- | --- | --- |

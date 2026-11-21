@@ -1,6 +1,6 @@
 # Biblioteca de trilhas
 
-Banco geral de trilhas do projeto (todos os vídeos, de qualquer série). Criado em 20/11/2026. Efeitos sonoros ficam em `../biblioteca-sfx/`.
+Banco geral de trilhas do projeto (todos os vídeos, de qualquer série). Criado em 20/11/2026. Efeitos sonoros ficam em `../sfx/`. Catálogo geral da biblioteca: `../README.md`.
 
 **Licença:** as faixas da Pixabay estão sob a [Pixabay Content License](https://pixabay.com/service/license-summary/): uso comercial liberado, sem atribuição obrigatória, sem revender a música isolada. Confira a página de cada faixa antes de publicar. A *Balanced Learning Loop* veio da pasta do usuário (AVC/IAM).
 

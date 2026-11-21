@@ -6,7 +6,7 @@ import path from 'node:path';
 
 // fileURLToPath decodifica acentos (ex.: "Usuário"); new URL().pathname não.
 const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const fonte = pathToFileURL(path.join(raiz, 'fontes tipograficas', 'Poppins', 'Poppins-Bold.ttf')).href;
+const fonte = pathToFileURL(path.join(raiz, 'biblioteca', 'marca', 'fontes', 'Poppins', 'Poppins-Bold.ttf')).href;
 const saida = process.argv[2] || path.join(raiz, 'ferramentas', 'teste.png');
 
 const html = `<!doctype html><html><head><style>

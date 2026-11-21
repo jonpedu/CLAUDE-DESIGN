@@ -1,17 +1,17 @@
 ---
 name: preparar
-description: Comando /preparar — primeira conversa num PC ou numa conta nova (ou depois de um git pull grande). Confere e instala o ambiente (ffmpeg, Python e pacotes, Node, Playwright com Chrome, fontes), confere o material grande que vem do Drive e mostra onde cada vídeo parou, com o próximo passo e os documentos pendentes. Use quando o usuário digitar /preparar, disser que acabou de clonar o repositório, que trocou de PC ou de conta, ou pedir para "preparar o ambiente".
+description: Comando /preparar — primeira conversa num PC ou numa conta nova (ou depois de baixar a pasta do Drive). Confere e instala o ambiente (ffmpeg, Python e pacotes, Node, Playwright com Chrome, fontes), confere o material grande que vem do Drive e mostra onde cada vídeo parou, com o próximo passo e os documentos pendentes. Use quando o usuário digitar /preparar, disser que acabou de baixar ou clonar a pasta, que trocou de PC ou de conta, ou pedir para "preparar o ambiente".
 ---
 
 # /preparar — deixar a máquina pronta e mostrar onde cada vídeo parou
 
-Objetivo: depois de `git clone` num PC novo, com uma conta nova do Claude, **uma conversa** deixa tudo pronto para o usuário continuar a produção com `/editar <vídeo>`. Esta conta não tem a memória da conta antiga: tudo o que importa está no `CLAUDE.md`, nas skills e nos arquivos `00-estado.md`. Não procure contexto em outro lugar.
+Objetivo: depois de baixar a pasta do Drive num PC novo, com uma conta nova do Claude, **uma conversa** deixa tudo pronto para o usuário continuar a produção com `/editar <vídeo>`. Esta conta não tem a memória da conta antiga: tudo o que importa está no `CLAUDE.md`, nas skills e nos arquivos `00-estado.md`. Não procure contexto em outro lugar.
 
 Responda em português. Faça as etapas em ordem e diga em uma linha o que está fazendo em cada uma.
 
 ## 1. Diagnóstico (só leitura)
 
-Rode, a partir da raiz do repositório:
+Rode, a partir da raiz da pasta:
 
 ```powershell
 py ferramentas/preparar.py
@@ -34,15 +34,17 @@ Mostre a lista do que falta com os comandos e **peça o ok uma vez** para instal
 
 Depois de instalar programas pelo `winget`, o PATH só vale num terminal novo: avise o usuário para fechar e reabrir o Claude Code (ou abrir um terminal novo) e então rodar o diagnóstico de novo. Se o `winget` não existir, mande o link oficial de cada programa.
 
-**Fontes:** as páginas carregam as fontes direto de `fontes tipograficas/` (o motor `ferramentas/animar.mjs` injeta os `@font-face`), então não é preciso instalá-las no Windows para renderizar. Instalar ajuda só para ver as fontes em outros programas.
+**Fontes:** as páginas carregam as fontes direto de `biblioteca/marca/fontes/` (o motor `ferramentas/animar.mjs` injeta os `@font-face`), então não é preciso instalá-las no Windows para renderizar. Instalar ajuda só para ver as fontes em outros programas.
 
 **Teste de ponta a ponta** (depois que o diagnóstico passar): `node ferramentas/teste-playwright.mjs` deve abrir o Chrome sem janela e gravar `ferramentas/teste.png`. Mostre a imagem ao usuário.
 
-## 3. Material grande (Drive)
+## 3. Material e biblioteca
 
-O Git não traz vídeos, áudios nem imagens (`.gitignore`). A parte 3 do diagnóstico mostra, vídeo a vídeo, quais arquivos de mídia citados pelas páginas e mixagens estão faltando. Para cada vídeo que o usuário quer continuar, aponte o link em `LINKS-DRIVE.md` e lembre a regra da cópia: **copiar a pasta do Drive por cima do clone sem substituir arquivos que já existem** (os textos, páginas e estados do Git são os mais novos). Se o link estiver em branco em `LINKS-DRIVE.md`, peça ao usuário e anote lá. Depois da cópia, rode `py ferramentas/novo_video.py "<pasta do vídeo>"` no vídeo que vai continuar: ele só cria as pastas de trabalho que faltarem (o Git não guarda pasta vazia, como `versoes-anteriores/`) e não mexe em nada que exista.
+A pasta vem inteira pelo Drive (`LINKS-DRIVE.md`), com vídeos, áudios e a `biblioteca/`. A parte 3 do diagnóstico mostra, vídeo a vídeo, se falta algum arquivo de mídia que as páginas e mixagens usam (download incompleto do Drive, `.zip` não extraído). Se faltar, peça ao usuário para baixar de novo só aquela pasta.
 
-O kit de marca (régua, logos, fechamento animado) vem dentro de `elementos/` de cada vídeo, também pelo Drive. Nunca crie substitutos (regra de `telessaude/SKILL.md`).
+Rode `py ferramentas/novo_video.py "<pasta do vídeo>"` no vídeo que vai continuar: ele só cria as pastas de trabalho que faltarem (o Git não guarda pasta vazia) e não mexe em nada que exista.
+
+A `biblioteca/` é a fonte geral (marca, trilhas, efeitos sonoros, personagens, vídeos publicados; catálogo em `biblioteca/README.md`). Nunca crie substitutos de elementos de marca (regra de `telessaude/SKILL.md`).
 
 ## 4. Onde cada vídeo parou
 

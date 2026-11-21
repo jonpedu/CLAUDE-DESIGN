@@ -1,6 +1,6 @@
 # Paleta do Telessaúde
 
-Fonte: guia de cores do portal, em `cores hex/` (versão clara e escura), entregue pelo usuário em 15/11/2026. Os valores foram **medidos nos quadrados** (`analise-referencias/scripts/amostrar_paleta.py`), porque alguns rótulos da imagem estão errados: Success, Warning e Error repetem os HEX de texto, e a versão escura repete os rótulos da clara.
+Fonte: guia de cores do portal, em `biblioteca/marca/cores/` (versão clara e escura), entregue pelo usuário em 15/11/2026. Os valores foram **medidos nos quadrados** (`analise-referencias/scripts/amostrar_paleta.py`), porque alguns rótulos da imagem estão errados: Success, Warning e Error repetem os HEX de texto, e a versão escura repete os rótulos da clara.
 
 **Regra do usuário:** a base é esta paleta, mas **os tons de azul podem variar**, como já acontece nos vídeos de referência (degradês de azul nos institucionais, azul mais claro ou mais escuro conforme o fundo). Varie dentro da família azul da marca; não troque o azul por outro matiz.
 

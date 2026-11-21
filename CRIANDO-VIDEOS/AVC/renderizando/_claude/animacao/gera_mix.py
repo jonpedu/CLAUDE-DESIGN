@@ -4,7 +4,7 @@ N = lambda o: o + (2.5 if o < 10.7 else 3.0 if o < 13.3 else 3.8 if o < 22.35 el
 TI2, Z0, TL4, LIFT, P6 = N(2.95), N(7.60) - 0.3, N(10.45), N(13.0) + 0.95, N(21.9) + 0.25
 W7, P8, S8, U9, R9, F10 = N(28.4), N(36.5) + 0.2, N(40.6), N(44.0), N(48.7), N(52.75)
 I11 = F10 + 3.85; DUR = round(I11 + 4.6, 2)
-S = "../../../../../biblioteca-sfx/sintetizados/"
+S = "../../../../../biblioteca/sfx/sintetizados/"
 ev = [  # (som, tempo, dB)
  ("bolha", 0.08, -16), ("dig_avc_pergunta", 0.2, -14), ("pop_grave", 0.85, -10), ("whoosh_suave", 2.3, -13),
  ("dig_avc_cidente", N(0.36), -15), ("dig_avc_ascular", N(0.76), -15), ("dig_avc_erebral", N(1.34), -15), ("bolha", N(2.38), -17),

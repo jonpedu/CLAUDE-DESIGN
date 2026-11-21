@@ -119,7 +119,7 @@ A grade final é **alternada** (coluna direita mais baixa). Nenhum cartão cobre
 | Narração | `narracao_v4.wav`, 0 dB (referência) |
 | Trilha | −11 dB, começa aos 12 s da música (a introdução é 7 dB mais baixa), ducking de 5 dB; nas pausas fica entre −22 e −27 LUFS; cruza com o som do fechamento |
 | Fechamento | áudio do `Intro NTS e PETSAUDE.mp4`, −2 dB, entrada de 0,6 s |
-| Efeitos | **51** eventos sintetizados (`biblioteca-sfx/sintetizados/`), −5 dB gerais |
+| Efeitos | **51** eventos sintetizados (`biblioteca/sfx/sintetizados/`), −5 dB gerais |
 
 **Regra de densidade (devolutiva da v3):** um som por gesto que importa, no máximo ~1 efeito a cada 0,7 s, whoosh só nas transições, nenhum som para movimento secundário. Na cena do 192, eram 13 efeitos em 3 s e ficaram 6: soco da entrada, SAMU, ambulância (uma vez) e as três teclas.
 Sons de interface usados: digitação gerada do próprio texto (`sfx.py --digitar`), pop em escala nos cartões, tiques a cada hora que o ponteiro passa, swish nos marca-textos.

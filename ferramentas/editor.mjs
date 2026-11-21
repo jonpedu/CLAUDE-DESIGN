@@ -15,7 +15,7 @@ const RAIZ = path.resolve(AQUI, '..');
 const [pagina, tempos] = process.argv.slice(2);
 if (!pagina) { console.log('Uso: node ferramentas/editor.mjs <pagina.html> ["t1,t2"]'); process.exit(1); }
 
-const F = (...p) => pathToFileURL(path.join(RAIZ, 'fontes tipograficas', ...p)).href;
+const F = (...p) => pathToFileURL(path.join(RAIZ, 'biblioteca', 'marca', 'fontes', ...p)).href;
 const FONTES = [
   ['Poppins', 100, 'Thin'], ['Poppins', 200, 'ExtraLight'], ['Poppins', 300, 'Light'], ['Poppins', 400, 'Regular'],
   ['Poppins', 500, 'Medium'], ['Poppins', 600, 'SemiBold'], ['Poppins', 700, 'Bold'], ['Poppins', 800, 'ExtraBold'], ['Poppins', 900, 'Black'],

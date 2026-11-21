@@ -51,3 +51,6 @@ for p in criadas:
     print("criado:", p)
 if not criadas:
     print("nada a criar: a estrutura já existe")
+print("Próximo: veja o que já existe na biblioteca (py ferramentas/da_biblioteca.py --listar) e copie para o vídeo o que servir;
+"
+      "peça ao usuário só o que faltar (régua e fechamento: confirme a parceria).")

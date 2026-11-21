@@ -52,11 +52,11 @@ Antes de qualquer edição, liste o que existe e aponte o que falta. Os nomes da
 - [ ] Narração em `audios/`
 - [ ] Roteiro final (e original / parecer, se houver)
 - [ ] Elementos para montar as cenas em `elementos/` (personagens, ícones, cenas geradas, imagens)
-- [ ] Fontes da marca disponíveis (`fontes tipograficas/`, na raiz do projeto)
+- [ ] Fontes da marca disponíveis (`biblioteca/marca/fontes/`, na raiz do projeto)
 - [ ] Régua de marca do parceiro certo (PNG) em `renderizando/` ou `elementos/` — **muda por parceria; se faltar, pedir antes de montar** (nunca copiar a de outro vídeo)
 - [ ] Trilha escolhida (ou candidatas) e efeitos sonoros
 - [ ] Logo animado / som de logo do fechamento, se o vídeo-base não os tiver
 
-Antes da conferência, **peça ao usuário a lista completa de assets do vídeo**, cena a cena (regra de 20/11/2026 em `SKILL.md`); o que faltar, pesquise e sugira (com link e licença) para baixar em `elementos/` após o ok dele.
+Antes da conferência, **consulte a `biblioteca/` e copie para o vídeo o que já existir** (`py ferramentas/da_biblioteca.py`; régua e fechamento só depois de confirmar a parceria). Depois **peça ao usuário a lista completa do que falta**, cena a cena (regra de 20/11/2026 em `SKILL.md`); o que faltar, pesquise e sugira (com link e licença) para baixar em `elementos/` após o ok dele.
 
 Faltando um elemento de marca, **pergunte**: não crie um substituto. Mesmo com tudo presente, **mostre ao usuário o arquivo escolhido para cada item obrigatório e espere a confirmação** antes de montar (regra em `SKILL.md`).

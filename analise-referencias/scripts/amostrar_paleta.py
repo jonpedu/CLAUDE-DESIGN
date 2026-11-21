@@ -1,4 +1,4 @@
-"""Mede a cor real de cada quadrado das paletas em 'cores hex/' (os rótulos de algumas estão errados).
+"""Mede a cor real de cada quadrado das paletas em 'biblioteca/marca/cores/' (os rótulos de algumas estão errados).
 Uso: py analise-referencias/scripts/amostrar_paleta.py
 """
 from pathlib import Path
@@ -21,7 +21,7 @@ PONTOS = [
 ]
 
 for nome_arq, modo in [("Frame 1000003513.png", "claro"), ("Frame 1000003513-1.png", "escuro")]:
-    a = np.asarray(Image.open(RAIZ / "cores hex" / nome_arq).convert("RGB")).astype(int)
+    a = np.asarray(Image.open(RAIZ / "biblioteca/marca/cores" / nome_arq).convert("RGB")).astype(int)
     print(f"== {modo} ({nome_arq})")
     for nome, x, y in PONTOS:
         X, Y = int(x * ESCALA), int(y * ESCALA)

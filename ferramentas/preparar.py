@@ -80,17 +80,17 @@ else:
 # ---------------------------------------------------------------- 2. pastas
 print('\n2. Pastas e material grande')
 for pasta, origem in [
-    ('fontes tipograficas', 'Git'), ('cores hex', 'Git'), ('biblioteca-sfx/sintetizados', 'Git'),
+    ('biblioteca/marca/fontes', 'Git'), ('biblioteca/marca/cores', 'Git'), ('biblioteca/sfx/sintetizados', 'Git'),
     ('.claude/skills/telessaude', 'Git'),
 ]:
-    (ok if (RAIZ / pasta).exists() else lambda m: falta(m, 'o clone está incompleto: git pull'))(f'{pasta} ({origem})')
+    (ok if (RAIZ / pasta).exists() else lambda m: falta(m, 'a pasta veio incompleta: baixe de novo do Drive (LINKS-DRIVE.md)'))(f'{pasta} ({origem})')
 
-trilhas = list((RAIZ / 'biblioteca-trilhas').rglob('*.mp3')) + list((RAIZ / 'biblioteca-trilhas').rglob('*.wav'))
+trilhas = list((RAIZ / 'biblioteca/trilhas').rglob('*.mp3')) + list((RAIZ / 'biblioteca/trilhas').rglob('*.wav'))
 if trilhas:
-    ok(f'biblioteca-trilhas: {len(trilhas)} faixas')
+    ok(f'biblioteca/trilhas: {len(trilhas)} faixas')
 else:
-    falta('biblioteca-trilhas sem áudio (as faixas vêm do Drive)', 'ver LINKS-DRIVE.md')
-for pasta in ['videos-referencia']:
+    falta('biblioteca/trilhas sem áudio', 'baixe de novo a pasta biblioteca/ do Drive (LINKS-DRIVE.md)')
+for pasta in ['biblioteca/videos-publicados']:
     if any((RAIZ / pasta).rglob('*.mp4')) if (RAIZ / pasta).exists() else False:
         ok(pasta)
     else:
@@ -143,7 +143,7 @@ for est in estados:
     if faltas:
         n = sum(len(v) for v in faltas.values())
         falta(f'{nome}: {n} arquivo(s) de mídia citados pelas páginas/mixagens do estado não estão no disco',
-              'copie a pasta do vídeo do Drive (LINKS-DRIVE.md), sem substituir os arquivos que vieram do Git')
+              'baixe de novo a pasta do vídeo do Drive (LINKS-DRIVE.md); se o item é da biblioteca, copie com ferramentas/da_biblioteca.py')
         for pg, lst in faltas.items():
             print(f'          {pg}: ' + ', '.join(lst[:6]) + (' …' if len(lst) > 6 else ''))
     elif citados:

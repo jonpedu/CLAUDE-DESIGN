@@ -213,7 +213,7 @@ Regra seguida: a duração depende da coerência entre as cenas. Cortes secos ma
 | Narração | `audios/audio completo.wav` (82,7 s, AI Studio) | 0 dB, referência da mixagem |
 | Trilha | `trilha sonora/Balanced Learning Loop (Remix) v2.mp3` | −12 dB; entra em 1,0 s; termina em 86,4 com saída de 2,6 s; **ducking** |
 | Fechamento | áudio do `Intro NTS e PETSAUDE.mp4` | −2 dB a partir de 83,9, entrada de 0,6 s (**crossfade** com a trilha) |
-| Efeitos (sfx) | `biblioteca-sfx/sintetizados/*.wav` | 46 eventos; todos com −5 dB extra sobre o volume da tabela |
+| Efeitos (sfx) | `biblioteca/sfx/sintetizados/*.wav` | 46 eventos; todos com −5 dB extra sobre o volume da tabela |
 
 **Ducking** (compressão por *sidechain*): a narração controla o volume da trilha. Quando há voz, a trilha baixa 6 dB (ataque de 80 ms); nas pausas, volta em ~0,9 s. Por isso a música "respira" entre as frases sem brigar com a fala.
 

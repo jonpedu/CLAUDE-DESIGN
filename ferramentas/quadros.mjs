@@ -9,7 +9,7 @@ import path from 'node:path';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.resolve(AQUI, '..');
-const F = (...p) => pathToFileURL(path.join(RAIZ, 'fontes tipograficas', ...p)).href;
+const F = (...p) => pathToFileURL(path.join(RAIZ, 'biblioteca', 'marca', 'fontes', ...p)).href;
 const FONTES = [
   ['Poppins', 400, F('Poppins', 'Poppins-Regular.ttf')], ['Poppins', 500, F('Poppins', 'Poppins-Medium.ttf')],
   ['Poppins', 600, F('Poppins', 'Poppins-SemiBold.ttf')], ['Poppins', 700, F('Poppins', 'Poppins-Bold.ttf')],

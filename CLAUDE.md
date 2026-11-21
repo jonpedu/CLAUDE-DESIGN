@@ -4,7 +4,7 @@ O Claude Code produz e edita, **localmente**, os vídeos do Telessaúde Maranhã
 
 ## Primeira conversa num PC ou numa conta nova
 
-Rode **`/preparar`** (`.claude/skills/preparar/`): confere e instala o ambiente, confere o material grande que vem do Drive e mostra onde cada vídeo parou. Instalação manual e o que fica fora do Git: `README.md` e `LINKS-DRIVE.md`.
+A pasta inteira vem pelo Google Drive (`LINKS-DRIVE.md`). Rode **`/preparar`** (`.claude/skills/preparar/`): confere e instala o ambiente, confere se a mídia veio completa e mostra onde cada vídeo parou. Instalação manual: `README.md`.
 
 **Esta conta não tem a memória da conta antiga.** Tudo o que importa está aqui, nas skills e nos `00-estado.md` de cada vídeo. Regra que se repete vai para a skill certa, não para a memória (a memória custa tokens em toda conversa e não passa de uma conta para outra).
 
@@ -30,6 +30,14 @@ As skills ficam em `.claude/skills/`; edite só lá. A primeira entrega (14/11/2
 - **Papel do Claude (15/11/2026): o vídeo inteiro.** Monta a base (antes no Canva: telas, textos, animação, transições) e finaliza (antes no Premiere: régua, narração, trilha, efeitos sonoros, mixagem −14 LUFS, exportação), a partir dos elementos fornecidos. Passo a passo em `.claude/skills/telessaude/producao.md`. A equipe faz roteiro, narração (**Google AI Studio**) e cenas com personagens (**Google Flow**, estilo **motion design + flat design**).
 - Tudo roda **nesta máquina**; o usuário não quer a edição na nuvem.
 
+## Biblioteca geral (`biblioteca/`)
+
+A fonte de onde todos os vídeos bebem (montada em 21/11/2026): marca (réguas, fechamentos, logos, fontes, cores), trilhas, efeitos sonoros, personagens do Flow, mapas, folhas de elementos e vídeos publicados com as capas. Catálogo, regra de uso e lista do que falta em `biblioteca/README.md`; lista de arquivos em `biblioteca/INVENTARIO.md`.
+
+- **Vídeo novo:** antes de pedir assets, veja o que já existe (`py ferramentas/da_biblioteca.py --listar [termo]`) e **copie** para a pasta do vídeo (`py ferramentas/da_biblioteca.py "<item>" "<pasta do vídeo>"`). O vídeo usa a cópia dele, nunca o arquivo da biblioteca; exceções: efeitos sonoros (`biblioteca/sfx/`) e fontes, lidos direto pelo motor.
+- **Item novo reutilizável** (elemento de marca entregue pelo usuário, trilha, personagem, SVG baixado com ok) também entra na biblioteca, registrado no `README.md` dela.
+- A biblioteca não é editada nem apagada por conta própria; régua e fechamento continuam sendo confirmados com o usuário em todo vídeo.
+
 ## Documentos de referência
 
 - `MANUAL-EDICAO-TELEORIENTACAO.md` é a norma de edição (versão de 15/11/2026). As decisões posteriores estão nas skills e valem sobre o manual quando divergirem.
@@ -44,9 +52,9 @@ As skills ficam em `.claude/skills/`; edite só lá. A primeira entrega (14/11/2
 - **Elementos de marca** (régua, logos, logo animado, som de logo, assinaturas) vêm sempre do usuário, na pasta `elementos/` do próprio vídeo, e mudam com a parceria. O Claude não os cria nem altera; só posiciona. Régua **centralizada, encostada na base, o vídeo inteiro**. Faltando algum, pergunte; nunca reaproveite o de outro vídeo por conta própria.
 - **Roteiro:** o final aprovado e o original da equipe ficam em `roteiro/` do vídeo. O texto na tela segue o roteiro final narrado; o original serve para conferir o sentido.
 - **Decisões de 15/11/2026, que valem sobre o manual:** sem vinheta de abertura; duração livre (a narração define); teleorientação, campanha e institucional só com palavras-chave animadas, e registro de ação com legenda completa dinâmica; fechamento só com o logo animado (+ assinaturas de parceiros); transições livres. Tabela em `.claude/skills/telessaude/SKILL.md`.
-- **Tipografia:** arquivos em `fontes tipograficas/`: Poppins (base), Exo 2, Inter, Glacial Indifference, Computer Says No (CC BY-SA, pede atribuição) e Bebas Neue (números grandes). O Claude pode pesquisar e propor fontes novas (regra 11 de `motion/SKILL.md`). Detalhes em `telessaude/fontes.md`.
-- **Cores:** guia do portal em `cores hex/`; valores e regras em `telessaude/cores.md`. Primary `#365DCC`, Brand Strong `#1C306A`, Secondary `#19756F`. O azul é o padrão e aparece em todo vídeo; cada vídeo pode ter uma cor do tema, só em pontos de destaque.
-- `videos-referencia/` tem vídeos aprovados (teleorientação, campanhas, Kits de Telessaúde, ação em Tauá-Mirim, retrospectiva 2025). **O usuário quer variação entre vídeos sem sair da identidade:** o perfil é tendência, não regra.
+- **Tipografia:** arquivos em `biblioteca/marca/fontes/`: Poppins (base), Exo 2, Inter, Glacial Indifference, Computer Says No (CC BY-SA, pede atribuição) e Bebas Neue (números grandes). O Claude pode pesquisar e propor fontes novas (regra 11 de `motion/SKILL.md`). Detalhes em `telessaude/fontes.md`.
+- **Cores:** guia do portal em `biblioteca/marca/cores/`; valores e regras em `telessaude/cores.md`. Primary `#365DCC`, Brand Strong `#1C306A`, Secondary `#19756F`. O azul é o padrão e aparece em todo vídeo; cada vídeo pode ter uma cor do tema, só em pontos de destaque.
+- `biblioteca/videos-publicados/` tem vídeos aprovados (teleorientação, campanhas, Kits de Telessaúde, ação em Tauá-Mirim, retrospectiva 2025). **O usuário quer variação entre vídeos sem sair da identidade:** o perfil é tendência, não regra.
 - Fluxo: conferir o pacote → mapa de cenas → 4 a 6 quadros-chave em tamanho real para aprovação → render da versão principal → ajustes por cena → 16:9, capas e `.srt`.
 
 ## Vídeos (índice)
@@ -72,18 +80,18 @@ Próximos vídeos e reconstruções planejados: `planejamento/`.
 
 ## Pendências do fluxo
 
-- **Banco de elementos:** montar uma biblioteca reutilizável de elementos (SVG primeiro: ícones, órgãos, setas, grafismos; regra 12 de `motion/SKILL.md`).
-- **Banco de efeitos sonoros:** ampliar e organizar `biblioteca-sfx/` (hoje só sintetizados), com nomes descritivos e trechos úteis do áudio do Flow.
+- **Biblioteca geral:** criada em 21/11/2026 (`biblioteca/`). Falta completar com o que está na lista "O que falta" do `biblioteca/README.md` (fechamento horizontal do Telessaúde, régua PET-Saúde em SVG, logos dos parceiros, mapa do Maranhão por município, banco de ícones SVG).
+- **Banco de efeitos sonoros:** ampliar e organizar `biblioteca/sfx/` (hoje só sintetizados), com nomes descritivos e trechos úteis do áudio do Flow.
 - **Tipos ainda não testados:** campanha, registro de ação, horizontal feito do zero, `.srt`. Institucional está sendo testado na série Serviços do NTS. O primeiro de cada um vai mostrar o que falta nas regras.
 - **Vídeo com câmera real:** criar `motion/video-real.md` no primeiro vídeo desse tipo (ferramentas já anotadas em `motion/tecnico.md`).
 - **Editor de quadros-chave:** feito em 16/11/2026 (`ferramentas/editor.mjs`; uso em `motion/tecnico.md`). Falta usar num vídeo real e ajustar pelo uso.
-- **Repositório:** pronto para clonar desde 21/11/2026 (`README.md`, `requirements.txt`, `ferramentas/package.json`, `.gitignore`, `LINKS-DRIVE.md`, `/preparar`). Faltam os links do Drive em `LINKS-DRIVE.md`.
+- **Passagem para outro PC:** a pasta inteira vai pelo Drive (`LINKS-DRIVE.md`, falta preencher o link); o Git fica como histórico local das versões, sem GitHub (decidido em 21/11/2026).
 - **Futuro:** planilha de controle dos vídeos (provavelmente local, sincronizada pelo Google Drive Desktop).
-- Feito: banco de trilhas em `biblioteca-trilhas/` (20/11/2026; 20 faixas por clima, com LUFS e licença no `README.md`; os áudios vêm do Drive).
+- Feito: banco de trilhas em `biblioteca/trilhas/` (20/11/2026; 20 faixas por clima, com LUFS e licença no `README.md`; os áudios vêm do Drive).
 
 ## O que vem em cada vídeo
 
-Cores, fontes e vídeos de referência já estão no projeto. **Os elementos de marca vêm por vídeo, em `elementos/`:** a régua do parceiro, os logos avulsos, quando o vídeo precisar, e o vídeo de fechamento (logo animado com som e assinaturas; ex.: `Intro Telessaude.mp4`, `Intro NTS e PETSAUDE.mp4`, nas versões vertical e horizontal). O Claude não acessa o Canva, então tudo vem exportado.
+Cores, fontes, vídeos publicados e os elementos de marca já entregues estão na `biblioteca/`. **Em cada vídeo, os elementos de marca ficam em `elementos/`** (copiados da biblioteca ou entregues no pacote): a régua do parceiro, os logos avulsos, quando o vídeo precisar, e o vídeo de fechamento (logo animado com som e assinaturas; ex.: `Intro Telessaude.mp4`, `Intro NTS e PETSAUDE.mp4`, nas versões vertical e horizontal). O Claude não acessa o Canva, então tudo vem exportado.
 
 Pacote de cada vídeo: narração (.wav do AI Studio), roteiro final, cenas do Flow (.mp4), folhas de elementos para recorte, régua, fechamento e trilha. Checklist e a regra de confirmar os itens obrigatórios antes de montar em `.claude/skills/telessaude/organizacao.md` e `SKILL.md`.
 

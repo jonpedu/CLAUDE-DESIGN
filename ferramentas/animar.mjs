@@ -21,7 +21,7 @@ import path from 'node:path';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.resolve(AQUI, '..');
-const F = (...p) => pathToFileURL(path.join(RAIZ, 'fontes tipograficas', ...p)).href;
+const F = (...p) => pathToFileURL(path.join(RAIZ, 'biblioteca', 'marca', 'fontes', ...p)).href;
 const FONTES = [
   ['Poppins', 100, F('Poppins', 'Poppins-Thin.ttf')], ['Poppins', 200, F('Poppins', 'Poppins-ExtraLight.ttf')],
   ['Poppins', 300, F('Poppins', 'Poppins-Light.ttf')],
