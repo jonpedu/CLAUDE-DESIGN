@@ -6,7 +6,7 @@ Espelha a organização que o usuário já usa no Google Drive (Compartilhados c
 
 ```
 <SÉRIE>/                              ex.: PET SAUDE
-  0. Videos Horizontais/              versões 16:9, com a mesma estrutura por tema
+  0. Videos Horizontais/              versões 16:9, com a mesma estrutura por tema (organização do Drive)
   <TEMA>/                             ex.: DENGUE, DIABETES, HIPERTENSÃO 01
     PARTE 1/                          um vídeo = uma parte (tema curto pode ter só PARTE 1)
       audios/                         narração do AI Studio (.wav), uma faixa ou por trecho
@@ -17,6 +17,8 @@ Espelha a organização que o usuário já usa no Google Drive (Compartilhados c
     PARTE 2/                          mesma estrutura
   <documentos da série>               ex.: petsaudeorienta.pdf, roteiros da série
 ```
+
+**Neste repositório** os vídeos ficam em `CRIANDO-VIDEOS/<VÍDEO ou SÉRIE>/<TEMA>/` (vídeos novos; uma pasta por vídeo, sem `PARTE N/` quando o tema tem uma parte só) e `REFAZENDO-VIDEOS/<tema>/` (reconstruções em 16:9 de verticais já publicados). A versão 16:9 de um vídeo novo fica na pasta do próprio vídeo, com o sufixo `- horizontal` no nome do arquivo, salvo se o usuário pedir a pasta `0. Videos Horizontais/` da série. A estrutura interna (`audios/`, `roteiro/`, `elementos/`, `trilha sonora/`, `renderizando/`) é a mesma.
 
 Observado no Drive (DENGUE › PARTE 1): o roteiro e o **parecer técnico** (validação da SEMUS) ficam soltos na pasta da parte, em PDF. Leia os dois antes de editar: o parecer pode pedir correções no texto da tela.
 
@@ -50,7 +52,7 @@ Antes de qualquer edição, liste o que existe e aponte o que falta. Os nomes da
 - [ ] Narração em `audios/`
 - [ ] Roteiro final (e original / parecer, se houver)
 - [ ] Elementos para montar as cenas em `elementos/` (personagens, ícones, cenas geradas, imagens)
-- [ ] Fontes da marca disponíveis (`referencias/fontes/`)
+- [ ] Fontes da marca disponíveis (`fontes tipograficas/`, na raiz do projeto)
 - [ ] Régua de marca do parceiro certo (PNG) em `renderizando/` ou `elementos/` — **muda por parceria; se faltar, pedir antes de montar** (nunca copiar a de outro vídeo)
 - [ ] Trilha escolhida (ou candidatas) e efeitos sonoros
 - [ ] Logo animado / som de logo do fechamento, se o vídeo-base não os tiver

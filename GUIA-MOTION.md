@@ -9,9 +9,21 @@ Este arquivo é o mapa para você. O conteúdo completo fica nas skills em `.cla
 ```
 CLAUDE-DESIGN/
   CLAUDE.md                          contexto do projeto (o Claude Code lê ao abrir a pasta)
+  README.md                          instalação num PC novo e abertura com outra conta
+  LINKS-DRIVE.md                     links do material grande (vídeos, áudios, imagens), fora do Git
   MANUAL-EDICAO-TELEORIENTACAO.md    norma da série Telessaúde
   GUIA-MOTION.md                     este mapa
+  planejamento/                      planos: vídeos novos a produzir e vídeos para refazer na horizontal
+  CRIANDO-VIDEOS/                    vídeos novos (cada um com renderizando/_claude/00-estado.md)
+  REFAZENDO-VIDEOS/                  reconstruções em 16:9 de verticais já publicados
+  ferramentas/                       motor e scripts (animar.mjs, mixar.py, preparar.py, novo_video.py…)
+  biblioteca-trilhas/  biblioteca-sfx/   trilhas por clima e efeitos sonoros
+  fontes tipograficas/  cores hex/   fontes e paleta da marca
+  _arquivo/                          entregas antigas, só registro
   .claude/skills/
+    preparar/                        /preparar: primeira conversa num PC ou numa conta nova
+    editar/                          /editar: retoma um vídeo pelo 00-estado.md, uma etapa por vez
+    prompts-flow/                    prompts do Google Flow para as cenas com personagens
     motion/                          SKILL GERAL (qualquer vídeo)
       SKILL.md                       regras de ouro, fluxo, checagem final
       principios.md                  12 princípios, tempos em frames, curvas
@@ -42,10 +54,12 @@ CLAUDE-DESIGN/
 
 ## Como pedir no Claude Code
 
-- **Continuar um vídeo:** `/editar IAM` (ou só `/editar` para escolher). Faz uma etapa e salva o estado em `renderizando/_claude/00-estado.md`; entre etapas, `/clear` limpa a conversa sem perder nada.
+- **PC ou conta nova:** `/preparar`. Confere e instala o ambiente, confere o material do Drive e mostra onde cada vídeo parou.
+- **Continuar um vídeo:** `/editar TELEDIAGNÓSTICO` (ou só `/editar` para escolher). Faz uma etapa e salva o estado em `renderizando/_claude/00-estado.md`; entre etapas, `/clear` limpa a conversa sem perder nada.
 - **Ajustar posição e tamanho pelo olho:** `node ferramentas/editor.mjs "<página .html>" "t1,t2"` abre o editor de quadros; salve e avise no chat.
-- **Vídeo do Telessaúde:** "Edita o vídeo da pasta `videos/hipertensao`, teleorientação, vertical." (tipo: teleorientação, campanha, institucional, registro; formato: vertical ou horizontal)
-- **Reconstruir em horizontal:** "Reconstrói em 16:9 o vídeo `videos-referencia/.../Hipertensão.mp4`." Se tiver os elementos do Canva exportados, mande junto: o resultado fica melhor.
+- **Vídeo novo do Telessaúde:** `/editar DENGUE` (o Claude propõe a pasta em `CRIANDO-VIDEOS/`, cria a estrutura e pede o pacote) e diga o tipo e o formato: teleorientação, campanha, institucional ou registro; vertical ou horizontal.
+- **Prompts do Flow:** "Faz os prompts do Flow do roteiro de teleconsultoria."
+- **Reconstruir em horizontal:** "Reconstrói em 16:9 a Diabetes parte 1" (lista em `planejamento/videos-para-refazer-na-horizontal.md`; pasta `REFAZENDO-VIDEOS/<tema>/`). Mande junto as páginas do Canva exportadas em PNG: o resultado fica melhor.
 - **Vídeo fora da série:** "Faz um vídeo 1:1 de 20 s para o LinkedIn, estilo editorial pastel 3D, com as cores da marca X."
 - **Ajuste fino com nomes de efeito:** "Na cena 3, troca o `pop-in` por `card-rise` e coloca `check-pop` em cada item."
 - **Nova referência:** "Analisa este vídeo e cria um preset em `estilos/` com o método de referência."

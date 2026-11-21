@@ -35,3 +35,6 @@ videos-referencia/
 
 # cópias para envio (o original fica em <SERVIÇO>/roteiro/)
 roteiros para enviar/
+
+# gerado a cada teste do Playwright (tem caminho absoluto da máquina)
+ferramentas/_teste.html

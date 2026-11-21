@@ -67,7 +67,7 @@ Se o pedido não se encaixar em nenhum, use só este arquivo e pergunte o tipo. 
 ## Identidade
 
 ### Régua de marca
-- Arquivo pronto da pasta de referências, sem alteração, centralizado e encostado na base. Tendência observada: **o vídeo inteiro**. Cada formato tem o seu PNG (detalhes no arquivo do formato).
+- Arquivo pronto entregue em `elementos/` do próprio vídeo, sem alteração, centralizado e encostado na base, **o vídeo inteiro** (decisão de 15/11/2026). Cada formato tem o seu PNG (detalhes no arquivo do formato).
 - Há versões por parceiro; use a que vier no pacote do vídeo:
   1. Telessaúde + Gov. Maranhão/SES + sted + SUS Digital + Brasil (padrão).
   2. Telessaúde + sted + PET-Saúde + Prefeitura de São Luís + Ministério da Saúde (projeto PET-Saúde).
@@ -120,7 +120,7 @@ Recursos que se repetem e identificam a marca — escolha alguns por vídeo, nã
 - **Nada de layout estático, e tudo sempre legível.** Listas e grades: o item novo entra **grande numa área livre** (centro no primeiro; depois um canto, ex. inferior direito, junto da área segura) **sem cobrir nenhum outro**; quando chega o próximo, o anterior encolhe para o seu lugar numa grade provisória menor; no fim, a grade toda cresce para o tamanho final. **Nunca** apagar, esmaecer ou cobrir itens já mostrados (devolutiva da v2).
 - **Escala dinâmica (regra central do usuário, 16/11/2026): quanto menos elementos na tela, maiores eles são; a cada elemento novo, todos se redimensionam e se reposicionam** com mola para abrir espaço. Nunca o contrário (algo crescer quando outro entra, ou um espaço vazio esperando a próxima animação). Ex.: o enfermeiro começa grande e diminui quando o cérebro e o texto entram; o relógio entra grande e encolhe enquanto "em até / 4 horas / e 30 minutos" aparecem; cartões com escala e espaçamento que mudam a cada etapa. Grades não precisam ser rígidas nem alinhadas à esquerda: posições alternadas (1º acima à esquerda, 2º um pouco mais abaixo à direita etc.), com folga entre si e do título.
 - **Deslocamento suave para abrir espaço (devolutiva da Hipertensão parte 2, 15/11/2026):** a escala dinâmica vale também para a **posição**. O que está sozinho fica centralizado (na horizontal e na vertical). Quando algo entra **acima**, o conjunto desce um pouco; quando algo entra **abaixo**, ele sobe um pouco. Dois blocos que vão receber um elemento entre eles começam próximos e **se afastam** para abrir espaço a ele (ex.: "mais raros" e "pode ser causada por outras doenças" se afastam e a faixa "Hipertensão secundária" entra no meio). Movimentos sempre curtos e com mola (~0,8 s). Ao montar o mapa de cenas, procure esses momentos no vídeo inteiro, não só onde o usuário apontou. Implementação: `data-k="t:dx,dy,escala;..."` em `REFAZENDO-VIDEOS/hipertensao 2/renderizando/_claude/animacao/hipertensao2_h.html`.
-- **Fundo branco nunca "frio" (devolutiva da Hipertensão parte 2, 15/11/2026):** cenas de fundo claro ganham um **fundo vivo sutil**: 2–3 manchas de cor bem diluídas (7–13% de opacidade) que se movem devagar como líquido, no azul do núcleo + a cor do tema da cena, e uma textura de pontos azuis leves só nas bordas, deslizando. Fica por baixo de tudo e não compete com o conteúdo. Implementação: `data-fundo="quente|misto|azul|verde"` na cena, em `hipertensao2_h.html`.
+- **Fundo branco nunca "frio" (devolutiva da Hipertensão parte 2, 15/11/2026):** cenas de fundo claro ganham um **fundo vivo sutil**: 2–3 manchas de cor bem diluídas (7–13% de opacidade) que se movem devagar como líquido, no azul do núcleo + a cor do tema da cena, e uma textura de pontos azuis leves só nas bordas, deslizando. Fica por baixo de tudo e não compete com o conteúdo. Implementação: `data-fundo="quente|misto|azul|verde"` na cena, na mesma página `hipertensao2_h.html`.
 - **Impactos pontuais:** onda de choque, faíscas e tremor curto só em palavras de peso (o pico da pressão, "elevados", alerta), como no gancho da Hipertensão parte 2 e no IAM v5; nunca em toda entrada.
 - **Objeto que sai pela borda mostra o que importa:** ao crescer e sair do quadro (celular), gire para que a parte com a informação (o número na tela) continue visível.
 - **Lista que cresce sobe junto:** quando entra um item, título e itens sobem um pouco com mola (elástico).
@@ -175,7 +175,7 @@ Ritmo: um elemento novo a cada ~2 s; layout muda a cada 4–8 s. Movimento calmo
 | Cores | **Azul da marca é o padrão** (tons podem variar). Cor do tema por vídeo permitida, **só em pontos de destaque**; todo vídeo mantém algo azul. |
 | Loudness | −14 LUFS, pico −1 dBTP (padroniza a variação das referências). |
 
-O `MANUAL-EDICAO-TELEORIENTACAO.md` foi atualizado com estas decisões (versão de 15/11/2026), local e online.
+O `MANUAL-EDICAO-TELEORIENTACAO.md` traz estas decisões (versão de 15/11/2026); a cópia do repositório é a que vale.
 
 ## Antes de entregar
 Rode a checagem final de `motion/SKILL.md` e o checklist do tipo de vídeo.

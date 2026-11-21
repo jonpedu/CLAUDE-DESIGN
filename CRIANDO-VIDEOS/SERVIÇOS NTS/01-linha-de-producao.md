@@ -1,6 +1,6 @@
 # Linha de produção: Serviços do NTS
 
-**Atualizado em 20/11/2026.** Um quadro por vídeo, da validação do roteiro até a publicação. Atualize a cada etapa concluída (o Claude atualiza junto com o `00-estado.md` do vídeo). **Este `.md` é a fonte; a versão para o usuário e a equipe é a página online** (https://claude.ai/artifact/BbL1Wd6C1BdcENfFEbBwEL, arquivo `linha-de-producao-online.html`): a cada mudança aqui, passe para a página e republique. Não há outra versão HTML (decidido em 20/11/2026). Histórico das validações: `00-checklist.md` e documento "Vídeos novos a produzir".
+**Atualizado em 20/11/2026.** Um quadro por vídeo, da validação do roteiro até a publicação. Atualize a cada etapa concluída (o Claude atualiza junto com o `00-estado.md` do vídeo). **Este `.md` é a fonte; a versão para o usuário e a equipe é a página `linha-de-producao-online.html`**, publicada como página online. A página de 20/11/2026 (https://claude.ai/artifact/BbL1Wd6C1BdcENfFEbBwEL) é da conta antiga: na conta do Núcleo, publique uma página nova a partir do `.html` e troque o link aqui. A cada mudança neste `.md`, passe para a página e republique. Não há outra versão HTML (decidido em 20/11/2026). Histórico das validações: `00-checklist.md` e documento "Vídeos novos a produzir".
 
 > **Em produção:** Teleorientação (piloto) e Telediagnóstico. **Pode começar depois:** Teleconsultoria (roteiro com ok completo). A Teleconsulta está aprovada só para o vídeo Diferença entre os Serviços.
 
@@ -37,7 +37,7 @@ Legenda: ✅ feito · ⏳ em andamento ou aguardando · 🟣 aprovado só para a
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Teleconsulta | 🟣 | — | — | — | — | — | — | — | — | — |
 | Teleorientação | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⏳ | — | — |
-| Telediagnóstico | ✅ | ✅ | ✅ | ✅ (sem Flow) | ✅ | — | — | — | — | — |
+| Telediagnóstico | ✅ | ✅ | ✅ | ✅ (sem Flow) | ✅ | ⏳ (v4: cenas 5, 6, 7, 9 e 10 a implementar) | — | — | — | — |
 | Teleconsultoria | ✅ | — | — | — | — | — | — | — | — | — |
 | Teleducação | ⏳ | — | — | — | — | — | — | — | — | — |
 | Teleinterconsulta | ⏳ | — | — | — | — | — | — | — | — | — |

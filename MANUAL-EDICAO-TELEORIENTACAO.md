@@ -1,6 +1,6 @@
 # Manual de Edição — Vídeos de Teleorientação Telessaúde MA
 
-Versão de 15/11/2026 (decisões sobre vinheta, duração, legenda, fechamento, transições, régua, área segura e organização de pastas) · versão online (editável, sincronizada em 15/11/2026): https://claude.ai/artifact/47ZcX6jxepE9TGjvvcCH22
+Versão de 15/11/2026 (decisões sobre vinheta, duração, legenda, fechamento, transições, régua, área segura e organização de pastas). **Esta cópia do repositório é a que vale.** A versão online de 15/11/2026 ficou na conta antiga e não é mais editada. Regras mais novas, por exemplo sobre transições, escala dinâmica, som e personagens, estão em `.claude/skills/telessaude/SKILL.md` e valem sobre este manual quando divergirem.
 
 Este manual define como todo vídeo de teleorientação do Telessaúde Maranhão é editado, para que cada peça saia com a mesma identidade, duração e qualidade, seja quem for o editor, inclusive o Claude.
 
@@ -67,7 +67,7 @@ As pastas `audios/`, `roteiro/`, `elementos/` e `trilha sonora/` são de entrada
 
 **Nomes dos arquivos de cena:** prefixo com o número da cena, para que a ordem seja óbvia: `01_cena_abertura.mp4`, `02_cena_personagem.mp4`.
 
-**Cenas geradas são takes:** os clipes com personagens (cerca de 10 s, gerados no Google AI Studio/Flow) não são cenas finalizadas. O editor usa só os trechos úteis, de qualquer parte do clipe, e pode repetir um trecho no mesmo vídeo (por exemplo, o personagem acenando ou com uma expressão específica), variando enquadramento ou momento para não parecer repetição. Como a narração é separada, gestos e boca são sincronizados com a fala sempre que possível; nas pausas, entram trechos com a boca fechada. Regras detalhadas em `skills/motion/takes.md`.
+**Cenas geradas são takes:** os clipes com personagens (cerca de 10 s, gerados no Google AI Studio/Flow) não são cenas finalizadas. O editor usa só os trechos úteis, de qualquer parte do clipe, e pode repetir um trecho no mesmo vídeo (por exemplo, o personagem acenando ou com uma expressão específica), variando enquadramento ou momento para não parecer repetição. Como a narração é separada, gestos e boca são sincronizados com a fala sempre que possível; nas pausas, entram trechos com a boca fechada. Regras detalhadas em `.claude/skills/motion/takes.md`.
 
 **Cenas geradas em vídeo vertical:** se a cena vier em 16:9, o editor recorta para 9:16 mantendo o rosto ou a ação principal no centro. Quando o recorte cortar algo importante, a cena entra reduzida sobre um fundo da identidade. Sempre que possível, gere as cenas já na proporção do formato principal.
 

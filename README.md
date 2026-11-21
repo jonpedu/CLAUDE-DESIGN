@@ -1,47 +1,47 @@
 # Vídeos do Telessaúde Maranhão com o Claude Code
 
-Repositório do fluxo de edição local dos vídeos do Telessaúde Maranhão (NTS-UFMA): skills do Claude Code (`.claude/skills/`), normas, ferramentas (`ferramentas/`), fontes, cores, efeitos sonoros e os textos de cada vídeo. O material grande (vídeos, áudios, renders) fica no Drive: veja [LINKS-DRIVE.md](LINKS-DRIVE.md).
+Repositório do fluxo de edição local dos vídeos do Telessaúde Maranhão (NTS-UFMA): skills do Claude Code (`.claude/skills/`), normas, ferramentas (`ferramentas/`), fontes, cores, efeitos sonoros, planos de produção e os textos de trabalho de cada vídeo (estado, roteiros, páginas de animação, mixagens). O material grande (vídeos, áudios, imagens, renders) fica no Drive: [LINKS-DRIVE.md](LINKS-DRIVE.md).
 
-Ponto de partida para o Claude: [CLAUDE.md](CLAUDE.md). Mapa das skills para pessoas: [GUIA-MOTION.md](GUIA-MOTION.md).
+- Ponto de partida para o Claude: [CLAUDE.md](CLAUDE.md).
+- Mapa das skills para pessoas: [GUIA-MOTION.md](GUIA-MOTION.md).
+- Planos de vídeos: [planejamento/](planejamento/).
 
-## 1. Instalar (Windows)
+## Começo rápido (PC novo, conta nova)
 
-Use um caminho **sem acento** se puder (ex. `C:\projetos\CLAUDE-DESIGN`); as ferramentas já contornam acentos, mas fica mais simples.
+1. Instale o **Git** e o **Claude Code** (app desktop do Claude, aba Code; ou `npm install -g @anthropic-ai/claude-code`) e entre com a conta que vai usar.
+2. Clone o repositório numa pasta, de preferência **sem acento no caminho** (ex.: `C:\projetos\CLAUDE-DESIGN`):
+
+   ```powershell
+   git clone <url-do-repositório-privado> C:\projetos\CLAUDE-DESIGN
+   ```
+
+3. Copie do Drive o material grande para dentro do clone ([LINKS-DRIVE.md](LINKS-DRIVE.md)), **sem substituir** os arquivos que vieram do Git.
+4. Abra a pasta do clone no Claude Code e digite **`/preparar`**. O Claude confere tudo e, com o seu ok, instala o que faltar (ffmpeg, Python e pacotes, Node, Playwright, Chrome). Depois mostra onde cada vídeo parou e qual é o próximo passo.
+5. Continue a produção com `/editar <vídeo>`, por exemplo `/editar TELEDIAGNÓSTICO`. Entre uma etapa e outra, `/clear` limpa a conversa sem perder nada, porque o estado fica em `renderizando/_claude/00-estado.md` de cada vídeo.
+
+A conta nova **não tem a memória da conta antiga**: o que importa (gostos do usuário, ajustes do Windows, decisões de cada vídeo) está nas skills, no `CLAUDE.md` e nos `00-estado.md`.
+
+## Instalação manual (o que o `/preparar` faz)
 
 | Ferramenta | Como instalar | Conferir |
 | --- | --- | --- |
 | Git | `winget install Git.Git` | `git --version` |
-| ffmpeg (completo, com libx264 e loudnorm) | `winget install Gyan.FFmpeg` | `ffmpeg -version` |
-| Python 3.10+ (com o lançador `py`) | `winget install Python.Python.3.12` | `py --version` (no Windows, `python` pode abrir a loja; use `py`) |
-| Pacotes Python | `py -m pip install -r requirements.txt` | `py -c "import PIL, numpy, cv2, faster_whisper"` |
+| Python 3.10+ (com o lançador `py`) | `winget install Python.Python.3.12` | `py --version` (no Windows, `python` pode abrir a loja: use `py`) |
+| ffmpeg completo (libx264, loudnorm) | `winget install Gyan.FFmpeg` | `ffmpeg -version` |
 | Node 18+ | `winget install OpenJS.NodeJS.LTS` | `node -v` |
-| Pacotes Node (Playwright) | `cd ferramentas` e `npm install` | `node ferramentas/teste-playwright.mjs` |
-| Google Chrome | instalado normalmente | o Playwright usa `channel: 'chrome'` (não baixa navegador próprio) |
-| Fontes | instale os arquivos de `fontes tipograficas/` no Windows (botão direito > Instalar para todos os usuários) | as páginas também carregam as fontes direto da pasta |
-| Claude Code | app desktop do Claude (aba Code) ou `npm install -g @anthropic-ai/claude-code` | `claude --version` |
+| Google Chrome | `winget install Google.Chrome` | o Playwright usa o Chrome instalado (`channel: 'chrome'`) e não baixa navegador próprio |
+| Pacotes Python (Pillow, numpy, OpenCV, faster-whisper) | `py -m pip install -r requirements.txt` | `py -c "import PIL, numpy, cv2, faster_whisper"` |
+| playwright-core | `cd ferramentas` e depois `npm install` | `node ferramentas/teste-playwright.mjs` grava `ferramentas/teste.png` |
 
-O faster-whisper baixa o modelo na primeira transcrição (precisa de internet nessa vez).
+Depois de instalar pelo `winget`, abra um terminal novo (ou reabra o Claude Code) para o PATH valer. Conferência completa, sem instalar nada: `py ferramentas/preparar.py`.
 
-## 2. Clonar e completar o material
+- **Fontes:** ficam em `fontes tipograficas/` e vêm no Git. O motor de animação carrega as fontes direto da pasta, então não é preciso instalá-las no Windows para renderizar.
+- **faster-whisper** baixa o modelo de transcrição na primeira vez (precisa de internet nessa vez).
 
-```powershell
-git clone <url-do-repositório-privado> CLAUDE-DESIGN
-```
+## O que fica fora do Git
 
-Depois copie do Drive as pastas listadas em [LINKS-DRIVE.md](LINKS-DRIVE.md) para dentro do clone, com os mesmos nomes. Sem elas as skills funcionam, mas os vídeos em andamento não têm mídia para renderizar.
-
-## 3. Abrir no Claude Code com outra conta
-
-1. Abra o Claude Code (app desktop, aba Code, ou `claude` no terminal) e entre com a conta que vai usar.
-2. Escolha a pasta do clone como pasta do projeto. O Claude lê o `CLAUDE.md` sozinho e as skills de `.claude/skills/` (`motion`, `telessaude`, `editar`, `prompts-flow`) aparecem automaticamente.
-3. Primeira mensagem sugerida: "Confira se ffmpeg, py (Pillow, numpy, OpenCV, faster-whisper), Node e Playwright com Chrome estão funcionando." (é o checklist de `.claude/skills/motion/tecnico.md`).
-4. Para continuar um vídeo: `/editar <nome do vídeo>`. Vídeo novo: `py ferramentas/novo_video.py "<pasta>" <TEMA>`.
-
-A outra conta **não tem a memória da conta original**: tudo o que importa (gostos do usuário, ajustes do Windows, decisões) está nas skills e no `CLAUDE.md`. Regra nova que se repete vai para a skill, não para a memória.
-
-## 4. O que fica fora do Git
-
-- Material grande: [LINKS-DRIVE.md](LINKS-DRIVE.md).
-- `node_modules/` (recriado por `npm install`), caches e `.claude/settings.local.json` (permissões locais).
-- Documentos online de planejamento, no Claude Docs da conta original: "Vídeos para refazer na horizontal", "Vídeos novos a produzir" e a versão online do manual (link em `CLAUDE.md`). Compartilhe-os com a nova conta ou exporte em Markdown.
-- `_arquivo/skills-entrega-original/`: primeira entrega das skills (14/11/2026), desatualizada; só registro. As skills em uso ficam em `.claude/skills/`.
+- **Material grande:** vídeos, áudios, imagens, PDFs e renders ([LINKS-DRIVE.md](LINKS-DRIVE.md)). Exceções que vêm no Git: `fontes tipograficas/`, `cores hex/`, `biblioteca-sfx/`.
+- **Kit de marca:** régua do parceiro, logos e fechamento animado vêm dentro de `elementos/` de cada vídeo (Drive). O Claude não cria nem altera esses elementos.
+- `node_modules/` (recriado por `npm install`), caches e `.claude/settings.local.json` (permissões desta máquina).
+- **Documentos online da conta antiga** (manual, planos e página da linha de produção no Claude Docs): foram exportados para o repositório (`MANUAL-EDICAO-TELEORIENTACAO.md`, `planejamento/`, `CRIANDO-VIDEOS/SERVIÇOS NTS/01-linha-de-producao.md` e `linha-de-producao-online.html`). Na conta nova, a fonte é o repositório; publique páginas novas a partir desses arquivos se a equipe precisar.
+- `_arquivo/`: entregas antigas (primeira versão das skills, plano inicial), só como registro.

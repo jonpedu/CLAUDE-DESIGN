@@ -1,12 +1,12 @@
 # Pipeline técnico local
 
-Tudo roda na máquina do usuário (Windows). Na primeira sessão, verifique `ffmpeg -version`, `python --version` (com Pillow, numpy, opencv-python) e `node -v`. Se faltar algo, diga ao usuário o que instalar antes de começar.
+Tudo roda na máquina do usuário (Windows). Numa máquina ou conta nova, rode `/preparar` (ou `py ferramentas/preparar.py`): confere ffmpeg, Python e pacotes (`requirements.txt`), Node, `playwright-core` e Chrome, e o material de cada vídeo. Instalação no `README.md`.
 
 ## Windows (ajustes conhecidos; valem em qualquer máquina Windows, sobretudo com acento no caminho)
 
-- Python é `py` (`python` abre a loja). Pillow, numpy, OpenCV, faster-whisper instalados. `PYTHONIOENCODING=utf-8` ao imprimir nomes com acento.
+- Python é `py` (`python` abre a loja). Pacotes: Pillow, numpy, OpenCV, faster-whisper (`py -m pip install -r requirements.txt`). `PYTHONIOENCODING=utf-8` ao imprimir nomes com acento.
 - `cv2.imread`/`imwrite` falham com "Usuário" no caminho: leia e grave imagens com Pillow.
-- Playwright: `playwright-core` em `ferramentas/`, `channel: 'chrome'`, página por `file://` (não `setContent`); em Node, caminhos com `fileURLToPath`.
+- Playwright: `playwright-core` em `ferramentas/` (`npm install` lá dentro), `channel: 'chrome'`, página por `file://` (não `setContent`); em Node, caminhos com `fileURLToPath`.
 - faster-whisper: o áudio entra decodificado pelo ffmpeg (já feito em `transcrever.py`).
 - `drawtext` do ffmpeg trava aqui (fontconfig): para folhas de contato, use `ferramentas/folha.py` ou Pillow.
 
@@ -100,7 +100,7 @@ A sub-skill de marca define as pastas de entrada (no Telessaúde, `telessaude/or
       transcricao/        tempo por palavra
       decupagem/          takes e trechos úteis
       camadas/            recortes e elementos preparados
-      animacao/           página HTML (render(t)), gera_mix.py → mix.json, narração editada
+      animacao/           página HTML (render(t)), mix_vN.json (mixagem), narração editada
       quadros/            quadros de prova e folhas com a área segura
       versoes-anteriores/ prévias e versões em avaliação
   <TEMA> - estudo da edição.md                       registro do vídeo (o que entrou, técnicas, revisões)
@@ -118,7 +118,7 @@ A sub-skill de marca define as pastas de entrada (no Telessaúde, `telessaude/or
 >   saida/         vídeos finais, capas, .srt
 > ```
 
-`ferramentas/novo_video.py <pasta>` cria essa estrutura e o `00-estado.md`. O motor é sempre o de `ferramentas/`; por vídeo ficam só os **dados**: a página da animação e o `gera_mix.py`, que é a partitura dos efeitos sonoros daquele vídeo (eventos e volumes) e gera o `mix.json` lido por `mixar.py`.
+`ferramentas/novo_video.py <pasta>` cria essa estrutura e o `00-estado.md`. O motor é sempre o de `ferramentas/`; por vídeo ficam só os **dados**: a página da animação e a mixagem: um `mix_vN.json` lido por `mixar.py` (narração, trilha, efeitos sonoros com tempos e volumes, fechamento). No AVC ele era gerado por um `gera_mix.py`; nos vídeos mais novos é escrito direto.
 
 ## Regras de render
 

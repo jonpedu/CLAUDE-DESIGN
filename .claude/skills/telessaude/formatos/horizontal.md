@@ -1,8 +1,8 @@
 # Formato: horizontal 16:9
 
-YouTube (vídeo), apresentações, telas em eventos e salas de espera. Referências horizontais: a **reconstrução feita pelo usuário no Canva** (Hipertensão parte 1, PET-Saúde; padrões na seção de reconstrução, no fim) e a **primeira reconstrução aprovada feita pelo Claude**, a Hipertensão parte 2 (15/11/2026; estudo completo em `REFAZENDO-VIDEOS/hipertensao 2/Hipertensão parte 2 - estudo da edição.md`, fonte `renderizando/_claude/animacao/hipertensao2_h.html`, que serve de base de motor para as próximas). As demais regras traduzem a identidade do vertical para 16:9. Quando o usuário mandar outros vídeos horizontais aprovados, analise-os (`motion/metodo-referencia.md`) e atualize este arquivo. Aplique junto com `telessaude/SKILL.md` e o arquivo do tipo em `tipos/`.
+YouTube (vídeo), apresentações, telas em eventos e salas de espera. Referências horizontais: a **reconstrução feita pelo usuário no Canva** (Hipertensão parte 1, PET-Saúde; padrões na seção de reconstrução, no fim) e a **primeira reconstrução aprovada feita pelo Claude**, a Hipertensão parte 2 (15/11/2026; estudo completo em `REFAZENDO-VIDEOS/hipertensao 2/Hipertensão parte 2 - estudo da edição.md`, fonte `REFAZENDO-VIDEOS/hipertensao 2/renderizando/_claude/animacao/hipertensao2_h.html`, que serve de base de motor para as próximas). As demais regras traduzem a identidade do vertical para 16:9. Quando o usuário mandar outros vídeos horizontais aprovados, analise-os (`motion/metodo-referencia.md`) e atualize este arquivo. Aplique junto com `telessaude/SKILL.md` e o arquivo do tipo em `tipos/`.
 
-Há dois casos: **vídeo novo horizontal** (pensado em 16:9 desde o início) e **reconstrução** de um vídeo vertical já publicado (demanda existente, seção no fim; **só quando o usuário pedir**; a primeira foi a Hipertensão parte 2, em 15/11/2026). Versões horizontais ficam em `<SÉRIE>/0. Videos Horizontais/` (ver `organizacao.md`).
+Há dois casos: **vídeo novo horizontal** (pensado em 16:9 desde o início) e **reconstrução** de um vídeo vertical já publicado (demanda existente, seção no fim; **só quando o usuário pedir**; a primeira foi a Hipertensão parte 2, em 15/11/2026). Reconstruções ficam em `REFAZENDO-VIDEOS/<tema>/`; a versão 16:9 de um vídeo novo fica na pasta do próprio vídeo (ver `organizacao.md`). A lista de reconstruções pendentes está em `planejamento/videos-para-refazer-na-horizontal.md`.
 
 ## Tela
 
@@ -59,7 +59,7 @@ Objetivo: o vídeo horizontal deve parecer feito para 16:9, com o mesmo áudio, 
 - **Cenas ilustradas 9:16** (o corpo com a lupa) viram fundo esmaecido atrás de outro elemento, ou são estendidas para os lados.
 - **Capa:** coração à esquerda e título em duas linhas à direita, sobre o mesmo fundo vermelho em degradê radial do vertical.
 - **Fechamento:** o mesmo logo centralizado do vertical.
-- **Régua:** essa versão saiu **sem régua**. Ainda não está decidido se foi de propósito: pergunte antes de uma reconstrução. Se tiver régua, ela precisa da versão 16:9 entregue pelo usuário.
+- **Régua:** a versão do Canva saiu **sem régua**; na finalização, o Claude aplicou a **régua em ilha** (seção Régua e fechamento), e esse virou o padrão das reconstruções (Hipertensão partes 1 e 2). Confirme com o usuário qual PNG usar.
 
 Ordem de preferência:
 

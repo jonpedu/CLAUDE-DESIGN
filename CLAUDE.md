@@ -1,91 +1,100 @@
-# Contexto do projeto — Edição de vídeos de teleorientação (Telessaúde Maranhão)
+# Contexto do projeto — Vídeos do Telessaúde Maranhão (NTS-UFMA)
 
-Este arquivo resume a conversa de planejamento (claude.ai, 14/11/2026) para dar contexto ao Claude Code nesta pasta.
+O Claude Code produz e edita, **localmente**, os vídeos do Telessaúde Maranhão a partir dos materiais da equipe. Este arquivo é o ponto de partida de toda conversa nesta pasta. Atualizado em 21/11/2026, na passagem do projeto para a conta do Núcleo de Telessaúde, em outro PC.
+
+## Primeira conversa num PC ou numa conta nova
+
+Rode **`/preparar`** (`.claude/skills/preparar/`): confere e instala o ambiente, confere o material grande que vem do Drive e mostra onde cada vídeo parou. Instalação manual e o que fica fora do Git: `README.md` e `LINKS-DRIVE.md`.
+
+**Esta conta não tem a memória da conta antiga.** Tudo o que importa está aqui, nas skills e nos `00-estado.md` de cada vídeo. Regra que se repete vai para a skill certa, não para a memória (a memória custa tokens em toda conversa e não passa de uma conta para outra).
 
 ## Skills deste projeto (leia antes de editar qualquer vídeo)
 
-**Instalação:** feita em 15/11/2026. As skills ficam em `.claude/skills/`; edite só lá. A entrega original foi arquivada em `_arquivo/skills-entrega-original/` (21/11/2026), desatualizada; não copie de novo.
+As skills ficam em `.claude/skills/`; edite só lá. A primeira entrega (14/11/2026) está arquivada em `_arquivo/skills-entrega-original/`, desatualizada; não copie de volta.
 
-- `.claude/skills/motion/` é a skill geral de motion: princípios, catálogo de efeitos nomeados, método para usar referências, formatos e áreas seguras, som, pipeline técnico e presets de estilo (`estilos/`). Vale para qualquer vídeo, de teleorientação ou não.
-- `.claude/skills/telessaude/` é a sub-skill da marca Telessaúde, aplicada por cima da geral a **qualquer** vídeo do Telessaúde. Organização em matriz **formato × tipo** (decidido em 15/11/2026):
-  - `telessaude/formatos/`: `vertical.md` (9:16) e `horizontal.md` (16:9, inclui a reconstrução de vídeos verticais já publicados em horizontal, que é uma demanda existente).
-  - `telessaude/tipos/`: `teleorientacao.md`, `campanha.md`, `institucional.md` (material digital) e `registro.md` (captação real em campo). A antiga skill `teleorientacao` virou `tipos/teleorientacao.md`.
-- Estilo pedido nas cenas geradas no AI Studio/Flow: **motion design + flat design**.
-- **Elementos de marca (régua, logos, logo animado, som de logo, assinaturas) são sempre fornecidos pelo usuário.** O Claude não os cria nem altera; só posiciona (régua na barra inferior). Faltando algum, pergunta. A identidade visual ainda está em construção (15/11/2026).
-- **Pastas de cada vídeo:** `<SÉRIE>/<TEMA>/PARTE N/` com `audios/`, `roteiro/`, `elementos/`, `trilha sonora/` e `renderizando/`; horizontais em `<SÉRIE>/0. Videos Horizontais/`. Detalhes em `.claude/skills/telessaude/organizacao.md`.
-- Reconstrução de verticais em horizontal: em andamento sob pedido; regras em `.claude/skills/telessaude/formatos/horizontal.md`.
-- **Papel do Claude (decidido em 15/11/2026): o vídeo inteiro.** Monta a base (antes no Canva: telas, textos, animação, transições) e finaliza (antes no Premiere: régua, narração, trilha, efeitos sonoros, mixagem −14 LUFS, exportação), a partir dos elementos fornecidos pelo usuário. Passo a passo em `.claude/skills/telessaude/producao.md`.
-- Para outro cliente ou marca, crie uma nova sub-skill copiando `telessaude/` e mantendo só o que é específico; para um novo tipo de vídeo do Telessaúde, crie `telessaude/tipos/<nome>.md`.
-- `analise-referencias/RELATORIO-ANALISE.md` tem a análise dos vídeos de referência (15/11/2026) que deu origem ao perfil.
+- **`/preparar`** (`preparar/`, 21/11/2026): primeira conversa numa máquina ou conta nova (ver acima).
+- **`/editar [vídeo]`** (`editar/`, 16/11/2026): retoma o vídeo pelo `00-estado.md`, faz uma etapa e salva o estado; permite `/clear` entre etapas sem perder o contexto.
+- `motion/` é a skill geral de motion: princípios, catálogo de efeitos nomeados, método para usar referências, formatos e áreas seguras, som, pipeline técnico (`tecnico.md`, com os ajustes do Windows) e presets de estilo (`estilos/`). Vale para qualquer vídeo.
+- `telessaude/` é a sub-skill da marca, aplicada por cima da geral a **qualquer** vídeo do Telessaúde. Organização em matriz **formato × tipo** (15/11/2026):
+  - `telessaude/formatos/`: `vertical.md` (9:16) e `horizontal.md` (16:9, inclui a reconstrução em 16:9 de vídeos verticais já publicados).
+  - `telessaude/tipos/`: `teleorientacao.md`, `campanha.md`, `institucional.md` (material digital) e `registro.md` (captação real em campo).
+  - `organizacao.md` (pastas de cada vídeo), `producao.md` (etapas), `cores.md`, `fontes.md`.
+- **`prompts-flow/`** (20/11/2026): prompts do Google Flow a partir do roteiro aprovado, só para as cenas que o motion gráfico não resolve (personagens e ações). Substitui o Gem do Gemini.
 - `GUIA-MOTION.md`, na raiz, é o mapa dessas skills para o usuário.
-- **`.claude/skills/prompts-flow/`** (20/11/2026): prompts do Google Flow a partir do roteiro aprovado, só para as cenas que o motion gráfico não resolve (personagens e ações). Substitui o Gem do Gemini. Testada primeiro na série Serviços do NTS.
-- **`/editar [vídeo]`** (`.claude/skills/editar/`, 16/11/2026): retoma o vídeo pelo `00-estado.md`, faz uma etapa e salva o estado; permite `/clear` entre etapas sem perder o contexto.
-
-## Plano de trabalho (decidido em 14/11/2026)
-
-- O fluxo de edição em uso é o de `.claude/skills/telessaude/producao.md`, testado em AVC, IAM e Hipertensão parte 2. A ideia inicial de partir da skill **fluxo-de-edicao** (github.com/LeiteZ/fluxo-de-edicao) não foi adotada; `INICIO-CLAUDE-CODE.md` ficou só como registro histórico.
-- `videos-referencia/` tem vídeos finalizados e aprovados (teleorientação, campanhas como glaucoma e câncer de pênis, Kits de Telessaúde, ação em Tauá-Mirim, retrospectiva 2025). Servem para extrair a identidade e o estilo. **O usuário quer variação entre vídeos sem sair da identidade:** o perfil é tendência, não regra.
-- **Tipografia:** arquivos em `fontes tipograficas/` (entregues em 15/11/2026): Poppins, Exo 2, Inter, Glacial Indifference, Computer Says No (a fonte "Computer"; licença CC BY-SA, pede atribuição) e Bebas Neue (números grandes, entregue em 16/11/2026). O Claude pode pesquisar e propor fontes novas (regra 11 de `.claude/skills/motion/SKILL.md`). Detalhes em `.claude/skills/telessaude/fontes.md`.
-- **Cores:** guia do portal em `cores hex/` (clara e escura); valores medidos e regras em `.claude/skills/telessaude/cores.md`. Primary `#365DCC`, Brand Strong `#1C306A`, Secondary `#19756F`. Os tons de azul podem variar, como nos vídeos de referência. Cada vídeo pode ter uma cor do tema (roxo, amarelo, vermelho, cor da campanha), só em pontos de destaque; o azul é o padrão e aparece em todo vídeo, porque remete ao núcleo (decidido em 15/11/2026).
+- Para outro cliente ou marca, crie uma nova sub-skill copiando `telessaude/` e mantendo só o que é específico; para um novo tipo de vídeo do Telessaúde, crie `telessaude/tipos/<nome>.md`.
 
 ## Quem e o quê
 
-- O usuário tem formação em engenharia da computação e produz vídeos animados de teleorientação em saúde, com cerca de 1 min, para o Telessaúde Maranhão (NTS-UFMA).
-- Publicação: Instagram (@telessaude.ma, Reels) e YouTube (Telessaúde Maranhão, Shorts e vídeo 16:9). Site: telessaude.ufma.br.
-- Fluxo atual: narração no **Google AI Studio**, cenas com personagens no **Google Flow**, finalização no **Canva** (grafismos, imagens, textos, transições).
-- Objetivo agora: o Claude edita os vídeos **localmente, nesta máquina**, a partir dos materiais fornecidos, seguindo a mesma identidade visual. O usuário não quer que a edição rode na nuvem.
+- O usuário tem formação em engenharia da computação e produz vídeos animados para o Telessaúde Maranhão (NTS-UFMA): teleorientação em saúde (cerca de 1 min), campanhas, institucionais e registros de ação.
+- Publicação: Instagram (@telessaude.ma, Reels), YouTube (Telessaúde Maranhão, Shorts e vídeo 16:9) e WhatsApp. Site: telessaude.ufma.br.
+- **Papel do Claude (15/11/2026): o vídeo inteiro.** Monta a base (antes no Canva: telas, textos, animação, transições) e finaliza (antes no Premiere: régua, narração, trilha, efeitos sonoros, mixagem −14 LUFS, exportação), a partir dos elementos fornecidos. Passo a passo em `.claude/skills/telessaude/producao.md`. A equipe faz roteiro, narração (**Google AI Studio**) e cenas com personagens (**Google Flow**, estilo **motion design + flat design**).
+- Tudo roda **nesta máquina**; o usuário não quer a edição na nuvem.
 
-## Documento normativo
+## Documentos de referência
 
-- `MANUAL-EDICAO-TELEORIENTACAO.md` nesta pasta é a norma de edição. Siga-o em todo vídeo.
-- A versão online e editável fica em https://claude.ai/artifact/47ZcX6jxepE9TGjvvcCH22. Se as duas divergirem, pergunte qual vale.
+- `MANUAL-EDICAO-TELEORIENTACAO.md` é a norma de edição (versão de 15/11/2026). As decisões posteriores estão nas skills e valem sobre o manual quando divergirem.
+- `planejamento/`: os planos de vídeos, exportados em 21/11/2026 do Claude Docs da conta antiga: `videos-novos-a-produzir.md` (série Serviços do NTS, tutorial da Sofia) e `videos-para-refazer-na-horizontal.md` (reconstruções em 16:9). **A partir de agora a fonte é o repositório**: atualize esses arquivos. As versões online antigas (manual, planos, página da linha de produção) eram da outra conta e não são mais editadas.
+- `analise-referencias/RELATORIO-ANALISE.md`: análise dos 22 vídeos de referência (15/11/2026) que deu origem ao perfil da marca.
+- `_arquivo/INICIO-CLAUDE-CODE.md`: registro histórico da ideia inicial (skill fluxo-de-edicao, não adotada).
 
 ## Decisões já tomadas
 
-- Formatos 9:16 (1080×1920) e 16:9 (1920×1080), ambos 30 fps, H.264, AAC 48 kHz, −14 LUFS. Todas as referências são verticais; o usuário também quer vídeos horizontais novos e reconstruir verticais em horizontal. Qual é o principal depende do vídeo: pergunte quando não estiver claro.
-- **Áreas seguras são prioridade do usuário.** Um único arquivo 9:16 serve Reels e Shorts, então vale a margem mais restritiva: retângulo **x 65–888 px, y 288–1248 px** (topo 288, base 672, esquerda 65, direita 192, com base na Meta e no Google). Decisão de 15/11/2026: **informação importante** (texto, números, alertas, chamada, rosto) sempre dentro; elementos secundários podem encostar ou passar um pouco. O usuário avalia pelo olho, não por pixel: mostre os quadros-chave com a máscara sobreposta.
-- **Régua de marca:** sempre vem pronta, na pasta do próprio vídeo (em `elementos/`). Aplicar sem alteração, **centralizada e encostada na margem inferior**. **Fica o vídeo inteiro** (decidido em 15/11/2026; no registro de ação, só se pedido).
-- **Roteiro original** da equipe sempre vem na pasta de referências. A legenda segue o roteiro final narrado; o original serve para conferir o sentido.
-- **Decisões de 15/11/2026, que valem sobre o manual:** sem vinheta de abertura; duração livre (a narração define); teleorientação, campanha e institucional só com palavras-chave animadas, e registro de ação com legenda completa dinâmica; fechamento só com o logo animado (+ assinaturas de parceiros); transições livres. Tabela completa em `.claude/skills/telessaude/SKILL.md`. O `MANUAL-EDICAO-TELEORIENTACAO.md` local e a versão online (documento do Claude Docs) estão sincronizados na versão de 15/11/2026. A versão online é editada pelo conector de documentos, não por publicação; se as duas divergirem, pergunte qual vale.
+- Formatos 9:16 (1080×1920) e 16:9 (1920×1080), ambos 30 fps, H.264, AAC 48 kHz, −14 LUFS, pico −1 dBTP. Qual é o principal depende do vídeo: pergunte quando não estiver claro. Na série Serviços do NTS, vertical primeiro e depois horizontal (20/11/2026).
+- **Áreas seguras são prioridade do usuário.** Um único arquivo 9:16 serve Reels e Shorts, então vale a margem mais restritiva: retângulo **x 65–888 px, y 288–1248 px**. **Informação importante** (texto, números, alertas, chamada, rosto) sempre dentro; o resto do quadro **não pode ficar vago** (o vídeo também vai por WhatsApp, sem margem; 20/11/2026). O usuário avalia pelo olho: mostre os quadros-chave com a máscara sobreposta.
+- **Elementos de marca** (régua, logos, logo animado, som de logo, assinaturas) vêm sempre do usuário, na pasta `elementos/` do próprio vídeo, e mudam com a parceria. O Claude não os cria nem altera; só posiciona. Régua **centralizada, encostada na base, o vídeo inteiro**. Faltando algum, pergunte; nunca reaproveite o de outro vídeo por conta própria.
+- **Roteiro:** o final aprovado e o original da equipe ficam em `roteiro/` do vídeo. O texto na tela segue o roteiro final narrado; o original serve para conferir o sentido.
+- **Decisões de 15/11/2026, que valem sobre o manual:** sem vinheta de abertura; duração livre (a narração define); teleorientação, campanha e institucional só com palavras-chave animadas, e registro de ação com legenda completa dinâmica; fechamento só com o logo animado (+ assinaturas de parceiros); transições livres. Tabela em `.claude/skills/telessaude/SKILL.md`.
+- **Tipografia:** arquivos em `fontes tipograficas/`: Poppins (base), Exo 2, Inter, Glacial Indifference, Computer Says No (CC BY-SA, pede atribuição) e Bebas Neue (números grandes). O Claude pode pesquisar e propor fontes novas (regra 11 de `motion/SKILL.md`). Detalhes em `telessaude/fontes.md`.
+- **Cores:** guia do portal em `cores hex/`; valores e regras em `telessaude/cores.md`. Primary `#365DCC`, Brand Strong `#1C306A`, Secondary `#19756F`. O azul é o padrão e aparece em todo vídeo; cada vídeo pode ter uma cor do tema, só em pontos de destaque.
+- `videos-referencia/` tem vídeos aprovados (teleorientação, campanhas, Kits de Telessaúde, ação em Tauá-Mirim, retrospectiva 2025). **O usuário quer variação entre vídeos sem sair da identidade:** o perfil é tendência, não regra.
 - Fluxo: conferir o pacote → mapa de cenas → 4 a 6 quadros-chave em tamanho real para aprovação → render da versão principal → ajustes por cena → 16:9, capas e `.srt`.
 
 ## Vídeos (índice)
 
-O estado de cada vídeo (versão atual, final aprovado, decisões só dele) fica em `renderizando/_claude/00-estado.md` da pasta do vídeo; o histórico, no estudo da edição. Aqui fica só o índice. Vídeo novo: `py ferramentas/novo_video.py "<pasta>" <TEMA>`.
+O estado de cada vídeo (versão atual, final aprovado, próximo passo, decisões só dele) fica em `renderizando/_claude/00-estado.md` da pasta do vídeo; o histórico, no estudo da edição. Aqui fica só o índice; `py ferramentas/preparar.py` imprime o próximo passo de todos. Vídeo novo: `py ferramentas/novo_video.py "<pasta>" <TEMA>`.
 
-| Vídeo | Pasta | Situação |
+| Vídeo | Pasta | Situação (21/11/2026) |
 | --- | --- | --- |
-| IAM (infarto), 9:16 | `CRIANDO-VIDEOS/IAM/` | v4.1 oficial e v5.1 candidata, aguardando validação da equipe |
+| IAM (infarto), 9:16 | `CRIANDO-VIDEOS/IAM/` | v4.1 oficial e v5.1 candidata, aguardando a equipe escolher |
 | AVC, 9:16 | `CRIANDO-VIDEOS/AVC/` | concluído (v4.1) |
-| Teleorientação (série Serviços do NTS, piloto), 9:16 | `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEORIENTAÇÃO/` | v3 final entregue (20/11/2026), aguardando o ok final; depois 16:9 |
-| Telediagnóstico (série Serviços do NTS), 9:16 | `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEDIAGNÓSTICO/` | v4: cenas 1–4 e 8 refeitas; proposta do ChatGPT para 5, 6, 7, 9 e 10 salva (`03-proposta-...md`), falta implementar e renderizar (20/11/2026) |
-| Hipertensão parte 2, 16:9 (reconstrução) | `REFAZENDO-VIDEOS/hipertensao 2/` | concluído |
+| Hipertensão parte 1, 16:9 (reconstrução) | `REFAZENDO-VIDEOS/hipertensao 1/` | concluída: horizontal montado pelo usuário no Canva e finalizado pelo Claude (régua em ilha, fechamento, mixagem); é a referência das reconstruções |
+| Hipertensão parte 2, 16:9 (reconstrução) | `REFAZENDO-VIDEOS/hipertensao 2/` | concluído; a página é o motor-base das próximas reconstruções |
+| **Série Serviços do NTS** (linha de produção em `CRIANDO-VIDEOS/SERVIÇOS NTS/01-linha-de-producao.md`) | `CRIANDO-VIDEOS/SERVIÇOS NTS/` | vertical primeiro, depois 16:9 |
+| ↳ Teleorientação (piloto), 9:16 | `…/TELEORIENTAÇÃO/` | v3 final entregue (20/11/2026), aguardando o ok do usuário; depois 16:9 (falta a intro horizontal) |
+| ↳ Telediagnóstico, 9:16 | `…/TELEDIAGNÓSTICO/` | **em produção:** v4 com as cenas 1–4 e 8 refeitas; falta implementar as cenas 5, 6, 7, 9 e 10 da proposta (`03-proposta-chatgpt-cenas-5-6-7-9-10.md`), quadros de prova e render. Passo a passo no `00-estado.md` |
+| ↳ Teleconsultoria | `…/TELECONSULTORIA/` | roteiro v2 aprovado; produção ainda não começou |
+| ↳ Teleducação | `…/TELEDUCAÇÃO/` | aguardando o ok da Amanda na v2 |
+| ↳ Teleinterconsulta, Telerregulação, Diferença entre os Serviços | `…/TELEINTERCONSULTA/`, `…/TELERREGULAÇÃO/`, `…/DIFERENÇA ENTRE OS SERVIÇOS/` | aguardando a validação da Gyovanna |
+| ↳ Teleconsulta | `…/TELECONSULTA/` | texto aprovado só para entrar no Diferença entre os Serviços; o NTS ainda não oferece o serviço |
+| Videoaula PDS (estudo pessoal do usuário, fora do Telessaúde) | `CRIANDO-VIDEOS/VIDEO ESTUDO PDS/` | sem `00-estado.md`; não faz parte da produção |
 
-## Pendências do fluxo (anotado em 16/11/2026)
+Próximos vídeos e reconstruções planejados: `planejamento/`.
+
+## Pendências do fluxo
 
 - **Banco de elementos:** montar uma biblioteca reutilizável de elementos (SVG primeiro: ícones, órgãos, setas, grafismos; regra 12 de `motion/SKILL.md`).
-- **Banco de trilhas:** criado em 20/11/2026 em `biblioteca-trilhas/` (geral, por clima: corporativo, tecnologia, animado, suave, emocional; 20 faixas com LUFS e licença no `README.md`). A trilha segue o clima de cada trecho e pode mudar dentro do vídeo (`motion/som.md`).
 - **Banco de efeitos sonoros:** ampliar e organizar `biblioteca-sfx/` (hoje só sintetizados), com nomes descritivos e trechos úteis do áudio do Flow.
-- **Tipos ainda não testados:** campanha, institucional, registro de ação, horizontal feito do zero, `.srt`. O primeiro de cada um vai mostrar o que falta nas regras.
+- **Tipos ainda não testados:** campanha, registro de ação, horizontal feito do zero, `.srt`. Institucional está sendo testado na série Serviços do NTS. O primeiro de cada um vai mostrar o que falta nas regras.
 - **Vídeo com câmera real:** criar `motion/video-real.md` no primeiro vídeo desse tipo (ferramentas já anotadas em `motion/tecnico.md`).
 - **Editor de quadros-chave:** feito em 16/11/2026 (`ferramentas/editor.mjs`; uso em `motion/tecnico.md`). Falta usar num vídeo real e ajustar pelo uso.
-- **Repositório (GitHub pessoal, privado):** preparado em 21/11/2026 para clonar em outro PC: `README.md` (instalação e abertura com outra conta), `requirements.txt`, `ferramentas/package.json`, `.gitignore` e `LINKS-DRIVE.md` (faltam os links do Drive e o push).
+- **Repositório:** pronto para clonar desde 21/11/2026 (`README.md`, `requirements.txt`, `ferramentas/package.json`, `.gitignore`, `LINKS-DRIVE.md`, `/preparar`). Faltam os links do Drive em `LINKS-DRIVE.md`.
 - **Futuro:** planilha de controle dos vídeos (provavelmente local, sincronizada pelo Google Drive Desktop).
+- Feito: banco de trilhas em `biblioteca-trilhas/` (20/11/2026; 20 faixas por clima, com LUFS e licença no `README.md`; os áudios vêm do Drive).
 
-## O que vem em cada vídeo (atualizado em 16/11/2026)
+## O que vem em cada vídeo
 
-Não há pendência geral de kit de marca. Cores, fontes e vídeos de referência já estão na pasta. **Os elementos de marca vêm por vídeo, na pasta do próprio vídeo:** a régua do parceiro, os logos avulsos, quando o vídeo precisar, e o vídeo de fechamento (logo animado com som e assinaturas; ex.: `Intro NTS e PETSAUDE.mp4`, nas versões vertical e horizontal). O Claude não acessa o Canva, então tudo vem exportado.
+Cores, fontes e vídeos de referência já estão no projeto. **Os elementos de marca vêm por vídeo, em `elementos/`:** a régua do parceiro, os logos avulsos, quando o vídeo precisar, e o vídeo de fechamento (logo animado com som e assinaturas; ex.: `Intro Telessaude.mp4`, `Intro NTS e PETSAUDE.mp4`, nas versões vertical e horizontal). O Claude não acessa o Canva, então tudo vem exportado.
 
-Pacote de cada vídeo: narração (.wav do AI Studio), roteiro final, cenas do Flow (.mp4), folhas de elementos para recorte, régua, fechamento e trilha. Checklist completa e a regra de confirmar os itens obrigatórios antes de montar em `.claude/skills/telessaude/organizacao.md` e `SKILL.md`.
+Pacote de cada vídeo: narração (.wav do AI Studio), roteiro final, cenas do Flow (.mp4), folhas de elementos para recorte, régua, fechamento e trilha. Checklist e a regra de confirmar os itens obrigatórios antes de montar em `.claude/skills/telessaude/organizacao.md` e `SKILL.md`.
 
-## Ferramentas esperadas na máquina local
+## Ferramentas na máquina local
 
-O pipeline previsto usa **ffmpeg** (corte, composição, xfade, zoompan, drawtext, legendas ASS, loudnorm), **Python** com Pillow, numpy e OpenCV (grafismos quadro a quadro, reenquadramento) e, para animações em HTML/CSS com as fontes da marca, **Node** com Chrome/Playwright para gravar quadro a quadro. No início, verifique o que está instalado (Windows) e, se faltar algo, diga ao usuário o que instalar antes de começar.
+**ffmpeg** (corte, composição, xfade, loudnorm), **Python** (`py`) com Pillow, numpy, OpenCV e faster-whisper, e **Node** com `playwright-core` usando o **Chrome** instalado, para gravar quadro a quadro as animações em HTML/CSS/SVG com as fontes da marca. Os scripts do projeto ficam em `ferramentas/` (tabela em `motion/tecnico.md`). Conferência: `py ferramentas/preparar.py`.
 
 ## Preferências de trabalho
-
-- **Regras recorrentes vão para as skills/normas, não para a memória** (a memória custa tokens em toda conversa). Ao notar algo que se repete, proponha incluir na skill certa.
 
 - Responder em português.
 - Mostrar quadros estáticos para aprovação antes de um render completo; um render completo por pedido.
 - Nunca alterar o sentido das orientações de saúde: o texto na tela só pode dizer o que o roteiro aprovado diz.
+- Efeito sugerido pelo usuário é opção, não ordem: só entra se reforçar a mensagem. Curva preferida: mola (spring). Detalhes em `motion/principios.md` e `telessaude/SKILL.md`.
+- Regras recorrentes vão para as skills/normas, não para a memória. Ao notar algo que se repete, proponha incluir na skill certa.

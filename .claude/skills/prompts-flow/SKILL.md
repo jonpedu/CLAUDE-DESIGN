@@ -62,8 +62,8 @@ Confira cada clipe (estilo igual ao dos outros, corpo inteiro, nada cortado, sem
 
 Elenco planejado (`CRIANDO-VIDEOS/SERVIÇOS NTS/01-linha-de-producao.md`): enfermeira da UBS, médico (especialista a distância), paciente, agente comunitário de saúde, estudante. Quando o primeiro clipe de cada um for aprovado, copie aqui a descrição física exata usada no prompt.
 
-- Teleorientação, cena 02 (20/11/2026): idosa da cidade, agricultor do interior do Maranhão (chapéu de palha), jovem estudante e quebradeira de coco babaçu (opcional), cada um com o celular. Prompts em `TELEORIENTAÇÃO/roteiro/prompts-flow.md`.
-- Telediagnóstico, cena 03 (20/11/2026): médico especialista a distância, da cintura para cima, com tablet (clipe A), e médica como opcional (clipe B). Prompts em `TELEDIAGNÓSTICO/roteiro/prompts-flow.md`. Quando um for aprovado, copiar aqui a descrição física.
+- Teleorientação, cena 02 (20/11/2026): idosa da cidade, agricultor do interior do Maranhão (chapéu de palha), jovem estudante e quebradeira de coco babaçu (opcional), cada um com o celular. Prompts em `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEORIENTAÇÃO/roteiro/prompts-flow.md`.
+- Telediagnóstico, cena 03 (20/11/2026): médico especialista a distância, da cintura para cima, com tablet (clipe A), e médica como opcional (clipe B). Prompts em `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEDIAGNÓSTICO/roteiro/prompts-flow.md`. Quando um for aprovado, copiar aqui a descrição física.
 
 ## Aprendizados
 
@@ -72,6 +72,6 @@ Elenco planejado (`CRIANDO-VIDEOS/SERVIÇOS NTS/01-linha-de-producao.md`): enfer
   - quando o personagem vai ser **recortado e posto sobre outro fundo** (mapa, painel azul), peça **fundo verde chapado** (`Pure solid chroma green background (#00B140), evenly lit, no gradient`) em vez de branco, e recorte com `CHROMA=1` (`ferramentas/recortar.py`). O verde se separa da pele, do branco da roupa e do brilho da tela;
   - evite pedir **brilho/luz saindo do celular** (`the screen glows softly`) nesses clipes: use `the screen is on, with no light rays or glow around it`;
   - prefira gestos que **não fechem um vão** entre braço e corpo/rosto, ou aceite que esses quadros vão precisar de tratamento.
-  - Se o clipe já veio em fundo branco: o recorte de `renderizando/_claude/camadas/recorta_clipes.py` (Teleorientação) trata brancos fechados grandes e o creme do brilho como fundo. Outra saída é usar só os quadros sem o problema (quadro parado ou trecho curto).
+  - Se o clipe já veio em fundo branco: o recorte de `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEORIENTAÇÃO/renderizando/_claude/camadas/recorta_clipes.py` trata brancos fechados grandes e o creme do brilho como fundo. Outra saída é usar só os quadros sem o problema (quadro parado ou trecho curto).
 
 - Referência de estilo que já deu certo (AVC e IAM, 2026): personagem único, vetor flat, fundo branco puro, corpo inteiro, clipes de 10 s em 1080×1920.
