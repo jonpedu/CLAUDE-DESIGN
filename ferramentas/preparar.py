@@ -8,7 +8,8 @@ Partes:
   1. Programas: ffmpeg/ffprobe (com libx264 e loudnorm), Python e pacotes, Node, playwright-core, Chrome.
   2. Pastas do repositório e material grande que vem do Drive (LINKS-DRIVE.md).
   3. Cada vídeo com renderizando/_claude/00-estado.md: próximo passo e arquivos que as páginas
-     (.html) e mixagens (.json) citadas no estado usam e que não estão no disco.
+     (.html) e mixagens (.json) citadas no estado usam e que não estão no disco. O vídeo de entrada
+     de uma mixagem ("video") não é cobrado: é gerado pelo render (ferramentas/animar.mjs).
 """
 import importlib.util, io, json, os, re, shutil, subprocess, sys
 from pathlib import Path
@@ -97,7 +98,7 @@ for pasta in ['videos-referencia']:
 
 # ---------------------------------------------------------------- 3. vídeos
 print('\n3. Vídeos (renderizando/_claude/00-estado.md)')
-REF = re.compile(r'''(?:src|href)\s*=\s*["']([^"'#?]+)["']|url\(\s*["']?([^"')]+)["']?\s*\)|"(?:arq|video|arquivo|regua|fim_video|fim_audio)"\s*:\s*"([^"]+)"''')
+REF = re.compile(r'''(?:src|href)\s*=\s*["']([^"'#?]+)["']|url\(\s*["']?([^"')]+)["']?\s*\)|"(?:arq|arquivo|regua|fim_video|fim_audio)"\s*:\s*"([^"]+)"''')
 CIT = re.compile(r'`([^`]+\.(?:html|json))`')
 MIDIA = ('.wav', '.mp3', '.m4a', '.mp4', '.mov', '.webm', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.js', '.css')
 
@@ -139,7 +140,6 @@ for est in estados:
         f = refs_faltando(p)
         if f:
             faltas[p.relative_to(cl).as_posix()] = f
-    tem_audio = any((video / 'audios').glob('*.wav')) or any(video.rglob('audio*/*.wav'))
     if faltas:
         n = sum(len(v) for v in faltas.values())
         falta(f'{nome}: {n} arquivo(s) de mídia citados pelas páginas/mixagens do estado não estão no disco',
@@ -148,8 +148,6 @@ for est in estados:
             print(f'          {pg}: ' + ', '.join(lst[:6]) + (' …' if len(lst) > 6 else ''))
     elif citados:
         ok(f'mídia das páginas/mixagens citadas no estado presente ({len(citados)} arquivo(s))')
-    if not tem_audio and 'Versão atual:** nenhuma' not in txt:
-        print('          (nenhuma narração .wav em audios/: normal se o vídeo ainda não chegou nessa etapa)')
 
 # ---------------------------------------------------------------- resumo
 print('\n' + ('Tudo pronto.' if not problemas else f'{len(problemas)} pendência(s). Resolva as de "Programas" antes de editar; '
