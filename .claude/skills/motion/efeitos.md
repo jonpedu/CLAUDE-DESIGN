@@ -59,14 +59,14 @@ Combine-as: `continuidade` dentro de um bloco, `arrasto` ou `metamorfose` entre 
 | `ken-burns` | imagem estática | duração do plano | zoom de 3–5% em toda a duração, com leve deslocamento lateral |
 | `paralaxe` | profundidade entre camadas | contínuo | fundo move 30–50% do que move o primeiro plano |
 | `push-in` | aproximar num momento-chave | 18–30 | zoom de 5–10% da câmera inteira, uma vez por bloco |
-| `carrossel` | vários exemplos ao mesmo tempo, sem lista estática | contínuo | fileira de cartões que **desliza sem parar** em velocidade constante suave (a única exceção à regra "nada em velocidade constante", porque é um fluxo, não um gesto); pode ter duas fileiras em sentidos opostos. Cada cartão é uma **moldura com vídeo tocando** dentro (não print). O cartão central ou o que a fala cita cresce 5–10% e ganha brilho; os das bordas esmaecem ou desfocam um pouco |
+| `carrossel` | vários exemplos ao mesmo tempo, sem lista estática (com vídeo em cada cartão, também chamado *video wall*) | contínuo | fileira de cartões que **desliza sem parar** em velocidade constante suave (a única exceção à regra "nada em velocidade constante", porque é um fluxo, não um gesto); pode ter duas fileiras em sentidos opostos. Cada cartão é uma **moldura com vídeo tocando** dentro (não print). O cartão central ou o que a fala cita cresce 5–10% e ganha brilho; os das bordas esmaecem ou desfocam um pouco |
 
 ## Material e superfície
 
 | Efeito | Para quê | Receita |
 | --- | --- | --- |
 | `vidro` | cartões e barras com cara de interface Apple (*glassmorphism*; na Apple, *Liquid Glass*) | painel semitransparente sobre um fundo **com cor e movimento** (sem fundo vivo, o vidro não aparece): `backdrop-filter: blur(24–40px) saturate(160–180%)`, fundo branco a 15–35% (ou escuro a 20–40% em cena escura), borda de 1 px branca a 40–60% em cima e mais fraca embaixo (luz vindo de cima), sombra difusa grande e leve, cantos 24–40 px. Reflexo opcional: um degradê diagonal branco bem fraco que desliza devagar. Texto sobre vidro sempre com contraste ≥ 4,5:1 |
-| `profundidade` | separar camadas como na interface da Apple | primeiro plano nítido e maior; o que fica atrás encolhe 3–6%, desfoca 4–10 px e escurece ou clareia um pouco quando algo entra na frente; volta quando sai |
+| `profundidade` | separar camadas como na interface da Apple (*depth*) | primeiro plano nítido e maior; o que fica atrás encolhe 3–6%, desfoca 4–10 px e escurece ou clareia um pouco quando algo entra na frente; volta quando sai |
 
 **Na prática do motor (HTML + Playwright):** `backdrop-filter` funciona no Chrome e sai no render quadro a quadro. Vídeo dentro de cartão (carrossel, `cena-vira-card`) entra como **sequência de quadros JPG** do trecho, trocada pelo tempo `t` da página, e não como `<video>`, que trava a busca no render (problema visto na Teleorientação; solução em `CRIANDO-VIDEOS/SERVIÇOS NTS/TELEORIENTAÇÃO/renderizando/_claude/animacao/teleorientacao_v3.html`). Muitos cartões com vídeo pesam: use quadros pequenos (a largura do cartão) e só os cartões visíveis.
 

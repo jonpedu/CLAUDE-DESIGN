@@ -37,7 +37,7 @@ Esta é a base de tudo que é animado nesta pasta. As sub-skills de marca, como 
 12. **Vetor (SVG) sempre que houver** (decisão do usuário, 16/11/2026). SVG é texto: dá para animar cada parte (braço, coração, traço que se desenha), recolorir para a paleta e ampliar sem perder nitidez. Ordem de preferência para ícones, órgãos, setas e grafismos flat:
     1. **SVG entregue pelo usuário** em `elementos/` (inclusive elementos baixados do Canva em SVG);
     2. **SVG desenhado pelo Claude em código**, quando a forma for simples (setas, gráficos, ECG, formas geométricas, ícones de linha);
-    3. **SVG de bibliotecas abertas** (ex.: Phosphor, Lucide, Iconify, ilustrações com licença livre), buscado pelo Claude e proposto com nome, origem e licença;
+    3. **SVG de bibliotecas abertas**: primeiro as que já estão em `biblioteca/elementos/icones/` (Phosphor, MIT, 4 pesos; Lucide, ISC), depois outras (Iconify, ilustrações com licença livre), buscadas pelo Claude e propostas com nome, origem e licença;
     4. PNG/JPG recortado (`recortar.py`) quando só houver imagem.
     **Não converter PNG/JPG em SVG** (vtracer, potrace e afins): o resultado sai cheio de defeitos. Personagens que falam e gesticulam continuam em vídeo (Flow).
 

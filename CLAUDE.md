@@ -80,7 +80,7 @@ Próximos vídeos e reconstruções planejados: `planejamento/`.
 
 ## Pendências do fluxo
 
-- **Biblioteca geral:** criada em 21/11/2026 (`biblioteca/`). Falta completar com o que está na lista "O que falta" do `biblioteca/README.md` (fechamento horizontal do Telessaúde, régua PET-Saúde em SVG, logos dos parceiros, mapa do Maranhão por município, banco de ícones SVG).
+- **Biblioteca geral:** criada em 21/11/2026 (`biblioteca/`). Falta completar com o que está na lista "O que falta" do `biblioteca/README.md` (fechamento horizontal do Telessaúde, régua PET-Saúde em SVG, logos dos parceiros, som de logo, efeitos sonoros reais). Mapa do Maranhão por município e ícones SVG (Phosphor, Lucide) já entraram.
 - **Banco de efeitos sonoros:** ampliar e organizar `biblioteca/sfx/` (hoje só sintetizados), com nomes descritivos e trechos úteis do áudio do Flow.
 - **Tipos ainda não testados:** campanha, registro de ação, horizontal feito do zero, `.srt`. Institucional está sendo testado na série Serviços do NTS. O primeiro de cada um vai mostrar o que falta nas regras.
 - **Vídeo com câmera real:** criar `motion/video-real.md` no primeiro vídeo desse tipo (ferramentas já anotadas em `motion/tecnico.md`).

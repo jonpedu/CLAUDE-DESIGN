@@ -18,10 +18,24 @@ Gerado em 21/11/2026 por `py ferramentas/da_biblioteca.py --inventario`. Não ed
 - `elementos/folhas-de-elementos/iam/Medical_icons_sheet_vector_design_f92e3cfa_2K.jpg` (1 MB)
 - `elementos/folhas-de-elementos/iam/Vector_icons_arranged_in_grid_e5b2bacf_2K.jpg` (1 MB)
 
+## elementos/icones
+
+- `elementos/icones/_folha-saude-tecnologia.png` (451 KB)
+- `elementos/icones/lucide/` (2412 arquivos; liste com `--listar lucide`)
+- `elementos/icones/phosphor/bold/` (1512 arquivos; liste com `--listar bold`)
+- `elementos/icones/phosphor/duotone/` (1512 arquivos; liste com `--listar duotone`)
+- `elementos/icones/phosphor/fill/` (1512 arquivos; liste com `--listar fill`)
+- `elementos/icones/phosphor/LICENSE.txt` (1 KB)
+- `elementos/icones/phosphor/regular/` (1512 arquivos; liste com `--listar regular`)
+
 ## elementos/mapas
 
+- `elementos/mapas/_previa-maranhao-municipios.png` (192 KB)
 - `elementos/mapas/brazil.svg` (64 KB)
 - `elementos/mapas/mapa_br.js` (62 KB)
+- `elementos/mapas/maranhao-contorno-ibge.svg` (7 KB)
+- `elementos/mapas/maranhao-municipios-centros.json` (38 KB)
+- `elementos/mapas/maranhao-municipios.svg` (278 KB)
 
 ## elementos/personagens-flow
 

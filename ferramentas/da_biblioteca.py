@@ -64,7 +64,24 @@ def inventario():
     linhas = [f'# Inventário da biblioteca\n', f'Gerado em {date.today():%d/%m/%Y} por `py ferramentas/da_biblioteca.py --inventario`. '
               'Não edite à mão: o catálogo comentado é o `README.md`.\n']
     grupo = None
-    for p in itens():
+    todos = itens()
+    # pastas com muitos arquivos (bancos de ícones) viram uma linha só
+    from collections import Counter
+    cont = Counter(p.parent for p in todos)
+    grandes = {d for d, n in cont.items() if n > 60}
+    vistos = set()
+    for p in todos:
+        if p.parent in grandes:
+            if p.parent in vistos:
+                continue
+            vistos.add(p.parent)
+            rel = p.parent.relative_to(BIB)
+            g = '/'.join(rel.parts[:2]) if len(rel.parts) > 1 else rel.parts[0]
+            if g != grupo:
+                grupo = g
+                linhas.append(f'\n## {g}\n')
+            linhas.append(f'- `{rel.as_posix()}/` ({cont[p.parent]} arquivos; liste com `--listar {rel.name}`)')
+            continue
         rel = p.relative_to(BIB)
         g = '/'.join(rel.parts[:2]) if len(rel.parts) > 2 else rel.parts[0]
         if g != grupo:

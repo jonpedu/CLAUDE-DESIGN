@@ -38,7 +38,9 @@ Por clima (`animado/`, `corporativo/`, `emocional/`, `suave/`, `tecnologia/`; 20
 
 | Pasta | Conteúdo |
 | --- | --- |
-| `mapas/` | `brazil.svg` (estados com id, ex. `BR-MA`) e `mapa_br.js` (o mesmo mapa pronto para a página) |
+| `mapas/` | `brazil.svg` (estados com id, ex. `BR-MA`) e `mapa_br.js` (o mesmo mapa pronto para a página) · **`maranhao-municipios.svg`** (os 217 municípios, 1000×1330; cada um é um `<path id="mun-<código IBGE>" data-nome="…" data-regiao-imediata="…">`, ex. São Luís = `mun-2111300`) · `maranhao-municipios-centros.json` (centro de cada município em px do mesmo SVG, para alfinete, rótulo ou a cobertura se espalhando a partir de São Luís, em x 643, y 229) · `maranhao-contorno-ibge.svg` (só o contorno do estado) · `_previa-maranhao-municipios.png`. Fonte: IBGE, malhas territoriais (dados públicos), baixado em 21/11/2026 |
+| `icones/phosphor/` | **Phosphor Icons 2.1.1** (licença MIT, `LICENSE.txt`): 1.512 ícones em 4 pesos (`regular/`, `bold/`, `fill/`, `duotone/`), arquivo `<nome>-<peso>.svg`. Usam `currentColor`: a cor vem do CSS da página (azul da marca, cor do tema). O `duotone` combina com o flat dos vídeos. Prévia dos de saúde, tecnologia e cotidiano: `icones/_folha-saude-tecnologia.png` |
+| `icones/lucide/` | **Lucide 1.77** (licença ISC, `LICENSE.txt`): 2.410 ícones de traço; `_tags.json` traz palavras-chave em inglês de cada um para busca |
 | `personagens-flow/avc/`, `iam/` | clipes do Flow dos vídeos PET-Saúde (personagem enfermeiro/apresentador, gestos, cérebro, coração), fundo claro |
 | `personagens-flow/telediagnostico-medico-tablet/` | médico com tablet, 5 clipes, fundo branco |
 | `personagens-flow/teleorientacao-pessoas-celular/` | idosa, agricultor e estudante com celular, 16:9, fundo branco (servem aos dois formatos) |
@@ -62,15 +64,15 @@ O código das animações fica na pasta de cada vídeo, porque aponta para os ar
 
 ## O que falta (para procurar ou pedir)
 
+Feito em 21/11/2026: mapa do Maranhão por município (IBGE) e bancos de ícones SVG (Phosphor e Lucide), em `elementos/`.
+
 Em ordem de importância para os próximos vídeos:
 
 1. **Fechamento horizontal só do Telessaúde** (`Intro Telessaude` em 16:9). Bloqueia as versões 16:9 da série Serviços do NTS. Do usuário (Canva).
 2. **Régua PET-Saúde em SVG** e a **variante com o logo "MARANHÃO" (SES) em primeiro**, citada em `telessaude/SKILL.md`. Hoje só existe o PNG do PET-Saúde. Do usuário.
 3. **Som de logo isolado** (`.wav` do fechamento), para quando o fechamento entrar sem o vídeo dele. Do usuário, ou extrair do `Intro*.mp4`.
 4. **Logos dos parceiros em SVG:** PET-Saúde, SEMUS São Luís, SES-MA/Governo do Maranhão, Ministério da Saúde, SUS Digital, sted. Hoje só aparecem dentro das réguas. Do usuário.
-5. **Mapa do Maranhão com os municípios (SVG)**, para "nos municípios" e cobertura a partir de São Luís (Telediagnóstico, Telerregulação). Fonte aberta: malhas do IBGE (domínio público), convertidas para SVG. O Claude pode buscar com o ok do usuário.
-6. **Banco de ícones SVG** (saúde, tecnologia, setas), regra 12 de `motion/SKILL.md`: Phosphor ou Lucide (licença MIT). O Claude pode baixar com o ok do usuário.
-7. **Efeitos sonoros reais** (pasta de efeitos do usuário e trechos úteis do áudio dos clipes do Flow), para não depender só dos sintetizados.
-8. **Páginas do Canva em PNG** dos vídeos a reconstruir em 16:9 (Obesidade infantil, Hanseníase outubro, Diabetes e Dengue, partes 1 e 2; Câncer de pênis, Hanseníase, Hipertensão e Retinopatia próprios do NTS). Do usuário.
-9. **Capas do YouTube do AVC e do IAM**, quando forem publicados.
-10. **Registro da voz do AI Studio** usada nas narrações (nome da voz e configurações), para manter a mesma voz na série. Do usuário; anotar em `telessaude/tipos/`.
+5. **Efeitos sonoros reais** (pasta de efeitos do usuário e trechos úteis do áudio dos clipes do Flow), para não depender só dos sintetizados.
+6. **Páginas do Canva em PNG** dos vídeos a reconstruir em 16:9 (Obesidade infantil, Hanseníase outubro, Diabetes e Dengue, partes 1 e 2; Câncer de pênis, Hanseníase, Hipertensão e Retinopatia próprios do NTS). Do usuário.
+7. **Capas do YouTube do AVC e do IAM**, quando forem publicados.
+8. **Registro da voz do AI Studio** usada nas narrações (nome da voz e configurações), para manter a mesma voz na série. Do usuário; anotar em `telessaude/tipos/`.
