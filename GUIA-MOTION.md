@@ -2,7 +2,7 @@
 
 Este arquivo é o mapa para você. O conteúdo completo fica nas skills em `.claude/skills/`, que o Claude Code usa sozinho quando você pede um vídeo nesta pasta.
 
-**Primeira vez:** as skills chegaram na pasta `skills/`. Na primeira conversa do Claude Code nesta pasta, ele vai copiá-las para `.claude/skills/`, que é onde o Claude Code procura skills. Se não fizer sozinho, peça: "copia a pasta skills para .claude/skills".
+**Primeira vez:** as skills já estão em `.claude/skills/`, onde o Claude Code as encontra sozinho. Para instalar em outro PC, siga o `README.md`. A entrega original, desatualizada, ficou em `_arquivo/skills-entrega-original/`.
 
 ## Como está organizado
 

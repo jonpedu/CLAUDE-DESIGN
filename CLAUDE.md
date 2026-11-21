@@ -4,7 +4,7 @@ Este arquivo resume a conversa de planejamento (claude.ai, 14/11/2026) para dar 
 
 ## Skills deste projeto (leia antes de editar qualquer vídeo)
 
-**Instalação:** feita em 15/11/2026. As skills ficam em `.claude/skills/`; edite só lá. A pasta `skills/` da raiz é a entrega original e está desatualizada (ainda tem a antiga `teleorientacao`); não copie de novo.
+**Instalação:** feita em 15/11/2026. As skills ficam em `.claude/skills/`; edite só lá. A entrega original foi arquivada em `_arquivo/skills-entrega-original/` (21/11/2026), desatualizada; não copie de novo.
 
 - `.claude/skills/motion/` é a skill geral de motion: princípios, catálogo de efeitos nomeados, método para usar referências, formatos e áreas seguras, som, pipeline técnico e presets de estilo (`estilos/`). Vale para qualquer vídeo, de teleorientação ou não.
 - `.claude/skills/telessaude/` é a sub-skill da marca Telessaúde, aplicada por cima da geral a **qualquer** vídeo do Telessaúde. Organização em matriz **formato × tipo** (decidido em 15/11/2026):
@@ -69,7 +69,7 @@ O estado de cada vídeo (versão atual, final aprovado, decisões só dele) fica
 - **Tipos ainda não testados:** campanha, institucional, registro de ação, horizontal feito do zero, `.srt`. O primeiro de cada um vai mostrar o que falta nas regras.
 - **Vídeo com câmera real:** criar `motion/video-real.md` no primeiro vídeo desse tipo (ferramentas já anotadas em `motion/tecnico.md`).
 - **Editor de quadros-chave:** feito em 16/11/2026 (`ferramentas/editor.mjs`; uso em `motion/tecnico.md`). Falta usar num vídeo real e ajustar pelo uso.
-- **Repositório (GitHub pessoal, privado):** README de instalação, `requirements.txt`, `.gitignore` e um arquivo de links do Drive para o material grande. Quando o fluxo estabilizar.
+- **Repositório (GitHub pessoal, privado):** preparado em 21/11/2026 para clonar em outro PC: `README.md` (instalação e abertura com outra conta), `requirements.txt`, `ferramentas/package.json`, `.gitignore` e `LINKS-DRIVE.md` (faltam os links do Drive e o push).
 - **Futuro:** planilha de controle dos vídeos (provavelmente local, sincronizada pelo Google Drive Desktop).
 
 ## O que vem em cada vídeo (atualizado em 16/11/2026)
